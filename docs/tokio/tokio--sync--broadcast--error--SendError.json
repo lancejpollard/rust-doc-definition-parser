@@ -1,0 +1,49 @@
+{
+  "title": "Struct tokio::sync::broadcast::error::SendError",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T: Debug> Debug for SendError<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Display for SendError<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: Debug> Error for SendError<T>",
+          "methods": [
+            {
+              "code": "fn source(&self) -> Option<&(dyn Error + 'static)>",
+              "text": "The lower-level source of this error, if any."
+            },
+            {
+              "code": "fn backtrace(&self) -> Option<&Backtrace>",
+              "text": "Returns a stack backtrace, if available, of where this error occurred."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

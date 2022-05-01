@@ -1,0 +1,45 @@
+{
+  "title": "Struct tokio::sync::BarrierWaitResult",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn is_leader(&self) -> bool",
+          "text": "Returns true if this task from wait is the “leader task”."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for BarrierWaitResult",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> BarrierWaitResult",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for BarrierWaitResult",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

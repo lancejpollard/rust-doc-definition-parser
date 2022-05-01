@@ -1,0 +1,458 @@
+{
+  "title": "Struct std::sync::Arc",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(data: T) -> Arc<T>",
+          "text": "Constructs a new Arc<T>."
+        },
+        {
+          "code": "pub fn new_cyclic(data_fn: impl FnOnce(&Weak<T>) -> T) -> Arc<T>",
+          "text": "Constructs a new Arc<T> using a weak reference to itself. Attempting to upgrade the weak reference before this function returns will result in a None value. However, the weak reference may be cloned freely and stored for use at a later time."
+        },
+        {
+          "code": "pub fn new_uninit() -> Arc<MaybeUninit<T>>",
+          "text": "Constructs a new Arc with uninitialized contents."
+        },
+        {
+          "code": "pub fn new_zeroed() -> Arc<MaybeUninit<T>>",
+          "text": "Constructs a new Arc with uninitialized contents, with the memory being filled with 0 bytes."
+        },
+        {
+          "code": "pub fn pin(data: T) -> Pin<Arc<T>>ⓘNotable traits for Pin<P>impl<P> Future for Pin<P> where P: DerefMut, <P as Deref>::Target: Future, type Output = <<P as Deref>::Target as Future>::Output;",
+          "text": "Constructs a new Pin<Arc<T>>. If T does not implement Unpin, then data will be pinned in memory and unable to be moved."
+        },
+        {
+          "code": "pub fn try_pin(data: T) -> Result<Pin<Arc<T>>, AllocError>",
+          "text": "Constructs a new Pin<Arc<T>>, return an error if allocation fails."
+        },
+        {
+          "code": "pub fn try_new(data: T) -> Result<Arc<T>, AllocError>",
+          "text": "Constructs a new Arc<T>, returning an error if allocation fails."
+        },
+        {
+          "code": "pub fn try_new_uninit() -> Result<Arc<MaybeUninit<T>>, AllocError>",
+          "text": "Constructs a new Arc with uninitialized contents, returning an error if allocation fails."
+        },
+        {
+          "code": "pub fn try_new_zeroed() -> Result<Arc<MaybeUninit<T>>, AllocError>",
+          "text": "Constructs a new Arc with uninitialized contents, with the memory being filled with 0 bytes, returning an error if allocation fails."
+        },
+        {
+          "code": "pub fn try_unwrap(this: Arc<T>) -> Result<T, Arc<T>>",
+          "text": "Returns the inner value, if the Arc has exactly one strong reference."
+        },
+        {
+          "code": "pub fn new_uninit_slice(len: usize) -> Arc<[MaybeUninit<T>]>",
+          "text": "Constructs a new atomically reference-counted slice with uninitialized contents."
+        },
+        {
+          "code": "pub fn new_zeroed_slice(len: usize) -> Arc<[MaybeUninit<T>]>",
+          "text": "Constructs a new atomically reference-counted slice with uninitialized contents, with the memory being filled with 0 bytes."
+        },
+        {
+          "code": "pub unsafe fn assume_init(self) -> Arc<T>",
+          "text": "Converts to Arc<T>."
+        },
+        {
+          "code": "pub unsafe fn assume_init(self) -> Arc<[T]>",
+          "text": "Converts to Arc<[T]>."
+        },
+        {
+          "code": "pub fn into_raw(this: Arc<T>) -> *const T",
+          "text": "Consumes the Arc, returning the wrapped pointer."
+        },
+        {
+          "code": "pub fn as_ptr(this: &Arc<T>) -> *const T",
+          "text": "Provides a raw pointer to the data."
+        },
+        {
+          "code": "pub unsafe fn from_raw(ptr: *const T) -> Arc<T>",
+          "text": "Constructs an Arc<T> from a raw pointer."
+        },
+        {
+          "code": "pub fn downgrade(this: &Arc<T>) -> Weak<T>",
+          "text": "Creates a new Weak pointer to this allocation."
+        },
+        {
+          "code": "pub fn weak_count(this: &Arc<T>) -> usize",
+          "text": "Gets the number of Weak pointers to this allocation."
+        },
+        {
+          "code": "pub fn strong_count(this: &Arc<T>) -> usize",
+          "text": "Gets the number of strong (Arc) pointers to this allocation."
+        },
+        {
+          "code": "pub unsafe fn increment_strong_count(ptr: *const T)",
+          "text": "Increments the strong reference count on the Arc<T> associated with the provided pointer by one."
+        },
+        {
+          "code": "pub unsafe fn decrement_strong_count(ptr: *const T)",
+          "text": "Decrements the strong reference count on the Arc<T> associated with the provided pointer by one."
+        },
+        {
+          "code": "pub fn ptr_eq(this: &Arc<T>, other: &Arc<T>) -> bool",
+          "text": "Returns true if the two Arcs point to the same allocation (in a vein similar to ptr::eq)."
+        },
+        {
+          "code": "pub fn make_mut(this: &mut Arc<T>) -> &mut T",
+          "text": "Makes a mutable reference into the given Arc."
+        },
+        {
+          "code": "pub fn get_mut(this: &mut Arc<T>) -> Option<&mut T>",
+          "text": "Returns a mutable reference into the given Arc, if there are no other Arc or Weak pointers to the same allocation."
+        },
+        {
+          "code": "pub unsafe fn get_mut_unchecked(this: &mut Arc<T>) -> &mut T",
+          "text": "Returns a mutable reference into the given Arc, without any check."
+        },
+        {
+          "code": "pub fn downcast<T>(self) -> Result<Arc<T>, Arc<dyn Any + Send + Sync + 'static>> where T: 'static + Any + Send + Sync,",
+          "text": "Attempt to downcast the Arc<dyn Any + Send + Sync> to a concrete type."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> AsRef<T> for Arc<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &T",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Borrow<T> for Arc<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn borrow(&self) -> &T",
+              "text": "Immutably borrows from an owned value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Clone for Arc<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> Arc<T>",
+              "text": "Makes a clone of the Arc pointer."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for Arc<T> where T: Debug + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for Arc<T> where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> Arc<T>",
+              "text": "Creates a new Arc<T>, with the Default value for T."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Deref for Arc<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "type Target = T",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "pub fn deref(&self) -> &T",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Display for Arc<T> where T: Display + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Drop for Arc<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn drop(&mut self)",
+              "text": "Drops the Arc."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: Error + ?Sized> Error for Arc<T>",
+          "methods": [
+            {
+              "code": "fn source(&self) -> Option<&(dyn Error + 'static)>",
+              "text": "The lower-level source of this error, if any."
+            },
+            {
+              "code": "fn backtrace(&self) -> Option<&Backtrace>",
+              "text": "Returns a stack backtrace, if available, of where this error occurred."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> From<&'_ [T]> for Arc<[T]> where T: Clone,",
+          "methods": [
+            {
+              "code": "pub fn from(v: &[T]) -> Arc<[T]>",
+              "text": "Allocate a reference-counted slice and fill it by cloning v’s items."
+            }
+          ]
+        },
+        {
+          "title": "impl From<&'_ CStr> for Arc<CStr>",
+          "methods": [
+            {
+              "code": "fn from(s: &CStr) -> Arc<CStr>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<&'_ OsStr> for Arc<OsStr>",
+          "methods": [
+            {
+              "code": "fn from(s: &OsStr) -> Arc<OsStr>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<&'_ Path> for Arc<Path>",
+          "methods": [
+            {
+              "code": "fn from(s: &Path) -> Arc<Path>",
+              "text": "Converts a Path into an Arc by copying the Path data into a new Arc buffer."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> From<&'_ str> for Arc<str>",
+          "methods": [
+            {
+              "code": "pub fn from(v: &str) -> Arc<str>",
+              "text": "Allocate a reference-counted str and copy v into it."
+            }
+          ]
+        },
+        {
+          "title": "impl<W> From<Arc<W>> for Waker where W: 'static + Wake + Send + Sync,",
+          "methods": [
+            {
+              "code": "pub fn from(waker: Arc<W>) -> Waker",
+              "text": "Use a Wake-able type as a Waker."
+            }
+          ]
+        },
+        {
+          "title": "impl<W> From<Arc<W>> for RawWaker where W: 'static + Wake + Send + Sync,",
+          "methods": [
+            {
+              "code": "pub fn from(waker: Arc<W>) -> RawWaker",
+              "text": "Use a Wake-able type as a RawWaker."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<Box<T, Global>> for Arc<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn from(v: Box<T, Global>) -> Arc<T>",
+              "text": "Move a boxed object to a new, reference-counted allocation."
+            }
+          ]
+        },
+        {
+          "title": "impl From<CString> for Arc<CStr>",
+          "methods": [
+            {
+              "code": "fn from(s: CString) -> Arc<CStr>",
+              "text": "Converts a CString into an Arc<CStr> without copying or allocating."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, B> From<Cow<'a, B>> for Arc<B> where B: ToOwned + ?Sized, Arc<B>: From<&'a B>, Arc<B>: From<<B as ToOwned>::Owned>,",
+          "methods": [
+            {
+              "code": "pub fn from(cow: Cow<'a, B>) -> Arc<B>",
+              "text": "Create an atomically reference-counted pointer from a clone-on-write pointer by copying its content."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OsString> for Arc<OsStr>",
+          "methods": [
+            {
+              "code": "fn from(s: OsString) -> Arc<OsStr>",
+              "text": "Converts an OsString into an Arc<OsStr> without copying or allocating."
+            }
+          ]
+        },
+        {
+          "title": "impl From<PathBuf> for Arc<Path>",
+          "methods": [
+            {
+              "code": "fn from(s: PathBuf) -> Arc<Path>",
+              "text": "Converts a PathBuf into an Arc by moving the PathBuf data into a new Arc buffer."
+            }
+          ]
+        },
+        {
+          "title": "impl From<String> for Arc<str>",
+          "methods": [
+            {
+              "code": "pub fn from(v: String) -> Arc<str>",
+              "text": "Allocate a reference-counted str and copy v into it."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<T> for Arc<T>",
+          "methods": [
+            {
+              "code": "pub fn from(t: T) -> Arc<T>",
+              "text": "Converts a T into an Arc<T>"
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<Vec<T, Global>> for Arc<[T]>",
+          "methods": [
+            {
+              "code": "pub fn from(v: Vec<T, Global>) -> Arc<[T]>",
+              "text": "Allocate a reference-counted slice and move v’s items into it."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> FromIterator<T> for Arc<[T]>",
+          "methods": [
+            {
+              "code": "pub fn from_iter<I>(iter: I) -> Arc<[T]> where I: IntoIterator<Item = T>,",
+              "text": "Takes each element in the Iterator and collects it into an Arc<[T]>."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Hash for Arc<T> where T: Hash + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, state: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Ord for Arc<T> where T: Ord + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &Arc<T>) -> Ordering",
+              "text": "Comparison for two Arcs."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialEq<Arc<T>> for Arc<T> where T: PartialEq<T> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Arc<T>) -> bool",
+              "text": "Equality for two Arcs."
+            },
+            {
+              "code": "pub fn ne(&self, other: &Arc<T>) -> bool",
+              "text": "Inequality for two Arcs."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialOrd<Arc<T>> for Arc<T> where T: PartialOrd<T> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &Arc<T>) -> Option<Ordering>",
+              "text": "Partial comparison for two Arcs."
+            },
+            {
+              "code": "pub fn lt(&self, other: &Arc<T>) -> bool",
+              "text": "Less-than comparison for two Arcs."
+            },
+            {
+              "code": "pub fn le(&self, other: &Arc<T>) -> bool",
+              "text": "‘Less than or equal to’ comparison for two Arcs."
+            },
+            {
+              "code": "pub fn gt(&self, other: &Arc<T>) -> bool",
+              "text": "Greater-than comparison for two Arcs."
+            },
+            {
+              "code": "pub fn ge(&self, other: &Arc<T>) -> bool",
+              "text": "‘Greater than or equal to’ comparison for two Arcs."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Pointer for Arc<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> TryFrom<Arc<[T]>> for Arc<[T; N]>",
+          "methods": [
+            {
+              "code": "type Error = Arc<[T]>",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "pub fn try_from( boxed_slice: Arc<[T]>) -> Result<Arc<[T; N]>, <Arc<[T; N]> as TryFrom<Arc<[T]>>>::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "title": "Struct std::collections::btree_map::OccupiedEntry",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn key(&self) -> &K",
+          "text": "Gets a reference to the key in the entry."
+        },
+        {
+          "code": "pub fn remove_entry(self) -> (K, V)",
+          "text": "Take ownership of the key and value from the map."
+        },
+        {
+          "code": "pub fn get(&self) -> &V",
+          "text": "Gets a reference to the value in the entry."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut V",
+          "text": "Gets a mutable reference to the value in the entry."
+        },
+        {
+          "code": "pub fn into_mut(self) -> &'a mut V",
+          "text": "Converts the entry into a mutable reference to its value."
+        },
+        {
+          "code": "pub fn insert(&mut self, value: V) -> V",
+          "text": "Sets the value of the entry with the OccupiedEntry’s key, and returns the entry’s old value."
+        },
+        {
+          "code": "pub fn remove(self) -> V",
+          "text": "Takes the value of the entry out of the map, and returns it."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'_, K, V> Debug for OccupiedEntry<'_, K, V> where K: Debug + Ord, V: Debug,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

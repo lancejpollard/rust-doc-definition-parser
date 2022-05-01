@@ -1,0 +1,96 @@
+{
+  "title": "Struct rustls::ServerConnection",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(config: Arc<ServerConfig>) -> Result<Self, Error>",
+          "text": "Make a new ServerConnection. config controls how we behave in the TLS protocol."
+        },
+        {
+          "code": "pub fn sni_hostname(&self) -> Option<&str>",
+          "text": "Retrieves the SNI hostname, if any, used to select the certificate and private key."
+        },
+        {
+          "code": "pub fn received_resumption_data(&self) -> Option<&[u8]>",
+          "text": "Application-controlled portion of the resumption ticket supplied by the client, if any."
+        },
+        {
+          "code": "pub fn set_resumption_data(&mut self, data: &[u8])",
+          "text": "Set the resumption data to embed in future resumption tickets supplied to the client."
+        },
+        {
+          "code": "pub fn reject_early_data(&mut self)",
+          "text": "Explicitly discard early data, notifying the client"
+        },
+        {
+          "code": "pub fn early_data(&mut self) -> Option<ReadEarlyData<'_>>",
+          "text": "Returns an io::Read implementer you can read bytes from that are received from a client as TLS1.3 0RTT/“early” data, during the handshake."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for ServerConnection",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Deref for ServerConnection",
+          "methods": [
+            {
+              "code": "type Target = ConnectionCommon<ServerConnectionData>",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "fn deref(&self) -> &Self::Target",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl DerefMut for ServerConnection",
+          "methods": [
+            {
+              "code": "fn deref_mut(&mut self) -> &mut Self::Target",
+              "text": "Mutably dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl From<ServerConnection> for Connection",
+          "methods": [
+            {
+              "code": "fn from(conn: ServerConnection) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl QuicExt for ServerConnection",
+          "methods": []
+        },
+        {
+          "title": "impl ServerQuicExt for ServerConnection",
+          "methods": [
+            {
+              "code": "fn new_quic( config: Arc<ServerConfig>, quic_version: Version, params: Vec<u8>) -> Result<ServerConnection, Error>",
+              "text": "Make a new QUIC ServerConnection. This differs from ServerConnection::new() in that it takes an extra argument, params, which contains the TLS-encoded transport parameters to send."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

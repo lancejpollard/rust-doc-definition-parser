@@ -1,0 +1,36 @@
+{
+  "title": "Struct tokio::sync::Barrier",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(n: usize) -> Barrier",
+          "text": "Creates a new barrier that can block a given number of tasks."
+        },
+        {
+          "code": "pub async fn wait(&self) -> BarrierWaitResult",
+          "text": "Does not resolve until all tasks have rendezvoused here."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Barrier",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,244 @@
+{
+  "title": "Struct nix::sys::time::TimeSpec",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Add<TimeSpec> for TimeSpec",
+          "methods": [
+            {
+              "code": "type Output = TimeSpec",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "fn add(self, rhs: TimeSpec) -> TimeSpec",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl AsMut<timespec> for TimeSpec",
+          "methods": [
+            {
+              "code": "fn as_mut(&mut self) -> &mut timespec",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRef<timespec> for TimeSpec",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &timespec",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for TimeSpec",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> TimeSpec",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for TimeSpec",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for TimeSpec",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Div<i32> for TimeSpec",
+          "methods": [
+            {
+              "code": "type Output = TimeSpec",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "fn div(self, rhs: i32) -> TimeSpec",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Duration> for TimeSpec",
+          "methods": [
+            {
+              "code": "fn from(duration: Duration) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<TimeSpec> for Duration",
+          "methods": [
+            {
+              "code": "fn from(timespec: TimeSpec) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<timespec> for TimeSpec",
+          "methods": [
+            {
+              "code": "fn from(ts: timespec) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for TimeSpec",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl Mul<i32> for TimeSpec",
+          "methods": [
+            {
+              "code": "type Output = TimeSpec",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "fn mul(self, rhs: i32) -> TimeSpec",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Neg for TimeSpec",
+          "methods": [
+            {
+              "code": "type Output = TimeSpec",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "fn neg(self) -> TimeSpec",
+              "text": "Performs the unary - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for TimeSpec",
+          "methods": [
+            {
+              "code": "fn cmp(&self, other: &TimeSpec) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<TimeSpec> for TimeSpec",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &TimeSpec) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &TimeSpec) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<TimeSpec> for TimeSpec",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &TimeSpec) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl Sub<TimeSpec> for TimeSpec",
+          "methods": [
+            {
+              "code": "type Output = TimeSpec",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "fn sub(self, rhs: TimeSpec) -> TimeSpec",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl TimeValLike for TimeSpec",
+          "methods": [
+            {
+              "code": "fn microseconds(microseconds: i64) -> TimeSpec",
+              "text": "Makes a new TimeSpec with given number of microseconds."
+            },
+            {
+              "code": "fn nanoseconds(nanoseconds: i64) -> TimeSpec",
+              "text": "Makes a new TimeSpec with given number of nanoseconds."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

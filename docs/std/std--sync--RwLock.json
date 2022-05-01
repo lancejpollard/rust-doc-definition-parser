@@ -1,0 +1,78 @@
+{
+  "title": "Struct std::sync::RwLock",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(t: T) -> RwLock<T>",
+          "text": "Creates a new instance of an RwLock<T> which is unlocked."
+        },
+        {
+          "code": "pub fn read(&self) -> LockResult<RwLockReadGuard<'_, T>>",
+          "text": "Locks this rwlock with shared read access, blocking the current thread until it can be acquired."
+        },
+        {
+          "code": "pub fn try_read(&self) -> TryLockResult<RwLockReadGuard<'_, T>>",
+          "text": "Attempts to acquire this rwlock with shared read access."
+        },
+        {
+          "code": "pub fn write(&self) -> LockResult<RwLockWriteGuard<'_, T>>",
+          "text": "Locks this rwlock with exclusive write access, blocking the current thread until it can be acquired."
+        },
+        {
+          "code": "pub fn try_write(&self) -> TryLockResult<RwLockWriteGuard<'_, T>>",
+          "text": "Attempts to lock this rwlock with exclusive write access."
+        },
+        {
+          "code": "pub fn is_poisoned(&self) -> bool",
+          "text": "Determines whether the lock is poisoned."
+        },
+        {
+          "code": "pub fn into_inner(self) -> LockResult<T> where T: Sized,",
+          "text": "Consumes this RwLock, returning the underlying data."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> LockResult<&mut T>",
+          "text": "Returns a mutable reference to the underlying data."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T: ?Sized + Debug> Debug for RwLock<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: Default> Default for RwLock<T>",
+          "methods": [
+            {
+              "code": "fn default() -> RwLock<T>",
+              "text": "Creates a new RwLock<T>, with the Default value for T."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<T> for RwLock<T>",
+          "methods": [
+            {
+              "code": "fn from(t: T) -> Self",
+              "text": "Creates a new instance of an RwLock<T> which is unlocked. This is equivalent to RwLock::new."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

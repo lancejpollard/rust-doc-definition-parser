@@ -1,0 +1,82 @@
+{
+  "title": "Struct tokio::net::tcp::OwnedReadHalf",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn reunite(self, other: OwnedWriteHalf) -> Result<TcpStream, ReuniteError>",
+          "text": "Attempts to put the two halves of a TcpStream back together and recover the original socket. Succeeds only if the two halves originated from the same call to into_split."
+        },
+        {
+          "code": "pub fn poll_peek( &mut self, cx: &mut Context<'_>, buf: &mut ReadBuf<'_>) -> Poll<Result<usize>>",
+          "text": "Attempt to receive data on the socket, without removing that data from the queue, registering the current task for wakeup if data is not yet available."
+        },
+        {
+          "code": "pub async fn peek(&mut self, buf: &mut [u8]) -> Result<usize>",
+          "text": "Receives data on the socket from the remote address to which it is connected, without removing that data from the queue. On success, returns the number of bytes peeked."
+        },
+        {
+          "code": "pub async fn ready(&self, interest: Interest) -> Result<Ready>",
+          "text": "Waits for any of the requested ready states."
+        },
+        {
+          "code": "pub async fn readable(&self) -> Result<()>",
+          "text": "Waits for the socket to become readable."
+        },
+        {
+          "code": "pub fn try_read(&self, buf: &mut [u8]) -> Result<usize>",
+          "text": "Tries to read data from the stream into the provided buffer, returning how many bytes were read."
+        },
+        {
+          "code": "pub fn try_read_vectored(&self, bufs: &mut [IoSliceMut<'_>]) -> Result<usize>",
+          "text": "Tries to read data from the stream into the provided buffers, returning how many bytes were read."
+        },
+        {
+          "code": "pub fn peer_addr(&self) -> Result<SocketAddr>",
+          "text": "Returns the remote address that this stream is connected to."
+        },
+        {
+          "code": "pub fn local_addr(&self) -> Result<SocketAddr>",
+          "text": "Returns the local address that this stream is bound to."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRef<TcpStream> for OwnedReadHalf",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &TcpStream",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsyncRead for OwnedReadHalf",
+          "methods": [
+            {
+              "code": "fn poll_read( self: Pin<&mut Self>, cx: &mut Context<'_>, buf: &mut ReadBuf<'_>) -> Poll<Result<()>>",
+              "text": "Attempts to read from the AsyncRead into buf."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for OwnedReadHalf",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

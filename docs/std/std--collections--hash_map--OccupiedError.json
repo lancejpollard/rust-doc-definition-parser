@@ -1,0 +1,49 @@
+{
+  "title": "Struct std::collections::hash_map::OccupiedError",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<K: Debug, V: Debug> Debug for OccupiedError<'_, K, V>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, K: Debug, V: Debug> Display for OccupiedError<'a, K, V>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, K: Debug, V: Debug> Error for OccupiedError<'a, K, V>",
+          "methods": [
+            {
+              "code": "fn source(&self) -> Option<&(dyn Error + 'static)>",
+              "text": "The lower-level source of this error, if any."
+            },
+            {
+              "code": "fn backtrace(&self) -> Option<&Backtrace>",
+              "text": "Returns a stack backtrace, if available, of where this error occurred."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

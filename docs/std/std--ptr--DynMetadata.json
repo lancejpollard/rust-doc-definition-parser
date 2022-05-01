@@ -1,0 +1,125 @@
+{
+  "title": "Struct std::ptr::DynMetadata",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn size_of(self) -> usize",
+          "text": "Returns the size of the type associated with this vtable."
+        },
+        {
+          "code": "pub fn align_of(self) -> usize",
+          "text": "Returns the alignment of the type associated with this vtable."
+        },
+        {
+          "code": "pub fn layout(self) -> Layout",
+          "text": "Returns the size and alignment together as a Layout"
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<Dyn> Clone for DynMetadata<Dyn> where Dyn: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> DynMetadata<Dyn>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<Dyn> Debug for DynMetadata<Dyn> where Dyn: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<Dyn> Hash for DynMetadata<Dyn> where Dyn: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, hasher: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<Dyn> Ord for DynMetadata<Dyn> where Dyn: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &DynMetadata<Dyn>) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<Dyn> PartialEq<DynMetadata<Dyn>> for DynMetadata<Dyn> where Dyn: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &DynMetadata<Dyn>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<Dyn> PartialOrd<DynMetadata<Dyn>> for DynMetadata<Dyn> where Dyn: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &DynMetadata<Dyn>) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

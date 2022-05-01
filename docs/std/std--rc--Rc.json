@@ -1,0 +1,423 @@
+{
+  "title": "Struct std::rc::Rc",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(value: T) -> Rc<T>",
+          "text": "Constructs a new Rc<T>."
+        },
+        {
+          "code": "pub fn new_cyclic(data_fn: impl FnOnce(&Weak<T>) -> T) -> Rc<T>",
+          "text": "Constructs a new Rc<T> using a weak reference to itself. Attempting to upgrade the weak reference before this function returns will result in a None value. However, the weak reference may be cloned freely and stored for use at a later time."
+        },
+        {
+          "code": "pub fn new_uninit() -> Rc<MaybeUninit<T>>",
+          "text": "Constructs a new Rc with uninitialized contents."
+        },
+        {
+          "code": "pub fn new_zeroed() -> Rc<MaybeUninit<T>>",
+          "text": "Constructs a new Rc with uninitialized contents, with the memory being filled with 0 bytes."
+        },
+        {
+          "code": "pub fn try_new(value: T) -> Result<Rc<T>, AllocError>",
+          "text": "Constructs a new Rc<T>, returning an error if the allocation fails"
+        },
+        {
+          "code": "pub fn try_new_uninit() -> Result<Rc<MaybeUninit<T>>, AllocError>",
+          "text": "Constructs a new Rc with uninitialized contents, returning an error if the allocation fails"
+        },
+        {
+          "code": "pub fn try_new_zeroed() -> Result<Rc<MaybeUninit<T>>, AllocError>",
+          "text": "Constructs a new Rc with uninitialized contents, with the memory being filled with 0 bytes, returning an error if the allocation fails"
+        },
+        {
+          "code": "pub fn pin(value: T) -> Pin<Rc<T>>ⓘNotable traits for Pin<P>impl<P> Future for Pin<P> where P: DerefMut, <P as Deref>::Target: Future, type Output = <<P as Deref>::Target as Future>::Output;",
+          "text": "Constructs a new Pin<Rc<T>>. If T does not implement Unpin, then value will be pinned in memory and unable to be moved."
+        },
+        {
+          "code": "pub fn try_unwrap(this: Rc<T>) -> Result<T, Rc<T>>",
+          "text": "Returns the inner value, if the Rc has exactly one strong reference."
+        },
+        {
+          "code": "pub fn new_uninit_slice(len: usize) -> Rc<[MaybeUninit<T>]>",
+          "text": "Constructs a new reference-counted slice with uninitialized contents."
+        },
+        {
+          "code": "pub fn new_zeroed_slice(len: usize) -> Rc<[MaybeUninit<T>]>",
+          "text": "Constructs a new reference-counted slice with uninitialized contents, with the memory being filled with 0 bytes."
+        },
+        {
+          "code": "pub unsafe fn assume_init(self) -> Rc<T>",
+          "text": "Converts to Rc<T>."
+        },
+        {
+          "code": "pub unsafe fn assume_init(self) -> Rc<[T]>",
+          "text": "Converts to Rc<[T]>."
+        },
+        {
+          "code": "pub fn into_raw(this: Rc<T>) -> *const T",
+          "text": "Consumes the Rc, returning the wrapped pointer."
+        },
+        {
+          "code": "pub fn as_ptr(this: &Rc<T>) -> *const T",
+          "text": "Provides a raw pointer to the data."
+        },
+        {
+          "code": "pub unsafe fn from_raw(ptr: *const T) -> Rc<T>",
+          "text": "Constructs an Rc<T> from a raw pointer."
+        },
+        {
+          "code": "pub fn downgrade(this: &Rc<T>) -> Weak<T>",
+          "text": "Creates a new Weak pointer to this allocation."
+        },
+        {
+          "code": "pub fn weak_count(this: &Rc<T>) -> usize",
+          "text": "Gets the number of Weak pointers to this allocation."
+        },
+        {
+          "code": "pub fn strong_count(this: &Rc<T>) -> usize",
+          "text": "Gets the number of strong (Rc) pointers to this allocation."
+        },
+        {
+          "code": "pub unsafe fn increment_strong_count(ptr: *const T)",
+          "text": "Increments the strong reference count on the Rc<T> associated with the provided pointer by one."
+        },
+        {
+          "code": "pub unsafe fn decrement_strong_count(ptr: *const T)",
+          "text": "Decrements the strong reference count on the Rc<T> associated with the provided pointer by one."
+        },
+        {
+          "code": "pub fn get_mut(this: &mut Rc<T>) -> Option<&mut T>",
+          "text": "Returns a mutable reference into the given Rc, if there are no other Rc or Weak pointers to the same allocation."
+        },
+        {
+          "code": "pub unsafe fn get_mut_unchecked(this: &mut Rc<T>) -> &mut T",
+          "text": "Returns a mutable reference into the given Rc, without any check."
+        },
+        {
+          "code": "pub fn ptr_eq(this: &Rc<T>, other: &Rc<T>) -> bool",
+          "text": "Returns true if the two Rcs point to the same allocation (in a vein similar to ptr::eq)."
+        },
+        {
+          "code": "pub fn make_mut(this: &mut Rc<T>) -> &mut T",
+          "text": "Makes a mutable reference into the given Rc."
+        },
+        {
+          "code": "pub fn downcast<T>(self) -> Result<Rc<T>, Rc<dyn Any + 'static>> where T: Any,",
+          "text": "Attempt to downcast the Rc<dyn Any> to a concrete type."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> AsRef<T> for Rc<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &T",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Borrow<T> for Rc<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn borrow(&self) -> &T",
+              "text": "Immutably borrows from an owned value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Clone for Rc<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> Rc<T>",
+              "text": "Makes a clone of the Rc pointer."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for Rc<T> where T: Debug + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for Rc<T> where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> Rc<T>",
+              "text": "Creates a new Rc<T>, with the Default value for T."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Deref for Rc<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "type Target = T",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "pub fn deref(&self) -> &T",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Display for Rc<T> where T: Display + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Drop for Rc<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn drop(&mut self)",
+              "text": "Drops the Rc."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> From<&'_ [T]> for Rc<[T]> where T: Clone,",
+          "methods": [
+            {
+              "code": "pub fn from(v: &[T]) -> Rc<[T]>",
+              "text": "Allocate a reference-counted slice and fill it by cloning v’s items."
+            }
+          ]
+        },
+        {
+          "title": "impl From<&'_ CStr> for Rc<CStr>",
+          "methods": [
+            {
+              "code": "fn from(s: &CStr) -> Rc<CStr>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<&'_ OsStr> for Rc<OsStr>",
+          "methods": [
+            {
+              "code": "fn from(s: &OsStr) -> Rc<OsStr>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<&'_ Path> for Rc<Path>",
+          "methods": [
+            {
+              "code": "fn from(s: &Path) -> Rc<Path>",
+              "text": "Converts a Path into an Rc by copying the Path data into a new Rc buffer."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> From<&'_ str> for Rc<str>",
+          "methods": [
+            {
+              "code": "pub fn from(v: &str) -> Rc<str>",
+              "text": "Allocate a reference-counted string slice and copy v into it."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<Box<T, Global>> for Rc<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn from(v: Box<T, Global>) -> Rc<T>",
+              "text": "Move a boxed object to a new, reference counted, allocation."
+            }
+          ]
+        },
+        {
+          "title": "impl From<CString> for Rc<CStr>",
+          "methods": [
+            {
+              "code": "fn from(s: CString) -> Rc<CStr>",
+              "text": "Converts a CString into an Rc<CStr> without copying or allocating."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, B> From<Cow<'a, B>> for Rc<B> where B: ToOwned + ?Sized, Rc<B>: From<&'a B>, Rc<B>: From<<B as ToOwned>::Owned>,",
+          "methods": [
+            {
+              "code": "pub fn from(cow: Cow<'a, B>) -> Rc<B>",
+              "text": "Create a reference-counted pointer from a clone-on-write pointer by copying its content."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OsString> for Rc<OsStr>",
+          "methods": [
+            {
+              "code": "fn from(s: OsString) -> Rc<OsStr>",
+              "text": "Converts an OsString into an Rc<OsStr> without copying or allocating."
+            }
+          ]
+        },
+        {
+          "title": "impl From<PathBuf> for Rc<Path>",
+          "methods": [
+            {
+              "code": "fn from(s: PathBuf) -> Rc<Path>",
+              "text": "Converts a PathBuf into an Rc by moving the PathBuf data into a new Rc buffer."
+            }
+          ]
+        },
+        {
+          "title": "impl From<String> for Rc<str>",
+          "methods": [
+            {
+              "code": "pub fn from(v: String) -> Rc<str>",
+              "text": "Allocate a reference-counted string slice and copy v into it."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<T> for Rc<T>",
+          "methods": [
+            {
+              "code": "pub fn from(t: T) -> Rc<T>",
+              "text": "Converts a generic type T into an Rc<T>"
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<Vec<T, Global>> for Rc<[T]>",
+          "methods": [
+            {
+              "code": "pub fn from(v: Vec<T, Global>) -> Rc<[T]>",
+              "text": "Allocate a reference-counted slice and move v’s items into it."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> FromIterator<T> for Rc<[T]>",
+          "methods": [
+            {
+              "code": "pub fn from_iter<I>(iter: I) -> Rc<[T]> where I: IntoIterator<Item = T>,",
+              "text": "Takes each element in the Iterator and collects it into an Rc<[T]>."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Hash for Rc<T> where T: Hash + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, state: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Ord for Rc<T> where T: Ord + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &Rc<T>) -> Ordering",
+              "text": "Comparison for two Rcs."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialEq<Rc<T>> for Rc<T> where T: PartialEq<T> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Rc<T>) -> bool",
+              "text": "Equality for two Rcs."
+            },
+            {
+              "code": "pub fn ne(&self, other: &Rc<T>) -> bool",
+              "text": "Inequality for two Rcs."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialOrd<Rc<T>> for Rc<T> where T: PartialOrd<T> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &Rc<T>) -> Option<Ordering>",
+              "text": "Partial comparison for two Rcs."
+            },
+            {
+              "code": "pub fn lt(&self, other: &Rc<T>) -> bool",
+              "text": "Less-than comparison for two Rcs."
+            },
+            {
+              "code": "pub fn le(&self, other: &Rc<T>) -> bool",
+              "text": "‘Less than or equal to’ comparison for two Rcs."
+            },
+            {
+              "code": "pub fn gt(&self, other: &Rc<T>) -> bool",
+              "text": "Greater-than comparison for two Rcs."
+            },
+            {
+              "code": "pub fn ge(&self, other: &Rc<T>) -> bool",
+              "text": "‘Greater than or equal to’ comparison for two Rcs."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Pointer for Rc<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> TryFrom<Rc<[T]>> for Rc<[T; N]>",
+          "methods": [
+            {
+              "code": "type Error = Rc<[T]>",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "pub fn try_from( boxed_slice: Rc<[T]>) -> Result<Rc<[T; N]>, <Rc<[T; N]> as TryFrom<Rc<[T]>>>::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

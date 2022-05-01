@@ -1,0 +1,17 @@
+{
+  "title": "Struct chrono::format::strftime::StrftimeItems",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

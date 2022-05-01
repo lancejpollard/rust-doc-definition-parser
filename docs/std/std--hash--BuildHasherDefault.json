@@ -1,0 +1,79 @@
+{
+  "title": "Struct std::hash::BuildHasherDefault",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<H> BuildHasher for BuildHasherDefault<H> where H: Default + Hasher,",
+          "methods": [
+            {
+              "code": "type Hasher = H",
+              "text": "Type of the hasher that will be created."
+            },
+            {
+              "code": "pub fn build_hasher(&self) -> H",
+              "text": "Creates a new hasher."
+            },
+            {
+              "code": "fn hash_one<T>(&self, x: T) -> u64 where T: Hash,",
+              "text": "Calculates the hash of a single value."
+            }
+          ]
+        },
+        {
+          "title": "impl<H> Clone for BuildHasherDefault<H>",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> BuildHasherDefault<H>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<H> Debug for BuildHasherDefault<H>",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<H> Default for BuildHasherDefault<H>",
+          "methods": [
+            {
+              "code": "pub fn default() -> BuildHasherDefault<H>",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<H> PartialEq<BuildHasherDefault<H>> for BuildHasherDefault<H>",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, _other: &BuildHasherDefault<H>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

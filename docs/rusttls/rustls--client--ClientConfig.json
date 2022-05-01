@@ -1,0 +1,40 @@
+{
+  "title": "Struct rustls::client::ClientConfig",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn builder() -> ConfigBuilder<Self, WantsCipherSuites>",
+          "text": "Create a builder to build up the client configuration."
+        },
+        {
+          "code": "pub fn dangerous(&mut self) -> DangerousClientConfig<'_>",
+          "text": "Access configuration options whose use is dangerous and requires extra care."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for ClientConfig",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> ClientConfig",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

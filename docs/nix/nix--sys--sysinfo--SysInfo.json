@@ -1,0 +1,95 @@
+{
+  "title": "Struct nix::sys::sysinfo::SysInfo",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn load_average(&self) -> (f64, f64, f64)",
+          "text": "Returns the load average tuple."
+        },
+        {
+          "code": "pub fn uptime(&self) -> Duration",
+          "text": "Returns the time since system boot."
+        },
+        {
+          "code": "pub fn process_count(&self) -> u16",
+          "text": "Current number of processes."
+        },
+        {
+          "code": "pub fn swap_total(&self) -> u64",
+          "text": "Returns the amount of swap memory in Bytes."
+        },
+        {
+          "code": "pub fn swap_free(&self) -> u64",
+          "text": "Returns the amount of unused swap memory in Bytes."
+        },
+        {
+          "code": "pub fn ram_total(&self) -> u64",
+          "text": "Returns the total amount of installed RAM in Bytes."
+        },
+        {
+          "code": "pub fn ram_unused(&self) -> u64",
+          "text": "Returns the amount of completely unused RAM in Bytes."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for SysInfo",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> SysInfo",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for SysInfo",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for SysInfo",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<SysInfo> for SysInfo",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &SysInfo) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &SysInfo) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

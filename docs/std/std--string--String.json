@@ -1,0 +1,994 @@
+{
+  "title": "Struct std::string::String",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn new() -> String",
+          "text": "Creates a new empty String."
+        },
+        {
+          "code": "pub fn with_capacity(capacity: usize) -> String",
+          "text": "Creates a new empty String with a particular capacity."
+        },
+        {
+          "code": "pub fn from_utf8(vec: Vec<u8, Global>) -> Result<String, FromUtf8Error>",
+          "text": "Converts a vector of bytes to a String."
+        },
+        {
+          "code": "pub fn from_utf8_lossy(v: &[u8]) -> Cow<'_, str>",
+          "text": "Converts a slice of bytes to a string, including invalid characters."
+        },
+        {
+          "code": "pub fn from_utf16(v: &[u16]) -> Result<String, FromUtf16Error>",
+          "text": "Decode a UTF-16–encoded vector v into a String, returning Err if v contains any invalid data."
+        },
+        {
+          "code": "pub fn from_utf16_lossy(v: &[u16]) -> String",
+          "text": "Decode a UTF-16–encoded slice v into a String, replacing invalid data with the replacement character (U+FFFD)."
+        },
+        {
+          "code": "pub fn into_raw_parts(self) -> (*mut u8, usize, usize)",
+          "text": "Decomposes a String into its raw components."
+        },
+        {
+          "code": "pub unsafe fn from_raw_parts( buf: *mut u8, length: usize, capacity: usize) -> String",
+          "text": "Creates a new String from a length, capacity, and pointer."
+        },
+        {
+          "code": "pub unsafe fn from_utf8_unchecked(bytes: Vec<u8, Global>) -> String",
+          "text": "Converts a vector of bytes to a String without checking that the string contains valid UTF-8."
+        },
+        {
+          "code": "pub fn into_bytes(self) -> Vec<u8, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+          "text": "Converts a String into a byte vector."
+        },
+        {
+          "code": "pub fn as_str(&self) -> &str",
+          "text": "Extracts a string slice containing the entire String."
+        },
+        {
+          "code": "pub fn as_mut_str(&mut self) -> &mut str",
+          "text": "Converts a String into a mutable string slice."
+        },
+        {
+          "code": "pub fn push_str(&mut self, string: &str)",
+          "text": "Appends a given string slice onto the end of this String."
+        },
+        {
+          "code": "pub fn extend_from_within<R>(&mut self, src: R) where R: RangeBounds<usize>,",
+          "text": "Copies elements from src range to the end of the string."
+        },
+        {
+          "code": "pub fn capacity(&self) -> usize",
+          "text": "Returns this String’s capacity, in bytes."
+        },
+        {
+          "code": "pub fn reserve(&mut self, additional: usize)",
+          "text": "Ensures that this String’s capacity is at least additional bytes larger than its length."
+        },
+        {
+          "code": "pub fn reserve_exact(&mut self, additional: usize)",
+          "text": "Ensures that this String’s capacity is additional bytes larger than its length."
+        },
+        {
+          "code": "pub fn try_reserve(&mut self, additional: usize) -> Result<(), TryReserveError>",
+          "text": "Tries to reserve capacity for at least additional more elements to be inserted in the given String. The collection may reserve more space to avoid frequent reallocations. After calling reserve, capacity will be greater than or equal to self.len() + additional. Does nothing if capacity is already sufficient."
+        },
+        {
+          "code": "pub fn try_reserve_exact( &mut self, additional: usize) -> Result<(), TryReserveError>",
+          "text": "Tries to reserve the minimum capacity for exactly additional more elements to be inserted in the given String. After calling reserve_exact, capacity will be greater than or equal to self.len() + additional. Does nothing if the capacity is already sufficient."
+        },
+        {
+          "code": "pub fn shrink_to_fit(&mut self)",
+          "text": "Shrinks the capacity of this String to match its length."
+        },
+        {
+          "code": "pub fn shrink_to(&mut self, min_capacity: usize)",
+          "text": "Shrinks the capacity of this String with a lower bound."
+        },
+        {
+          "code": "pub fn push(&mut self, ch: char)",
+          "text": "Appends the given char to the end of this String."
+        },
+        {
+          "code": "pub fn as_bytes(&self) -> &[u8]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+          "text": "Returns a byte slice of this String’s contents."
+        },
+        {
+          "code": "pub fn truncate(&mut self, new_len: usize)",
+          "text": "Shortens this String to the specified length."
+        },
+        {
+          "code": "pub fn pop(&mut self) -> Option<char>",
+          "text": "Removes the last character from the string buffer and returns it."
+        },
+        {
+          "code": "pub fn remove(&mut self, idx: usize) -> char",
+          "text": "Removes a char from this String at a byte position and returns it."
+        },
+        {
+          "code": "pub fn remove_matches<P>(&'a mut self, pat: P) where P: for<'x> Pattern<'x>,",
+          "text": "Remove all matches of pattern pat in the String."
+        },
+        {
+          "code": "pub fn retain<F>(&mut self, f: F) where F: FnMut(char) -> bool,",
+          "text": "Retains only the characters specified by the predicate."
+        },
+        {
+          "code": "pub fn insert(&mut self, idx: usize, ch: char)",
+          "text": "Inserts a character into this String at a byte position."
+        },
+        {
+          "code": "pub fn insert_str(&mut self, idx: usize, string: &str)",
+          "text": "Inserts a string slice into this String at a byte position."
+        },
+        {
+          "code": "pub unsafe fn as_mut_vec(&mut self) -> &mut Vec<u8, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+          "text": "Returns a mutable reference to the contents of this String."
+        },
+        {
+          "code": "pub fn len(&self) -> usize",
+          "text": "Returns the length of this String, in bytes, not chars or graphemes. In other words, it might not be what a human considers the length of the string."
+        },
+        {
+          "code": "pub fn is_empty(&self) -> bool",
+          "text": "Returns true if this String has a length of zero, and false otherwise."
+        },
+        {
+          "code": "pub fn split_off(&mut self, at: usize) -> String",
+          "text": "Splits the string into two at the given byte index."
+        },
+        {
+          "code": "pub fn clear(&mut self)",
+          "text": "Truncates this String, removing all contents."
+        },
+        {
+          "code": "pub fn drain<R>(&mut self, range: R) -> Drain<'_>ⓘNotable traits for Drain<'_>impl<'_> Iterator for Drain<'_> type Item = char; where R: RangeBounds<usize>,",
+          "text": "Creates a draining iterator that removes the specified range in the String and yields the removed chars."
+        },
+        {
+          "code": "pub fn replace_range<R>(&mut self, range: R, replace_with: &str) where R: RangeBounds<usize>,",
+          "text": "Removes the specified range in the string, and replaces it with the given string. The given string doesn’t need to be the same length as the range."
+        },
+        {
+          "code": "pub fn into_boxed_str(self) -> Box<str, Global>ⓘNotable traits for Box<F, A>impl<F, A> Future for Box<F, A> where F: Future + Unpin + ?Sized, A: Allocator + 'static, type Output = <F as Future>::Output;impl<I, A> Iterator for Box<I, A> where I: Iterator + ?Sized, A: Allocator, type Item = <I as Iterator>::Item;impl<R: Read + ?Sized> Read for Box<R>impl<W: Write + ?Sized> Write for Box<W>",
+          "text": "Converts this String into a Box<str>."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'_> Add<&'_ str> for String",
+          "methods": [
+            {
+              "code": "type Output = String",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add(self, other: &str) -> String",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> AddAssign<&'_ str> for String",
+          "methods": [
+            {
+              "code": "pub fn add_assign(&mut self, other: &str)",
+              "text": "Performs the += operation."
+            }
+          ]
+        },
+        {
+          "title": "impl AsMut<str> for String",
+          "methods": [
+            {
+              "code": "pub fn as_mut(&mut self) -> &mut str",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRef<[u8]> for String",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &[u8]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRef<OsStr> for String",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &OsStr",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRef<Path> for String",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &Path",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRef<str> for String",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &str",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl Borrow<str> for String",
+          "methods": [
+            {
+              "code": "pub fn borrow(&self) -> &str",
+              "text": "Immutably borrows from an owned value."
+            }
+          ]
+        },
+        {
+          "title": "impl BorrowMut<str> for String",
+          "methods": [
+            {
+              "code": "pub fn borrow_mut(&mut self) -> &mut str",
+              "text": "Mutably borrows from an owned value."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for String",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> String",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "pub fn clone_from(&mut self, source: &String)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for String",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for String",
+          "methods": [
+            {
+              "code": "pub fn default() -> String",
+              "text": "Creates an empty String."
+            }
+          ]
+        },
+        {
+          "title": "impl Deref for String",
+          "methods": [
+            {
+              "code": "type Target = str",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "pub fn deref(&self) -> &str",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl DerefMut for String",
+          "methods": [
+            {
+              "code": "pub fn deref_mut(&mut self) -> &mut str",
+              "text": "Mutably dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for String",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Extend<&'a char> for String",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = &'a char>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, &'a char)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "pub fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Extend<&'a str> for String",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = &'a str>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, s: &'a str)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl Extend<Box<str, Global>> for String",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = Box<str, Global>>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "fn extend_one(&mut self, item: A)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Extend<Cow<'a, str>> for String",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = Cow<'a, str>>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, s: Cow<'a, str>)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl Extend<String> for String",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = String>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, s: String)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl Extend<char> for String",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = char>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, c: char)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "pub fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> From<&'_ String> for String",
+          "methods": [
+            {
+              "code": "pub fn from(s: &String) -> String",
+              "text": "Converts a &String into a String."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> From<&'_ mut str> for String",
+          "methods": [
+            {
+              "code": "pub fn from(s: &mut str) -> String",
+              "text": "Converts a &mut str into a String."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> From<&'_ str> for String",
+          "methods": [
+            {
+              "code": "pub fn from(s: &str) -> String",
+              "text": "Converts a &str into a String."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> From<&'a String> for Cow<'a, str>",
+          "methods": [
+            {
+              "code": "pub fn from(s: &'a String) -> Cow<'a, str>",
+              "text": "Converts a String reference into a Borrowed variant. No heap allocation is performed, and the string is not copied."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Box<str, Global>> for String",
+          "methods": [
+            {
+              "code": "pub fn from(s: Box<str, Global>) -> String",
+              "text": "Converts the given boxed str slice to a String. It is notable that the str slice is owned."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> From<Cow<'a, str>> for String",
+          "methods": [
+            {
+              "code": "pub fn from(s: Cow<'a, str>) -> String",
+              "text": "Converts a clone-on-write string to an owned instance of String."
+            }
+          ]
+        },
+        {
+          "title": "impl From<String> for Vec<u8, Global>",
+          "methods": [
+            {
+              "code": "pub fn from(string: String) -> Vec<u8, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Converts the given String to a vector Vec that holds values of type u8."
+            }
+          ]
+        },
+        {
+          "title": "impl From<String> for Arc<str>",
+          "methods": [
+            {
+              "code": "pub fn from(v: String) -> Arc<str>",
+              "text": "Allocate a reference-counted str and copy v into it."
+            }
+          ]
+        },
+        {
+          "title": "impl From<String> for Box<str, Global>",
+          "methods": [
+            {
+              "code": "pub fn from(s: String) -> Box<str, Global>ⓘNotable traits for Box<F, A>impl<F, A> Future for Box<F, A> where F: Future + Unpin + ?Sized, A: Allocator + 'static, type Output = <F as Future>::Output;impl<I, A> Iterator for Box<I, A> where I: Iterator + ?Sized, A: Allocator, type Item = <I as Iterator>::Item;impl<R: Read + ?Sized> Read for Box<R>impl<W: Write + ?Sized> Write for Box<W>",
+              "text": "Converts the given String to a boxed str slice that is owned."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> From<String> for Cow<'a, str>",
+          "methods": [
+            {
+              "code": "pub fn from(s: String) -> Cow<'a, str>",
+              "text": "Converts a String into an Owned variant. No heap allocation is performed, and the string is not copied."
+            }
+          ]
+        },
+        {
+          "title": "impl From<String> for Rc<str>",
+          "methods": [
+            {
+              "code": "pub fn from(v: String) -> Rc<str>",
+              "text": "Allocate a reference-counted string slice and copy v into it."
+            }
+          ]
+        },
+        {
+          "title": "impl From<String> for Box<dyn Error + Send + Sync>",
+          "methods": [
+            {
+              "code": "fn from(err: String) -> Box<dyn Error + Send + Sync>ⓘNotable traits for Box<F, A>impl<F, A> Future for Box<F, A> where F: Future + Unpin + ?Sized, A: Allocator + 'static, type Output = <F as Future>::Output;impl<I, A> Iterator for Box<I, A> where I: Iterator + ?Sized, A: Allocator, type Item = <I as Iterator>::Item;impl<R: Read + ?Sized> Read for Box<R>impl<W: Write + ?Sized> Write for Box<W>",
+              "text": "Converts a String into a box of dyn Error + Send + Sync."
+            }
+          ]
+        },
+        {
+          "title": "impl From<String> for Box<dyn Error>",
+          "methods": [
+            {
+              "code": "fn from(str_err: String) -> Box<dyn Error>ⓘNotable traits for Box<F, A>impl<F, A> Future for Box<F, A> where F: Future + Unpin + ?Sized, A: Allocator + 'static, type Output = <F as Future>::Output;impl<I, A> Iterator for Box<I, A> where I: Iterator + ?Sized, A: Allocator, type Item = <I as Iterator>::Item;impl<R: Read + ?Sized> Read for Box<R>impl<W: Write + ?Sized> Write for Box<W>",
+              "text": "Converts a String into a box of dyn Error."
+            }
+          ]
+        },
+        {
+          "title": "impl From<String> for OsString",
+          "methods": [
+            {
+              "code": "fn from(s: String) -> OsString",
+              "text": "Converts a String into an OsString."
+            }
+          ]
+        },
+        {
+          "title": "impl From<String> for PathBuf",
+          "methods": [
+            {
+              "code": "fn from(s: String) -> PathBuf",
+              "text": "Converts a String into a PathBuf"
+            }
+          ]
+        },
+        {
+          "title": "impl From<char> for String",
+          "methods": [
+            {
+              "code": "pub fn from(c: char) -> String",
+              "text": "Allocates an owned String from a single character."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> FromIterator<&'a char> for String",
+          "methods": [
+            {
+              "code": "pub fn from_iter<I>(iter: I) -> String where I: IntoIterator<Item = &'a char>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> FromIterator<&'a str> for String",
+          "methods": [
+            {
+              "code": "pub fn from_iter<I>(iter: I) -> String where I: IntoIterator<Item = &'a str>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl FromIterator<Box<str, Global>> for String",
+          "methods": [
+            {
+              "code": "pub fn from_iter<I>(iter: I) -> String where I: IntoIterator<Item = Box<str, Global>>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> FromIterator<Cow<'a, str>> for String",
+          "methods": [
+            {
+              "code": "pub fn from_iter<I>(iter: I) -> String where I: IntoIterator<Item = Cow<'a, str>>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> FromIterator<String> for Cow<'a, str>",
+          "methods": [
+            {
+              "code": "pub fn from_iter<I>(it: I) -> Cow<'a, str> where I: IntoIterator<Item = String>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl FromIterator<String> for String",
+          "methods": [
+            {
+              "code": "pub fn from_iter<I>(iter: I) -> String where I: IntoIterator<Item = String>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl FromIterator<char> for String",
+          "methods": [
+            {
+              "code": "pub fn from_iter<I>(iter: I) -> String where I: IntoIterator<Item = char>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl FromStr for String",
+          "methods": [
+            {
+              "code": "type Err = Infallible",
+              "text": "The associated error which can be returned from parsing."
+            },
+            {
+              "code": "pub fn from_str(s: &str) -> Result<String, <String as FromStr>::Err>",
+              "text": "Parses a string s to return a value of this type."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for String",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, hasher: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl Index<Range<usize>> for String",
+          "methods": [
+            {
+              "code": "type Output = str",
+              "text": "The returned type after indexing."
+            },
+            {
+              "code": "pub fn index(&self, index: Range<usize>) -> &str",
+              "text": "Performs the indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Index<RangeFrom<usize>> for String",
+          "methods": [
+            {
+              "code": "type Output = str",
+              "text": "The returned type after indexing."
+            },
+            {
+              "code": "pub fn index(&self, index: RangeFrom<usize>) -> &str",
+              "text": "Performs the indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Index<RangeFull> for String",
+          "methods": [
+            {
+              "code": "type Output = str",
+              "text": "The returned type after indexing."
+            },
+            {
+              "code": "pub fn index(&self, _index: RangeFull) -> &str",
+              "text": "Performs the indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Index<RangeInclusive<usize>> for String",
+          "methods": [
+            {
+              "code": "type Output = str",
+              "text": "The returned type after indexing."
+            },
+            {
+              "code": "pub fn index(&self, index: RangeInclusive<usize>) -> &str",
+              "text": "Performs the indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Index<RangeTo<usize>> for String",
+          "methods": [
+            {
+              "code": "type Output = str",
+              "text": "The returned type after indexing."
+            },
+            {
+              "code": "pub fn index(&self, index: RangeTo<usize>) -> &str",
+              "text": "Performs the indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Index<RangeToInclusive<usize>> for String",
+          "methods": [
+            {
+              "code": "type Output = str",
+              "text": "The returned type after indexing."
+            },
+            {
+              "code": "pub fn index(&self, index: RangeToInclusive<usize>) -> &str",
+              "text": "Performs the indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl IndexMut<Range<usize>> for String",
+          "methods": [
+            {
+              "code": "pub fn index_mut(&mut self, index: Range<usize>) -> &mut str",
+              "text": "Performs the mutable indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl IndexMut<RangeFrom<usize>> for String",
+          "methods": [
+            {
+              "code": "pub fn index_mut(&mut self, index: RangeFrom<usize>) -> &mut str",
+              "text": "Performs the mutable indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl IndexMut<RangeFull> for String",
+          "methods": [
+            {
+              "code": "pub fn index_mut(&mut self, _index: RangeFull) -> &mut str",
+              "text": "Performs the mutable indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl IndexMut<RangeInclusive<usize>> for String",
+          "methods": [
+            {
+              "code": "pub fn index_mut(&mut self, index: RangeInclusive<usize>) -> &mut str",
+              "text": "Performs the mutable indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl IndexMut<RangeTo<usize>> for String",
+          "methods": [
+            {
+              "code": "pub fn index_mut(&mut self, index: RangeTo<usize>) -> &mut str",
+              "text": "Performs the mutable indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl IndexMut<RangeToInclusive<usize>> for String",
+          "methods": [
+            {
+              "code": "pub fn index_mut(&mut self, index: RangeToInclusive<usize>) -> &mut str",
+              "text": "Performs the mutable indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for String",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &String) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<&'a str> for String",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&'a str) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&'a str) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<Cow<'a, str>> for String",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Cow<'a, str>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &Cow<'a, str>) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<String> for Cow<'a, str>",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &String) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &String) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<String> for str",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &String) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &String) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<String> for String",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &String) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &String) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<String> for &'a str",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &String) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &String) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<str> for String",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &str) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &str) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<String> for String",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &String) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> Pattern<'a> for &'b String",
+          "methods": [
+            {
+              "code": "type Searcher = <&'b str as Pattern<'a>>::Searcher",
+              "text": "Associated searcher for this pattern"
+            },
+            {
+              "code": "pub fn into_searcher( self, haystack: &'a str) -> <&'b str as Pattern<'a>>::Searcher",
+              "text": "Constructs the associated searcher from self and the haystack to search in."
+            },
+            {
+              "code": "pub fn is_contained_in(self, haystack: &'a str) -> bool",
+              "text": "Checks whether the pattern matches anywhere in the haystack"
+            },
+            {
+              "code": "pub fn is_prefix_of(self, haystack: &'a str) -> bool",
+              "text": "Checks whether the pattern matches at the front of the haystack"
+            },
+            {
+              "code": "pub fn strip_prefix_of(self, haystack: &'a str) -> Option<&'a str>",
+              "text": "Removes the pattern from the front of haystack, if it matches."
+            },
+            {
+              "code": "pub fn is_suffix_of(self, haystack: &'a str) -> bool",
+              "text": "Checks whether the pattern matches at the back of the haystack"
+            },
+            {
+              "code": "pub fn strip_suffix_of(self, haystack: &'a str) -> Option<&'a str>",
+              "text": "Removes the pattern from the back of haystack, if it matches."
+            }
+          ]
+        },
+        {
+          "title": "impl ToSocketAddrs for String",
+          "methods": [
+            {
+              "code": "type Iter = IntoIter<SocketAddr>",
+              "text": "Returned iterator over socket addresses which this type may correspond to."
+            },
+            {
+              "code": "fn to_socket_addrs(&self) -> Result<IntoIter<SocketAddr>>",
+              "text": "Converts this object to an iterator of resolved SocketAddrs."
+            }
+          ]
+        },
+        {
+          "title": "impl ToString for String",
+          "methods": [
+            {
+              "code": "pub fn to_string(&self) -> String",
+              "text": "Converts the given value to a String."
+            }
+          ]
+        },
+        {
+          "title": "impl Write for String",
+          "methods": [
+            {
+              "code": "pub fn write_str(&mut self, s: &str) -> Result<(), Error>",
+              "text": "Writes a string slice into this writer, returning whether the write succeeded."
+            },
+            {
+              "code": "pub fn write_char(&mut self, c: char) -> Result<(), Error>",
+              "text": "Writes a char into this writer, returning whether the write succeeded."
+            },
+            {
+              "code": "fn write_fmt(&mut self, args: Arguments<'_>) -> Result<(), Error>",
+              "text": "Glue for usage of the write! macro with implementors of this trait."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

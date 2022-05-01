@@ -1,0 +1,498 @@
+{
+  "title": "Primitive Type pointer",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn is_null(self) -> bool",
+          "text": "Returns true if the pointer is null."
+        },
+        {
+          "code": "pub const fn cast<U>(self) -> *const U",
+          "text": "Casts to a pointer of another type."
+        },
+        {
+          "code": "pub fn to_bits(self) -> usize",
+          "text": "Casts a pointer to its raw bits."
+        },
+        {
+          "code": "pub fn from_bits(bits: usize) -> *const T",
+          "text": "Creates a pointer from its raw bits."
+        },
+        {
+          "code": "pub fn to_raw_parts(self) -> (*const (), <T as Pointee>::Metadata)",
+          "text": "Decompose a (possibly wide) pointer into its address and metadata components."
+        },
+        {
+          "code": "pub unsafe fn as_ref<'a>(self) -> Option<&'a T>",
+          "text": "Returns None if the pointer is null, or else returns a shared reference to the value wrapped in Some. If the value may be uninitialized, as_uninit_ref must be used instead."
+        },
+        {
+          "code": "pub unsafe fn as_uninit_ref<'a>(self) -> Option<&'a MaybeUninit<T>>",
+          "text": "Returns None if the pointer is null, or else returns a shared reference to the value wrapped in Some. In contrast to as_ref, this does not require that the value has to be initialized."
+        },
+        {
+          "code": "pub unsafe fn offset(self, count: isize) -> *const T",
+          "text": "Calculates the offset from a pointer."
+        },
+        {
+          "code": "pub fn wrapping_offset(self, count: isize) -> *const T",
+          "text": "Calculates the offset from a pointer using wrapping arithmetic."
+        },
+        {
+          "code": "pub unsafe fn offset_from(self, origin: *const T) -> isize",
+          "text": "Calculates the distance between two pointers. The returned value is in units of T: the distance in bytes is divided by mem::size_of::<T>()."
+        },
+        {
+          "code": "pub fn guaranteed_eq(self, other: *const T) -> bool",
+          "text": "Returns whether two pointers are guaranteed to be equal."
+        },
+        {
+          "code": "pub fn guaranteed_ne(self, other: *const T) -> bool",
+          "text": "Returns whether two pointers are guaranteed to be unequal."
+        },
+        {
+          "code": "pub unsafe fn add(self, count: usize) -> *const T",
+          "text": "Calculates the offset from a pointer (convenience for .offset(count as isize))."
+        },
+        {
+          "code": "pub unsafe fn sub(self, count: usize) -> *const T",
+          "text": "Calculates the offset from a pointer (convenience for .offset((count as isize).wrapping_neg()))."
+        },
+        {
+          "code": "pub fn wrapping_add(self, count: usize) -> *const T",
+          "text": "Calculates the offset from a pointer using wrapping arithmetic. (convenience for .wrapping_offset(count as isize))"
+        },
+        {
+          "code": "pub fn wrapping_sub(self, count: usize) -> *const T",
+          "text": "Calculates the offset from a pointer using wrapping arithmetic. (convenience for .wrapping_offset((count as isize).wrapping_neg()))"
+        },
+        {
+          "code": "pub fn set_ptr_value(self, val: *const u8) -> *const T",
+          "text": "Sets the pointer value to ptr."
+        },
+        {
+          "code": "pub unsafe fn read(self) -> T",
+          "text": "Reads the value from self without moving it. This leaves the memory in self unchanged."
+        },
+        {
+          "code": "pub unsafe fn read_volatile(self) -> T",
+          "text": "Performs a volatile read of the value from self without moving it. This leaves the memory in self unchanged."
+        },
+        {
+          "code": "pub unsafe fn read_unaligned(self) -> T",
+          "text": "Reads the value from self without moving it. This leaves the memory in self unchanged."
+        },
+        {
+          "code": "pub unsafe fn copy_to(self, dest: *mut T, count: usize)",
+          "text": "Copies count * size_of<T> bytes from self to dest. The source and destination may overlap."
+        },
+        {
+          "code": "pub unsafe fn copy_to_nonoverlapping(self, dest: *mut T, count: usize)",
+          "text": "Copies count * size_of<T> bytes from self to dest. The source and destination may not overlap."
+        },
+        {
+          "code": "pub fn align_offset(self, align: usize) -> usize",
+          "text": "Computes the offset that needs to be applied to the pointer in order to make it aligned to align."
+        },
+        {
+          "code": "pub fn is_null(self) -> bool",
+          "text": "Returns true if the pointer is null."
+        },
+        {
+          "code": "pub const fn cast<U>(self) -> *mut U",
+          "text": "Casts to a pointer of another type."
+        },
+        {
+          "code": "pub fn to_bits(self) -> usize",
+          "text": "Casts a pointer to its raw bits."
+        },
+        {
+          "code": "pub fn from_bits(bits: usize) -> *mut T",
+          "text": "Creates a pointer from its raw bits."
+        },
+        {
+          "code": "pub fn to_raw_parts(self) -> (*mut (), <T as Pointee>::Metadata)",
+          "text": "Decompose a (possibly wide) pointer into its address and metadata components."
+        },
+        {
+          "code": "pub unsafe fn as_ref<'a>(self) -> Option<&'a T>",
+          "text": "Returns None if the pointer is null, or else returns a shared reference to the value wrapped in Some. If the value may be uninitialized, as_uninit_ref must be used instead."
+        },
+        {
+          "code": "pub unsafe fn as_uninit_ref<'a>(self) -> Option<&'a MaybeUninit<T>>",
+          "text": "Returns None if the pointer is null, or else returns a shared reference to the value wrapped in Some. In contrast to as_ref, this does not require that the value has to be initialized."
+        },
+        {
+          "code": "pub unsafe fn offset(self, count: isize) -> *mut T",
+          "text": "Calculates the offset from a pointer."
+        },
+        {
+          "code": "pub fn wrapping_offset(self, count: isize) -> *mut T",
+          "text": "Calculates the offset from a pointer using wrapping arithmetic. count is in units of T; e.g., a count of 3 represents a pointer offset of 3 * size_of::<T>() bytes."
+        },
+        {
+          "code": "pub unsafe fn as_mut<'a>(self) -> Option<&'a mut T>",
+          "text": "Returns None if the pointer is null, or else returns a unique reference to the value wrapped in Some. If the value may be uninitialized, as_uninit_mut must be used instead."
+        },
+        {
+          "code": "pub unsafe fn as_uninit_mut<'a>(self) -> Option<&'a mut MaybeUninit<T>>",
+          "text": "Returns None if the pointer is null, or else returns a unique reference to the value wrapped in Some. In contrast to as_mut, this does not require that the value has to be initialized."
+        },
+        {
+          "code": "pub fn guaranteed_eq(self, other: *mut T) -> bool",
+          "text": "Returns whether two pointers are guaranteed to be equal."
+        },
+        {
+          "code": "pub unsafe fn guaranteed_ne(self, other: *mut T) -> bool",
+          "text": "Returns whether two pointers are guaranteed to be unequal."
+        },
+        {
+          "code": "pub unsafe fn offset_from(self, origin: *const T) -> isize",
+          "text": "Calculates the distance between two pointers. The returned value is in units of T: the distance in bytes is divided by mem::size_of::<T>()."
+        },
+        {
+          "code": "pub unsafe fn add(self, count: usize) -> *mut T",
+          "text": "Calculates the offset from a pointer (convenience for .offset(count as isize))."
+        },
+        {
+          "code": "pub unsafe fn sub(self, count: usize) -> *mut T",
+          "text": "Calculates the offset from a pointer (convenience for .offset((count as isize).wrapping_neg()))."
+        },
+        {
+          "code": "pub fn wrapping_add(self, count: usize) -> *mut T",
+          "text": "Calculates the offset from a pointer using wrapping arithmetic. (convenience for .wrapping_offset(count as isize))"
+        },
+        {
+          "code": "pub fn wrapping_sub(self, count: usize) -> *mut T",
+          "text": "Calculates the offset from a pointer using wrapping arithmetic. (convenience for .wrapping_offset((count as isize).wrapping_neg()))"
+        },
+        {
+          "code": "pub fn set_ptr_value(self, val: *mut u8) -> *mut T",
+          "text": "Sets the pointer value to ptr."
+        },
+        {
+          "code": "pub unsafe fn read(self) -> T",
+          "text": "Reads the value from self without moving it. This leaves the memory in self unchanged."
+        },
+        {
+          "code": "pub unsafe fn read_volatile(self) -> T",
+          "text": "Performs a volatile read of the value from self without moving it. This leaves the memory in self unchanged."
+        },
+        {
+          "code": "pub unsafe fn read_unaligned(self) -> T",
+          "text": "Reads the value from self without moving it. This leaves the memory in self unchanged."
+        },
+        {
+          "code": "pub unsafe fn copy_to(self, dest: *mut T, count: usize)",
+          "text": "Copies count * size_of<T> bytes from self to dest. The source and destination may overlap."
+        },
+        {
+          "code": "pub unsafe fn copy_to_nonoverlapping(self, dest: *mut T, count: usize)",
+          "text": "Copies count * size_of<T> bytes from self to dest. The source and destination may not overlap."
+        },
+        {
+          "code": "pub unsafe fn copy_from(self, src: *const T, count: usize)",
+          "text": "Copies count * size_of<T> bytes from src to self. The source and destination may overlap."
+        },
+        {
+          "code": "pub unsafe fn copy_from_nonoverlapping(self, src: *const T, count: usize)",
+          "text": "Copies count * size_of<T> bytes from src to self. The source and destination may not overlap."
+        },
+        {
+          "code": "pub unsafe fn drop_in_place(self)",
+          "text": "Executes the destructor (if any) of the pointed-to value."
+        },
+        {
+          "code": "pub unsafe fn write(self, val: T)",
+          "text": "Overwrites a memory location with the given value without reading or dropping the old value."
+        },
+        {
+          "code": "pub unsafe fn write_bytes(self, val: u8, count: usize)",
+          "text": "Invokes memset on the specified pointer, setting count * size_of::<T>() bytes of memory starting at self to val."
+        },
+        {
+          "code": "pub unsafe fn write_volatile(self, val: T)",
+          "text": "Performs a volatile write of a memory location with the given value without reading or dropping the old value."
+        },
+        {
+          "code": "pub unsafe fn write_unaligned(self, val: T)",
+          "text": "Overwrites a memory location with the given value without reading or dropping the old value."
+        },
+        {
+          "code": "pub unsafe fn replace(self, src: T) -> T",
+          "text": "Replaces the value at self with src, returning the old value, without dropping either."
+        },
+        {
+          "code": "pub unsafe fn swap(self, with: *mut T)",
+          "text": "Swaps the values at two mutable locations of the same type, without deinitializing either. They may overlap, unlike mem::swap which is otherwise equivalent."
+        },
+        {
+          "code": "pub fn align_offset(self, align: usize) -> usize",
+          "text": "Computes the offset that needs to be applied to the pointer in order to make it aligned to align."
+        },
+        {
+          "code": "pub fn len(self) -> usize",
+          "text": "Returns the length of a raw slice."
+        },
+        {
+          "code": "pub fn as_ptr(self) -> *const T",
+          "text": "Returns a raw pointer to the slice’s buffer."
+        },
+        {
+          "code": "pub unsafe fn get_unchecked<I>( self, index: I) -> *const <I as SliceIndex<[T]>>::Output where I: SliceIndex<[T]>,",
+          "text": "Returns a raw pointer to an element or subslice, without doing bounds checking."
+        },
+        {
+          "code": "pub unsafe fn as_uninit_slice<'a>(self) -> Option<&'a [MaybeUninit<T>]>",
+          "text": "Returns None if the pointer is null, or else returns a shared slice to the value wrapped in Some. In contrast to as_ref, this does not require that the value has to be initialized."
+        },
+        {
+          "code": "pub fn len(self) -> usize",
+          "text": "Returns the length of a raw slice."
+        },
+        {
+          "code": "pub fn as_mut_ptr(self) -> *mut T",
+          "text": "Returns a raw pointer to the slice’s buffer."
+        },
+        {
+          "code": "pub unsafe fn get_unchecked_mut<I>( self, index: I) -> *mut <I as SliceIndex<[T]>>::Output where I: SliceIndex<[T]>,",
+          "text": "Returns a raw pointer to an element or subslice, without doing bounds checking."
+        },
+        {
+          "code": "pub unsafe fn as_uninit_slice<'a>(self) -> Option<&'a [MaybeUninit<T>]>",
+          "text": "Returns None if the pointer is null, or else returns a shared slice to the value wrapped in Some. In contrast to as_ref, this does not require that the value has to be initialized."
+        },
+        {
+          "code": "pub unsafe fn as_uninit_slice_mut<'a>(self) -> Option<&'a mut [MaybeUninit<T>]>",
+          "text": "Returns None if the pointer is null, or else returns a unique slice to the value wrapped in Some. In contrast to as_mut, this does not require that the value has to be initialized."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Clone for *const T where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> *const T",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Clone for *mut T where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> *mut T",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for *const T where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for *mut T where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<*mut T> for AtomicPtr<T>",
+          "methods": [
+            {
+              "code": "pub fn from(p: *mut T) -> AtomicPtr<T>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Hash for *mut T where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, state: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Hash for *const T where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, state: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Ord for *mut T where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &*mut T) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Ord for *const T where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &*const T) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialEq<*const T> for *const T where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &*const T) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialEq<*mut T> for *mut T where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &*mut T) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialOrd<*const T> for *const T where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &*const T) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &*const T) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &*const T) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &*const T) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &*const T) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialOrd<*mut T> for *mut T where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &*mut T) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &*mut T) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &*mut T) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &*mut T) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &*mut T) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Pointer for *const T where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Pointer for *mut T where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

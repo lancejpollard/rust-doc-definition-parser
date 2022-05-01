@@ -1,0 +1,92 @@
+{
+  "title": "Struct nix::poll::PollFd",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn new(fd: RawFd, events: PollFlags) -> PollFd",
+          "text": "Creates a new PollFd specifying the events of interest for a given file descriptor."
+        },
+        {
+          "code": "pub fn revents(self) -> Option<PollFlags>",
+          "text": "Returns the events that occured in the last call to poll or ppoll. Will only return None if the kernel provides status flags that Nix does not know about."
+        },
+        {
+          "code": "pub fn events(self) -> PollFlags",
+          "text": "The events of interest for this PollFd."
+        },
+        {
+          "code": "pub fn set_events(&mut self, events: PollFlags)",
+          "text": "Modify the events of interest for this PollFd."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRawFd for PollFd",
+          "methods": [
+            {
+              "code": "fn as_raw_fd(&self) -> RawFd",
+              "text": "Extracts the raw file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for PollFd",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> PollFd",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for PollFd",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for PollFd",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<PollFd> for PollFd",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &PollFd) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &PollFd) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

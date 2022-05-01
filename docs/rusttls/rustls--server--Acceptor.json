@@ -1,0 +1,34 @@
+{
+  "title": "Struct rustls::server::Acceptor",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> Result<Self, Error>",
+          "text": "Create a new Acceptor."
+        },
+        {
+          "code": "pub fn wants_read(&self) -> bool",
+          "text": "Returns true if the caller should call Connection::read_tls() as soon as possible."
+        },
+        {
+          "code": "pub fn read_tls(&mut self, rd: &mut dyn Read) -> Result<usize, Error>",
+          "text": "Read TLS content from rd."
+        },
+        {
+          "code": "pub fn accept(&mut self) -> Result<Option<Accepted>, Error>",
+          "text": "Check if a ClientHello message has been received."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

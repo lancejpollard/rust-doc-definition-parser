@@ -1,0 +1,66 @@
+{
+  "title": "Struct nix::ifaddrs::InterfaceAddress",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for InterfaceAddress",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> InterfaceAddress",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for InterfaceAddress",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for InterfaceAddress",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<InterfaceAddress> for InterfaceAddress",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &InterfaceAddress) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &InterfaceAddress) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

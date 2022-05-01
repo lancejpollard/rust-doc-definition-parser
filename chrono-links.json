@@ -1,0 +1,20 @@
+[
+  "https://docs.rs/chrono/0.4.19/chrono/struct.Date.html",
+  "https://docs.rs/chrono/0.4.19/chrono/struct.DateTime.html",
+  "https://docs.rs/chrono/0.4.19/chrono/struct.Duration.html",
+  "https://docs.rs/chrono/0.4.19/chrono/struct.ParseMonthError.html",
+  "https://docs.rs/chrono/0.4.19/chrono/struct.ParseWeekdayError.html",
+  "https://docs.rs/chrono/0.4.19/chrono/format/struct.DelayedFormat.html",
+  "https://docs.rs/chrono/0.4.19/chrono/format/struct.InternalFixed.html",
+  "https://docs.rs/chrono/0.4.19/chrono/format/struct.InternalNumeric.html",
+  "https://docs.rs/chrono/0.4.19/chrono/format/struct.ParseError.html",
+  "https://docs.rs/chrono/0.4.19/chrono/format/struct.Parsed.html",
+  "https://docs.rs/chrono/0.4.19/chrono/format/strftime/struct.StrftimeItems.html",
+  "https://docs.rs/chrono/0.4.19/chrono/naive/struct.IsoWeek.html",
+  "https://docs.rs/chrono/0.4.19/chrono/naive/struct.NaiveDate.html",
+  "https://docs.rs/chrono/0.4.19/chrono/naive/struct.NaiveDateTime.html",
+  "https://docs.rs/chrono/0.4.19/chrono/naive/struct.NaiveTime.html",
+  "https://docs.rs/chrono/0.4.19/chrono/offset/struct.FixedOffset.html",
+  "https://docs.rs/chrono/0.4.19/chrono/offset/struct.Local.html",
+  "https://docs.rs/chrono/0.4.19/chrono/offset/struct.Utc.html"
+]

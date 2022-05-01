@@ -1,0 +1,84 @@
+{
+  "title": "Struct rustls::ClientConnection",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(config: Arc<ClientConfig>, name: ServerName) -> Result<Self, Error>",
+          "text": "Make a new ClientConnection. config controls how we behave in the TLS protocol, name is the name of the server we want to talk to."
+        },
+        {
+          "code": "pub fn early_data(&mut self) -> Option<WriteEarlyData<'_>>",
+          "text": "Returns an io::Write implementer you can write bytes to to send TLS1.3 early data (a.k.a. “0-RTT data”) to the server."
+        },
+        {
+          "code": "pub fn is_early_data_accepted(&self) -> bool",
+          "text": "Returns True if the server signalled it will process early data."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl ClientQuicExt for ClientConnection",
+          "methods": [
+            {
+              "code": "fn new_quic( config: Arc<ClientConfig>, quic_version: Version, name: ServerName, params: Vec<u8>) -> Result<ClientConnection, Error>",
+              "text": "Make a new QUIC ClientConnection. This differs from ClientConnection::new() in that it takes an extra argument, params, which contains the TLS-encoded transport parameters to send."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for ClientConnection",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Deref for ClientConnection",
+          "methods": [
+            {
+              "code": "type Target = ConnectionCommon<ClientConnectionData>",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "fn deref(&self) -> &Self::Target",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl DerefMut for ClientConnection",
+          "methods": [
+            {
+              "code": "fn deref_mut(&mut self) -> &mut Self::Target",
+              "text": "Mutably dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl From<ClientConnection> for Connection",
+          "methods": [
+            {
+              "code": "fn from(conn: ClientConnection) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl QuicExt for ClientConnection",
+          "methods": []
+        }
+      ]
+    }
+  ]
+}

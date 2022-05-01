@@ -1,0 +1,17 @@
+{
+  "title": "Struct rustls::client::ClientConnectionData",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

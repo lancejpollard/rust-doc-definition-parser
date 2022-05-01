@@ -1,0 +1,127 @@
+{
+  "title": "Struct std::io::Stdin",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn lock(&self) -> StdinLock<'_>ⓘNotable traits for StdinLock<'_>impl Read for StdinLock<'_>",
+          "text": "Locks this handle to the standard input stream, returning a readable guard."
+        },
+        {
+          "code": "pub fn read_line(&self, buf: &mut String) -> Result<usize>",
+          "text": "Locks this handle and reads a line of input, appending it to the specified buffer."
+        },
+        {
+          "code": "pub fn into_locked(self) -> StdinLock<'static>ⓘNotable traits for StdinLock<'_>impl Read for StdinLock<'_>",
+          "text": "Consumes this handle to the standard input stream, locking the shared global buffer associated with the stream and returning a readable guard."
+        },
+        {
+          "code": "pub fn lines(self) -> Lines<StdinLock<'static>>ⓘNotable traits for Lines<B>impl<B: BufRead> Iterator for Lines<B> type Item = Result<String>;",
+          "text": "Consumes this handle and returns an iterator over input lines."
+        },
+        {
+          "code": "pub fn split(self, byte: u8) -> Split<StdinLock<'static>>ⓘNotable traits for Split<B>impl<B: BufRead> Iterator for Split<B> type Item = Result<Vec<u8>>;",
+          "text": "Consumes this handle and returns an iterator over input bytes, split at the specified byte value."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsFd for Stdin",
+          "methods": []
+        },
+        {
+          "title": "impl AsHandle for Stdin",
+          "methods": [
+            {
+              "code": "fn as_handle(&self) -> BorrowedHandle<'_>",
+              "text": "Borrows the handle."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRawFd for Stdin",
+          "methods": []
+        },
+        {
+          "title": "impl AsRawHandle for Stdin",
+          "methods": [
+            {
+              "code": "fn as_raw_handle(&self) -> RawHandle",
+              "text": "Extracts the raw handle, without taking any ownership."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Stdin",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Read for Stdin",
+          "methods": [
+            {
+              "code": "fn read(&mut self, buf: &mut [u8]) -> Result<usize>",
+              "text": "Pull some bytes from this source into the specified buffer, returning how many bytes were read."
+            },
+            {
+              "code": "fn read_vectored(&mut self, bufs: &mut [IoSliceMut<'_>]) -> Result<usize>",
+              "text": "Like read, except that it reads into a slice of buffers."
+            },
+            {
+              "code": "fn is_read_vectored(&self) -> bool",
+              "text": "Determines if this Reader has an efficient read_vectored implementation."
+            },
+            {
+              "code": "fn read_to_end(&mut self, buf: &mut Vec<u8>) -> Result<usize>",
+              "text": "Read all bytes until EOF in this source, placing them into buf."
+            },
+            {
+              "code": "fn read_to_string(&mut self, buf: &mut String) -> Result<usize>",
+              "text": "Read all bytes until EOF in this source, appending them to buf."
+            },
+            {
+              "code": "fn read_exact(&mut self, buf: &mut [u8]) -> Result<()>",
+              "text": "Read the exact number of bytes required to fill buf."
+            },
+            {
+              "code": "fn read_buf(&mut self, buf: &mut ReadBuf<'_>) -> Result<()>",
+              "text": "Pull some bytes from this source into the specified buffer."
+            },
+            {
+              "code": "fn read_buf_exact(&mut self, buf: &mut ReadBuf<'_>) -> Result<()>",
+              "text": "Read the exact number of bytes required to fill buf."
+            },
+            {
+              "code": "fn by_ref(&mut self) -> &mut Self where Self: Sized,",
+              "text": "Creates a “by reference” adaptor for this instance of Read."
+            },
+            {
+              "code": "fn bytes(self) -> Bytes<Self>ⓘNotable traits for Bytes<R>impl<R: Read> Iterator for Bytes<R> type Item = Result<u8>; where Self: Sized,",
+              "text": "Transforms this Read instance to an Iterator over its bytes."
+            },
+            {
+              "code": "fn chain<R: Read>(self, next: R) -> Chain<Self, R>ⓘNotable traits for Chain<T, U>impl<T: Read, U: Read> Read for Chain<T, U> where Self: Sized,",
+              "text": "Creates an adapter which will chain this stream with another."
+            },
+            {
+              "code": "fn take(self, limit: u64) -> Take<Self>ⓘNotable traits for Take<T>impl<T: Read> Read for Take<T> where Self: Sized,",
+              "text": "Creates an adapter which will read at most limit bytes from it."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

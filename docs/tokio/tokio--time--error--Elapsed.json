@@ -1,0 +1,71 @@
+{
+  "title": "Struct tokio::time::error::Elapsed",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Elapsed",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for Elapsed",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Error for Elapsed",
+          "methods": [
+            {
+              "code": "fn source(&self) -> Option<&(dyn Error + 'static)>",
+              "text": "The lower-level source of this error, if any."
+            },
+            {
+              "code": "fn backtrace(&self) -> Option<&Backtrace>",
+              "text": "Returns a stack backtrace, if available, of where this error occurred."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Elapsed> for Error",
+          "methods": [
+            {
+              "code": "fn from(_err: Elapsed) -> Error",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Elapsed> for Elapsed",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Elapsed) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Elapsed) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

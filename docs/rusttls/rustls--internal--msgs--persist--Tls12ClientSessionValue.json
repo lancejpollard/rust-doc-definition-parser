@@ -1,0 +1,54 @@
+{
+  "title": "Struct rustls::internal::msgs::persist::Tls12ClientSessionValue",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn get_encoding(&self) -> Vec<u8>",
+          "text": "Inherent implementation of the Codec::get_encoding() method."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Tls12ClientSessionValue",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Deref for Tls12ClientSessionValue",
+          "methods": [
+            {
+              "code": "type Target = ClientSessionCommon",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "fn deref(&self) -> &Self::Target",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Tls12ClientSessionValue> for ClientSessionValue",
+          "methods": [
+            {
+              "code": "fn from(v: Tls12ClientSessionValue) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

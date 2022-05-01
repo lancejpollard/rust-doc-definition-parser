@@ -1,0 +1,40 @@
+{
+  "title": "Struct hyper::upgrade::OnUpgrade",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for OnUpgrade",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Future for OnUpgrade",
+          "methods": [
+            {
+              "code": "type Output = Result<Upgraded, Error>",
+              "text": "The type of value produced on completion."
+            },
+            {
+              "code": "fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output>",
+              "text": "Attempt to resolve the future to a final value, registering the current task for wakeup if the value is not yet available."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

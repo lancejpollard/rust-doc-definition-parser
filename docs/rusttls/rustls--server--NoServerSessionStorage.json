@@ -1,0 +1,39 @@
+{
+  "title": "Struct rustls::server::NoServerSessionStorage",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl StoresServerSessions for NoServerSessionStorage",
+          "methods": [
+            {
+              "code": "fn put(&self, _id: Vec<u8>, _sec: Vec<u8>) -> bool",
+              "text": "Store session secrets encoded in value against key, overwrites any existing value against key. Returns true if the value was stored."
+            },
+            {
+              "code": "fn get(&self, _id: &[u8]) -> Option<Vec<u8>>",
+              "text": "Find a value with the given key. Return it, or None if it doesn’t exist."
+            },
+            {
+              "code": "fn take(&self, _id: &[u8]) -> Option<Vec<u8>>",
+              "text": "Find a value with the given key. Return it and delete it; or None if it doesn’t exist."
+            },
+            {
+              "code": "fn can_cache(&self) -> bool",
+              "text": "Whether the store can cache another session. This is used to indicate to clients whether their session can be resumed; the implementation is not required to remember a session even if it returns true here."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

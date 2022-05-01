@@ -1,0 +1,84 @@
+{
+  "title": "Struct std::ffi::FromVecWithNulError",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn as_bytes(&self) -> &[u8]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+          "text": "Returns a slice of u8s bytes that were attempted to convert to a CString."
+        },
+        {
+          "code": "pub fn into_bytes(self) -> Vec<u8>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+          "text": "Returns the bytes that were attempted to convert to a CString."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for FromVecWithNulError",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> FromVecWithNulError",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for FromVecWithNulError",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for FromVecWithNulError",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Error for FromVecWithNulError",
+          "methods": [
+            {
+              "code": "fn source(&self) -> Option<&(dyn Error + 'static)>",
+              "text": "The lower-level source of this error, if any."
+            },
+            {
+              "code": "fn backtrace(&self) -> Option<&Backtrace>",
+              "text": "Returns a stack backtrace, if available, of where this error occurred."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<FromVecWithNulError> for FromVecWithNulError",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &FromVecWithNulError) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &FromVecWithNulError) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

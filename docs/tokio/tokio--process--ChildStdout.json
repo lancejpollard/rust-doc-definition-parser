@@ -1,0 +1,63 @@
+{
+  "title": "Struct tokio::process::ChildStdout",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn from_std(inner: ChildStdout) -> Result<Self>",
+          "text": "Creates an asynchronous ChildStderr from a synchronous one."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRawFd for ChildStdout",
+          "methods": [
+            {
+              "code": "fn as_raw_fd(&self) -> RawFd",
+              "text": "Extracts the raw file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl AsyncRead for ChildStdout",
+          "methods": [
+            {
+              "code": "fn poll_read( self: Pin<&mut Self>, cx: &mut Context<'_>, buf: &mut ReadBuf<'_>) -> Poll<Result<()>>",
+              "text": "Attempts to read from the AsyncRead into buf."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for ChildStdout",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl TryInto<Stdio> for ChildStdout",
+          "methods": [
+            {
+              "code": "type Error = Error",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "fn try_into(self) -> Result<Stdio, Self::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

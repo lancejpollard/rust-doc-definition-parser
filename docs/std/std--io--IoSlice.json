@@ -1,0 +1,66 @@
+{
+  "title": "Struct std::io::IoSlice",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(buf: &'a [u8]) -> IoSlice<'a>",
+          "text": "Creates a new IoSlice wrapping a byte slice."
+        },
+        {
+          "code": "pub fn advance(&mut self, n: usize)",
+          "text": "Advance the internal cursor of the slice."
+        },
+        {
+          "code": "pub fn advance_slices(bufs: &mut &mut [IoSlice<'a>], n: usize)",
+          "text": "Advance the internal cursor of the slices."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a> Clone for IoSlice<'a>",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> IoSlice<'a>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Debug for IoSlice<'a>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Deref for IoSlice<'a>",
+          "methods": [
+            {
+              "code": "type Target = [u8]",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "fn deref(&self) -> &[u8]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Dereferences the value."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

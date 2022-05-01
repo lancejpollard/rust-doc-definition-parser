@@ -1,0 +1,325 @@
+{
+  "title": "Struct std::collections::linked_list::LinkedList",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn new() -> LinkedList<T>",
+          "text": "Creates an empty LinkedList."
+        },
+        {
+          "code": "pub fn append(&mut self, other: &mut LinkedList<T>)",
+          "text": "Moves all elements from other to the end of the list."
+        },
+        {
+          "code": "pub fn iter(&self) -> Iter<'_, T>ⓘNotable traits for Iter<'a, T>impl<'a, T> Iterator for Iter<'a, T> type Item = &'a T;",
+          "text": "Provides a forward iterator."
+        },
+        {
+          "code": "pub fn iter_mut(&mut self) -> IterMut<'_, T>ⓘNotable traits for IterMut<'a, T>impl<'a, T> Iterator for IterMut<'a, T> type Item = &'a mut T;",
+          "text": "Provides a forward iterator with mutable references."
+        },
+        {
+          "code": "pub fn cursor_front(&self) -> Cursor<'_, T>",
+          "text": "Provides a cursor at the front element."
+        },
+        {
+          "code": "pub fn cursor_front_mut(&mut self) -> CursorMut<'_, T>",
+          "text": "Provides a cursor with editing operations at the front element."
+        },
+        {
+          "code": "pub fn cursor_back(&self) -> Cursor<'_, T>",
+          "text": "Provides a cursor at the back element."
+        },
+        {
+          "code": "pub fn cursor_back_mut(&mut self) -> CursorMut<'_, T>",
+          "text": "Provides a cursor with editing operations at the back element."
+        },
+        {
+          "code": "pub fn is_empty(&self) -> bool",
+          "text": "Returns true if the LinkedList is empty."
+        },
+        {
+          "code": "pub fn len(&self) -> usize",
+          "text": "Returns the length of the LinkedList."
+        },
+        {
+          "code": "pub fn clear(&mut self)",
+          "text": "Removes all elements from the LinkedList."
+        },
+        {
+          "code": "pub fn contains(&self, x: &T) -> bool where T: PartialEq<T>,",
+          "text": "Returns true if the LinkedList contains an element equal to the given value."
+        },
+        {
+          "code": "pub fn front(&self) -> Option<&T>",
+          "text": "Provides a reference to the front element, or None if the list is empty."
+        },
+        {
+          "code": "pub fn front_mut(&mut self) -> Option<&mut T>",
+          "text": "Provides a mutable reference to the front element, or None if the list is empty."
+        },
+        {
+          "code": "pub fn back(&self) -> Option<&T>",
+          "text": "Provides a reference to the back element, or None if the list is empty."
+        },
+        {
+          "code": "pub fn back_mut(&mut self) -> Option<&mut T>",
+          "text": "Provides a mutable reference to the back element, or None if the list is empty."
+        },
+        {
+          "code": "pub fn push_front(&mut self, elt: T)",
+          "text": "Adds an element first in the list."
+        },
+        {
+          "code": "pub fn pop_front(&mut self) -> Option<T>",
+          "text": "Removes the first element and returns it, or None if the list is empty."
+        },
+        {
+          "code": "pub fn push_back(&mut self, elt: T)",
+          "text": "Appends an element to the back of a list."
+        },
+        {
+          "code": "pub fn pop_back(&mut self) -> Option<T>",
+          "text": "Removes the last element from a list and returns it, or None if it is empty."
+        },
+        {
+          "code": "pub fn split_off(&mut self, at: usize) -> LinkedList<T>",
+          "text": "Splits the list into two at the given index. Returns everything after the given index, including the index."
+        },
+        {
+          "code": "pub fn remove(&mut self, at: usize) -> T",
+          "text": "Removes the element at the given index and returns it."
+        },
+        {
+          "code": "pub fn drain_filter<F>(&mut self, filter: F) -> DrainFilter<'_, T, F>ⓘNotable traits for DrainFilter<'_, T, F>impl<'_, T, F> Iterator for DrainFilter<'_, T, F> where F: FnMut(&mut T) -> bool, type Item = T; where F: FnMut(&mut T) -> bool,",
+          "text": "Creates an iterator which uses a closure to determine if an element should be removed."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Clone for LinkedList<T> where T: Clone,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> LinkedList<T>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "pub fn clone_from(&mut self, other: &LinkedList<T>)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for LinkedList<T> where T: Debug,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for LinkedList<T>",
+          "methods": [
+            {
+              "code": "pub fn default() -> LinkedList<T>",
+              "text": "Creates an empty LinkedList<T>."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Drop for LinkedList<T>",
+          "methods": [
+            {
+              "code": "pub fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> Extend<&'a T> for LinkedList<T> where T: 'a + Copy,",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = &'a T>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, &'a T)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Extend<T> for LinkedList<T>",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = T>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, elem: T)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> From<[T; N]> for LinkedList<T>",
+          "methods": [
+            {
+              "code": "pub fn from(arr: [T; N]) -> LinkedList<T>"
+            }
+          ]
+        },
+        {
+          "title": "impl<T> FromIterator<T> for LinkedList<T>",
+          "methods": [
+            {
+              "code": "pub fn from_iter<I>(iter: I) -> LinkedList<T> where I: IntoIterator<Item = T>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Hash for LinkedList<T> where T: Hash,",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, state: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> IntoIterator for LinkedList<T>",
+          "methods": [
+            {
+              "code": "pub fn into_iter(self) -> IntoIter<T>ⓘNotable traits for IntoIter<T>impl<T> Iterator for IntoIter<T> type Item = T;",
+              "text": "Consumes the list into an iterator yielding elements by value."
+            },
+            {
+              "code": "type Item = T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = IntoIter<T>",
+              "text": "Which kind of iterator are we turning this into?"
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> IntoIterator for &'a LinkedList<T>",
+          "methods": [
+            {
+              "code": "type Item = &'a T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = Iter<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "pub fn into_iter(self) -> Iter<'a, T>ⓘNotable traits for Iter<'a, T>impl<'a, T> Iterator for Iter<'a, T> type Item = &'a T;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> IntoIterator for &'a mut LinkedList<T>",
+          "methods": [
+            {
+              "code": "type Item = &'a mut T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = IterMut<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "pub fn into_iter(self) -> IterMut<'a, T>ⓘNotable traits for IterMut<'a, T>impl<'a, T> Iterator for IterMut<'a, T> type Item = &'a mut T;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Ord for LinkedList<T> where T: Ord,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &LinkedList<T>) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialEq<LinkedList<T>> for LinkedList<T> where T: PartialEq<T>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &LinkedList<T>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &LinkedList<T>) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialOrd<LinkedList<T>> for LinkedList<T> where T: PartialOrd<T>,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &LinkedList<T>) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

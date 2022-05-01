@@ -1,0 +1,118 @@
+{
+  "title": "Struct std::alloc::Layout",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn from_size_align( size: usize, align: usize) -> Result<Layout, LayoutError>",
+          "text": "Constructs a Layout from a given size and align, or returns LayoutError if any of the following conditions are not met:"
+        },
+        {
+          "code": "pub const unsafe fn from_size_align_unchecked( size: usize, align: usize) -> Layout",
+          "text": "Creates a layout, bypassing all checks."
+        },
+        {
+          "code": "pub const fn size(&self) -> usize",
+          "text": "The minimum size in bytes for a memory block of this layout."
+        },
+        {
+          "code": "pub const fn align(&self) -> usize",
+          "text": "The minimum byte alignment for a memory block of this layout."
+        },
+        {
+          "code": "pub const fn new<T>() -> Layout",
+          "text": "Constructs a Layout suitable for holding a value of type T."
+        },
+        {
+          "code": "pub fn for_value<T>(t: &T) -> Layout where T: ?Sized,",
+          "text": "Produces layout describing a record that could be used to allocate backing structure for T (which could be a trait or other unsized type like a slice)."
+        },
+        {
+          "code": "pub unsafe fn for_value_raw<T>(t: *const T) -> Layout where T: ?Sized,",
+          "text": "Produces layout describing a record that could be used to allocate backing structure for T (which could be a trait or other unsized type like a slice)."
+        },
+        {
+          "code": "pub fn dangling(&self) -> NonNull<u8>",
+          "text": "Creates a NonNull that is dangling, but well-aligned for this Layout."
+        },
+        {
+          "code": "pub fn align_to(&self, align: usize) -> Result<Layout, LayoutError>",
+          "text": "Creates a layout describing the record that can hold a value of the same layout as self, but that also is aligned to alignment align (measured in bytes)."
+        },
+        {
+          "code": "pub fn padding_needed_for(&self, align: usize) -> usize",
+          "text": "Returns the amount of padding we must insert after self to ensure that the following address will satisfy align (measured in bytes)."
+        },
+        {
+          "code": "pub fn pad_to_align(&self) -> Layout",
+          "text": "Creates a layout by rounding the size of this layout up to a multiple of the layout’s alignment."
+        },
+        {
+          "code": "pub fn repeat(&self, n: usize) -> Result<(Layout, usize), LayoutError>",
+          "text": "Creates a layout describing the record for n instances of self, with a suitable amount of padding between each to ensure that each instance is given its requested size and alignment. On success, returns (k, offs) where k is the layout of the array and offs is the distance between the start of each element in the array."
+        },
+        {
+          "code": "pub fn extend(&self, next: Layout) -> Result<(Layout, usize), LayoutError>",
+          "text": "Creates a layout describing the record for self followed by next, including any necessary padding to ensure that next will be properly aligned, but no trailing padding."
+        },
+        {
+          "code": "pub fn repeat_packed(&self, n: usize) -> Result<Layout, LayoutError>",
+          "text": "Creates a layout describing the record for n instances of self, with no padding between each instance."
+        },
+        {
+          "code": "pub fn extend_packed(&self, next: Layout) -> Result<Layout, LayoutError>",
+          "text": "Creates a layout describing the record for self followed by next with no additional padding between the two. Since no padding is inserted, the alignment of next is irrelevant, and is not incorporated at all into the resulting layout."
+        },
+        {
+          "code": "pub fn array<T>(n: usize) -> Result<Layout, LayoutError>",
+          "text": "Creates a layout describing the record for a [T; n]."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for Layout",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> Layout",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Layout",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Layout> for Layout",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Layout) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &Layout) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

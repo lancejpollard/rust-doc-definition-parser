@@ -1,0 +1,58 @@
+{
+  "title": "Struct std::lazy::Lazy",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn new(init: F) -> Lazy<T, F>",
+          "text": "Creates a new lazy value with the given initializing function."
+        },
+        {
+          "code": "pub fn force(this: &Lazy<T, F>) -> &T",
+          "text": "Forces the evaluation of this lazy value and returns a reference to the result."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T, F> Debug for Lazy<T, F> where T: Debug,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for Lazy<T, fn() -> T> where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> Lazy<T, fn() -> T>",
+              "text": "Creates a new lazy value using Default as the initializing function."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, F> Deref for Lazy<T, F> where F: FnOnce() -> T,",
+          "methods": [
+            {
+              "code": "type Target = T",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "pub fn deref(&self) -> &T",
+              "text": "Dereferences the value."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

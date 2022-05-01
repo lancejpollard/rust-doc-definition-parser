@@ -1,0 +1,30 @@
+{
+  "title": "Struct rayon::iter::Take",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "methods": []
+        },
+        {
+          "methods": []
+        },
+        {
+          "methods": []
+        },
+        {
+          "methods": []
+        }
+      ]
+    }
+  ]
+}

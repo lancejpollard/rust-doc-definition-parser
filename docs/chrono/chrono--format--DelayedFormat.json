@@ -1,0 +1,17 @@
+{
+  "title": "Struct chrono::format::DelayedFormat",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

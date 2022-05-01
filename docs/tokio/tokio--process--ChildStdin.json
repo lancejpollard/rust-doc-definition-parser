@@ -1,0 +1,79 @@
+{
+  "title": "Struct tokio::process::ChildStdin",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn from_std(inner: ChildStdin) -> Result<Self>",
+          "text": "Creates an asynchronous ChildStdin from a synchronous one."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRawFd for ChildStdin",
+          "methods": [
+            {
+              "code": "fn as_raw_fd(&self) -> RawFd",
+              "text": "Extracts the raw file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl AsyncWrite for ChildStdin",
+          "methods": [
+            {
+              "code": "fn poll_write( self: Pin<&mut Self>, cx: &mut Context<'_>, buf: &[u8]) -> Poll<Result<usize>>",
+              "text": "Attempt to write bytes from buf into the object."
+            },
+            {
+              "code": "fn poll_flush(self: Pin<&mut Self>, _cx: &mut Context<'_>) -> Poll<Result<()>>",
+              "text": "Attempts to flush the object, ensuring that any buffered data reach their destination."
+            },
+            {
+              "code": "fn poll_shutdown( self: Pin<&mut Self>, _cx: &mut Context<'_>) -> Poll<Result<()>>",
+              "text": "Initiates or attempts to shut down this writer, returning success when the I/O connection has completely shut down."
+            },
+            {
+              "code": "fn poll_write_vectored( self: Pin<&mut Self>, cx: &mut Context<'_>, bufs: &[IoSlice<'_>]) -> Poll<Result<usize, Error>>",
+              "text": "Like poll_write, except that it writes from a slice of buffers."
+            },
+            {
+              "code": "fn is_write_vectored(&self) -> bool",
+              "text": "Determines if this writer has an efficient poll_write_vectored implementation."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for ChildStdin",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl TryInto<Stdio> for ChildStdin",
+          "methods": [
+            {
+              "code": "type Error = Error",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "fn try_into(self) -> Result<Stdio, Self::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

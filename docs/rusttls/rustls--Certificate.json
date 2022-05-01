@@ -1,0 +1,142 @@
+{
+  "title": "Struct rustls::Certificate",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRef<[u8]> for Certificate",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &[u8]ⓘNotable traits for &'_ [u8]impl<'_> Read for &'_ [u8]impl<'_> Write for &'_ mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for Certificate",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Certificate",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Codec for Certificate",
+          "methods": [
+            {
+              "code": "fn encode(&self, bytes: &mut Vec<u8>)",
+              "text": "Encode yourself by appending onto bytes."
+            },
+            {
+              "code": "fn read(r: &mut Reader<'_>) -> Option<Self>",
+              "text": "Decode yourself by fiddling with the Reader. Return Some if it worked, None if not."
+            },
+            {
+              "code": "fn get_encoding(&self) -> Vec<u8>",
+              "text": "Convenience function to get the results of encode()."
+            },
+            {
+              "code": "fn read_bytes(bytes: &[u8]) -> Option<Self>",
+              "text": "Read one of these from the front of bytes and return it."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Certificate",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for Certificate",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for Certificate",
+          "methods": [
+            {
+              "code": "fn cmp(&self, other: &Certificate) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Certificate> for Certificate",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Certificate) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Certificate) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<Certificate> for Certificate",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &Certificate) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

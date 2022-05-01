@@ -1,0 +1,36 @@
+{
+  "title": "Struct std::thread::LocalKey",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn with<F, R>(&'static self, f: F) -> R where F: FnOnce(&T) -> R,",
+          "text": "Acquires a reference to the value in this TLS key."
+        },
+        {
+          "code": "pub fn try_with<F, R>(&'static self, f: F) -> Result<R, AccessError> where F: FnOnce(&T) -> R,",
+          "text": "Acquires a reference to the value in this TLS key."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T: 'static> Debug for LocalKey<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4923 @@
+{
+  "title": "Primitive Type u32",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const MIN: u32",
+          "text": "The smallest value that can be represented by this integer type."
+        },
+        {
+          "code": "pub const MAX: u32",
+          "text": "The largest value that can be represented by this integer type, 232 - 1."
+        },
+        {
+          "code": "pub const BITS: u32",
+          "text": "The size of this integer type in bits."
+        },
+        {
+          "code": "pub fn from_str_radix(src: &str, radix: u32) -> Result<u32, ParseIntError>",
+          "text": "Converts a string slice in a given base to an integer."
+        },
+        {
+          "code": "pub const fn count_ones(self) -> u32",
+          "text": "Returns the number of ones in the binary representation of self."
+        },
+        {
+          "code": "pub const fn count_zeros(self) -> u32",
+          "text": "Returns the number of zeros in the binary representation of self."
+        },
+        {
+          "code": "pub const fn leading_zeros(self) -> u32",
+          "text": "Returns the number of leading zeros in the binary representation of self."
+        },
+        {
+          "code": "pub const fn trailing_zeros(self) -> u32",
+          "text": "Returns the number of trailing zeros in the binary representation of self."
+        },
+        {
+          "code": "pub const fn leading_ones(self) -> u32",
+          "text": "Returns the number of leading ones in the binary representation of self."
+        },
+        {
+          "code": "pub const fn trailing_ones(self) -> u32",
+          "text": "Returns the number of trailing ones in the binary representation of self."
+        },
+        {
+          "code": "pub const fn rotate_left(self, n: u32) -> u32",
+          "text": "Shifts the bits to the left by a specified amount, n, wrapping the truncated bits to the end of the resulting integer."
+        },
+        {
+          "code": "pub const fn rotate_right(self, n: u32) -> u32",
+          "text": "Shifts the bits to the right by a specified amount, n, wrapping the truncated bits to the beginning of the resulting integer."
+        },
+        {
+          "code": "pub const fn swap_bytes(self) -> u32",
+          "text": "Reverses the byte order of the integer."
+        },
+        {
+          "code": "pub const fn reverse_bits(self) -> u32",
+          "text": "Reverses the order of bits in the integer. The least significant bit becomes the most significant bit, second least-significant bit becomes second most-significant bit, etc."
+        },
+        {
+          "code": "pub const fn from_be(x: u32) -> u32",
+          "text": "Converts an integer from big endian to the target’s endianness."
+        },
+        {
+          "code": "pub const fn from_le(x: u32) -> u32",
+          "text": "Converts an integer from little endian to the target’s endianness."
+        },
+        {
+          "code": "pub const fn to_be(self) -> u32",
+          "text": "Converts self to big endian from the target’s endianness."
+        },
+        {
+          "code": "pub const fn to_le(self) -> u32",
+          "text": "Converts self to little endian from the target’s endianness."
+        },
+        {
+          "code": "pub const fn checked_add(self, rhs: u32) -> Option<u32>",
+          "text": "Checked integer addition. Computes self + rhs, returning None if overflow occurred."
+        },
+        {
+          "code": "pub unsafe fn unchecked_add(self, rhs: u32) -> u32",
+          "text": "Unchecked integer addition. Computes self + rhs, assuming overflow cannot occur."
+        },
+        {
+          "code": "pub fn checked_add_signed(self, rhs: i32) -> Option<u32>",
+          "text": "Checked addition with a signed integer. Computes self + rhs, returning None if overflow occurred."
+        },
+        {
+          "code": "pub const fn checked_sub(self, rhs: u32) -> Option<u32>",
+          "text": "Checked integer subtraction. Computes self - rhs, returning None if overflow occurred."
+        },
+        {
+          "code": "pub unsafe fn unchecked_sub(self, rhs: u32) -> u32",
+          "text": "Unchecked integer subtraction. Computes self - rhs, assuming overflow cannot occur."
+        },
+        {
+          "code": "pub const fn checked_mul(self, rhs: u32) -> Option<u32>",
+          "text": "Checked integer multiplication. Computes self * rhs, returning None if overflow occurred."
+        },
+        {
+          "code": "pub unsafe fn unchecked_mul(self, rhs: u32) -> u32",
+          "text": "Unchecked integer multiplication. Computes self * rhs, assuming overflow cannot occur."
+        },
+        {
+          "code": "pub const fn checked_div(self, rhs: u32) -> Option<u32>",
+          "text": "Checked integer division. Computes self / rhs, returning None if rhs == 0."
+        },
+        {
+          "code": "pub const fn checked_div_euclid(self, rhs: u32) -> Option<u32>",
+          "text": "Checked Euclidean division. Computes self.div_euclid(rhs), returning None if rhs == 0."
+        },
+        {
+          "code": "pub const fn checked_rem(self, rhs: u32) -> Option<u32>",
+          "text": "Checked integer remainder. Computes self % rhs, returning None if rhs == 0."
+        },
+        {
+          "code": "pub const fn checked_rem_euclid(self, rhs: u32) -> Option<u32>",
+          "text": "Checked Euclidean modulo. Computes self.rem_euclid(rhs), returning None if rhs == 0."
+        },
+        {
+          "code": "pub const fn log(self, base: u32) -> u32",
+          "text": "Returns the logarithm of the number with respect to an arbitrary base, rounded down."
+        },
+        {
+          "code": "pub const fn log2(self) -> u32",
+          "text": "Returns the base 2 logarithm of the number, rounded down."
+        },
+        {
+          "code": "pub const fn log10(self) -> u32",
+          "text": "Returns the base 10 logarithm of the number, rounded down."
+        },
+        {
+          "code": "pub const fn checked_log(self, base: u32) -> Option<u32>",
+          "text": "Returns the logarithm of the number with respect to an arbitrary base, rounded down."
+        },
+        {
+          "code": "pub const fn checked_log2(self) -> Option<u32>",
+          "text": "Returns the base 2 logarithm of the number, rounded down."
+        },
+        {
+          "code": "pub const fn checked_log10(self) -> Option<u32>",
+          "text": "Returns the base 10 logarithm of the number, rounded down."
+        },
+        {
+          "code": "pub const fn checked_neg(self) -> Option<u32>",
+          "text": "Checked negation. Computes -self, returning None unless self == 0."
+        },
+        {
+          "code": "pub const fn checked_shl(self, rhs: u32) -> Option<u32>",
+          "text": "Checked shift left. Computes self << rhs, returning None if rhs is larger than or equal to the number of bits in self."
+        },
+        {
+          "code": "pub unsafe fn unchecked_shl(self, rhs: u32) -> u32",
+          "text": "Unchecked shift left. Computes self << rhs, assuming that rhs is less than the number of bits in self."
+        },
+        {
+          "code": "pub const fn checked_shr(self, rhs: u32) -> Option<u32>",
+          "text": "Checked shift right. Computes self >> rhs, returning None if rhs is larger than or equal to the number of bits in self."
+        },
+        {
+          "code": "pub unsafe fn unchecked_shr(self, rhs: u32) -> u32",
+          "text": "Unchecked shift right. Computes self >> rhs, assuming that rhs is less than the number of bits in self."
+        },
+        {
+          "code": "pub const fn checked_pow(self, exp: u32) -> Option<u32>",
+          "text": "Checked exponentiation. Computes self.pow(exp), returning None if overflow occurred."
+        },
+        {
+          "code": "pub const fn saturating_add(self, rhs: u32) -> u32",
+          "text": "Saturating integer addition. Computes self + rhs, saturating at the numeric bounds instead of overflowing."
+        },
+        {
+          "code": "pub fn saturating_add_signed(self, rhs: i32) -> u32",
+          "text": "Saturating addition with a signed integer. Computes self + rhs, saturating at the numeric bounds instead of overflowing."
+        },
+        {
+          "code": "pub const fn saturating_sub(self, rhs: u32) -> u32",
+          "text": "Saturating integer subtraction. Computes self - rhs, saturating at the numeric bounds instead of overflowing."
+        },
+        {
+          "code": "pub const fn saturating_mul(self, rhs: u32) -> u32",
+          "text": "Saturating integer multiplication. Computes self * rhs, saturating at the numeric bounds instead of overflowing."
+        },
+        {
+          "code": "pub const fn saturating_div(self, rhs: u32) -> u32",
+          "text": "Saturating integer division. Computes self / rhs, saturating at the numeric bounds instead of overflowing."
+        },
+        {
+          "code": "pub const fn saturating_pow(self, exp: u32) -> u32",
+          "text": "Saturating integer exponentiation. Computes self.pow(exp), saturating at the numeric bounds instead of overflowing."
+        },
+        {
+          "code": "pub const fn wrapping_add(self, rhs: u32) -> u32",
+          "text": "Wrapping (modular) addition. Computes self + rhs, wrapping around at the boundary of the type."
+        },
+        {
+          "code": "pub fn wrapping_add_signed(self, rhs: i32) -> u32",
+          "text": "Wrapping (modular) addition with a signed integer. Computes self + rhs, wrapping around at the boundary of the type."
+        },
+        {
+          "code": "pub const fn wrapping_sub(self, rhs: u32) -> u32",
+          "text": "Wrapping (modular) subtraction. Computes self - rhs, wrapping around at the boundary of the type."
+        },
+        {
+          "code": "pub const fn wrapping_mul(self, rhs: u32) -> u32",
+          "text": "Wrapping (modular) multiplication. Computes self * rhs, wrapping around at the boundary of the type."
+        },
+        {
+          "code": "pub const fn wrapping_div(self, rhs: u32) -> u32",
+          "text": "Wrapping (modular) division. Computes self / rhs. Wrapped division on unsigned types is just normal division. There’s no way wrapping could ever happen. This function exists, so that all operations are accounted for in the wrapping operations."
+        },
+        {
+          "code": "pub const fn wrapping_div_euclid(self, rhs: u32) -> u32",
+          "text": "Wrapping Euclidean division. Computes self.div_euclid(rhs). Wrapped division on unsigned types is just normal division. There’s no way wrapping could ever happen. This function exists, so that all operations are accounted for in the wrapping operations. Since, for the positive integers, all common definitions of division are equal, this is exactly equal to self.wrapping_div(rhs)."
+        },
+        {
+          "code": "pub const fn wrapping_rem(self, rhs: u32) -> u32",
+          "text": "Wrapping (modular) remainder. Computes self % rhs. Wrapped remainder calculation on unsigned types is just the regular remainder calculation. There’s no way wrapping could ever happen. This function exists, so that all operations are accounted for in the wrapping operations."
+        },
+        {
+          "code": "pub const fn wrapping_rem_euclid(self, rhs: u32) -> u32",
+          "text": "Wrapping Euclidean modulo. Computes self.rem_euclid(rhs). Wrapped modulo calculation on unsigned types is just the regular remainder calculation. There’s no way wrapping could ever happen. This function exists, so that all operations are accounted for in the wrapping operations. Since, for the positive integers, all common definitions of division are equal, this is exactly equal to self.wrapping_rem(rhs)."
+        },
+        {
+          "code": "pub const fn wrapping_neg(self) -> u32",
+          "text": "Wrapping (modular) negation. Computes -self, wrapping around at the boundary of the type."
+        },
+        {
+          "code": "pub const fn wrapping_shl(self, rhs: u32) -> u32",
+          "text": "Panic-free bitwise shift-left; yields self << mask(rhs), where mask removes any high-order bits of rhs that would cause the shift to exceed the bitwidth of the type."
+        },
+        {
+          "code": "pub const fn wrapping_shr(self, rhs: u32) -> u32",
+          "text": "Panic-free bitwise shift-right; yields self >> mask(rhs), where mask removes any high-order bits of rhs that would cause the shift to exceed the bitwidth of the type."
+        },
+        {
+          "code": "pub const fn wrapping_pow(self, exp: u32) -> u32",
+          "text": "Wrapping (modular) exponentiation. Computes self.pow(exp), wrapping around at the boundary of the type."
+        },
+        {
+          "code": "pub const fn overflowing_add(self, rhs: u32) -> (u32, bool)",
+          "text": "Calculates self + rhs"
+        },
+        {
+          "code": "pub fn carrying_add(self, rhs: u32, carry: bool) -> (u32, bool)",
+          "text": "Calculates self + rhs + carry without the ability to overflow."
+        },
+        {
+          "code": "pub fn overflowing_add_signed(self, rhs: i32) -> (u32, bool)",
+          "text": "Calculates self + rhs with a signed rhs"
+        },
+        {
+          "code": "pub const fn overflowing_sub(self, rhs: u32) -> (u32, bool)",
+          "text": "Calculates self - rhs"
+        },
+        {
+          "code": "pub fn borrowing_sub(self, rhs: u32, borrow: bool) -> (u32, bool)",
+          "text": "Calculates self - rhs - borrow without the ability to overflow."
+        },
+        {
+          "code": "pub const fn abs_diff(self, other: u32) -> u32",
+          "text": "Computes the absolute difference between self and other."
+        },
+        {
+          "code": "pub const fn overflowing_mul(self, rhs: u32) -> (u32, bool)",
+          "text": "Calculates the multiplication of self and rhs."
+        },
+        {
+          "code": "pub const fn overflowing_div(self, rhs: u32) -> (u32, bool)",
+          "text": "Calculates the divisor when self is divided by rhs."
+        },
+        {
+          "code": "pub const fn overflowing_div_euclid(self, rhs: u32) -> (u32, bool)",
+          "text": "Calculates the quotient of Euclidean division self.div_euclid(rhs)."
+        },
+        {
+          "code": "pub const fn overflowing_rem(self, rhs: u32) -> (u32, bool)",
+          "text": "Calculates the remainder when self is divided by rhs."
+        },
+        {
+          "code": "pub const fn overflowing_rem_euclid(self, rhs: u32) -> (u32, bool)",
+          "text": "Calculates the remainder self.rem_euclid(rhs) as if by Euclidean division."
+        },
+        {
+          "code": "pub const fn overflowing_neg(self) -> (u32, bool)",
+          "text": "Negates self in an overflowing fashion."
+        },
+        {
+          "code": "pub const fn overflowing_shl(self, rhs: u32) -> (u32, bool)",
+          "text": "Shifts self left by rhs bits."
+        },
+        {
+          "code": "pub const fn overflowing_shr(self, rhs: u32) -> (u32, bool)",
+          "text": "Shifts self right by rhs bits."
+        },
+        {
+          "code": "pub const fn overflowing_pow(self, exp: u32) -> (u32, bool)",
+          "text": "Raises self to the power of exp, using exponentiation by squaring."
+        },
+        {
+          "code": "pub const fn pow(self, exp: u32) -> u32",
+          "text": "Raises self to the power of exp, using exponentiation by squaring."
+        },
+        {
+          "code": "pub const fn div_euclid(self, rhs: u32) -> u32",
+          "text": "Performs Euclidean division."
+        },
+        {
+          "code": "pub const fn rem_euclid(self, rhs: u32) -> u32",
+          "text": "Calculates the least remainder of self (mod rhs)."
+        },
+        {
+          "code": "pub const fn div_floor(self, rhs: u32) -> u32",
+          "text": "Calculates the quotient of self and rhs, rounding the result towards negative infinity."
+        },
+        {
+          "code": "pub const fn div_ceil(self, rhs: u32) -> u32",
+          "text": "Calculates the quotient of self and rhs, rounding the result towards positive infinity."
+        },
+        {
+          "code": "pub const fn next_multiple_of(self, rhs: u32) -> u32",
+          "text": "Calculates the smallest value greater than or equal to self that is a multiple of rhs."
+        },
+        {
+          "code": "pub const fn checked_next_multiple_of(self, rhs: u32) -> Option<u32>",
+          "text": "Calculates the smallest value greater than or equal to self that is a multiple of rhs. Returns None is rhs is zero or the operation would result in overflow."
+        },
+        {
+          "code": "pub const fn is_power_of_two(self) -> bool",
+          "text": "Returns true if and only if self == 2^k for some k."
+        },
+        {
+          "code": "pub const fn next_power_of_two(self) -> u32",
+          "text": "Returns the smallest power of two greater than or equal to self."
+        },
+        {
+          "code": "pub const fn checked_next_power_of_two(self) -> Option<u32>",
+          "text": "Returns the smallest power of two greater than or equal to n. If the next power of two is greater than the type’s maximum value, None is returned, otherwise the power of two is wrapped in Some."
+        },
+        {
+          "code": "pub fn wrapping_next_power_of_two(self) -> u32",
+          "text": "Returns the smallest power of two greater than or equal to n. If the next power of two is greater than the type’s maximum value, the return value is wrapped to 0."
+        },
+        {
+          "code": "pub const fn to_be_bytes(self) -> [u8; 4]",
+          "text": "Return the memory representation of this integer as a byte array in big-endian (network) byte order."
+        },
+        {
+          "code": "pub const fn to_le_bytes(self) -> [u8; 4]",
+          "text": "Return the memory representation of this integer as a byte array in little-endian byte order."
+        },
+        {
+          "code": "pub const fn to_ne_bytes(self) -> [u8; 4]",
+          "text": "Return the memory representation of this integer as a byte array in native byte order."
+        },
+        {
+          "code": "pub const fn from_be_bytes(bytes: [u8; 4]) -> u32",
+          "text": "Create a native endian integer value from its representation as a byte array in big endian."
+        },
+        {
+          "code": "pub const fn from_le_bytes(bytes: [u8; 4]) -> u32",
+          "text": "Create a native endian integer value from its representation as a byte array in little endian."
+        },
+        {
+          "code": "pub const fn from_ne_bytes(bytes: [u8; 4]) -> u32",
+          "text": "Create a native endian integer value from its memory representation as a byte array in native endianness."
+        },
+        {
+          "code": "pub fn widening_mul(self, rhs: u32) -> (u32, u32)",
+          "text": "Calculates the complete product self * rhs without the possibility to overflow."
+        },
+        {
+          "code": "pub fn carrying_mul(self, rhs: u32, carry: u32) -> (u32, u32)",
+          "text": "Calculates the “full multiplication” self * rhs + carry without the possibility to overflow."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'_> Add<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Add<u32>>::Output",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add(self, other: &u32) -> <u32 as Add<u32>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Add<&'_ u32> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Add<u32>>::Output",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add(self, other: &u32) -> <u32 as Add<u32>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Add<u32> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Add<u32>>::Output",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add(self, other: u32) -> <u32 as Add<u32>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Add<u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add(self, other: u32) -> u32",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> AddAssign<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn add_assign(&mut self, other: &u32)",
+              "text": "Performs the += operation."
+            }
+          ]
+        },
+        {
+          "title": "impl AddAssign<u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn add_assign(&mut self, other: u32)",
+              "text": "Performs the += operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Binary for u32",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> BitAnd<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as BitAnd<u32>>::Output",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand(self, other: &u32) -> <u32 as BitAnd<u32>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> BitAnd<&'_ u32> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as BitAnd<u32>>::Output",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand(self, other: &u32) -> <u32 as BitAnd<u32>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> BitAnd<u32> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as BitAnd<u32>>::Output",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand(self, other: u32) -> <u32 as BitAnd<u32>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitAnd<u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand(self, rhs: u32) -> u32",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> BitAndAssign<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn bitand_assign(&mut self, other: &u32)",
+              "text": "Performs the &= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitAndAssign<u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn bitand_assign(&mut self, other: u32)",
+              "text": "Performs the &= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> BitOr<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as BitOr<u32>>::Output",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor(self, other: &u32) -> <u32 as BitOr<u32>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> BitOr<&'_ u32> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as BitOr<u32>>::Output",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor(self, other: &u32) -> <u32 as BitOr<u32>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOr<NonZeroU32> for u32",
+          "methods": [
+            {
+              "code": "type Output = NonZeroU32",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor(self, rhs: NonZeroU32) -> <u32 as BitOr<NonZeroU32>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOr<u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor(self, rhs: u32) -> u32",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> BitOr<u32> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as BitOr<u32>>::Output",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor(self, other: u32) -> <u32 as BitOr<u32>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOr<u32> for NonZeroU32",
+          "methods": [
+            {
+              "code": "type Output = NonZeroU32",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor(self, rhs: u32) -> <NonZeroU32 as BitOr<u32>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> BitOrAssign<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn bitor_assign(&mut self, other: &u32)",
+              "text": "Performs the |= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOrAssign<u32> for NonZeroU32",
+          "methods": [
+            {
+              "code": "pub fn bitor_assign(&mut self, rhs: u32)",
+              "text": "Performs the |= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOrAssign<u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn bitor_assign(&mut self, other: u32)",
+              "text": "Performs the |= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> BitXor<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as BitXor<u32>>::Output",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor(self, other: &u32) -> <u32 as BitXor<u32>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> BitXor<&'_ u32> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as BitXor<u32>>::Output",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor(self, other: &u32) -> <u32 as BitXor<u32>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitXor<u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor(self, other: u32) -> u32",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> BitXor<u32> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as BitXor<u32>>::Output",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor(self, other: u32) -> <u32 as BitXor<u32>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> BitXorAssign<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn bitxor_assign(&mut self, other: &u32)",
+              "text": "Performs the ^= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitXorAssign<u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn bitxor_assign(&mut self, other: u32)",
+              "text": "Performs the ^= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for u32",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> u32",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for u32",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for u32",
+          "methods": [
+            {
+              "code": "pub fn default() -> u32",
+              "text": "Returns the default value of 0"
+            }
+          ]
+        },
+        {
+          "title": "impl Display for u32",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Div<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Div<u32>>::Output",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div(self, other: &u32) -> <u32 as Div<u32>>::Output",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Div<&'_ u32> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Div<u32>>::Output",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div(self, other: &u32) -> <u32 as Div<u32>>::Output",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Div<NonZeroU32> for u32",
+          "methods": [
+            {
+              "code": "pub fn div(self, other: NonZeroU32) -> u32",
+              "text": "This operation rounds towards zero, truncating any fractional part of the exact result, and cannot panic."
+            },
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the / operator."
+            }
+          ]
+        },
+        {
+          "title": "impl Div<u32> for Duration",
+          "methods": [
+            {
+              "code": "type Output = Duration",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div(self, rhs: u32) -> Duration",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Div<u32> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Div<u32>>::Output",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div(self, other: u32) -> <u32 as Div<u32>>::Output",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Div<u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div(self, other: u32) -> u32",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> DivAssign<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn div_assign(&mut self, other: &u32)",
+              "text": "Performs the /= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl DivAssign<u32> for Duration",
+          "methods": [
+            {
+              "code": "pub fn div_assign(&mut self, rhs: u32)",
+              "text": "Performs the /= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl DivAssign<u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn div_assign(&mut self, other: u32)",
+              "text": "Performs the /= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Ipv4Addr> for u32",
+          "methods": [
+            {
+              "code": "fn from(ip: Ipv4Addr) -> u32",
+              "text": "Converts an Ipv4Addr into a host byte order u32."
+            }
+          ]
+        },
+        {
+          "title": "impl From<NonZeroU32> for u32",
+          "methods": [
+            {
+              "code": "pub fn from(nonzero: NonZeroU32) -> u32",
+              "text": "Converts a NonZeroU32 into an u32"
+            }
+          ]
+        },
+        {
+          "title": "impl From<bool> for u32",
+          "methods": [
+            {
+              "code": "pub fn from(small: bool) -> u32",
+              "text": "Converts a bool to a u32. The resulting value is 0 for false and 1 for true values."
+            }
+          ]
+        },
+        {
+          "title": "impl From<char> for u32",
+          "methods": [
+            {
+              "code": "pub fn from(c: char) -> u32",
+              "text": "Converts a char into a u32."
+            }
+          ]
+        },
+        {
+          "title": "impl From<u16> for u32",
+          "methods": [
+            {
+              "code": "pub fn from(small: u16) -> u32",
+              "text": "Converts u16 to u32 losslessly."
+            }
+          ]
+        },
+        {
+          "title": "impl From<u32> for u128",
+          "methods": [
+            {
+              "code": "pub fn from(small: u32) -> u128",
+              "text": "Converts u32 to u128 losslessly."
+            }
+          ]
+        },
+        {
+          "title": "impl From<u32> for u64",
+          "methods": [
+            {
+              "code": "pub fn from(small: u32) -> u64",
+              "text": "Converts u32 to u64 losslessly."
+            }
+          ]
+        },
+        {
+          "title": "impl From<u32> for i64",
+          "methods": [
+            {
+              "code": "pub fn from(small: u32) -> i64",
+              "text": "Converts u32 to i64 losslessly."
+            }
+          ]
+        },
+        {
+          "title": "impl From<u32> for AtomicU32",
+          "methods": [
+            {
+              "code": "pub fn from(v: u32) -> AtomicU32",
+              "text": "Converts an u32 into an AtomicU32."
+            }
+          ]
+        },
+        {
+          "title": "impl From<u32> for f64",
+          "methods": [
+            {
+              "code": "pub fn from(small: u32) -> f64",
+              "text": "Converts u32 to f64 losslessly."
+            }
+          ]
+        },
+        {
+          "title": "impl From<u32> for i128",
+          "methods": [
+            {
+              "code": "pub fn from(small: u32) -> i128",
+              "text": "Converts u32 to i128 losslessly."
+            }
+          ]
+        },
+        {
+          "title": "impl From<u32> for Ipv4Addr",
+          "methods": [
+            {
+              "code": "fn from(ip: u32) -> Ipv4Addr",
+              "text": "Converts a host byte order u32 into an Ipv4Addr."
+            }
+          ]
+        },
+        {
+          "title": "impl From<u8> for u32",
+          "methods": [
+            {
+              "code": "pub fn from(small: u8) -> u32",
+              "text": "Converts u8 to u32 losslessly."
+            }
+          ]
+        },
+        {
+          "title": "impl FromStr for u32",
+          "methods": [
+            {
+              "code": "type Err = ParseIntError",
+              "text": "The associated error which can be returned from parsing."
+            },
+            {
+              "code": "pub fn from_str(src: &str) -> Result<u32, ParseIntError>",
+              "text": "Parses a string s to return a value of this type."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for u32",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, state: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "pub fn hash_slice<H>(data: &[u32], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl LowerExp for u32",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl LowerHex for u32",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Mul<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Mul<u32>>::Output",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul(self, other: &u32) -> <u32 as Mul<u32>>::Output",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Mul<&'_ u32> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Mul<u32>>::Output",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul(self, other: &u32) -> <u32 as Mul<u32>>::Output",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Mul<Duration> for u32",
+          "methods": [
+            {
+              "code": "type Output = Duration",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul(self, rhs: Duration) -> Duration",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Mul<u32> for Duration",
+          "methods": [
+            {
+              "code": "type Output = Duration",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul(self, rhs: u32) -> Duration",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Mul<u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul(self, other: u32) -> u32",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Mul<u32> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Mul<u32>>::Output",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul(self, other: u32) -> <u32 as Mul<u32>>::Output",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> MulAssign<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn mul_assign(&mut self, other: &u32)",
+              "text": "Performs the *= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl MulAssign<u32> for Duration",
+          "methods": [
+            {
+              "code": "pub fn mul_assign(&mut self, rhs: u32)",
+              "text": "Performs the *= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl MulAssign<u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn mul_assign(&mut self, other: u32)",
+              "text": "Performs the *= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Not for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the ! operator."
+            },
+            {
+              "code": "pub fn not(self) -> u32",
+              "text": "Performs the unary ! operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Not for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Not>::Output",
+              "text": "The resulting type after applying the ! operator."
+            },
+            {
+              "code": "pub fn not(self) -> <u32 as Not>::Output",
+              "text": "Performs the unary ! operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Octal for u32",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for u32",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &u32) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &u32) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &u32) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &u32) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &u32) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &u32) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &u32) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &u32) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Product<&'a u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> u32 where I: Iterator<Item = &'a u32>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl Product<u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> u32 where I: Iterator<Item = u32>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Rem<&'_ u32> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Rem<u32>>::Output",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem(self, other: &u32) -> <u32 as Rem<u32>>::Output",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Rem<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Rem<u32>>::Output",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem(self, other: &u32) -> <u32 as Rem<u32>>::Output",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Rem<NonZeroU32> for u32",
+          "methods": [
+            {
+              "code": "pub fn rem(self, other: NonZeroU32) -> u32",
+              "text": "This operation satisfies n % d == n - (n / d) * d, and cannot panic."
+            },
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the % operator."
+            }
+          ]
+        },
+        {
+          "title": "impl Rem<u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem(self, other: u32) -> u32",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Rem<u32> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Rem<u32>>::Output",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem(self, other: u32) -> <u32 as Rem<u32>>::Output",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> RemAssign<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn rem_assign(&mut self, other: &u32)",
+              "text": "Performs the %= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl RemAssign<u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn rem_assign(&mut self, other: u32)",
+              "text": "Performs the %= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ i128> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<i128>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &i128) -> <u32 as Shl<i128>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ i128> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<i128>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &i128) -> <u32 as Shl<i128>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ i16> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<i16>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &i16) -> <u32 as Shl<i16>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ i16> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<i16>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &i16) -> <u32 as Shl<i16>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ i32> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<i32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &i32) -> <u32 as Shl<i32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ i32> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<i32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &i32) -> <u32 as Shl<i32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ i64> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<i64>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &i64) -> <u32 as Shl<i64>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ i64> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<i64>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &i64) -> <u32 as Shl<i64>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ i8> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<i8>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &i8) -> <u32 as Shl<i8>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ i8> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<i8>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &i8) -> <u32 as Shl<i8>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ isize> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<isize>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &isize) -> <u32 as Shl<isize>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ isize> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<isize>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &isize) -> <u32 as Shl<isize>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ u128> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<u128>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u128) -> <u32 as Shl<u128>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ u128> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<u128>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u128) -> <u32 as Shl<u128>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ u16> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<u16>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u16) -> <u32 as Shl<u16>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ u16> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<u16>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u16) -> <u32 as Shl<u16>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ u32> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <u32 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ u32> for &'_ i16",
+          "methods": [
+            {
+              "code": "type Output = <i16 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <i16 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ u32> for &'_ i8",
+          "methods": [
+            {
+              "code": "type Output = <i8 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <i8 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ u32> for &'_ u16",
+          "methods": [
+            {
+              "code": "type Output = <u16 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <u16 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ u32> for &'_ u128",
+          "methods": [
+            {
+              "code": "type Output = <u128 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <u128 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ u32> for &'_ isize",
+          "methods": [
+            {
+              "code": "type Output = <isize as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <isize as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ u32> for u64",
+          "methods": [
+            {
+              "code": "type Output = <u64 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <u64 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ u32> for i64",
+          "methods": [
+            {
+              "code": "type Output = <i64 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <i64 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ u32> for usize",
+          "methods": [
+            {
+              "code": "type Output = <usize as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <usize as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ u32> for u16",
+          "methods": [
+            {
+              "code": "type Output = <u16 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <u16 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ u32> for u128",
+          "methods": [
+            {
+              "code": "type Output = <u128 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <u128 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ u32> for i128",
+          "methods": [
+            {
+              "code": "type Output = <i128 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <i128 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ u32> for isize",
+          "methods": [
+            {
+              "code": "type Output = <isize as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <isize as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ u32> for &'_ u64",
+          "methods": [
+            {
+              "code": "type Output = <u64 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <u64 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ u32> for i16",
+          "methods": [
+            {
+              "code": "type Output = <i16 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <i16 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ u32> for &'_ i64",
+          "methods": [
+            {
+              "code": "type Output = <i64 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <i64 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ u32> for &'_ i128",
+          "methods": [
+            {
+              "code": "type Output = <i128 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <i128 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <u32 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ u32> for i32",
+          "methods": [
+            {
+              "code": "type Output = <i32 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <i32 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ u32> for u8",
+          "methods": [
+            {
+              "code": "type Output = <u8 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <u8 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ u32> for &'_ u8",
+          "methods": [
+            {
+              "code": "type Output = <u8 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <u8 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ u32> for i8",
+          "methods": [
+            {
+              "code": "type Output = <i8 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <i8 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ u32> for &'_ i32",
+          "methods": [
+            {
+              "code": "type Output = <i32 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <i32 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ u32> for &'_ usize",
+          "methods": [
+            {
+              "code": "type Output = <usize as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u32) -> <usize as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ u64> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<u64>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u64) -> <u32 as Shl<u64>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ u64> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<u64>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u64) -> <u32 as Shl<u64>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ u8> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<u8>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u8) -> <u32 as Shl<u8>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ u8> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<u8>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &u8) -> <u32 as Shl<u8>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shl<&'_ usize> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<usize>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &usize) -> <u32 as Shl<usize>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shl<&'_ usize> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<usize>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: &usize) -> <u32 as Shl<usize>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<i128> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: i128) -> u32",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<i128> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<i128>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: i128) -> <u32 as Shl<i128>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<i16> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<i16>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: i16) -> <u32 as Shl<i16>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<i16> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: i16) -> u32",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<i32> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: i32) -> u32",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<i32> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<i32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: i32) -> <u32 as Shl<i32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<i64> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: i64) -> u32",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<i64> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<i64>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: i64) -> <u32 as Shl<i64>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<i8> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<i8>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: i8) -> <u32 as Shl<i8>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<i8> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: i8) -> u32",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<isize> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: isize) -> u32",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<isize> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<isize>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: isize) -> <u32 as Shl<isize>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<u128> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u128) -> u32",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<u128> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<u128>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u128) -> <u32 as Shl<u128>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<u16> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<u16>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u16) -> <u32 as Shl<u16>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<u16> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u16) -> u32",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<u32> for usize",
+          "methods": [
+            {
+              "code": "type Output = usize",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> usize",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<u32> for u16",
+          "methods": [
+            {
+              "code": "type Output = u16",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> u16",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<u32> for i8",
+          "methods": [
+            {
+              "code": "type Output = i8",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> i8",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<u32> for &'a usize",
+          "methods": [
+            {
+              "code": "type Output = <usize as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> <usize as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<u32> for isize",
+          "methods": [
+            {
+              "code": "type Output = isize",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> isize",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<u32> for &'a isize",
+          "methods": [
+            {
+              "code": "type Output = <isize as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> <isize as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<u32> for i64",
+          "methods": [
+            {
+              "code": "type Output = i64",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> i64",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<u32> for i32",
+          "methods": [
+            {
+              "code": "type Output = i32",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> i32",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> u32",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<u32> for i128",
+          "methods": [
+            {
+              "code": "type Output = i128",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> i128",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<u32> for &'a u64",
+          "methods": [
+            {
+              "code": "type Output = <u64 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> <u64 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<u32> for &'a i16",
+          "methods": [
+            {
+              "code": "type Output = <i16 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> <i16 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<u32> for u128",
+          "methods": [
+            {
+              "code": "type Output = u128",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> u128",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<u32> for u64",
+          "methods": [
+            {
+              "code": "type Output = u64",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> u64",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<u32> for &'a u16",
+          "methods": [
+            {
+              "code": "type Output = <u16 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> <u16 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<u32> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> <u32 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<u32> for &'a u8",
+          "methods": [
+            {
+              "code": "type Output = <u8 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> <u8 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<u32> for &'a i32",
+          "methods": [
+            {
+              "code": "type Output = <i32 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> <i32 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<u32> for &'a u128",
+          "methods": [
+            {
+              "code": "type Output = <u128 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> <u128 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<u32> for &'a i128",
+          "methods": [
+            {
+              "code": "type Output = <i128 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> <i128 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<u32> for &'a i64",
+          "methods": [
+            {
+              "code": "type Output = <i64 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> <i64 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<u32> for &'a i8",
+          "methods": [
+            {
+              "code": "type Output = <i8 as Shl<u32>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> <i8 as Shl<u32>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<u32> for u8",
+          "methods": [
+            {
+              "code": "type Output = u8",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> u8",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<u32> for i16",
+          "methods": [
+            {
+              "code": "type Output = i16",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u32) -> i16",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<u64> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u64) -> u32",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<u64> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<u64>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u64) -> <u32 as Shl<u64>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<u8> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<u8>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u8) -> <u32 as Shl<u8>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<u8> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: u8) -> u32",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shl<usize> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: usize) -> u32",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shl<usize> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shl<usize>>::Output",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl(self, other: usize) -> <u32 as Shl<usize>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ i128> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &i128)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ i16> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &i16)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ i32> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &i32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ i64> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &i64)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ i8> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &i8)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ isize> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &isize)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ u128> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &u128)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ u16> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &u16)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ u32> for isize",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ u32> for i128",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ u32> for i64",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ u32> for i16",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ u32> for u64",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ u32> for u128",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ u32> for u8",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ u32> for u16",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ u32> for i8",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ u32> for usize",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ u32> for i32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ u64> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &u64)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ u8> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &u8)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShlAssign<&'_ usize> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: &usize)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<i128> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: i128)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<i16> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: i16)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<i32> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: i32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<i64> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: i64)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<i8> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: i8)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<isize> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: isize)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<u128> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: u128)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<u16> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: u16)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<u32> for i32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<u32> for u64",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<u32> for i8",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<u32> for u16",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<u32> for usize",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<u32> for i64",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<u32> for u128",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<u32> for i128",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<u32> for u8",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<u32> for isize",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<u32> for i16",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: u32)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<u64> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: u64)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<u8> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: u8)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShlAssign<usize> for u32",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, other: usize)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ i128> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<i128>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &i128) -> <u32 as Shr<i128>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ i128> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<i128>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &i128) -> <u32 as Shr<i128>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ i16> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<i16>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &i16) -> <u32 as Shr<i16>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ i16> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<i16>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &i16) -> <u32 as Shr<i16>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ i32> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<i32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &i32) -> <u32 as Shr<i32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ i32> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<i32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &i32) -> <u32 as Shr<i32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ i64> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<i64>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &i64) -> <u32 as Shr<i64>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ i64> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<i64>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &i64) -> <u32 as Shr<i64>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ i8> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<i8>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &i8) -> <u32 as Shr<i8>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ i8> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<i8>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &i8) -> <u32 as Shr<i8>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ isize> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<isize>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &isize) -> <u32 as Shr<isize>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ isize> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<isize>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &isize) -> <u32 as Shr<isize>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ u128> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<u128>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u128) -> <u32 as Shr<u128>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ u128> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<u128>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u128) -> <u32 as Shr<u128>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ u16> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<u16>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u16) -> <u32 as Shr<u16>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ u16> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<u16>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u16) -> <u32 as Shr<u16>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ u32> for u64",
+          "methods": [
+            {
+              "code": "type Output = <u64 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <u64 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <u32 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ u32> for i128",
+          "methods": [
+            {
+              "code": "type Output = <i128 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <i128 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ u32> for &'_ i16",
+          "methods": [
+            {
+              "code": "type Output = <i16 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <i16 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ u32> for &'_ usize",
+          "methods": [
+            {
+              "code": "type Output = <usize as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <usize as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ u32> for i16",
+          "methods": [
+            {
+              "code": "type Output = <i16 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <i16 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ u32> for &'_ u8",
+          "methods": [
+            {
+              "code": "type Output = <u8 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <u8 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ u32> for isize",
+          "methods": [
+            {
+              "code": "type Output = <isize as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <isize as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ u32> for &'_ isize",
+          "methods": [
+            {
+              "code": "type Output = <isize as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <isize as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ u32> for i32",
+          "methods": [
+            {
+              "code": "type Output = <i32 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <i32 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ u32> for u8",
+          "methods": [
+            {
+              "code": "type Output = <u8 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <u8 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ u32> for u16",
+          "methods": [
+            {
+              "code": "type Output = <u16 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <u16 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ u32> for &'_ i128",
+          "methods": [
+            {
+              "code": "type Output = <i128 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <i128 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ u32> for usize",
+          "methods": [
+            {
+              "code": "type Output = <usize as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <usize as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ u32> for i64",
+          "methods": [
+            {
+              "code": "type Output = <i64 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <i64 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ u32> for &'_ i32",
+          "methods": [
+            {
+              "code": "type Output = <i32 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <i32 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ u32> for &'_ u16",
+          "methods": [
+            {
+              "code": "type Output = <u16 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <u16 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ u32> for &'_ u64",
+          "methods": [
+            {
+              "code": "type Output = <u64 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <u64 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ u32> for &'_ i64",
+          "methods": [
+            {
+              "code": "type Output = <i64 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <i64 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ u32> for i8",
+          "methods": [
+            {
+              "code": "type Output = <i8 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <i8 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ u32> for u128",
+          "methods": [
+            {
+              "code": "type Output = <u128 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <u128 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ u32> for &'_ u128",
+          "methods": [
+            {
+              "code": "type Output = <u128 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <u128 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ u32> for &'_ i8",
+          "methods": [
+            {
+              "code": "type Output = <i8 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <i8 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ u32> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u32) -> <u32 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ u64> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<u64>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u64) -> <u32 as Shr<u64>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ u64> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<u64>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u64) -> <u32 as Shr<u64>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ u8> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<u8>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u8) -> <u32 as Shr<u8>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ u8> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<u8>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &u8) -> <u32 as Shr<u8>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Shr<&'_ usize> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<usize>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &usize) -> <u32 as Shr<usize>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Shr<&'_ usize> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<usize>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: &usize) -> <u32 as Shr<usize>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<i128> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: i128) -> u32",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<i128> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<i128>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: i128) -> <u32 as Shr<i128>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<i16> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<i16>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: i16) -> <u32 as Shr<i16>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<i16> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: i16) -> u32",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<i32> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<i32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: i32) -> <u32 as Shr<i32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<i32> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: i32) -> u32",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<i64> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: i64) -> u32",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<i64> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<i64>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: i64) -> <u32 as Shr<i64>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<i8> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: i8) -> u32",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<i8> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<i8>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: i8) -> <u32 as Shr<i8>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<isize> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: isize) -> u32",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<isize> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<isize>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: isize) -> <u32 as Shr<isize>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<u128> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u128) -> u32",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<u128> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<u128>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u128) -> <u32 as Shr<u128>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<u16> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<u16>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u16) -> <u32 as Shr<u16>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<u16> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u16) -> u32",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<u32> for usize",
+          "methods": [
+            {
+              "code": "type Output = usize",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> usize",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> u32",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<u32> for isize",
+          "methods": [
+            {
+              "code": "type Output = isize",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> isize",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<u32> for &'a i8",
+          "methods": [
+            {
+              "code": "type Output = <i8 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> <i8 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<u32> for &'a i128",
+          "methods": [
+            {
+              "code": "type Output = <i128 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> <i128 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<u32> for i8",
+          "methods": [
+            {
+              "code": "type Output = i8",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> i8",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<u32> for &'a isize",
+          "methods": [
+            {
+              "code": "type Output = <isize as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> <isize as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<u32> for &'a u64",
+          "methods": [
+            {
+              "code": "type Output = <u64 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> <u64 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<u32> for &'a i32",
+          "methods": [
+            {
+              "code": "type Output = <i32 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> <i32 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<u32> for &'a i64",
+          "methods": [
+            {
+              "code": "type Output = <i64 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> <i64 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<u32> for u8",
+          "methods": [
+            {
+              "code": "type Output = u8",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> u8",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<u32> for &'a u8",
+          "methods": [
+            {
+              "code": "type Output = <u8 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> <u8 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<u32> for u64",
+          "methods": [
+            {
+              "code": "type Output = u64",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> u64",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<u32> for u128",
+          "methods": [
+            {
+              "code": "type Output = u128",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> u128",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<u32> for i32",
+          "methods": [
+            {
+              "code": "type Output = i32",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> i32",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<u32> for i128",
+          "methods": [
+            {
+              "code": "type Output = i128",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> i128",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<u32> for i64",
+          "methods": [
+            {
+              "code": "type Output = i64",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> i64",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<u32> for &'a u128",
+          "methods": [
+            {
+              "code": "type Output = <u128 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> <u128 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<u32> for &'a usize",
+          "methods": [
+            {
+              "code": "type Output = <usize as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> <usize as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<u32> for u16",
+          "methods": [
+            {
+              "code": "type Output = u16",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> u16",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<u32> for &'a i16",
+          "methods": [
+            {
+              "code": "type Output = <i16 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> <i16 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<u32> for i16",
+          "methods": [
+            {
+              "code": "type Output = i16",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> i16",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<u32> for &'a u16",
+          "methods": [
+            {
+              "code": "type Output = <u16 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> <u16 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<u32> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<u32>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u32) -> <u32 as Shr<u32>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<u64> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u64) -> u32",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<u64> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<u64>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u64) -> <u32 as Shr<u64>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<u8> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<u8>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u8) -> <u32 as Shr<u8>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<u8> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: u8) -> u32",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Shr<usize> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: usize) -> u32",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Shr<usize> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Shr<usize>>::Output",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr(self, other: usize) -> <u32 as Shr<usize>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ i128> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &i128)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ i16> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &i16)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ i32> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &i32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ i64> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &i64)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ i8> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &i8)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ isize> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &isize)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ u128> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &u128)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ u16> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &u16)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ u32> for i16",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ u32> for i32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ u32> for u128",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ u32> for i64",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ u32> for u16",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ u32> for u8",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ u32> for i8",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ u32> for isize",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ u32> for usize",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ u32> for i128",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ u32> for u64",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ u64> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &u64)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ u8> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &u8)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> ShrAssign<&'_ usize> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: &usize)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<i128> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: i128)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<i16> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: i16)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<i32> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: i32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<i64> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: i64)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<i8> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: i8)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<isize> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: isize)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<u128> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: u128)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<u16> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: u16)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<u32> for i16",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<u32> for u64",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<u32> for usize",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<u32> for i32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<u32> for u128",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<u32> for u8",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<u32> for i128",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<u32> for i8",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<u32> for u16",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<u32> for i64",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<u32> for isize",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: u32)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<u64> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: u64)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<u8> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: u8)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl ShrAssign<usize> for u32",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, other: usize)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl SimdElement for u32",
+          "methods": [
+            {
+              "code": "type Mask = i32",
+              "text": "The mask element type corresponding to this element type."
+            }
+          ]
+        },
+        {
+          "title": "impl Step for u32",
+          "methods": [
+            {
+              "code": "pub unsafe fn forward_unchecked(start: u32, n: usize) -> u32",
+              "text": "Returns the value that would be obtained by taking the successor of self count times."
+            },
+            {
+              "code": "pub unsafe fn backward_unchecked(start: u32, n: usize) -> u32",
+              "text": "Returns the value that would be obtained by taking the predecessor of self count times."
+            },
+            {
+              "code": "pub fn forward(start: u32, n: usize) -> u32",
+              "text": "Returns the value that would be obtained by taking the successor of self count times."
+            },
+            {
+              "code": "pub fn backward(start: u32, n: usize) -> u32",
+              "text": "Returns the value that would be obtained by taking the predecessor of self count times."
+            },
+            {
+              "code": "pub fn steps_between(start: &u32, end: &u32) -> Option<usize>",
+              "text": "Returns the number of successor steps required to get from start to end."
+            },
+            {
+              "code": "pub fn forward_checked(start: u32, n: usize) -> Option<u32>",
+              "text": "Returns the value that would be obtained by taking the successor of self count times."
+            },
+            {
+              "code": "pub fn backward_checked(start: u32, n: usize) -> Option<u32>",
+              "text": "Returns the value that would be obtained by taking the predecessor of self count times."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Sub<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Sub<u32>>::Output",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub(self, other: &u32) -> <u32 as Sub<u32>>::Output",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> Sub<&'_ u32> for &'_ u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Sub<u32>>::Output",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub(self, other: &u32) -> <u32 as Sub<u32>>::Output",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Sub<u32> for u32",
+          "methods": [
+            {
+              "code": "type Output = u32",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub(self, other: u32) -> u32",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Sub<u32> for &'a u32",
+          "methods": [
+            {
+              "code": "type Output = <u32 as Sub<u32>>::Output",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub(self, other: u32) -> <u32 as Sub<u32>>::Output",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> SubAssign<&'_ u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn sub_assign(&mut self, other: &u32)",
+              "text": "Performs the -= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl SubAssign<u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn sub_assign(&mut self, other: u32)",
+              "text": "Performs the -= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Sum<&'a u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> u32 where I: Iterator<Item = &'a u32>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl Sum<u32> for u32",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> u32 where I: Iterator<Item = u32>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<i128> for u32",
+          "methods": [
+            {
+              "code": "pub fn try_from(u: i128) -> Result<u32, <u32 as TryFrom<i128>>::Error>",
+              "text": "Try to create the target number type from a source number type. This returns an error if the source value is outside of the range of the target type."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<i16> for u32",
+          "methods": [
+            {
+              "code": "pub fn try_from(u: i16) -> Result<u32, <u32 as TryFrom<i16>>::Error>",
+              "text": "Try to create the target number type from a source number type. This returns an error if the source value is outside of the range of the target type."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<i32> for u32",
+          "methods": [
+            {
+              "code": "pub fn try_from(u: i32) -> Result<u32, <u32 as TryFrom<i32>>::Error>",
+              "text": "Try to create the target number type from a source number type. This returns an error if the source value is outside of the range of the target type."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<i64> for u32",
+          "methods": [
+            {
+              "code": "pub fn try_from(u: i64) -> Result<u32, <u32 as TryFrom<i64>>::Error>",
+              "text": "Try to create the target number type from a source number type. This returns an error if the source value is outside of the range of the target type."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<i8> for u32",
+          "methods": [
+            {
+              "code": "pub fn try_from(u: i8) -> Result<u32, <u32 as TryFrom<i8>>::Error>",
+              "text": "Try to create the target number type from a source number type. This returns an error if the source value is outside of the range of the target type."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<isize> for u32",
+          "methods": [
+            {
+              "code": "pub fn try_from(u: isize) -> Result<u32, <u32 as TryFrom<isize>>::Error>",
+              "text": "Try to create the target number type from a source number type. This returns an error if the source value is outside of the range of the target type."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<u128> for u32",
+          "methods": [
+            {
+              "code": "pub fn try_from(u: u128) -> Result<u32, <u32 as TryFrom<u128>>::Error>",
+              "text": "Try to create the target number type from a source number type. This returns an error if the source value is outside of the range of the target type."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<u32> for i16",
+          "methods": [
+            {
+              "code": "pub fn try_from(u: u32) -> Result<i16, <i16 as TryFrom<u32>>::Error>",
+              "text": "Try to create the target number type from a source number type. This returns an error if the source value is outside of the range of the target type."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<u32> for i32",
+          "methods": [
+            {
+              "code": "pub fn try_from(u: u32) -> Result<i32, <i32 as TryFrom<u32>>::Error>",
+              "text": "Try to create the target number type from a source number type. This returns an error if the source value is outside of the range of the target type."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<u32> for NonZeroU32",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: u32) -> Result<NonZeroU32, <NonZeroU32 as TryFrom<u32>>::Error>",
+              "text": "Attempts to convert u32 to NonZeroU32."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<u32> for isize",
+          "methods": [
+            {
+              "code": "pub fn try_from(value: u32) -> Result<isize, <isize as TryFrom<u32>>::Error>",
+              "text": "Try to create the target number type from a source number type. This returns an error if the source value is outside of the range of the target type."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<u32> for usize",
+          "methods": [
+            {
+              "code": "pub fn try_from(value: u32) -> Result<usize, <usize as TryFrom<u32>>::Error>",
+              "text": "Try to create the target number type from a source number type. This returns an error if the source value is outside of the range of the target type."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<u32> for u8",
+          "methods": [
+            {
+              "code": "pub fn try_from(u: u32) -> Result<u8, <u8 as TryFrom<u32>>::Error>",
+              "text": "Try to create the target number type from a source number type. This returns an error if the source value is outside of the range of the target type."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<u32> for char",
+          "methods": [
+            {
+              "code": "type Error = CharTryFromError",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "pub fn try_from(i: u32) -> Result<char, <char as TryFrom<u32>>::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<u32> for i8",
+          "methods": [
+            {
+              "code": "pub fn try_from(u: u32) -> Result<i8, <i8 as TryFrom<u32>>::Error>",
+              "text": "Try to create the target number type from a source number type. This returns an error if the source value is outside of the range of the target type."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<u32> for u16",
+          "methods": [
+            {
+              "code": "pub fn try_from(u: u32) -> Result<u16, <u16 as TryFrom<u32>>::Error>",
+              "text": "Try to create the target number type from a source number type. This returns an error if the source value is outside of the range of the target type."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<u64> for u32",
+          "methods": [
+            {
+              "code": "pub fn try_from(u: u64) -> Result<u32, <u32 as TryFrom<u64>>::Error>",
+              "text": "Try to create the target number type from a source number type. This returns an error if the source value is outside of the range of the target type."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<usize> for u32",
+          "methods": [
+            {
+              "code": "pub fn try_from(u: usize) -> Result<u32, <u32 as TryFrom<usize>>::Error>",
+              "text": "Try to create the target number type from a source number type. This returns an error if the source value is outside of the range of the target type."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl UpperExp for u32",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl UpperHex for u32",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

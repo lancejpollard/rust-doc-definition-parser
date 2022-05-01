@@ -1,0 +1,36 @@
+{
+  "title": "Struct rustls::KeyLogFile",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> Self",
+          "text": "Makes a new KeyLogFile. The environment variable is inspected and the named file is opened during this call."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl KeyLog for KeyLogFile",
+          "methods": [
+            {
+              "code": "fn log(&self, label: &str, client_random: &[u8], secret: &[u8])",
+              "text": "Log the given secret. client_random is provided for session identification. label describes precisely what secret means:"
+            },
+            {
+              "code": "fn will_log(&self, _label: &str) -> bool",
+              "text": "Indicates whether the secret with label label will be logged."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "title": "Struct std::simd::LaneCount",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const BITMASK_LEN: usize",
+          "text": "The number of bytes in a bitmask with this many lanes."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl SupportedLaneCount for LaneCount<2_usize>",
+          "methods": []
+        },
+        {
+          "title": "impl SupportedLaneCount for LaneCount<8_usize>",
+          "methods": []
+        },
+        {
+          "title": "impl SupportedLaneCount for LaneCount<32_usize>",
+          "methods": []
+        },
+        {
+          "title": "impl SupportedLaneCount for LaneCount<64_usize>",
+          "methods": []
+        },
+        {
+          "title": "impl SupportedLaneCount for LaneCount<4_usize>",
+          "methods": []
+        },
+        {
+          "title": "impl SupportedLaneCount for LaneCount<16_usize>",
+          "methods": []
+        },
+        {
+          "title": "impl SupportedLaneCount for LaneCount<1_usize>",
+          "methods": []
+        }
+      ]
+    }
+  ]
+}

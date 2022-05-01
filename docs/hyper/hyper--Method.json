@@ -1,0 +1,219 @@
+{
+  "title": "Struct hyper::Method",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRef<str> for Method",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &str",
+              "text": "Converts this type into a shared reference of the (usually inferred) input type."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for Method",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Method",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Method",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for Method",
+          "methods": [
+            {
+              "code": "fn default() -> Method",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for Method",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> From<&'a Method> for Method",
+          "methods": [
+            {
+              "code": "fn from(t: &'a Method) -> Method",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl FromStr for Method",
+          "methods": [
+            {
+              "code": "type Err = InvalidMethod",
+              "text": "The associated error which can be returned from parsing."
+            },
+            {
+              "code": "fn from_str(t: &str) -> Result<Method, <Method as FromStr>::Err>",
+              "text": "Parses a string s to return a value of this type."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for Method",
+          "methods": [
+            {
+              "code": "fn hash<__H>(&self, state: &mut __H) where __H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> PartialEq<&'a Method> for Method",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &&'a Method) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> PartialEq<&'a str> for Method",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &&'a str) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> PartialEq<Method> for &'a Method",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Method) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Method> for str",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Method) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> PartialEq<Method> for &'a str",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Method) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Method> for Method",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Method) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Method) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<str> for Method",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &str) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> TryFrom<&'a [u8]> for Method",
+          "methods": [
+            {
+              "code": "type Error = InvalidMethod",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "fn try_from(t: &'a [u8]) -> Result<Method, <Method as TryFrom<&'a [u8]>>::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> TryFrom<&'a str> for Method",
+          "methods": [
+            {
+              "code": "type Error = InvalidMethod",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "fn try_from(t: &'a str) -> Result<Method, <Method as TryFrom<&'a str>>::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

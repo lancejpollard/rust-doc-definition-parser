@@ -1,0 +1,56 @@
+{
+  "title": "Struct rustls::server::AllowAnyAnonymousOrAuthenticatedClient",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(roots: RootCertStore) -> Arc<dyn ClientCertVerifier>",
+          "text": "Construct a new AllowAnyAnonymousOrAuthenticatedClient."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl ClientCertVerifier for AllowAnyAnonymousOrAuthenticatedClient",
+          "methods": [
+            {
+              "code": "fn offer_client_auth(&self) -> bool",
+              "text": "Returns true to enable the server to request a client certificate and false to skip requesting a client certificate. Defaults to true."
+            },
+            {
+              "code": "fn client_auth_mandatory(&self) -> Option<bool>",
+              "text": "Return Some(true) to require a client certificate and Some(false) to make client authentication optional. Return None to abort the connection. Defaults to Some(self.offer_client_auth())."
+            },
+            {
+              "code": "fn client_auth_root_subjects(&self) -> Option<DistinguishedNames>",
+              "text": "Returns the subject names of the client authentication trust anchors to share with the client when requesting client authentication."
+            },
+            {
+              "code": "fn verify_client_cert( &self, end_entity: &Certificate, intermediates: &[Certificate], now: SystemTime) -> Result<ClientCertVerified, Error>",
+              "text": "Verify the end-entity certificate end_entity is valid for the and chains to at least one of the trust anchors in roots."
+            },
+            {
+              "code": "fn verify_tls12_signature( &self, message: &[u8], cert: &Certificate, dss: &DigitallySignedStruct) -> Result<HandshakeSignatureValid, Error>",
+              "text": "Verify a signature allegedly by the given server certificate."
+            },
+            {
+              "code": "fn verify_tls13_signature( &self, message: &[u8], cert: &Certificate, dss: &DigitallySignedStruct) -> Result<HandshakeSignatureValid, Error>",
+              "text": "Verify a signature allegedly by the given server certificate."
+            },
+            {
+              "code": "fn supported_verify_schemes(&self) -> Vec<SignatureScheme>",
+              "text": "Return the list of SignatureSchemes that this verifier will handle, in verify_tls12_signature and verify_tls13_signature calls."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

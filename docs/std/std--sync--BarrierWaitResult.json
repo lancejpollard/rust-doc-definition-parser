@@ -1,0 +1,32 @@
+{
+  "title": "Struct std::sync::BarrierWaitResult",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn is_leader(&self) -> bool",
+          "text": "Returns true if this thread is the “leader thread” for the call to Barrier::wait()."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for BarrierWaitResult",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

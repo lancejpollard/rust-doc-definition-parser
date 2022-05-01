@@ -1,0 +1,49 @@
+{
+  "title": "Struct tokio::io::Empty",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsyncBufRead for Empty",
+          "methods": [
+            {
+              "code": "fn poll_fill_buf( self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<&[u8]>>",
+              "text": "Attempts to return the contents of the internal buffer, filling it with more data from the inner reader if it is empty."
+            },
+            {
+              "code": "fn consume(self: Pin<&mut Self>, _: usize)",
+              "text": "Tells this buffer that amt bytes have been consumed from the buffer, so they should no longer be returned in calls to poll_read."
+            }
+          ]
+        },
+        {
+          "title": "impl AsyncRead for Empty",
+          "methods": [
+            {
+              "code": "fn poll_read( self: Pin<&mut Self>, cx: &mut Context<'_>, _: &mut ReadBuf<'_>) -> Poll<Result<()>>",
+              "text": "Attempts to read from the AsyncRead into buf."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Empty",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

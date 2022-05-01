@@ -1,0 +1,30 @@
+{
+  "title": "Struct rustls::internal::msgs::fragmenter::MessageFragmenter",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(max_fragment_size: Option<usize>) -> Result<Self, Error>",
+          "text": "Make a new fragmenter."
+        },
+        {
+          "code": "pub fn fragment(&self, msg: PlainMessage, out: &mut VecDeque<PlainMessage>)",
+          "text": "Take the Message msg and re-fragment it into new messages whose fragment is no more than max_frag. The new messages are appended to the out deque. Payloads are copied."
+        },
+        {
+          "code": "pub fn fragment_borrow<'a>( &self, typ: ContentType, version: ProtocolVersion, payload: &'a [u8], out: &mut VecDeque<BorrowedPlainMessage<'a>>)",
+          "text": "Enqueue borrowed fragments of (version, typ, payload) which are no longer than max_frag onto the out deque."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

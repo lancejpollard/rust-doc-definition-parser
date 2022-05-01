@@ -1,0 +1,160 @@
+{
+  "title": "Struct std::mem::ManuallyDrop",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn new(value: T) -> ManuallyDrop<T>",
+          "text": "Wrap a value to be manually dropped."
+        },
+        {
+          "code": "pub const fn into_inner(slot: ManuallyDrop<T>) -> T",
+          "text": "Extracts the value from the ManuallyDrop container."
+        },
+        {
+          "code": "pub unsafe fn take(slot: &mut ManuallyDrop<T>) -> T",
+          "text": "Takes the value from the ManuallyDrop<T> container out."
+        },
+        {
+          "code": "pub unsafe fn drop(slot: &mut ManuallyDrop<T>)",
+          "text": "Manually drops the contained value. This is exactly equivalent to calling ptr::drop_in_place with a pointer to the contained value. As such, unless the contained value is a packed struct, the destructor will be called in-place without moving the value, and thus can be used to safely drop pinned data."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Clone for ManuallyDrop<T> where T: Clone + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> ManuallyDrop<T>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for ManuallyDrop<T> where T: Debug + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for ManuallyDrop<T> where T: Default + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn default() -> ManuallyDrop<T>",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Deref for ManuallyDrop<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "type Target = T",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "pub fn deref(&self) -> &T",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> DerefMut for ManuallyDrop<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn deref_mut(&mut self) -> &mut T",
+              "text": "Mutably dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Hash for ManuallyDrop<T> where T: Hash + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<__H>(&self, state: &mut __H) where __H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Ord for ManuallyDrop<T> where T: Ord + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &ManuallyDrop<T>) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialEq<ManuallyDrop<T>> for ManuallyDrop<T> where T: PartialEq<T> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &ManuallyDrop<T>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &ManuallyDrop<T>) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialOrd<ManuallyDrop<T>> for ManuallyDrop<T> where T: PartialOrd<T> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &ManuallyDrop<T>) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

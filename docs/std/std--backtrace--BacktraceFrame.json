@@ -1,0 +1,27 @@
+{
+  "title": "Struct std::backtrace::BacktraceFrame",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for BacktraceFrame",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

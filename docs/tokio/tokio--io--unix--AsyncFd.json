@@ -1,0 +1,98 @@
+{
+  "title": "Struct tokio::io::unix::AsyncFd",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(inner: T) -> Result<Self> where T: AsRawFd,",
+          "text": "Creates an AsyncFd backed by (and taking ownership of) an object implementing AsRawFd. The backing file descriptor is cached at the time of creation."
+        },
+        {
+          "code": "pub fn with_interest(inner: T, interest: Interest) -> Result<Self> where T: AsRawFd,",
+          "text": "Creates new instance as new with additional ability to customize interest, allowing to specify whether file descriptor will be polled for read, write or both."
+        },
+        {
+          "code": "pub fn get_ref(&self) -> &T",
+          "text": "Returns a shared reference to the backing object of this AsyncFd."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut T",
+          "text": "Returns a mutable reference to the backing object of this AsyncFd."
+        },
+        {
+          "code": "pub fn into_inner(self) -> T",
+          "text": "Deregisters this file descriptor and returns ownership of the backing object."
+        },
+        {
+          "code": "pub fn poll_read_ready<'a>( &'a self, cx: &mut Context<'_>) -> Poll<Result<AsyncFdReadyGuard<'a, T>>>",
+          "text": "Polls for read readiness."
+        },
+        {
+          "code": "pub fn poll_read_ready_mut<'a>( &'a mut self, cx: &mut Context<'_>) -> Poll<Result<AsyncFdReadyMutGuard<'a, T>>>",
+          "text": "Polls for read readiness."
+        },
+        {
+          "code": "pub fn poll_write_ready<'a>( &'a self, cx: &mut Context<'_>) -> Poll<Result<AsyncFdReadyGuard<'a, T>>>",
+          "text": "Polls for write readiness."
+        },
+        {
+          "code": "pub fn poll_write_ready_mut<'a>( &'a mut self, cx: &mut Context<'_>) -> Poll<Result<AsyncFdReadyMutGuard<'a, T>>>",
+          "text": "Polls for write readiness."
+        },
+        {
+          "code": "pub async fn readable<'a>(&'a self) -> Result<AsyncFdReadyGuard<'a, T>>",
+          "text": "Waits for the file descriptor to become readable, returning a AsyncFdReadyGuard that must be dropped to resume read-readiness polling."
+        },
+        {
+          "code": "pub async fn readable_mut<'a>( &'a mut self) -> Result<AsyncFdReadyMutGuard<'a, T>>",
+          "text": "Waits for the file descriptor to become readable, returning a AsyncFdReadyMutGuard that must be dropped to resume read-readiness polling."
+        },
+        {
+          "code": "pub async fn writable<'a>(&'a self) -> Result<AsyncFdReadyGuard<'a, T>>",
+          "text": "Waits for the file descriptor to become writable, returning a AsyncFdReadyGuard that must be dropped to resume write-readiness polling."
+        },
+        {
+          "code": "pub async fn writable_mut<'a>( &'a mut self) -> Result<AsyncFdReadyMutGuard<'a, T>>",
+          "text": "Waits for the file descriptor to become writable, returning a AsyncFdReadyMutGuard that must be dropped to resume write-readiness polling."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T: AsRawFd> AsRawFd for AsyncFd<T>",
+          "methods": [
+            {
+              "code": "fn as_raw_fd(&self) -> RawFd",
+              "text": "Extracts the raw file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: Debug + AsRawFd> Debug for AsyncFd<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: AsRawFd> Drop for AsyncFd<T>",
+          "methods": [
+            {
+              "code": "fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

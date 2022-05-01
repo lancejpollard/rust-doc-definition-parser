@@ -1,0 +1,44 @@
+{
+  "title": "Struct std::sync::Once",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn new() -> Once",
+          "text": "Creates a new Once value."
+        },
+        {
+          "code": "pub fn call_once<F>(&self, f: F) where F: FnOnce(),",
+          "text": "Performs an initialization routine once and only once. The given closure will be executed if this is the first time call_once has been called, and otherwise the routine will not be invoked."
+        },
+        {
+          "code": "pub fn call_once_force<F>(&self, f: F) where F: FnOnce(&OnceState),",
+          "text": "Performs the same function as call_once() except ignores poisoning."
+        },
+        {
+          "code": "pub fn is_completed(&self) -> bool",
+          "text": "Returns true if some call_once() call has completed successfully. Specifically, is_completed will return false in the following situations:"
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Once",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

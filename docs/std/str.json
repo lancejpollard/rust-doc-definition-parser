@@ -1,0 +1,1183 @@
+{
+  "title": "Primitive Type str",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn len(&self) -> usize",
+          "text": "Returns the length of self."
+        },
+        {
+          "code": "pub const fn is_empty(&self) -> bool",
+          "text": "Returns true if self has a length of zero bytes."
+        },
+        {
+          "code": "pub fn is_char_boundary(&self, index: usize) -> bool",
+          "text": "Checks that index-th byte is the first byte in a UTF-8 code point sequence or the end of the string."
+        },
+        {
+          "code": "pub const fn as_bytes(&self) -> &[u8]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+          "text": "Converts a string slice to a byte slice. To convert the byte slice back into a string slice, use the from_utf8 function."
+        },
+        {
+          "code": "pub unsafe fn as_bytes_mut(&mut self) -> &mut [u8]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+          "text": "Converts a mutable string slice to a mutable byte slice."
+        },
+        {
+          "code": "pub const fn as_ptr(&self) -> *const u8",
+          "text": "Converts a string slice to a raw pointer."
+        },
+        {
+          "code": "pub fn as_mut_ptr(&mut self) -> *mut u8",
+          "text": "Converts a mutable string slice to a raw pointer."
+        },
+        {
+          "code": "pub fn get<I>(&self, i: I) -> Option<&<I as SliceIndex<str>>::Output> where I: SliceIndex<str>,",
+          "text": "Returns a subslice of str."
+        },
+        {
+          "code": "pub fn get_mut<I>( &mut self, i: I) -> Option<&mut <I as SliceIndex<str>>::Output> where I: SliceIndex<str>,",
+          "text": "Returns a mutable subslice of str."
+        },
+        {
+          "code": "pub unsafe fn get_unchecked<I>(&self, i: I) -> &<I as SliceIndex<str>>::Output where I: SliceIndex<str>,",
+          "text": "Returns an unchecked subslice of str."
+        },
+        {
+          "code": "pub unsafe fn get_unchecked_mut<I>( &mut self, i: I) -> &mut <I as SliceIndex<str>>::Output where I: SliceIndex<str>,",
+          "text": "Returns a mutable, unchecked subslice of str."
+        },
+        {
+          "code": "pub fn split_at(&self, mid: usize) -> (&str, &str)",
+          "text": "Divide one string slice into two at an index."
+        },
+        {
+          "code": "pub fn split_at_mut(&mut self, mid: usize) -> (&mut str, &mut str)",
+          "text": "Divide one mutable string slice into two at an index."
+        },
+        {
+          "code": "pub fn chars(&self) -> Chars<'_>ⓘNotable traits for Chars<'a>impl<'a> Iterator for Chars<'a> type Item = char;",
+          "text": "Returns an iterator over the chars of a string slice."
+        },
+        {
+          "code": "pub fn char_indices(&self) -> CharIndices<'_>ⓘNotable traits for CharIndices<'a>impl<'a> Iterator for CharIndices<'a> type Item = (usize, char);",
+          "text": "Returns an iterator over the chars of a string slice, and their positions."
+        },
+        {
+          "code": "pub fn bytes(&self) -> Bytes<'_>ⓘNotable traits for Bytes<'_>impl<'_> Iterator for Bytes<'_> type Item = u8;",
+          "text": "An iterator over the bytes of a string slice."
+        },
+        {
+          "code": "pub fn split_whitespace(&self) -> SplitWhitespace<'_>ⓘNotable traits for SplitWhitespace<'a>impl<'a> Iterator for SplitWhitespace<'a> type Item = &'a str;",
+          "text": "Splits a string slice by whitespace."
+        },
+        {
+          "code": "pub fn split_ascii_whitespace(&self) -> SplitAsciiWhitespace<'_>ⓘNotable traits for SplitAsciiWhitespace<'a>impl<'a> Iterator for SplitAsciiWhitespace<'a> type Item = &'a str;",
+          "text": "Splits a string slice by ASCII whitespace."
+        },
+        {
+          "code": "pub fn lines(&self) -> Lines<'_>ⓘNotable traits for Lines<'a>impl<'a> Iterator for Lines<'a> type Item = &'a str;",
+          "text": "An iterator over the lines of a string, as string slices."
+        },
+        {
+          "code": "pub fn encode_utf16(&self) -> EncodeUtf16<'_>ⓘNotable traits for EncodeUtf16<'a>impl<'a> Iterator for EncodeUtf16<'a> type Item = u16;",
+          "text": "Returns an iterator of u16 over the string encoded as UTF-16."
+        },
+        {
+          "code": "pub fn contains<'a, P>(&'a self, pat: P) -> bool where P: Pattern<'a>,",
+          "text": "Returns true if the given pattern matches a sub-slice of this string slice."
+        },
+        {
+          "code": "pub fn starts_with<'a, P>(&'a self, pat: P) -> bool where P: Pattern<'a>,",
+          "text": "Returns true if the given pattern matches a prefix of this string slice."
+        },
+        {
+          "code": "pub fn ends_with<'a, P>(&'a self, pat: P) -> bool where P: Pattern<'a>, <P as Pattern<'a>>::Searcher: ReverseSearcher<'a>,",
+          "text": "Returns true if the given pattern matches a suffix of this string slice."
+        },
+        {
+          "code": "pub fn find<'a, P>(&'a self, pat: P) -> Option<usize> where P: Pattern<'a>,",
+          "text": "Returns the byte index of the first character of this string slice that matches the pattern."
+        },
+        {
+          "code": "pub fn rfind<'a, P>(&'a self, pat: P) -> Option<usize> where P: Pattern<'a>, <P as Pattern<'a>>::Searcher: ReverseSearcher<'a>,",
+          "text": "Returns the byte index for the first character of the rightmost match of the pattern in this string slice."
+        },
+        {
+          "code": "pub fn split<'a, P>(&'a self, pat: P) -> Split<'a, P>ⓘNotable traits for Split<'a, P>impl<'a, P> Iterator for Split<'a, P> where P: Pattern<'a>, type Item = &'a str; where P: Pattern<'a>,",
+          "text": "An iterator over substrings of this string slice, separated by characters matched by a pattern."
+        },
+        {
+          "code": "pub fn split_inclusive<'a, P>(&'a self, pat: P) -> SplitInclusive<'a, P>ⓘNotable traits for SplitInclusive<'a, P>impl<'a, P> Iterator for SplitInclusive<'a, P> where P: Pattern<'a>, type Item = &'a str; where P: Pattern<'a>,",
+          "text": "An iterator over substrings of this string slice, separated by characters matched by a pattern. Differs from the iterator produced by split in that split_inclusive leaves the matched part as the terminator of the substring."
+        },
+        {
+          "code": "pub fn rsplit<'a, P>(&'a self, pat: P) -> RSplit<'a, P>ⓘNotable traits for RSplit<'a, P>impl<'a, P> Iterator for RSplit<'a, P> where P: Pattern<'a>, <P as Pattern<'a>>::Searcher: ReverseSearcher<'a>, type Item = &'a str; where P: Pattern<'a>, <P as Pattern<'a>>::Searcher: ReverseSearcher<'a>,",
+          "text": "An iterator over substrings of the given string slice, separated by characters matched by a pattern and yielded in reverse order."
+        },
+        {
+          "code": "pub fn split_terminator<'a, P>(&'a self, pat: P) -> SplitTerminator<'a, P>ⓘNotable traits for SplitTerminator<'a, P>impl<'a, P> Iterator for SplitTerminator<'a, P> where P: Pattern<'a>, type Item = &'a str; where P: Pattern<'a>,",
+          "text": "An iterator over substrings of the given string slice, separated by characters matched by a pattern."
+        },
+        {
+          "code": "pub fn rsplit_terminator<'a, P>(&'a self, pat: P) -> RSplitTerminator<'a, P>ⓘNotable traits for RSplitTerminator<'a, P>impl<'a, P> Iterator for RSplitTerminator<'a, P> where P: Pattern<'a>, <P as Pattern<'a>>::Searcher: ReverseSearcher<'a>, type Item = &'a str; where P: Pattern<'a>, <P as Pattern<'a>>::Searcher: ReverseSearcher<'a>,",
+          "text": "An iterator over substrings of self, separated by characters matched by a pattern and yielded in reverse order."
+        },
+        {
+          "code": "pub fn splitn<'a, P>(&'a self, n: usize, pat: P) -> SplitN<'a, P>ⓘNotable traits for SplitN<'a, P>impl<'a, P> Iterator for SplitN<'a, P> where P: Pattern<'a>, type Item = &'a str; where P: Pattern<'a>,",
+          "text": "An iterator over substrings of the given string slice, separated by a pattern, restricted to returning at most n items."
+        },
+        {
+          "code": "pub fn rsplitn<'a, P>(&'a self, n: usize, pat: P) -> RSplitN<'a, P>ⓘNotable traits for RSplitN<'a, P>impl<'a, P> Iterator for RSplitN<'a, P> where P: Pattern<'a>, <P as Pattern<'a>>::Searcher: ReverseSearcher<'a>, type Item = &'a str; where P: Pattern<'a>, <P as Pattern<'a>>::Searcher: ReverseSearcher<'a>,",
+          "text": "An iterator over substrings of this string slice, separated by a pattern, starting from the end of the string, restricted to returning at most n items."
+        },
+        {
+          "code": "pub fn split_once<'a, P>(&'a self, delimiter: P) -> Option<(&'a str, &'a str)> where P: Pattern<'a>,",
+          "text": "Splits the string on the first occurrence of the specified delimiter and returns prefix before delimiter and suffix after delimiter."
+        },
+        {
+          "code": "pub fn rsplit_once<'a, P>(&'a self, delimiter: P) -> Option<(&'a str, &'a str)> where P: Pattern<'a>, <P as Pattern<'a>>::Searcher: ReverseSearcher<'a>,",
+          "text": "Splits the string on the last occurrence of the specified delimiter and returns prefix before delimiter and suffix after delimiter."
+        },
+        {
+          "code": "pub fn matches<'a, P>(&'a self, pat: P) -> Matches<'a, P>ⓘNotable traits for Matches<'a, P>impl<'a, P> Iterator for Matches<'a, P> where P: Pattern<'a>, type Item = &'a str; where P: Pattern<'a>,",
+          "text": "An iterator over the disjoint matches of a pattern within the given string slice."
+        },
+        {
+          "code": "pub fn rmatches<'a, P>(&'a self, pat: P) -> RMatches<'a, P>ⓘNotable traits for RMatches<'a, P>impl<'a, P> Iterator for RMatches<'a, P> where P: Pattern<'a>, <P as Pattern<'a>>::Searcher: ReverseSearcher<'a>, type Item = &'a str; where P: Pattern<'a>, <P as Pattern<'a>>::Searcher: ReverseSearcher<'a>,",
+          "text": "An iterator over the disjoint matches of a pattern within this string slice, yielded in reverse order."
+        },
+        {
+          "code": "pub fn match_indices<'a, P>(&'a self, pat: P) -> MatchIndices<'a, P>ⓘNotable traits for MatchIndices<'a, P>impl<'a, P> Iterator for MatchIndices<'a, P> where P: Pattern<'a>, type Item = (usize, &'a str); where P: Pattern<'a>,",
+          "text": "An iterator over the disjoint matches of a pattern within this string slice as well as the index that the match starts at."
+        },
+        {
+          "code": "pub fn rmatch_indices<'a, P>(&'a self, pat: P) -> RMatchIndices<'a, P>ⓘNotable traits for RMatchIndices<'a, P>impl<'a, P> Iterator for RMatchIndices<'a, P> where P: Pattern<'a>, <P as Pattern<'a>>::Searcher: ReverseSearcher<'a>, type Item = (usize, &'a str); where P: Pattern<'a>, <P as Pattern<'a>>::Searcher: ReverseSearcher<'a>,",
+          "text": "An iterator over the disjoint matches of a pattern within self, yielded in reverse order along with the index of the match."
+        },
+        {
+          "code": "pub fn trim(&self) -> &str",
+          "text": "Returns a string slice with leading and trailing whitespace removed."
+        },
+        {
+          "code": "pub fn trim_start(&self) -> &str",
+          "text": "Returns a string slice with leading whitespace removed."
+        },
+        {
+          "code": "pub fn trim_end(&self) -> &str",
+          "text": "Returns a string slice with trailing whitespace removed."
+        },
+        {
+          "code": "pub fn trim_matches<'a, P>(&'a self, pat: P) -> &'a str where P: Pattern<'a>, <P as Pattern<'a>>::Searcher: DoubleEndedSearcher<'a>,",
+          "text": "Returns a string slice with all prefixes and suffixes that match a pattern repeatedly removed."
+        },
+        {
+          "code": "pub fn trim_start_matches<'a, P>(&'a self, pat: P) -> &'a str where P: Pattern<'a>,",
+          "text": "Returns a string slice with all prefixes that match a pattern repeatedly removed."
+        },
+        {
+          "code": "pub fn strip_prefix<'a, P>(&'a self, prefix: P) -> Option<&'a str> where P: Pattern<'a>,",
+          "text": "Returns a string slice with the prefix removed."
+        },
+        {
+          "code": "pub fn strip_suffix<'a, P>(&'a self, suffix: P) -> Option<&'a str> where P: Pattern<'a>, <P as Pattern<'a>>::Searcher: ReverseSearcher<'a>,",
+          "text": "Returns a string slice with the suffix removed."
+        },
+        {
+          "code": "pub fn trim_end_matches<'a, P>(&'a self, pat: P) -> &'a str where P: Pattern<'a>, <P as Pattern<'a>>::Searcher: ReverseSearcher<'a>,",
+          "text": "Returns a string slice with all suffixes that match a pattern repeatedly removed."
+        },
+        {
+          "code": "pub fn parse<F>(&self) -> Result<F, <F as FromStr>::Err> where F: FromStr,",
+          "text": "Parses this string slice into another type."
+        },
+        {
+          "code": "pub fn is_ascii(&self) -> bool",
+          "text": "Checks if all characters in this string are within the ASCII range."
+        },
+        {
+          "code": "pub fn eq_ignore_ascii_case(&self, other: &str) -> bool",
+          "text": "Checks that two strings are an ASCII case-insensitive match."
+        },
+        {
+          "code": "pub fn make_ascii_uppercase(&mut self)",
+          "text": "Converts this string to its ASCII upper case equivalent in-place."
+        },
+        {
+          "code": "pub fn make_ascii_lowercase(&mut self)",
+          "text": "Converts this string to its ASCII lower case equivalent in-place."
+        },
+        {
+          "code": "pub fn escape_debug(&self) -> EscapeDebug<'_>ⓘNotable traits for EscapeDebug<'a>impl<'a> Iterator for EscapeDebug<'a> type Item = char;",
+          "text": "Return an iterator that escapes each char in self with char::escape_debug."
+        },
+        {
+          "code": "pub fn escape_default(&self) -> EscapeDefault<'_>ⓘNotable traits for EscapeDefault<'a>impl<'a> Iterator for EscapeDefault<'a> type Item = char;",
+          "text": "Return an iterator that escapes each char in self with char::escape_default."
+        },
+        {
+          "code": "pub fn escape_unicode(&self) -> EscapeUnicode<'_>ⓘNotable traits for EscapeUnicode<'a>impl<'a> Iterator for EscapeUnicode<'a> type Item = char;",
+          "text": "Return an iterator that escapes each char in self with char::escape_unicode."
+        },
+        {
+          "code": "pub fn into_boxed_bytes(self: Box<str, Global>) -> Box<[u8], Global>ⓘNotable traits for Box<F, A>impl<F, A> Future for Box<F, A> where F: Future + Unpin + ?Sized, A: Allocator + 'static, type Output = <F as Future>::Output;impl<I, A> Iterator for Box<I, A> where I: Iterator + ?Sized, A: Allocator, type Item = <I as Iterator>::Item;impl<R: Read + ?Sized> Read for Box<R>impl<W: Write + ?Sized> Write for Box<W>",
+          "text": "Converts a Box<str> into a Box<[u8]> without copying or allocating."
+        },
+        {
+          "code": "pub fn replace<'a, P>(&'a self, from: P, to: &str) -> String where P: Pattern<'a>,",
+          "text": "Replaces all matches of a pattern with another string."
+        },
+        {
+          "code": "pub fn replacen<'a, P>(&'a self, pat: P, to: &str, count: usize) -> String where P: Pattern<'a>,",
+          "text": "Replaces first N matches of a pattern with another string."
+        },
+        {
+          "code": "pub fn to_lowercase(&self) -> String",
+          "text": "Returns the lowercase equivalent of this string slice, as a new String."
+        },
+        {
+          "code": "pub fn to_uppercase(&self) -> String",
+          "text": "Returns the uppercase equivalent of this string slice, as a new String."
+        },
+        {
+          "code": "pub fn into_string(self: Box<str, Global>) -> String",
+          "text": "Converts a Box<str> into a String without copying or allocating."
+        },
+        {
+          "code": "pub fn repeat(&self, n: usize) -> String",
+          "text": "Creates a new String by repeating a string n times."
+        },
+        {
+          "code": "pub fn to_ascii_uppercase(&self) -> String",
+          "text": "Returns a copy of this string where each character is mapped to its ASCII upper case equivalent."
+        },
+        {
+          "code": "pub fn to_ascii_lowercase(&self) -> String",
+          "text": "Returns a copy of this string where each character is mapped to its ASCII lower case equivalent."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'_> Add<&'_ str> for String",
+          "methods": [
+            {
+              "code": "type Output = String",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add(self, other: &str) -> String",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Add<&'a str> for Cow<'a, str>",
+          "methods": [
+            {
+              "code": "type Output = Cow<'a, str>",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add(self, rhs: &'a str) -> <Cow<'a, str> as Add<&'a str>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> AddAssign<&'_ str> for String",
+          "methods": [
+            {
+              "code": "pub fn add_assign(&mut self, other: &str)",
+              "text": "Performs the += operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> AddAssign<&'a str> for Cow<'a, str>",
+          "methods": [
+            {
+              "code": "pub fn add_assign(&mut self, rhs: &'a str)",
+              "text": "Performs the += operation."
+            }
+          ]
+        },
+        {
+          "title": "impl AsMut<str> for str",
+          "methods": [
+            {
+              "code": "pub fn as_mut(&mut self) -> &mut str",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsMut<str> for String",
+          "methods": [
+            {
+              "code": "pub fn as_mut(&mut self) -> &mut str",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRef<[u8]> for str",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &[u8]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRef<OsStr> for str",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &OsStr",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRef<Path> for str",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &Path",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRef<str> for str",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &str",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRef<str> for String",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &str",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> AsRef<str> for Drain<'a>",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &str",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsciiExt for str",
+          "methods": []
+        },
+        {
+          "title": "impl Borrow<str> for String",
+          "methods": [
+            {
+              "code": "pub fn borrow(&self) -> &str",
+              "text": "Immutably borrows from an owned value."
+            }
+          ]
+        },
+        {
+          "title": "impl BorrowMut<str> for String",
+          "methods": [
+            {
+              "code": "pub fn borrow_mut(&mut self) -> &mut str",
+              "text": "Mutably borrows from an owned value."
+            }
+          ]
+        },
+        {
+          "title": "impl<S> Concat<str> for [S] where S: Borrow<str>,",
+          "methods": [
+            {
+              "code": "type Output = String",
+              "text": "The resulting type after concatenation"
+            },
+            {
+              "code": "pub fn concat(slice: &[S]) -> String",
+              "text": "Implementation of [T]::concat"
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for str",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Default for &'_ str",
+          "methods": [
+            {
+              "code": "pub fn default() -> &'_ str",
+              "text": "Creates an empty str"
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Default for &'_ mut str",
+          "methods": [
+            {
+              "code": "pub fn default() -> &'_ mut str",
+              "text": "Creates an empty mutable str"
+            }
+          ]
+        },
+        {
+          "title": "impl Display for str",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Extend<&'a str> for String",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = &'a str>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, s: &'a str)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> From<&'_ mut str> for String",
+          "methods": [
+            {
+              "code": "pub fn from(s: &mut str) -> String",
+              "text": "Converts a &mut str into a String."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> From<&'_ str> for Box<str, Global>",
+          "methods": [
+            {
+              "code": "pub fn from(s: &str) -> Box<str, Global>ⓘNotable traits for Box<F, A>impl<F, A> Future for Box<F, A> where F: Future + Unpin + ?Sized, A: Allocator + 'static, type Output = <F as Future>::Output;impl<I, A> Iterator for Box<I, A> where I: Iterator + ?Sized, A: Allocator, type Item = <I as Iterator>::Item;impl<R: Read + ?Sized> Read for Box<R>impl<W: Write + ?Sized> Write for Box<W>",
+              "text": "Converts a &str into a Box<str>"
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> From<&'_ str> for Vec<u8, Global>",
+          "methods": [
+            {
+              "code": "pub fn from(s: &str) -> Vec<u8, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Allocate a Vec<u8> and fill it with a UTF-8 string."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> From<&'_ str> for String",
+          "methods": [
+            {
+              "code": "pub fn from(s: &str) -> String",
+              "text": "Converts a &str into a String."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> From<&'_ str> for Rc<str>",
+          "methods": [
+            {
+              "code": "pub fn from(v: &str) -> Rc<str>",
+              "text": "Allocate a reference-counted string slice and copy v into it."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> From<&'_ str> for Arc<str>",
+          "methods": [
+            {
+              "code": "pub fn from(v: &str) -> Arc<str>",
+              "text": "Allocate a reference-counted str and copy v into it."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> From<&'_ str> for Box<dyn Error + Send + Sync + 'a>",
+          "methods": [
+            {
+              "code": "fn from(err: &str) -> Box<dyn Error + Send + Sync + 'a>ⓘNotable traits for Box<F, A>impl<F, A> Future for Box<F, A> where F: Future + Unpin + ?Sized, A: Allocator + 'static, type Output = <F as Future>::Output;impl<I, A> Iterator for Box<I, A> where I: Iterator + ?Sized, A: Allocator, type Item = <I as Iterator>::Item;impl<R: Read + ?Sized> Read for Box<R>impl<W: Write + ?Sized> Write for Box<W>",
+              "text": "Converts a str into a box of dyn Error + Send + Sync."
+            }
+          ]
+        },
+        {
+          "title": "impl From<&'_ str> for Box<dyn Error>",
+          "methods": [
+            {
+              "code": "fn from(err: &str) -> Box<dyn Error>ⓘNotable traits for Box<F, A>impl<F, A> Future for Box<F, A> where F: Future + Unpin + ?Sized, A: Allocator + 'static, type Output = <F as Future>::Output;impl<I, A> Iterator for Box<I, A> where I: Iterator + ?Sized, A: Allocator, type Item = <I as Iterator>::Item;impl<R: Read + ?Sized> Read for Box<R>impl<W: Write + ?Sized> Write for Box<W>",
+              "text": "Converts a str into a box of dyn Error."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> From<&'a str> for Cow<'a, str>",
+          "methods": [
+            {
+              "code": "pub fn from(s: &'a str) -> Cow<'a, str>",
+              "text": "Converts a string slice into a Borrowed variant. No heap allocation is performed, and the string is not copied."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> FromIterator<&'a str> for String",
+          "methods": [
+            {
+              "code": "pub fn from_iter<I>(iter: I) -> String where I: IntoIterator<Item = &'a str>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> FromIterator<&'b str> for Cow<'a, str>",
+          "methods": [
+            {
+              "code": "pub fn from_iter<I>(it: I) -> Cow<'a, str> where I: IntoIterator<Item = &'b str>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for str",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, state: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<I> Index<I> for str where I: SliceIndex<str>,",
+          "methods": [
+            {
+              "code": "type Output = <I as SliceIndex<str>>::Output",
+              "text": "The returned type after indexing."
+            },
+            {
+              "code": "pub fn index(&self, index: I) -> &<I as SliceIndex<str>>::Output",
+              "text": "Performs the indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<I> IndexMut<I> for str where I: SliceIndex<str>,",
+          "methods": [
+            {
+              "code": "pub fn index_mut(&mut self, index: I) -> &mut <I as SliceIndex<str>>::Output",
+              "text": "Performs the mutable indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, S> Join<&'_ str> for [S] where S: Borrow<str>,",
+          "methods": [
+            {
+              "code": "type Output = String",
+              "text": "The resulting type after concatenation"
+            },
+            {
+              "code": "pub fn join(slice: &[S], sep: &str) -> String",
+              "text": "Implementation of [T]::join"
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for str",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &str) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<&'_ str> for OsString",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &&str) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<&'a str> for String",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&'a str) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&'a str) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<&'b str> for Cow<'a, str>",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&'b str) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&'b str) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<Cow<'a, str>> for &'b str",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Cow<'a, str>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &Cow<'a, str>) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<Cow<'a, str>> for str",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Cow<'a, str>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &Cow<'a, str>) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<OsStr> for str",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &OsStr) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<OsString> for str",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &OsString) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> PartialEq<OsString> for &'a str",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &OsString) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<String> for str",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &String) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &String) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<String> for &'a str",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &String) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &String) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<str> for str",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &str) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &str) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<str> for Cow<'a, str>",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &str) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &str) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<str> for String",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &str) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &str) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<str> for OsString",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &str) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<str> for OsStr",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &str) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<str> for str",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &str) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<str> for OsString",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &str) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<str> for OsStr",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &str) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> Pattern<'a> for &'b str",
+          "methods": [
+            {
+              "code": "pub fn is_prefix_of(self, haystack: &'a str) -> bool",
+              "text": "Checks whether the pattern matches at the front of the haystack."
+            },
+            {
+              "code": "pub fn strip_prefix_of(self, haystack: &'a str) -> Option<&'a str>",
+              "text": "Removes the pattern from the front of haystack, if it matches."
+            },
+            {
+              "code": "pub fn is_suffix_of(self, haystack: &'a str) -> bool",
+              "text": "Checks whether the pattern matches at the back of the haystack."
+            },
+            {
+              "code": "pub fn strip_suffix_of(self, haystack: &'a str) -> Option<&'a str>",
+              "text": "Removes the pattern from the back of haystack, if it matches."
+            },
+            {
+              "code": "type Searcher = StrSearcher<'a, 'b>",
+              "text": "Associated searcher for this pattern"
+            },
+            {
+              "code": "pub fn into_searcher(self, haystack: &'a str) -> StrSearcher<'a, 'b>",
+              "text": "Constructs the associated searcher from self and the haystack to search in."
+            },
+            {
+              "code": "fn is_contained_in(self, haystack: &'a str) -> bool",
+              "text": "Checks whether the pattern matches anywhere in the haystack"
+            }
+          ]
+        },
+        {
+          "title": "impl SliceIndex<str> for Range<usize>",
+          "methods": [
+            {
+              "code": "type Output = str",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get( self, slice: &str) -> Option<&<Range<usize> as SliceIndex<str>>::Output>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut( self, slice: &mut str) -> Option<&mut <Range<usize> as SliceIndex<str>>::Output>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked( self, slice: *const str) -> *const <Range<usize> as SliceIndex<str>>::Output",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut( self, slice: *mut str) -> *mut <Range<usize> as SliceIndex<str>>::Output",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index(self, slice: &str) -> &<Range<usize> as SliceIndex<str>>::OutputⓘNotable traits for Range<A>impl<A> Iterator for Range<A> where A: Step, type Item = A;",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut( self, slice: &mut str) -> &mut <Range<usize> as SliceIndex<str>>::OutputⓘNotable traits for Range<A>impl<A> Iterator for Range<A> where A: Step, type Item = A;",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        },
+        {
+          "title": "impl SliceIndex<str> for RangeTo<usize>",
+          "methods": [
+            {
+              "code": "type Output = str",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get( self, slice: &str) -> Option<&<RangeTo<usize> as SliceIndex<str>>::Output>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut( self, slice: &mut str) -> Option<&mut <RangeTo<usize> as SliceIndex<str>>::Output>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked( self, slice: *const str) -> *const <RangeTo<usize> as SliceIndex<str>>::Output",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut( self, slice: *mut str) -> *mut <RangeTo<usize> as SliceIndex<str>>::Output",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index(self, slice: &str) -> &<RangeTo<usize> as SliceIndex<str>>::Output",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut( self, slice: &mut str) -> &mut <RangeTo<usize> as SliceIndex<str>>::Output",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        },
+        {
+          "title": "impl SliceIndex<str> for RangeFull",
+          "methods": [
+            {
+              "code": "type Output = str",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get(self, slice: &str) -> Option<&<RangeFull as SliceIndex<str>>::Output>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut( self, slice: &mut str) -> Option<&mut <RangeFull as SliceIndex<str>>::Output>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked( self, slice: *const str) -> *const <RangeFull as SliceIndex<str>>::Output",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut( self, slice: *mut str) -> *mut <RangeFull as SliceIndex<str>>::Output",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index(self, slice: &str) -> &<RangeFull as SliceIndex<str>>::Output",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut( self, slice: &mut str) -> &mut <RangeFull as SliceIndex<str>>::Output",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        },
+        {
+          "title": "impl SliceIndex<str> for RangeFrom<usize>",
+          "methods": [
+            {
+              "code": "type Output = str",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get( self, slice: &str) -> Option<&<RangeFrom<usize> as SliceIndex<str>>::Output>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut( self, slice: &mut str) -> Option<&mut <RangeFrom<usize> as SliceIndex<str>>::Output>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked( self, slice: *const str) -> *const <RangeFrom<usize> as SliceIndex<str>>::Output",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut( self, slice: *mut str) -> *mut <RangeFrom<usize> as SliceIndex<str>>::Output",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index( self, slice: &str) -> &<RangeFrom<usize> as SliceIndex<str>>::OutputⓘNotable traits for RangeFrom<A>impl<A> Iterator for RangeFrom<A> where A: Step, type Item = A;",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut( self, slice: &mut str) -> &mut <RangeFrom<usize> as SliceIndex<str>>::OutputⓘNotable traits for RangeFrom<A>impl<A> Iterator for RangeFrom<A> where A: Step, type Item = A;",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        },
+        {
+          "title": "impl SliceIndex<str> for RangeToInclusive<usize>",
+          "methods": [
+            {
+              "code": "type Output = str",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get( self, slice: &str) -> Option<&<RangeToInclusive<usize> as SliceIndex<str>>::Output>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut( self, slice: &mut str) -> Option<&mut <RangeToInclusive<usize> as SliceIndex<str>>::Output>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked( self, slice: *const str) -> *const <RangeToInclusive<usize> as SliceIndex<str>>::Output",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut( self, slice: *mut str) -> *mut <RangeToInclusive<usize> as SliceIndex<str>>::Output",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index( self, slice: &str) -> &<RangeToInclusive<usize> as SliceIndex<str>>::Output",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut( self, slice: &mut str) -> &mut <RangeToInclusive<usize> as SliceIndex<str>>::Output",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        },
+        {
+          "title": "impl SliceIndex<str> for RangeInclusive<usize>",
+          "methods": [
+            {
+              "code": "type Output = str",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get( self, slice: &str) -> Option<&<RangeInclusive<usize> as SliceIndex<str>>::Output>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut( self, slice: &mut str) -> Option<&mut <RangeInclusive<usize> as SliceIndex<str>>::Output>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked( self, slice: *const str) -> *const <RangeInclusive<usize> as SliceIndex<str>>::Output",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut( self, slice: *mut str) -> *mut <RangeInclusive<usize> as SliceIndex<str>>::Output",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index( self, slice: &str) -> &<RangeInclusive<usize> as SliceIndex<str>>::OutputⓘNotable traits for RangeInclusive<A>impl<A> Iterator for RangeInclusive<A> where A: Step, type Item = A;",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut( self, slice: &mut str) -> &mut <RangeInclusive<usize> as SliceIndex<str>>::OutputⓘNotable traits for RangeInclusive<A>impl<A> Iterator for RangeInclusive<A> where A: Step, type Item = A;",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        },
+        {
+          "title": "impl ToOwned for str",
+          "methods": [
+            {
+              "code": "type Owned = String",
+              "text": "The resulting type after obtaining ownership."
+            },
+            {
+              "code": "pub fn to_owned(&self) -> String",
+              "text": "Creates owned data from borrowed data, usually by cloning."
+            },
+            {
+              "code": "pub fn clone_into(&self, target: &mut String)",
+              "text": "Uses borrowed data to replace owned data, usually by cloning."
+            }
+          ]
+        },
+        {
+          "title": "impl ToSocketAddrs for str",
+          "methods": [
+            {
+              "code": "type Iter = IntoIter<SocketAddr>",
+              "text": "Returned iterator over socket addresses which this type may correspond to."
+            },
+            {
+              "code": "fn to_socket_addrs(&self) -> Result<IntoIter<SocketAddr>>",
+              "text": "Converts this object to an iterator of resolved SocketAddrs."
+            }
+          ]
+        },
+        {
+          "title": "impl ToString for str",
+          "methods": [
+            {
+              "code": "pub fn to_string(&self) -> String",
+              "text": "Converts the given value to a String."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "title": "Struct std::os::unix::net::UnixDatagram",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn bind<P: AsRef<Path>>(path: P) -> Result<UnixDatagram>",
+          "text": "Creates a Unix datagram socket bound to the given path."
+        },
+        {
+          "code": "pub fn bind_addr(socket_addr: &SocketAddr) -> Result<UnixDatagram>",
+          "text": "Creates a Unix datagram socket bound to an address."
+        },
+        {
+          "code": "pub fn unbound() -> Result<UnixDatagram>",
+          "text": "Creates a Unix Datagram socket which is not bound to any address."
+        },
+        {
+          "code": "pub fn pair() -> Result<(UnixDatagram, UnixDatagram)>",
+          "text": "Creates an unnamed pair of connected sockets."
+        },
+        {
+          "code": "pub fn connect<P: AsRef<Path>>(&self, path: P) -> Result<()>",
+          "text": "Connects the socket to the specified path address."
+        },
+        {
+          "code": "pub fn connect_addr(&self, socket_addr: &SocketAddr) -> Result<()>",
+          "text": "Connects the socket to an address."
+        },
+        {
+          "code": "pub fn try_clone(&self) -> Result<UnixDatagram>",
+          "text": "Creates a new independently owned handle to the underlying socket."
+        },
+        {
+          "code": "pub fn local_addr(&self) -> Result<SocketAddr>",
+          "text": "Returns the address of this socket."
+        },
+        {
+          "code": "pub fn peer_addr(&self) -> Result<SocketAddr>",
+          "text": "Returns the address of this socket’s peer."
+        },
+        {
+          "code": "pub fn recv_from(&self, buf: &mut [u8]) -> Result<(usize, SocketAddr)>",
+          "text": "Receives data from the socket."
+        },
+        {
+          "code": "pub fn recv(&self, buf: &mut [u8]) -> Result<usize>",
+          "text": "Receives data from the socket."
+        },
+        {
+          "code": "pub fn recv_vectored_with_ancillary_from( &self, bufs: &mut [IoSliceMut<'_>], ancillary: &mut SocketAncillary<'_>) -> Result<(usize, bool, SocketAddr)>",
+          "text": "Receives data and ancillary data from socket."
+        },
+        {
+          "code": "pub fn recv_vectored_with_ancillary( &self, bufs: &mut [IoSliceMut<'_>], ancillary: &mut SocketAncillary<'_>) -> Result<(usize, bool)>",
+          "text": "Receives data and ancillary data from socket."
+        },
+        {
+          "code": "pub fn send_to<P: AsRef<Path>>(&self, buf: &[u8], path: P) -> Result<usize>",
+          "text": "Sends data on the socket to the specified address."
+        },
+        {
+          "code": "pub fn send_to_addr( &self, buf: &[u8], socket_addr: &SocketAddr) -> Result<usize>",
+          "text": "Sends data on the socket to the specified SocketAddr."
+        },
+        {
+          "code": "pub fn send(&self, buf: &[u8]) -> Result<usize>",
+          "text": "Sends data on the socket to the socket’s peer."
+        },
+        {
+          "code": "pub fn send_vectored_with_ancillary_to<P: AsRef<Path>>( &self, bufs: &[IoSlice<'_>], ancillary: &mut SocketAncillary<'_>, path: P) -> Result<usize>",
+          "text": "Sends data and ancillary data on the socket to the specified address."
+        },
+        {
+          "code": "pub fn send_vectored_with_ancillary( &self, bufs: &[IoSlice<'_>], ancillary: &mut SocketAncillary<'_>) -> Result<usize>",
+          "text": "Sends data and ancillary data on the socket."
+        },
+        {
+          "code": "pub fn set_read_timeout(&self, timeout: Option<Duration>) -> Result<()>",
+          "text": "Sets the read timeout for the socket."
+        },
+        {
+          "code": "pub fn set_write_timeout(&self, timeout: Option<Duration>) -> Result<()>",
+          "text": "Sets the write timeout for the socket."
+        },
+        {
+          "code": "pub fn read_timeout(&self) -> Result<Option<Duration>>",
+          "text": "Returns the read timeout of this socket."
+        },
+        {
+          "code": "pub fn write_timeout(&self) -> Result<Option<Duration>>",
+          "text": "Returns the write timeout of this socket."
+        },
+        {
+          "code": "pub fn set_nonblocking(&self, nonblocking: bool) -> Result<()>",
+          "text": "Moves the socket into or out of nonblocking mode."
+        },
+        {
+          "code": "pub fn set_passcred(&self, passcred: bool) -> Result<()>",
+          "text": "Moves the socket to pass unix credentials as control message in SocketAncillary."
+        },
+        {
+          "code": "pub fn passcred(&self) -> Result<bool>",
+          "text": "Get the current value of the socket for passing unix credentials in SocketAncillary. This value can be change by set_passcred."
+        },
+        {
+          "code": "pub fn take_error(&self) -> Result<Option<Error>>",
+          "text": "Returns the value of the SO_ERROR option."
+        },
+        {
+          "code": "pub fn shutdown(&self, how: Shutdown) -> Result<()>",
+          "text": "Shut down the read, write, or both halves of this connection."
+        },
+        {
+          "code": "pub fn peek(&self, buf: &mut [u8]) -> Result<usize>",
+          "text": "Receives data on the socket from the remote address to which it is connected, without removing that data from the queue. On success, returns the number of bytes peeked."
+        },
+        {
+          "code": "pub fn peek_from(&self, buf: &mut [u8]) -> Result<(usize, SocketAddr)>",
+          "text": "Receives a single datagram message on the socket, without removing it from the queue. On success, returns the number of bytes read and the origin."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsFd for UnixDatagram",
+          "methods": [
+            {
+              "code": "fn as_fd(&self) -> BorrowedFd<'_>",
+              "text": "Borrows the file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRawFd for UnixDatagram",
+          "methods": [
+            {
+              "code": "fn as_raw_fd(&self) -> RawFd",
+              "text": "Extracts the raw file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for UnixDatagram",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedFd> for UnixDatagram",
+          "methods": [
+            {
+              "code": "fn from(owned: OwnedFd) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<UnixDatagram> for OwnedFd",
+          "methods": [
+            {
+              "code": "fn from(unix_datagram: UnixDatagram) -> OwnedFd",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl FromRawFd for UnixDatagram",
+          "methods": [
+            {
+              "code": "unsafe fn from_raw_fd(fd: RawFd) -> UnixDatagram",
+              "text": "Constructs a new instance of Self from the given raw file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl IntoRawFd for UnixDatagram",
+          "methods": [
+            {
+              "code": "fn into_raw_fd(self) -> RawFd",
+              "text": "Consumes this object, returning the raw underlying file descriptor."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

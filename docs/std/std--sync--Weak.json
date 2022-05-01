@@ -1,0 +1,91 @@
+{
+  "title": "Struct std::sync::Weak",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> Weak<T>",
+          "text": "Constructs a new Weak<T>, without allocating any memory. Calling upgrade on the return value always gives None."
+        },
+        {
+          "code": "pub fn as_ptr(&self) -> *const T",
+          "text": "Returns a raw pointer to the object T pointed to by this Weak<T>."
+        },
+        {
+          "code": "pub fn into_raw(self) -> *const T",
+          "text": "Consumes the Weak<T> and turns it into a raw pointer."
+        },
+        {
+          "code": "pub unsafe fn from_raw(ptr: *const T) -> Weak<T>",
+          "text": "Converts a raw pointer previously created by into_raw back into Weak<T>."
+        },
+        {
+          "code": "pub fn upgrade(&self) -> Option<Arc<T>>",
+          "text": "Attempts to upgrade the Weak pointer to an Arc, delaying dropping of the inner value if successful."
+        },
+        {
+          "code": "pub fn strong_count(&self) -> usize",
+          "text": "Gets the number of strong (Arc) pointers pointing to this allocation."
+        },
+        {
+          "code": "pub fn weak_count(&self) -> usize",
+          "text": "Gets an approximation of the number of Weak pointers pointing to this allocation."
+        },
+        {
+          "code": "pub fn ptr_eq(&self, other: &Weak<T>) -> bool",
+          "text": "Returns true if the two Weaks point to the same allocation (similar to ptr::eq), or if both don’t point to any allocation (because they were created with Weak::new())."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Clone for Weak<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> Weak<T>",
+              "text": "Makes a clone of the Weak pointer that points to the same allocation."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for Weak<T> where T: Debug + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for Weak<T>",
+          "methods": [
+            {
+              "code": "pub fn default() -> Weak<T>",
+              "text": "Constructs a new Weak<T>, without allocating memory. Calling upgrade on the return value always gives None."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Drop for Weak<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn drop(&mut self)",
+              "text": "Drops the Weak pointer."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

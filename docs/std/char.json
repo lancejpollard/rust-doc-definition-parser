@@ -1,0 +1,519 @@
+{
+  "title": "Primitive Type char",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const MAX: char",
+          "text": "The highest valid code point a char can have."
+        },
+        {
+          "code": "pub const REPLACEMENT_CHARACTER: char",
+          "text": "U+FFFD REPLACEMENT CHARACTER (�) is used in Unicode to represent a decoding error."
+        },
+        {
+          "code": "pub const UNICODE_VERSION: (u8, u8, u8)",
+          "text": "The version of Unicode that the Unicode parts of char and str methods are based on."
+        },
+        {
+          "code": "pub fn decode_utf16<I>(iter: I) -> DecodeUtf16<<I as IntoIterator>::IntoIter>ⓘNotable traits for DecodeUtf16<I>impl<I> Iterator for DecodeUtf16<I> where I: Iterator<Item = u16>, type Item = Result<char, DecodeUtf16Error>; where I: IntoIterator<Item = u16>,",
+          "text": "Creates an iterator over the UTF-16 encoded code points in iter, returning unpaired surrogates as Errs."
+        },
+        {
+          "code": "pub fn from_u32(i: u32) -> Option<char>",
+          "text": "Converts a u32 to a char."
+        },
+        {
+          "code": "pub unsafe fn from_u32_unchecked(i: u32) -> char",
+          "text": "Converts a u32 to a char, ignoring validity."
+        },
+        {
+          "code": "pub fn from_digit(num: u32, radix: u32) -> Option<char>",
+          "text": "Converts a digit in the given radix to a char."
+        },
+        {
+          "code": "pub fn is_digit(self, radix: u32) -> bool",
+          "text": "Checks if a char is a digit in the given radix."
+        },
+        {
+          "code": "pub fn to_digit(self, radix: u32) -> Option<u32>",
+          "text": "Converts a char to a digit in the given radix."
+        },
+        {
+          "code": "pub fn escape_unicode(self) -> EscapeUnicodeⓘNotable traits for EscapeUnicodeimpl Iterator for EscapeUnicode type Item = char;",
+          "text": "Returns an iterator that yields the hexadecimal Unicode escape of a character as chars."
+        },
+        {
+          "code": "pub fn escape_debug(self) -> EscapeDebugⓘNotable traits for EscapeDebugimpl Iterator for EscapeDebug type Item = char;",
+          "text": "Returns an iterator that yields the literal escape code of a character as chars."
+        },
+        {
+          "code": "pub fn escape_default(self) -> EscapeDefaultⓘNotable traits for EscapeDefaultimpl Iterator for EscapeDefault type Item = char;",
+          "text": "Returns an iterator that yields the literal escape code of a character as chars."
+        },
+        {
+          "code": "pub const fn len_utf8(self) -> usize",
+          "text": "Returns the number of bytes this char would need if encoded in UTF-8."
+        },
+        {
+          "code": "pub const fn len_utf16(self) -> usize",
+          "text": "Returns the number of 16-bit code units this char would need if encoded in UTF-16."
+        },
+        {
+          "code": "pub fn encode_utf8(self, dst: &mut [u8]) -> &mut str",
+          "text": "Encodes this character as UTF-8 into the provided byte buffer, and then returns the subslice of the buffer that contains the encoded character."
+        },
+        {
+          "code": "pub fn encode_utf16(self, dst: &mut [u16]) -> &mut [u16]",
+          "text": "Encodes this character as UTF-16 into the provided u16 buffer, and then returns the subslice of the buffer that contains the encoded character."
+        },
+        {
+          "code": "pub fn is_alphabetic(self) -> bool",
+          "text": "Returns true if this char has the Alphabetic property."
+        },
+        {
+          "code": "pub fn is_lowercase(self) -> bool",
+          "text": "Returns true if this char has the Lowercase property."
+        },
+        {
+          "code": "pub fn is_uppercase(self) -> bool",
+          "text": "Returns true if this char has the Uppercase property."
+        },
+        {
+          "code": "pub fn is_whitespace(self) -> bool",
+          "text": "Returns true if this char has the White_Space property."
+        },
+        {
+          "code": "pub fn is_alphanumeric(self) -> bool",
+          "text": "Returns true if this char satisfies either is_alphabetic() or is_numeric()."
+        },
+        {
+          "code": "pub fn is_control(self) -> bool",
+          "text": "Returns true if this char has the general category for control codes."
+        },
+        {
+          "code": "pub fn is_numeric(self) -> bool",
+          "text": "Returns true if this char has one of the general categories for numbers."
+        },
+        {
+          "code": "pub fn to_lowercase(self) -> ToLowercaseⓘNotable traits for ToLowercaseimpl Iterator for ToLowercase type Item = char;",
+          "text": "Returns an iterator that yields the lowercase mapping of this char as one or more chars."
+        },
+        {
+          "code": "pub fn to_uppercase(self) -> ToUppercaseⓘNotable traits for ToUppercaseimpl Iterator for ToUppercase type Item = char;",
+          "text": "Returns an iterator that yields the uppercase mapping of this char as one or more chars."
+        },
+        {
+          "code": "pub const fn is_ascii(&self) -> bool",
+          "text": "Checks if the value is within the ASCII range."
+        },
+        {
+          "code": "pub const fn to_ascii_uppercase(&self) -> char",
+          "text": "Makes a copy of the value in its ASCII upper case equivalent."
+        },
+        {
+          "code": "pub const fn to_ascii_lowercase(&self) -> char",
+          "text": "Makes a copy of the value in its ASCII lower case equivalent."
+        },
+        {
+          "code": "pub const fn eq_ignore_ascii_case(&self, other: &char) -> bool",
+          "text": "Checks that two values are an ASCII case-insensitive match."
+        },
+        {
+          "code": "pub fn make_ascii_uppercase(&mut self)",
+          "text": "Converts this type to its ASCII upper case equivalent in-place."
+        },
+        {
+          "code": "pub fn make_ascii_lowercase(&mut self)",
+          "text": "Converts this type to its ASCII lower case equivalent in-place."
+        },
+        {
+          "code": "pub const fn is_ascii_alphabetic(&self) -> bool",
+          "text": "Checks if the value is an ASCII alphabetic character:"
+        },
+        {
+          "code": "pub const fn is_ascii_uppercase(&self) -> bool",
+          "text": "Checks if the value is an ASCII uppercase character: U+0041 ‘A’ ..= U+005A ‘Z’."
+        },
+        {
+          "code": "pub const fn is_ascii_lowercase(&self) -> bool",
+          "text": "Checks if the value is an ASCII lowercase character: U+0061 ‘a’ ..= U+007A ‘z’."
+        },
+        {
+          "code": "pub const fn is_ascii_alphanumeric(&self) -> bool",
+          "text": "Checks if the value is an ASCII alphanumeric character:"
+        },
+        {
+          "code": "pub const fn is_ascii_digit(&self) -> bool",
+          "text": "Checks if the value is an ASCII decimal digit: U+0030 ‘0’ ..= U+0039 ‘9’."
+        },
+        {
+          "code": "pub const fn is_ascii_hexdigit(&self) -> bool",
+          "text": "Checks if the value is an ASCII hexadecimal digit:"
+        },
+        {
+          "code": "pub const fn is_ascii_punctuation(&self) -> bool",
+          "text": "Checks if the value is an ASCII punctuation character:"
+        },
+        {
+          "code": "pub const fn is_ascii_graphic(&self) -> bool",
+          "text": "Checks if the value is an ASCII graphic character: U+0021 ‘!’ ..= U+007E ‘~’."
+        },
+        {
+          "code": "pub const fn is_ascii_whitespace(&self) -> bool",
+          "text": "Checks if the value is an ASCII whitespace character: U+0020 SPACE, U+0009 HORIZONTAL TAB, U+000A LINE FEED, U+000C FORM FEED, or U+000D CARRIAGE RETURN."
+        },
+        {
+          "code": "pub const fn is_ascii_control(&self) -> bool",
+          "text": "Checks if the value is an ASCII control character: U+0000 NUL ..= U+001F UNIT SEPARATOR, or U+007F DELETE. Note that most ASCII whitespace characters are control characters, but SPACE is not."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsciiExt for char",
+          "methods": []
+        },
+        {
+          "title": "impl Clone for char",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> char",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for char",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for char",
+          "methods": [
+            {
+              "code": "pub fn default() -> char",
+              "text": "Returns the default value of \\x00"
+            }
+          ]
+        },
+        {
+          "title": "impl Display for char",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Extend<&'a char> for String",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = &'a char>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, &'a char)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "pub fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl Extend<char> for String",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = char>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, c: char)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "pub fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl From<char> for u128",
+          "methods": [
+            {
+              "code": "pub fn from(c: char) -> u128",
+              "text": "Converts a char into a u128."
+            }
+          ]
+        },
+        {
+          "title": "impl From<char> for u64",
+          "methods": [
+            {
+              "code": "pub fn from(c: char) -> u64",
+              "text": "Converts a char into a u64."
+            }
+          ]
+        },
+        {
+          "title": "impl From<char> for u32",
+          "methods": [
+            {
+              "code": "pub fn from(c: char) -> u32",
+              "text": "Converts a char into a u32."
+            }
+          ]
+        },
+        {
+          "title": "impl From<char> for String",
+          "methods": [
+            {
+              "code": "pub fn from(c: char) -> String",
+              "text": "Allocates an owned String from a single character."
+            }
+          ]
+        },
+        {
+          "title": "impl From<u8> for char",
+          "methods": [
+            {
+              "code": "pub fn from(i: u8) -> char",
+              "text": "Converts a u8 into a char."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> FromIterator<&'a char> for String",
+          "methods": [
+            {
+              "code": "pub fn from_iter<I>(iter: I) -> String where I: IntoIterator<Item = &'a char>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> FromIterator<char> for Cow<'a, str>",
+          "methods": [
+            {
+              "code": "pub fn from_iter<I>(it: I) -> Cow<'a, str> where I: IntoIterator<Item = char>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl FromIterator<char> for String",
+          "methods": [
+            {
+              "code": "pub fn from_iter<I>(iter: I) -> String where I: IntoIterator<Item = char>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl FromStr for char",
+          "methods": [
+            {
+              "code": "type Err = ParseCharError",
+              "text": "The associated error which can be returned from parsing."
+            },
+            {
+              "code": "pub fn from_str(s: &str) -> Result<char, <char as FromStr>::Err>",
+              "text": "Parses a string s to return a value of this type."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for char",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, state: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for char",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &char) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<char> for char",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &char) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &char) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<char> for char",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &char) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &char) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &char) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &char) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &char) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Pattern<'a> for char",
+          "methods": [
+            {
+              "code": "type Searcher = CharSearcher<'a>",
+              "text": "Associated searcher for this pattern"
+            },
+            {
+              "code": "pub fn into_searcher(self, haystack: &'a str) -> <char as Pattern<'a>>::Searcher",
+              "text": "Constructs the associated searcher from self and the haystack to search in."
+            },
+            {
+              "code": "pub fn is_contained_in(self, haystack: &'a str) -> bool",
+              "text": "Checks whether the pattern matches anywhere in the haystack"
+            },
+            {
+              "code": "pub fn is_prefix_of(self, haystack: &'a str) -> bool",
+              "text": "Checks whether the pattern matches at the front of the haystack"
+            },
+            {
+              "code": "pub fn strip_prefix_of(self, haystack: &'a str) -> Option<&'a str>",
+              "text": "Removes the pattern from the front of haystack, if it matches."
+            },
+            {
+              "code": "pub fn is_suffix_of(self, haystack: &'a str) -> bool where <char as Pattern<'a>>::Searcher: ReverseSearcher<'a>,",
+              "text": "Checks whether the pattern matches at the back of the haystack"
+            },
+            {
+              "code": "pub fn strip_suffix_of(self, haystack: &'a str) -> Option<&'a str> where <char as Pattern<'a>>::Searcher: ReverseSearcher<'a>,",
+              "text": "Removes the pattern from the back of haystack, if it matches."
+            }
+          ]
+        },
+        {
+          "title": "impl Step for char",
+          "methods": [
+            {
+              "code": "pub fn steps_between(&char, &char) -> Option<usize>",
+              "text": "Returns the number of successor steps required to get from start to end."
+            },
+            {
+              "code": "pub fn forward_checked(start: char, count: usize) -> Option<char>",
+              "text": "Returns the value that would be obtained by taking the successor of self count times."
+            },
+            {
+              "code": "pub fn backward_checked(start: char, count: usize) -> Option<char>",
+              "text": "Returns the value that would be obtained by taking the predecessor of self count times."
+            },
+            {
+              "code": "pub unsafe fn forward_unchecked(start: char, count: usize) -> char",
+              "text": "Returns the value that would be obtained by taking the successor of self count times."
+            },
+            {
+              "code": "pub unsafe fn backward_unchecked(start: char, count: usize) -> char",
+              "text": "Returns the value that would be obtained by taking the predecessor of self count times."
+            },
+            {
+              "code": "fn forward(start: Self, count: usize) -> Self",
+              "text": "Returns the value that would be obtained by taking the successor of self count times."
+            },
+            {
+              "code": "fn backward(start: Self, count: usize) -> Self",
+              "text": "Returns the value that would be obtained by taking the predecessor of self count times."
+            }
+          ]
+        },
+        {
+          "title": "impl ToString for char",
+          "methods": [
+            {
+              "code": "pub fn to_string(&self) -> String",
+              "text": "Converts the given value to a String."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<char> for u8",
+          "methods": [
+            {
+              "code": "type Error = TryFromCharError",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "pub fn try_from(c: char) -> Result<u8, <u8 as TryFrom<char>>::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<u32> for char",
+          "methods": [
+            {
+              "code": "type Error = CharTryFromError",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "pub fn try_from(i: u32) -> Result<char, <char as TryFrom<u32>>::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

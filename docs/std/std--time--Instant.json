@@ -1,0 +1,198 @@
+{
+  "title": "Struct std::time::Instant",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn now() -> Instant",
+          "text": "Returns an instant corresponding to “now”."
+        },
+        {
+          "code": "pub fn duration_since(&self, earlier: Instant) -> Duration",
+          "text": "Returns the amount of time elapsed from another instant to this one."
+        },
+        {
+          "code": "pub fn checked_duration_since(&self, earlier: Instant) -> Option<Duration>",
+          "text": "Returns the amount of time elapsed from another instant to this one, or None if that instant is later than this one."
+        },
+        {
+          "code": "pub fn saturating_duration_since(&self, earlier: Instant) -> Duration",
+          "text": "Returns the amount of time elapsed from another instant to this one, or zero duration if that instant is later than this one."
+        },
+        {
+          "code": "pub fn elapsed(&self) -> Duration",
+          "text": "Returns the amount of time elapsed since this instant was created."
+        },
+        {
+          "code": "pub fn checked_add(&self, duration: Duration) -> Option<Instant>",
+          "text": "Returns Some(t) where t is the time self + duration if t can be represented as Instant (which means it’s inside the bounds of the underlying data structure), None otherwise."
+        },
+        {
+          "code": "pub fn checked_sub(&self, duration: Duration) -> Option<Instant>",
+          "text": "Returns Some(t) where t is the time self - duration if t can be represented as Instant (which means it’s inside the bounds of the underlying data structure), None otherwise."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Add<Duration> for Instant",
+          "methods": [
+            {
+              "code": "fn add(self, other: Duration) -> Instant",
+              "text": "This function may panic if the resulting point in time cannot be represented by the underlying data structure. See Instant::checked_add for a version without panic."
+            },
+            {
+              "code": "type Output = Instant",
+              "text": "The resulting type after applying the + operator."
+            }
+          ]
+        },
+        {
+          "title": "impl AddAssign<Duration> for Instant",
+          "methods": [
+            {
+              "code": "fn add_assign(&mut self, other: Duration)",
+              "text": "Performs the += operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for Instant",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Instant",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Instant",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for Instant",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for Instant",
+          "methods": [
+            {
+              "code": "fn cmp(&self, other: &Instant) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Instant> for Instant",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Instant) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Instant) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<Instant> for Instant",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &Instant) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl Sub<Duration> for Instant",
+          "methods": [
+            {
+              "code": "type Output = Instant",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "fn sub(self, other: Duration) -> Instant",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Sub<Instant> for Instant",
+          "methods": [
+            {
+              "code": "type Output = Duration",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "fn sub(self, other: Instant) -> Duration",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl SubAssign<Duration> for Instant",
+          "methods": [
+            {
+              "code": "fn sub_assign(&mut self, other: Duration)",
+              "text": "Performs the -= operation."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

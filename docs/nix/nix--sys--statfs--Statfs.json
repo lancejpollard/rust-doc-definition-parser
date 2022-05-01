@@ -1,0 +1,81 @@
+{
+  "title": "Struct nix::sys::statfs::Statfs",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn filesystem_type(&self) -> FsType",
+          "text": "Magic code defining system type"
+        },
+        {
+          "code": "pub fn optimal_transfer_size(&self) -> __fsword_t",
+          "text": "Optimal transfer block size"
+        },
+        {
+          "code": "pub fn block_size(&self) -> __fsword_t",
+          "text": "Size of a block"
+        },
+        {
+          "code": "pub fn maximum_name_length(&self) -> __fsword_t",
+          "text": "Maximum length of filenames"
+        },
+        {
+          "code": "pub fn blocks(&self) -> c_ulong",
+          "text": "Total data blocks in filesystem"
+        },
+        {
+          "code": "pub fn blocks_free(&self) -> c_ulong",
+          "text": "Free blocks in filesystem"
+        },
+        {
+          "code": "pub fn blocks_available(&self) -> c_ulong",
+          "text": "Free blocks available to unprivileged user"
+        },
+        {
+          "code": "pub fn files(&self) -> c_ulong",
+          "text": "Total file nodes in filesystem"
+        },
+        {
+          "code": "pub fn files_free(&self) -> c_ulong",
+          "text": "Free file nodes in filesystem"
+        },
+        {
+          "code": "pub fn filesystem_id(&self) -> fsid_t",
+          "text": "Filesystem ID"
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for Statfs",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Statfs",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Statfs",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

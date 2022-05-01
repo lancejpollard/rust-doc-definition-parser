@@ -1,0 +1,132 @@
+{
+  "title": "Struct nix::sys::quota::Dqblk",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn blocks_hard_limit(&self) -> Option<u64>",
+          "text": "The absolute limit on disk quota blocks allocated."
+        },
+        {
+          "code": "pub fn set_blocks_hard_limit(&mut self, limit: u64)",
+          "text": "Set the absolute limit on disk quota blocks allocated."
+        },
+        {
+          "code": "pub fn blocks_soft_limit(&self) -> Option<u64>",
+          "text": "Preferred limit on disk quota blocks"
+        },
+        {
+          "code": "pub fn set_blocks_soft_limit(&mut self, limit: u64)",
+          "text": "Set the preferred limit on disk quota blocks allocated."
+        },
+        {
+          "code": "pub fn occupied_space(&self) -> Option<u64>",
+          "text": "Current occupied space (bytes)."
+        },
+        {
+          "code": "pub fn inodes_hard_limit(&self) -> Option<u64>",
+          "text": "Maximum number of allocated inodes."
+        },
+        {
+          "code": "pub fn set_inodes_hard_limit(&mut self, limit: u64)",
+          "text": "Set the maximum number of allocated inodes."
+        },
+        {
+          "code": "pub fn inodes_soft_limit(&self) -> Option<u64>",
+          "text": "Preferred inode limit"
+        },
+        {
+          "code": "pub fn set_inodes_soft_limit(&mut self, limit: u64)",
+          "text": "Set the preferred limit of allocated inodes."
+        },
+        {
+          "code": "pub fn allocated_inodes(&self) -> Option<u64>",
+          "text": "Current number of allocated inodes."
+        },
+        {
+          "code": "pub fn block_time_limit(&self) -> Option<u64>",
+          "text": "Time limit for excessive disk use."
+        },
+        {
+          "code": "pub fn set_block_time_limit(&mut self, limit: u64)",
+          "text": "Set the time limit for excessive disk use."
+        },
+        {
+          "code": "pub fn inode_time_limit(&self) -> Option<u64>",
+          "text": "Time limit for excessive files."
+        },
+        {
+          "code": "pub fn set_inode_time_limit(&mut self, limit: u64)",
+          "text": "Set the time limit for excessive files."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for Dqblk",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Dqblk",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Dqblk",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for Dqblk",
+          "methods": [
+            {
+              "code": "fn default() -> Dqblk",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for Dqblk",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Dqblk> for Dqblk",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Dqblk) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Dqblk) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

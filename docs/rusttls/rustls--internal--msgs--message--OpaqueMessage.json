@@ -1,0 +1,53 @@
+{
+  "title": "Struct rustls::internal::msgs::message::OpaqueMessage",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn read(r: &mut Reader<'_>) -> Result<Self, MessageError>",
+          "text": "MessageError allows callers to distinguish between valid prefixes (might become valid if we read more data) and invalid data."
+        },
+        {
+          "code": "pub fn into_plain_message(self) -> PlainMessage",
+          "text": "Force conversion into a plaintext message."
+        },
+        {
+          "code": "pub const MAX_WIRE_SIZE: usize",
+          "text": "Maximum on-wire message size."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for OpaqueMessage",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> OpaqueMessage",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for OpaqueMessage",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

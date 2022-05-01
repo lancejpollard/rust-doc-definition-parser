@@ -1,0 +1,44 @@
+{
+  "title": "Struct rustls::server::ServerSessionMemoryCache",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(size: usize) -> Arc<Self>",
+          "text": "Make a new ServerSessionMemoryCache. size is the maximum number of stored sessions, and may be rounded-up for efficiency."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl StoresServerSessions for ServerSessionMemoryCache",
+          "methods": [
+            {
+              "code": "fn put(&self, key: Vec<u8>, value: Vec<u8>) -> bool",
+              "text": "Store session secrets encoded in value against key, overwrites any existing value against key. Returns true if the value was stored."
+            },
+            {
+              "code": "fn get(&self, key: &[u8]) -> Option<Vec<u8>>",
+              "text": "Find a value with the given key. Return it, or None if it doesn’t exist."
+            },
+            {
+              "code": "fn take(&self, key: &[u8]) -> Option<Vec<u8>>",
+              "text": "Find a value with the given key. Return it and delete it; or None if it doesn’t exist."
+            },
+            {
+              "code": "fn can_cache(&self) -> bool",
+              "text": "Whether the store can cache another session. This is used to indicate to clients whether their session can be resumed; the implementation is not required to remember a session even if it returns true here."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

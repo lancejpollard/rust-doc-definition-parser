@@ -1,0 +1,113 @@
+{
+  "title": "Struct std::io::Error",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new<E>(kind: ErrorKind, error: E) -> Error where E: Into<Box<dyn Error + Send + Sync>>,",
+          "text": "Creates a new I/O error from a known kind of error as well as an arbitrary error payload."
+        },
+        {
+          "code": "pub fn other<E>(error: E) -> Error where E: Into<Box<dyn Error + Send + Sync>>,",
+          "text": "Creates a new I/O error from an arbitrary error payload."
+        },
+        {
+          "code": "pub fn last_os_error() -> Error",
+          "text": "Returns an error representing the last OS error which occurred."
+        },
+        {
+          "code": "pub fn from_raw_os_error(code: i32) -> Error",
+          "text": "Creates a new instance of an Error from a particular OS error code."
+        },
+        {
+          "code": "pub fn raw_os_error(&self) -> Option<i32>",
+          "text": "Returns the OS error that this error represents (if any)."
+        },
+        {
+          "code": "pub fn get_ref(&self) -> Option<&(dyn Error + Send + Sync + 'static)>",
+          "text": "Returns a reference to the inner error wrapped by this error (if any)."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> Option<&mut (dyn Error + Send + Sync + 'static)>",
+          "text": "Returns a mutable reference to the inner error wrapped by this error (if any)."
+        },
+        {
+          "code": "pub fn into_inner(self) -> Option<Box<dyn Error + Send + Sync>>",
+          "text": "Consumes the Error, returning its inner error (if any)."
+        },
+        {
+          "code": "pub fn kind(&self) -> ErrorKind",
+          "text": "Returns the corresponding ErrorKind for this error."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Error",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for Error",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Error for Error",
+          "methods": [
+            {
+              "code": "fn source(&self) -> Option<&(dyn Error + 'static)>",
+              "text": "The lower-level source of this error, if any."
+            },
+            {
+              "code": "fn backtrace(&self) -> Option<&Backtrace>",
+              "text": "Returns a stack backtrace, if available, of where this error occurred."
+            }
+          ]
+        },
+        {
+          "title": "impl From<ErrorKind> for Error",
+          "methods": [
+            {
+              "code": "fn from(kind: ErrorKind) -> Error",
+              "text": "Converts an ErrorKind into an Error."
+            }
+          ]
+        },
+        {
+          "title": "impl<W> From<IntoInnerError<W>> for Error",
+          "methods": [
+            {
+              "code": "fn from(iie: IntoInnerError<W>) -> Error",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<NulError> for Error",
+          "methods": [
+            {
+              "code": "fn from(_: NulError) -> Error",
+              "text": "Converts a NulError into a io::Error."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

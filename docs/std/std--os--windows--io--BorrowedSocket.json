@@ -1,0 +1,63 @@
+{
+  "title": "Struct std::os::windows::io::BorrowedSocket",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub unsafe fn borrow_raw_socket(socket: RawSocket) -> Self",
+          "text": "Return a BorrowedSocket holding the given raw socket."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRawSocket for BorrowedSocket<'_>",
+          "methods": [
+            {
+              "code": "fn as_raw_socket(&self) -> RawSocket",
+              "text": "Extracts the underlying raw socket from this object."
+            }
+          ]
+        },
+        {
+          "title": "impl AsSocket for BorrowedSocket<'_>",
+          "methods": [
+            {
+              "code": "fn as_socket(&self) -> BorrowedSocket<'_>",
+              "text": "Borrows the socket."
+            }
+          ]
+        },
+        {
+          "title": "impl<'socket> Clone for BorrowedSocket<'socket>",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> BorrowedSocket<'socket>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for BorrowedSocket<'_>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "title": "Struct std::io::Stdout",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn lock(&self) -> StdoutLock<'_>ⓘNotable traits for StdoutLock<'_>impl Write for StdoutLock<'_>",
+          "text": "Locks this handle to the standard output stream, returning a writable guard."
+        },
+        {
+          "code": "pub fn into_locked(self) -> StdoutLock<'static>ⓘNotable traits for StdoutLock<'_>impl Write for StdoutLock<'_>",
+          "text": "Consumes this handle to the standard output stream, locking the shared global buffer associated with the stream and returning a writable guard."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsFd for Stdout",
+          "methods": []
+        },
+        {
+          "title": "impl AsHandle for Stdout",
+          "methods": [
+            {
+              "code": "fn as_handle(&self) -> BorrowedHandle<'_>",
+              "text": "Borrows the handle."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRawFd for Stdout",
+          "methods": []
+        },
+        {
+          "title": "impl AsRawHandle for Stdout",
+          "methods": [
+            {
+              "code": "fn as_raw_handle(&self) -> RawHandle",
+              "text": "Extracts the raw handle, without taking any ownership."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Stdout",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Write for Stdout",
+          "methods": [
+            {
+              "code": "fn write(&mut self, buf: &[u8]) -> Result<usize>",
+              "text": "Write a buffer into this writer, returning how many bytes were written."
+            },
+            {
+              "code": "fn write_vectored(&mut self, bufs: &[IoSlice<'_>]) -> Result<usize>",
+              "text": "Like write, except that it writes from a slice of buffers."
+            },
+            {
+              "code": "fn is_write_vectored(&self) -> bool",
+              "text": "Determines if this Writer has an efficient write_vectored implementation."
+            },
+            {
+              "code": "fn flush(&mut self) -> Result<()>",
+              "text": "Flush this output stream, ensuring that all intermediately buffered contents reach their destination."
+            },
+            {
+              "code": "fn write_all(&mut self, buf: &[u8]) -> Result<()>",
+              "text": "Attempts to write an entire buffer into this writer."
+            },
+            {
+              "code": "fn write_all_vectored(&mut self, bufs: &mut [IoSlice<'_>]) -> Result<()>",
+              "text": "Attempts to write multiple buffers into this writer."
+            },
+            {
+              "code": "fn write_fmt(&mut self, args: Arguments<'_>) -> Result<()>",
+              "text": "Writes a formatted string into this writer, returning any error encountered."
+            },
+            {
+              "code": "fn by_ref(&mut self) -> &mut Self where Self: Sized,",
+              "text": "Creates a “by reference” adapter for this instance of Write."
+            }
+          ]
+        },
+        {
+          "title": "impl Write for &Stdout",
+          "methods": [
+            {
+              "code": "fn write(&mut self, buf: &[u8]) -> Result<usize>",
+              "text": "Write a buffer into this writer, returning how many bytes were written."
+            },
+            {
+              "code": "fn write_vectored(&mut self, bufs: &[IoSlice<'_>]) -> Result<usize>",
+              "text": "Like write, except that it writes from a slice of buffers."
+            },
+            {
+              "code": "fn is_write_vectored(&self) -> bool",
+              "text": "Determines if this Writer has an efficient write_vectored implementation."
+            },
+            {
+              "code": "fn flush(&mut self) -> Result<()>",
+              "text": "Flush this output stream, ensuring that all intermediately buffered contents reach their destination."
+            },
+            {
+              "code": "fn write_all(&mut self, buf: &[u8]) -> Result<()>",
+              "text": "Attempts to write an entire buffer into this writer."
+            },
+            {
+              "code": "fn write_all_vectored(&mut self, bufs: &mut [IoSlice<'_>]) -> Result<()>",
+              "text": "Attempts to write multiple buffers into this writer."
+            },
+            {
+              "code": "fn write_fmt(&mut self, args: Arguments<'_>) -> Result<()>",
+              "text": "Writes a formatted string into this writer, returning any error encountered."
+            },
+            {
+              "code": "fn by_ref(&mut self) -> &mut Self where Self: Sized,",
+              "text": "Creates a “by reference” adapter for this instance of Write."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

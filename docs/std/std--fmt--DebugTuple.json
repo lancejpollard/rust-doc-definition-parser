@@ -1,0 +1,26 @@
+{
+  "title": "Struct std::fmt::DebugTuple",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn field(&mut self, value: &dyn Debug) -> &mut DebugTuple<'a, 'b>",
+          "text": "Adds a new field to the generated tuple struct output."
+        },
+        {
+          "code": "pub fn finish(&mut self) -> Result<(), Error>",
+          "text": "Finishes output and returns any error encountered."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

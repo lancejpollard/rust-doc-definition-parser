@@ -1,0 +1,82 @@
+{
+  "title": "Struct tokio::net::TcpListener",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub async fn bind<A: ToSocketAddrs>(addr: A) -> Result<TcpListener>",
+          "text": "Creates a new TcpListener, which will be bound to the specified address."
+        },
+        {
+          "code": "pub async fn accept(&self) -> Result<(TcpStream, SocketAddr)>",
+          "text": "Accepts a new incoming connection from this listener."
+        },
+        {
+          "code": "pub fn poll_accept( &self, cx: &mut Context<'_>) -> Poll<Result<(TcpStream, SocketAddr)>>",
+          "text": "Polls to accept a new incoming connection to this listener."
+        },
+        {
+          "code": "pub fn from_std(listener: TcpListener) -> Result<TcpListener>",
+          "text": "Creates new TcpListener from a std::net::TcpListener."
+        },
+        {
+          "code": "pub fn into_std(self) -> Result<TcpListener>",
+          "text": "Turns a tokio::net::TcpListener into a std::net::TcpListener."
+        },
+        {
+          "code": "pub fn local_addr(&self) -> Result<SocketAddr>",
+          "text": "Returns the local address that this listener is bound to."
+        },
+        {
+          "code": "pub fn ttl(&self) -> Result<u32>",
+          "text": "Gets the value of the IP_TTL option for this socket."
+        },
+        {
+          "code": "pub fn set_ttl(&self, ttl: u32) -> Result<()>",
+          "text": "Sets the value for the IP_TTL option on this socket."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRawFd for TcpListener",
+          "methods": [
+            {
+              "code": "fn as_raw_fd(&self) -> RawFd",
+              "text": "Extracts the raw file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for TcpListener",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<TcpListener> for TcpListener",
+          "methods": [
+            {
+              "code": "fn try_from(stream: TcpListener) -> Result<Self, Self::Error>",
+              "text": "Consumes stream, returning the tokio I/O object."
+            },
+            {
+              "code": "type Error = Error",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "title": "Struct nix::sys::timerfd::TimerFd",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(clockid: ClockId, flags: TimerFlags) -> Result<Self>",
+          "text": "Creates a new timer based on the clock defined by clockid. The underlying fd can be assigned specific flags with flags (CLOEXEC, NONBLOCK). The underlying fd will be closed on drop."
+        },
+        {
+          "code": "pub fn set( &self, expiration: Expiration, flags: TimerSetTimeFlags) -> Result<()>",
+          "text": "Sets a new alarm on the timer."
+        },
+        {
+          "code": "pub fn get(&self) -> Result<Option<Expiration>>",
+          "text": "Get the parameters for the alarm currently set, if any."
+        },
+        {
+          "code": "pub fn unset(&self) -> Result<()>",
+          "text": "Remove the alarm if any is set."
+        },
+        {
+          "code": "pub fn wait(&self) -> Result<()>",
+          "text": "Wait for the configured alarm to expire."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRawFd for TimerFd",
+          "methods": [
+            {
+              "code": "fn as_raw_fd(&self) -> RawFd",
+              "text": "Extracts the raw file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for TimerFd",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Drop for TimerFd",
+          "methods": [
+            {
+              "code": "fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        },
+        {
+          "title": "impl FromRawFd for TimerFd",
+          "methods": [
+            {
+              "code": "unsafe fn from_raw_fd(fd: RawFd) -> Self",
+              "text": "Constructs a new instance of Self from the given raw file descriptor."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

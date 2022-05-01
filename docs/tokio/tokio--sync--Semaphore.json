@@ -1,0 +1,80 @@
+{
+  "title": "Struct tokio::sync::Semaphore",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(permits: usize) -> Self",
+          "text": "Creates a new semaphore with the initial number of permits."
+        },
+        {
+          "code": "pub fn available_permits(&self) -> usize",
+          "text": "Returns the current number of available permits."
+        },
+        {
+          "code": "pub fn add_permits(&self, n: usize)",
+          "text": "Adds n new permits to the semaphore."
+        },
+        {
+          "code": "pub async fn acquire(&self) -> Result<SemaphorePermit<'_>, AcquireError>",
+          "text": "Acquires a permit from the semaphore."
+        },
+        {
+          "code": "pub async fn acquire_many( &self, n: u32) -> Result<SemaphorePermit<'_>, AcquireError>",
+          "text": "Acquires n permits from the semaphore."
+        },
+        {
+          "code": "pub fn try_acquire(&self) -> Result<SemaphorePermit<'_>, TryAcquireError>",
+          "text": "Tries to acquire a permit from the semaphore."
+        },
+        {
+          "code": "pub fn try_acquire_many( &self, n: u32) -> Result<SemaphorePermit<'_>, TryAcquireError>",
+          "text": "Tries to acquire n permits from the semaphore."
+        },
+        {
+          "code": "pub async fn acquire_owned( self: Arc<Self>) -> Result<OwnedSemaphorePermit, AcquireError>",
+          "text": "Acquires a permit from the semaphore."
+        },
+        {
+          "code": "pub async fn acquire_many_owned( self: Arc<Self>, n: u32) -> Result<OwnedSemaphorePermit, AcquireError>",
+          "text": "Acquires n permits from the semaphore."
+        },
+        {
+          "code": "pub fn try_acquire_owned( self: Arc<Self>) -> Result<OwnedSemaphorePermit, TryAcquireError>",
+          "text": "Tries to acquire a permit from the semaphore."
+        },
+        {
+          "code": "pub fn try_acquire_many_owned( self: Arc<Self>, n: u32) -> Result<OwnedSemaphorePermit, TryAcquireError>",
+          "text": "Tries to acquire n permits from the semaphore."
+        },
+        {
+          "code": "pub fn close(&self)",
+          "text": "Closes the semaphore."
+        },
+        {
+          "code": "pub fn is_closed(&self) -> bool",
+          "text": "Returns true if the semaphore is closed"
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Semaphore",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

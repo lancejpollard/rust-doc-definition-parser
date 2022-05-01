@@ -1,0 +1,22 @@
+{
+  "title": "Struct rustls::client::DangerousClientConfig",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn set_certificate_verifier( &mut self, verifier: Arc<dyn ServerCertVerifier>)",
+          "text": "Overrides the default ServerCertVerifier with something else."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "title": "Struct hyper::server::conn::AddrIncoming",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Accept for AddrIncoming",
+          "methods": [
+            {
+              "code": "type Conn = AddrStream",
+              "text": "The connection type that can be accepted."
+            },
+            {
+              "code": "type Error = Error",
+              "text": "The error type that can occur when accepting a connection."
+            },
+            {
+              "code": "fn poll_accept( self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Option<Result<Self::Conn, Self::Error>>>",
+              "text": "Poll to accept the next connection."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for AddrIncoming",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

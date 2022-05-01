@@ -1,0 +1,58 @@
+{
+  "title": "Struct nix::sys::socket::RecvMsg",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn cmsgs(&self) -> CmsgIterator<'_>ⓘNotable traits for CmsgIterator<'a>impl<'a> Iterator for CmsgIterator<'a> type Item = ControlMessageOwned;",
+          "text": "Iterate over the valid control messages pointed to by this msghdr."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a> Clone for RecvMsg<'a>",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> RecvMsg<'a>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Debug for RecvMsg<'a>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> PartialEq<RecvMsg<'a>> for RecvMsg<'a>",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &RecvMsg<'a>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &RecvMsg<'a>) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

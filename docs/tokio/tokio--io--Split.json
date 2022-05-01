@@ -1,0 +1,36 @@
+{
+  "title": "Struct tokio::io::Split",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub async fn next_segment(&mut self) -> Result<Option<Vec<u8>>>",
+          "text": "Returns the next segment in the stream."
+        },
+        {
+          "code": "pub fn poll_next_segment( self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<Option<Vec<u8>>>>",
+          "text": "Polls for the next segment in the stream."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<R: Debug> Debug for Split<R>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

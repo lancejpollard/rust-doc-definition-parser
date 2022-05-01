@@ -1,0 +1,79 @@
+{
+  "title": "Struct std::fs::Permissions",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn readonly(&self) -> bool",
+          "text": "Returns true if these permissions describe a readonly (unwritable) file."
+        },
+        {
+          "code": "pub fn set_readonly(&mut self, readonly: bool)",
+          "text": "Modifies the readonly flag for this set of permissions. If the readonly argument is true, using the resulting Permission will update file permissions to forbid writing. Conversely, if it’s false, using the resulting Permission will update file permissions to allow writing."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for Permissions",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Permissions",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Permissions",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Permissions> for Permissions",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Permissions) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Permissions) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PermissionsExt for Permissions",
+          "methods": [
+            {
+              "code": "fn mode(&self) -> u32",
+              "text": "Returns the underlying raw st_mode bits that contain the standard Unix permissions for this file."
+            },
+            {
+              "code": "fn set_mode(&mut self, mode: u32)",
+              "text": "Sets the underlying raw bits for this set of permissions."
+            },
+            {
+              "code": "fn from_mode(mode: u32) -> Permissions",
+              "text": "Creates a new instance of Permissions from the given set of Unix permission bits."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

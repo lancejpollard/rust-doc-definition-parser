@@ -1,0 +1,36 @@
+{
+  "title": "Struct std::task::Context",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn from_waker(waker: &'a Waker) -> Context<'a>",
+          "text": "Create a new Context from a &Waker."
+        },
+        {
+          "code": "pub fn waker(&self) -> &'a Waker",
+          "text": "Returns a reference to the Waker for the current task."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'_> Debug for Context<'_>",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

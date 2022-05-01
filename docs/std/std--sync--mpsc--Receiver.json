@@ -1,0 +1,95 @@
+{
+  "title": "Struct std::sync::mpsc::Receiver",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn try_recv(&self) -> Result<T, TryRecvError>",
+          "text": "Attempts to return a pending value on this receiver without blocking."
+        },
+        {
+          "code": "pub fn recv(&self) -> Result<T, RecvError>",
+          "text": "Attempts to wait for a value on this receiver, returning an error if the corresponding channel has hung up."
+        },
+        {
+          "code": "pub fn recv_timeout(&self, timeout: Duration) -> Result<T, RecvTimeoutError>",
+          "text": "Attempts to wait for a value on this receiver, returning an error if the corresponding channel has hung up, or if it waits more than timeout."
+        },
+        {
+          "code": "pub fn recv_deadline(&self, deadline: Instant) -> Result<T, RecvTimeoutError>",
+          "text": "Attempts to wait for a value on this receiver, returning an error if the corresponding channel has hung up, or if deadline is reached."
+        },
+        {
+          "code": "pub fn iter(&self) -> Iter<'_, T>ⓘNotable traits for Iter<'a, T>impl<'a, T> Iterator for Iter<'a, T> type Item = T;",
+          "text": "Returns an iterator that will block waiting for messages, but never panic!. It will return None when the channel has hung up."
+        },
+        {
+          "code": "pub fn try_iter(&self) -> TryIter<'_, T>ⓘNotable traits for TryIter<'a, T>impl<'a, T> Iterator for TryIter<'a, T> type Item = T;",
+          "text": "Returns an iterator that will attempt to yield all pending values. It will return None if there are no more pending values or if the channel has hung up. The iterator will never panic! or block the user by waiting for values."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Debug for Receiver<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Drop for Receiver<T>",
+          "methods": [
+            {
+              "code": "fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> IntoIterator for &'a Receiver<T>",
+          "methods": [
+            {
+              "code": "type Item = T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = Iter<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "fn into_iter(self) -> Iter<'a, T>ⓘNotable traits for Iter<'a, T>impl<'a, T> Iterator for Iter<'a, T> type Item = T;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> IntoIterator for Receiver<T>",
+          "methods": [
+            {
+              "code": "type Item = T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = IntoIter<T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "fn into_iter(self) -> IntoIter<T>ⓘNotable traits for IntoIter<T>impl<T> Iterator for IntoIter<T> type Item = T;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

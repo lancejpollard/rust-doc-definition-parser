@@ -1,0 +1,57 @@
+{
+  "title": "Struct tokio::sync::mpsc::UnboundedSender",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn send(&self, message: T) -> Result<(), SendError<T>>",
+          "text": "Attempts to send a message on this UnboundedSender without blocking."
+        },
+        {
+          "code": "pub async fn closed(&self)",
+          "text": "Completes when the receiver has dropped."
+        },
+        {
+          "code": "pub fn is_closed(&self) -> bool",
+          "text": "Checks if the channel has been closed. This happens when the UnboundedReceiver is dropped, or when the UnboundedReceiver::close method is called."
+        },
+        {
+          "code": "pub fn same_channel(&self, other: &Self) -> bool",
+          "text": "Returns true if senders belong to the same channel."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Clone for UnboundedSender<T>",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Self",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for UnboundedSender<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

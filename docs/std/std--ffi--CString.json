@@ -1,0 +1,317 @@
+{
+  "title": "Struct std::ffi::CString",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new<T: Into<Vec<u8>>>(t: T) -> Result<CString, NulError>",
+          "text": "Creates a new C-compatible string from a container of bytes."
+        },
+        {
+          "code": "pub unsafe fn from_vec_unchecked(v: Vec<u8>) -> CString",
+          "text": "Creates a C-compatible string by consuming a byte vector, without checking for interior 0 bytes."
+        },
+        {
+          "code": "pub unsafe fn from_raw(ptr: *mut c_char) -> CString",
+          "text": "Retakes ownership of a CString that was transferred to C via CString::into_raw."
+        },
+        {
+          "code": "pub fn into_raw(self) -> *mut c_char",
+          "text": "Consumes the CString and transfers ownership of the string to a C caller."
+        },
+        {
+          "code": "pub fn into_string(self) -> Result<String, IntoStringError>",
+          "text": "Converts the CString into a String if it contains valid UTF-8 data."
+        },
+        {
+          "code": "pub fn into_bytes(self) -> Vec<u8>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+          "text": "Consumes the CString and returns the underlying byte buffer."
+        },
+        {
+          "code": "pub fn into_bytes_with_nul(self) -> Vec<u8>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+          "text": "Equivalent to CString::into_bytes() except that the returned vector includes the trailing nul terminator."
+        },
+        {
+          "code": "pub fn as_bytes(&self) -> &[u8]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+          "text": "Returns the contents of this CString as a slice of bytes."
+        },
+        {
+          "code": "pub fn as_bytes_with_nul(&self) -> &[u8]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+          "text": "Equivalent to CString::as_bytes() except that the returned slice includes the trailing nul terminator."
+        },
+        {
+          "code": "pub fn as_c_str(&self) -> &CStr",
+          "text": "Extracts a CStr slice containing the entire string."
+        },
+        {
+          "code": "pub fn into_boxed_c_str(self) -> Box<CStr>ⓘNotable traits for Box<F, A>impl<F, A> Future for Box<F, A> where F: Future + Unpin + ?Sized, A: Allocator + 'static, type Output = <F as Future>::Output;impl<I, A> Iterator for Box<I, A> where I: Iterator + ?Sized, A: Allocator, type Item = <I as Iterator>::Item;impl<R: Read + ?Sized> Read for Box<R>impl<W: Write + ?Sized> Write for Box<W>",
+          "text": "Converts this CString into a boxed CStr."
+        },
+        {
+          "code": "pub unsafe fn from_vec_with_nul_unchecked(v: Vec<u8>) -> Self",
+          "text": "Converts a Vec<u8> to a CString without checking the invariants on the given Vec."
+        },
+        {
+          "code": "pub fn from_vec_with_nul(v: Vec<u8>) -> Result<Self, FromVecWithNulError>",
+          "text": "Attempts to converts a Vec<u8> to a CString."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRef<CStr> for CString",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &CStr",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl Borrow<CStr> for CString",
+          "methods": [
+            {
+              "code": "fn borrow(&self) -> &CStr",
+              "text": "Immutably borrows from an owned value."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for CString",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> CString",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for CString",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for CString",
+          "methods": [
+            {
+              "code": "fn default() -> CString",
+              "text": "Creates an empty CString."
+            }
+          ]
+        },
+        {
+          "title": "impl Deref for CString",
+          "methods": [
+            {
+              "code": "type Target = CStr",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "fn deref(&self) -> &CStr",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl Drop for CString",
+          "methods": [
+            {
+              "code": "fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<&'_ CStr> for CString",
+          "methods": [
+            {
+              "code": "fn from(s: &CStr) -> CString",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> From<&'a CString> for Cow<'a, CStr>",
+          "methods": [
+            {
+              "code": "fn from(s: &'a CString) -> Cow<'a, CStr>",
+              "text": "Converts a &CString into a borrowed Cow without copying or allocating."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Box<CStr, Global>> for CString",
+          "methods": [
+            {
+              "code": "fn from(s: Box<CStr>) -> CString",
+              "text": "Converts a Box<CStr> into a CString without copying or allocating."
+            }
+          ]
+        },
+        {
+          "title": "impl From<CString> for Vec<u8>",
+          "methods": [
+            {
+              "code": "fn from(s: CString) -> Vec<u8>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Converts a CString into a Vec<u8>."
+            }
+          ]
+        },
+        {
+          "title": "impl From<CString> for Box<CStr>",
+          "methods": [
+            {
+              "code": "fn from(s: CString) -> Box<CStr>ⓘNotable traits for Box<F, A>impl<F, A> Future for Box<F, A> where F: Future + Unpin + ?Sized, A: Allocator + 'static, type Output = <F as Future>::Output;impl<I, A> Iterator for Box<I, A> where I: Iterator + ?Sized, A: Allocator, type Item = <I as Iterator>::Item;impl<R: Read + ?Sized> Read for Box<R>impl<W: Write + ?Sized> Write for Box<W>",
+              "text": "Converts a CString into a Box<CStr> without copying or allocating."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> From<CString> for Cow<'a, CStr>",
+          "methods": [
+            {
+              "code": "fn from(s: CString) -> Cow<'a, CStr>",
+              "text": "Converts a CString into an owned Cow without copying or allocating."
+            }
+          ]
+        },
+        {
+          "title": "impl From<CString> for Arc<CStr>",
+          "methods": [
+            {
+              "code": "fn from(s: CString) -> Arc<CStr>",
+              "text": "Converts a CString into an Arc<CStr> without copying or allocating."
+            }
+          ]
+        },
+        {
+          "title": "impl From<CString> for Rc<CStr>",
+          "methods": [
+            {
+              "code": "fn from(s: CString) -> Rc<CStr>",
+              "text": "Converts a CString into an Rc<CStr> without copying or allocating."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> From<Cow<'a, CStr>> for CString",
+          "methods": [
+            {
+              "code": "fn from(s: Cow<'a, CStr>) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Vec<NonZeroU8, Global>> for CString",
+          "methods": [
+            {
+              "code": "fn from(v: Vec<NonZeroU8>) -> CString",
+              "text": "Converts a Vec<NonZeroU8> into a CString without copying nor checking for inner null bytes."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for CString",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl Index<RangeFull> for CString",
+          "methods": [
+            {
+              "code": "type Output = CStr",
+              "text": "The returned type after indexing."
+            },
+            {
+              "code": "fn index(&self, _index: RangeFull) -> &CStr",
+              "text": "Performs the indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for CString",
+          "methods": [
+            {
+              "code": "fn cmp(&self, other: &CString) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<CString> for CString",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &CString) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &CString) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<CString> for CString",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &CString) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

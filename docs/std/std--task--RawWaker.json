@@ -1,0 +1,54 @@
+{
+  "title": "Struct std::task::RawWaker",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn new(data: *const (), vtable: &'static RawWakerVTable) -> RawWaker",
+          "text": "Creates a new RawWaker from the provided data pointer and vtable."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for RawWaker",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<W> From<Arc<W>> for RawWaker where W: 'static + Wake + Send + Sync,",
+          "methods": [
+            {
+              "code": "pub fn from(waker: Arc<W>) -> RawWaker",
+              "text": "Use a Wake-able type as a RawWaker."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<RawWaker> for RawWaker",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &RawWaker) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &RawWaker) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

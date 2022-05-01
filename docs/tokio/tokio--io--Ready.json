@@ -1,0 +1,171 @@
+{
+  "title": "Struct tokio::io::Ready",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const EMPTY: Ready",
+          "text": "Returns the empty Ready set."
+        },
+        {
+          "code": "pub const READABLE: Ready",
+          "text": "Returns a Ready representing readable readiness."
+        },
+        {
+          "code": "pub const WRITABLE: Ready",
+          "text": "Returns a Ready representing writable readiness."
+        },
+        {
+          "code": "pub const READ_CLOSED: Ready",
+          "text": "Returns a Ready representing read closed readiness."
+        },
+        {
+          "code": "pub const WRITE_CLOSED: Ready",
+          "text": "Returns a Ready representing write closed readiness."
+        },
+        {
+          "code": "pub const ALL: Ready",
+          "text": "Returns a Ready representing readiness for all operations."
+        },
+        {
+          "code": "pub fn is_empty(self) -> bool",
+          "text": "Returns true if Ready is the empty set."
+        },
+        {
+          "code": "pub fn is_readable(self) -> bool",
+          "text": "Returns true if the value includes readable."
+        },
+        {
+          "code": "pub fn is_writable(self) -> bool",
+          "text": "Returns true if the value includes writable readiness."
+        },
+        {
+          "code": "pub fn is_read_closed(self) -> bool",
+          "text": "Returns true if the value includes read-closed readiness."
+        },
+        {
+          "code": "pub fn is_write_closed(self) -> bool",
+          "text": "Returns true if the value includes write-closed readiness."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl BitAnd<Ready> for Ready",
+          "methods": [
+            {
+              "code": "type Output = Ready",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "fn bitand(self, other: Ready) -> Ready",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOr<Ready> for Ready",
+          "methods": [
+            {
+              "code": "type Output = Ready",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "fn bitor(self, other: Ready) -> Ready",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOrAssign<Ready> for Ready",
+          "methods": [
+            {
+              "code": "fn bitor_assign(&mut self, other: Ready)",
+              "text": "Performs the |= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for Ready",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Ready",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Ready",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Ready> for Ready",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Ready) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Ready) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<Ready> for Ready",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &Ready) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl Sub<Ready> for Ready",
+          "methods": [
+            {
+              "code": "type Output = Ready",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "fn sub(self, other: Ready) -> Ready",
+              "text": "Performs the - operation."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

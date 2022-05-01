@@ -1,0 +1,31 @@
+{
+  "title": "Struct std::os::linux::raw::stat",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for stat",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> stat",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "title": "Struct rustls::client::WebPkiVerifier",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new( roots: RootCertStore, ct_policy: Option<CertificateTransparencyPolicy>) -> Self",
+          "text": "Constructs a new WebPkiVerifier."
+        },
+        {
+          "code": "pub fn verification_schemes() -> Vec<SignatureScheme>",
+          "text": "Returns the signature verification methods supported by webpki."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl ServerCertVerifier for WebPkiVerifier",
+          "methods": [
+            {
+              "code": "fn verify_server_cert( &self, end_entity: &Certificate, intermediates: &[Certificate], server_name: &ServerName, scts: &mut dyn Iterator<Item = &[u8]>, ocsp_response: &[u8], now: SystemTime) -> Result<ServerCertVerified, Error>",
+              "text": "Will verify the certificate is valid in the following ways:"
+            },
+            {
+              "code": "fn verify_tls12_signature( &self, message: &[u8], cert: &Certificate, dss: &DigitallySignedStruct) -> Result<HandshakeSignatureValid, Error>",
+              "text": "Verify a signature allegedly by the given server certificate."
+            },
+            {
+              "code": "fn verify_tls13_signature( &self, message: &[u8], cert: &Certificate, dss: &DigitallySignedStruct) -> Result<HandshakeSignatureValid, Error>",
+              "text": "Verify a signature allegedly by the given server certificate."
+            },
+            {
+              "code": "fn supported_verify_schemes(&self) -> Vec<SignatureScheme>",
+              "text": "Return the list of SignatureSchemes that this verifier will handle, in verify_tls12_signature and verify_tls13_signature calls."
+            },
+            {
+              "code": "fn request_scts(&self) -> bool",
+              "text": "Returns true if Rustls should ask the server to send SCTs."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

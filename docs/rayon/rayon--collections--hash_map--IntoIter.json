@@ -1,0 +1,24 @@
+{
+  "title": "Struct rayon::collections::hash_map::IntoIter",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "methods": []
+        },
+        {
+          "methods": []
+        }
+      ]
+    }
+  ]
+}

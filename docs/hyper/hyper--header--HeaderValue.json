@@ -1,0 +1,593 @@
+{
+  "title": "Struct hyper::header::HeaderValue",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRef<[u8]> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &[u8]ⓘNotable traits for &'_ [u8]impl<'_> Read for &'_ [u8]impl<'_> Write for &'_ mut [u8]",
+              "text": "Converts this type into a shared reference of the (usually inferred) input type."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for HeaderValue",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> HeaderValue",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for HeaderValue",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> From<&'a HeaderValue> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn from(t: &'a HeaderValue) -> HeaderValue",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<HeaderName> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn from(h: HeaderName) -> HeaderValue",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<i16> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn from(num: i16) -> HeaderValue",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<i32> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn from(num: i32) -> HeaderValue",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<i64> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn from(num: i64) -> HeaderValue",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<isize> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn from(num: isize) -> HeaderValue",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<u16> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn from(num: u16) -> HeaderValue",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<u32> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn from(num: u32) -> HeaderValue",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<u64> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn from(num: u64) -> HeaderValue",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<usize> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn from(num: usize) -> HeaderValue",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl FromStr for HeaderValue",
+          "methods": [
+            {
+              "code": "type Err = InvalidHeaderValue",
+              "text": "The associated error which can be returned from parsing."
+            },
+            {
+              "code": "fn from_str(s: &str) -> Result<HeaderValue, <HeaderValue as FromStr>::Err>",
+              "text": "Parses a string s to return a value of this type."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for HeaderValue",
+          "methods": [
+            {
+              "code": "fn hash<__H>(&self, state: &mut __H) where __H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for HeaderValue",
+          "methods": [
+            {
+              "code": "fn cmp(&self, other: &HeaderValue) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> PartialEq<&'a T> for HeaderValue where T: ?Sized, HeaderValue: PartialEq<T>,",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &&'a T) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<[u8]> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &[u8]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<HeaderValue> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &HeaderValue) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> PartialEq<HeaderValue> for &'a HeaderValue",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &HeaderValue) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> PartialEq<HeaderValue> for &'a str",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &HeaderValue) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<HeaderValue> for str",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &HeaderValue) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<HeaderValue> for [u8]",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &HeaderValue) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<String> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &String) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<str> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &str) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> PartialOrd<&'a T> for HeaderValue where T: ?Sized, HeaderValue: PartialOrd<T>,",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &&'a T) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<[u8]> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &[u8]) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<HeaderValue> for str",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &HeaderValue) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<HeaderValue> for [u8]",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &HeaderValue) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> PartialOrd<HeaderValue> for &'a HeaderValue",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &HeaderValue) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> PartialOrd<HeaderValue> for &'a str",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &HeaderValue) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<HeaderValue> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &HeaderValue) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<String> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &String) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<str> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &str) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> TryFrom<&'a [u8]> for HeaderValue",
+          "methods": [
+            {
+              "code": "type Error = InvalidHeaderValue",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "fn try_from( t: &'a [u8]) -> Result<HeaderValue, <HeaderValue as TryFrom<&'a [u8]>>::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> TryFrom<&'a String> for HeaderValue",
+          "methods": [
+            {
+              "code": "type Error = InvalidHeaderValue",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "fn try_from( s: &'a String) -> Result<HeaderValue, <HeaderValue as TryFrom<&'a String>>::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> TryFrom<&'a str> for HeaderValue",
+          "methods": [
+            {
+              "code": "type Error = InvalidHeaderValue",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "fn try_from( t: &'a str) -> Result<HeaderValue, <HeaderValue as TryFrom<&'a str>>::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<String> for HeaderValue",
+          "methods": [
+            {
+              "code": "type Error = InvalidHeaderValue",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "fn try_from( t: String) -> Result<HeaderValue, <HeaderValue as TryFrom<String>>::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<Vec<u8, Global>> for HeaderValue",
+          "methods": [
+            {
+              "code": "type Error = InvalidHeaderValue",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "fn try_from( vec: Vec<u8, Global>) -> Result<HeaderValue, <HeaderValue as TryFrom<Vec<u8, Global>>>::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

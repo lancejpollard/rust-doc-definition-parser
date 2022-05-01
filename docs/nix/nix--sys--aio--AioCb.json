@@ -1,0 +1,109 @@
+{
+  "title": "Struct nix::sys::aio::AioCb",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn fd(&self) -> RawFd",
+          "text": "Returns the underlying file descriptor associated with the AioCb"
+        },
+        {
+          "code": "pub fn from_fd( fd: RawFd, prio: c_int, sigev_notify: SigevNotify) -> Pin<Box<AioCb<'a>>>",
+          "text": "Constructs a new AioCb with no associated buffer."
+        },
+        {
+          "code": "pub fn from_mut_slice( fd: RawFd, offs: off_t, buf: &'a mut [u8], prio: c_int, sigev_notify: SigevNotify, opcode: LioOpcode) -> Pin<Box<AioCb<'a>>>",
+          "text": "Constructs a new AioCb from a mutable slice."
+        },
+        {
+          "code": "pub unsafe fn from_mut_ptr( fd: RawFd, offs: off_t, buf: *mut c_void, len: usize, prio: c_int, sigev_notify: SigevNotify, opcode: LioOpcode) -> Pin<Box<AioCb<'a>>>",
+          "text": "Constructs a new AioCb from a mutable raw pointer"
+        },
+        {
+          "code": "pub unsafe fn from_ptr( fd: RawFd, offs: off_t, buf: *const c_void, len: usize, prio: c_int, sigev_notify: SigevNotify, opcode: LioOpcode) -> Pin<Box<AioCb<'a>>>",
+          "text": "Constructs a new AioCb from a raw pointer."
+        },
+        {
+          "code": "pub fn from_slice( fd: RawFd, offs: off_t, buf: &'a [u8], prio: c_int, sigev_notify: SigevNotify, opcode: LioOpcode) -> Pin<Box<AioCb<'_>>>",
+          "text": "Like AioCb::from_mut_slice, but works on constant slices rather than mutable slices."
+        },
+        {
+          "code": "pub fn set_sigev_notify(self: &mut Pin<Box<Self>>, sigev_notify: SigevNotify)",
+          "text": "Update the notification settings for an existing aiocb"
+        },
+        {
+          "code": "pub fn cancel(self: &mut Pin<Box<Self>>) -> Result<AioCancelStat>",
+          "text": "Cancels an outstanding AIO request."
+        },
+        {
+          "code": "pub fn error(self: &mut Pin<Box<Self>>) -> Result<()>",
+          "text": "Retrieve error status of an asynchronous operation."
+        },
+        {
+          "code": "pub fn fsync(self: &mut Pin<Box<Self>>, mode: AioFsyncMode) -> Result<()>",
+          "text": "An asynchronous version of fsync(2)."
+        },
+        {
+          "code": "pub fn lio_opcode(&self) -> Option<LioOpcode>",
+          "text": "Returns the aiocb’s LioOpcode field"
+        },
+        {
+          "code": "pub fn nbytes(&self) -> usize",
+          "text": "Returns the requested length of the aio operation in bytes"
+        },
+        {
+          "code": "pub fn offset(&self) -> off_t",
+          "text": "Returns the file offset stored in the AioCb"
+        },
+        {
+          "code": "pub fn priority(&self) -> c_int",
+          "text": "Returns the priority of the AioCb"
+        },
+        {
+          "code": "pub fn read(self: &mut Pin<Box<Self>>) -> Result<()>",
+          "text": "Asynchronously reads from a file descriptor into a buffer"
+        },
+        {
+          "code": "pub fn sigevent(&self) -> SigEvent",
+          "text": "Returns the SigEvent stored in the AioCb"
+        },
+        {
+          "code": "pub fn aio_return(self: &mut Pin<Box<Self>>) -> Result<isize>",
+          "text": "Retrieve return status of an asynchronous operation."
+        },
+        {
+          "code": "pub fn write(self: &mut Pin<Box<Self>>) -> Result<()>",
+          "text": "Asynchronously writes from a buffer to a file descriptor"
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a> Debug for AioCb<'a>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Drop for AioCb<'a>",
+          "methods": [
+            {
+              "code": "fn drop(&mut self)",
+              "text": "If the AioCb has no remaining state in the kernel, just drop it. Otherwise, dropping constitutes a resource leak, which is an error"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

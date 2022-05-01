@@ -1,0 +1,65 @@
+{
+  "title": "Struct tokio::runtime::Runtime",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn handle(&self) -> &Handle",
+          "text": "Returns a handle to the runtime’s spawner."
+        },
+        {
+          "code": "pub fn spawn<F>(&self, future: F) -> JoinHandle<F::Output>ⓘNotable traits for JoinHandle<T>impl<T> Future for JoinHandle<T> type Output = Result<T, JoinError>; where F: Future + Send + 'static, F::Output: Send + 'static,",
+          "text": "Spawns a future onto the Tokio runtime."
+        },
+        {
+          "code": "pub fn spawn_blocking<F, R>(&self, func: F) -> JoinHandle<R>ⓘNotable traits for JoinHandle<T>impl<T> Future for JoinHandle<T> type Output = Result<T, JoinError>; where F: FnOnce() -> R + Send + 'static, R: Send + 'static,",
+          "text": "Runs the provided function on an executor dedicated to blocking operations."
+        },
+        {
+          "code": "pub fn block_on<F: Future>(&self, future: F) -> F::Output",
+          "text": "Runs a future to completion on the Tokio runtime. This is the runtime’s entry point."
+        },
+        {
+          "code": "pub fn enter(&self) -> EnterGuard<'_>",
+          "text": "Enters the runtime context."
+        },
+        {
+          "code": "pub fn shutdown_timeout(self, duration: Duration)",
+          "text": "Shuts down the runtime, waiting for at most duration for all spawned task to shutdown."
+        },
+        {
+          "code": "pub fn shutdown_background(self)",
+          "text": "Shuts down the runtime, without waiting for any spawned tasks to shutdown."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Runtime",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Drop for Runtime",
+          "methods": [
+            {
+              "code": "fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

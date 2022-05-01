@@ -1,0 +1,55 @@
+{
+  "title": "Struct rustls::Writer",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a> Write for Writer<'a>",
+          "methods": [
+            {
+              "code": "fn write(&mut self, buf: &[u8]) -> Result<usize>",
+              "text": "Send the plaintext buf to the peer, encrypting and authenticating it. Once this function succeeds you should call CommonState::write_tls which will output the corresponding TLS records."
+            },
+            {
+              "code": "fn write_vectored(&mut self, bufs: &[IoSlice<'_>]) -> Result<usize>",
+              "text": "Like write, except that it writes from a slice of buffers."
+            },
+            {
+              "code": "fn flush(&mut self) -> Result<()>",
+              "text": "Flush this output stream, ensuring that all intermediately buffered contents reach their destination."
+            },
+            {
+              "code": "fn is_write_vectored(&self) -> bool",
+              "text": "Determines if this Writer has an efficient write_vectored implementation."
+            },
+            {
+              "code": "fn write_all(&mut self, buf: &[u8]) -> Result<(), Error>",
+              "text": "Attempts to write an entire buffer into this writer."
+            },
+            {
+              "code": "fn write_all_vectored(&mut self, bufs: &mut [IoSlice<'_>]) -> Result<(), Error>",
+              "text": "Attempts to write multiple buffers into this writer."
+            },
+            {
+              "code": "fn write_fmt(&mut self, fmt: Arguments<'_>) -> Result<(), Error>",
+              "text": "Writes a formatted string into this writer, returning any error encountered."
+            },
+            {
+              "code": "fn by_ref(&mut self) -> &mut Self",
+              "text": "Creates a “by reference” adapter for this instance of Write."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

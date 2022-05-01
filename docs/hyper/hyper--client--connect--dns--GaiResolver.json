@@ -1,0 +1,65 @@
+{
+  "title": "Struct hyper::client::connect::dns::GaiResolver",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for GaiResolver",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> GaiResolver",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for GaiResolver",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Service<Name> for GaiResolver",
+          "methods": [
+            {
+              "code": "type Response = GaiAddrs",
+              "text": "Responses given by the service."
+            },
+            {
+              "code": "type Error = Error",
+              "text": "Errors produced by the service."
+            },
+            {
+              "code": "type Future = GaiFuture",
+              "text": "The future response value."
+            },
+            {
+              "code": "fn poll_ready(&mut self, _cx: &mut Context<'_>) -> Poll<Result<(), Error>>",
+              "text": "Returns Poll::Ready(Ok(())) when the service is able to process requests."
+            },
+            {
+              "code": "fn call(&mut self, name: Name) -> Self::Future",
+              "text": "Process the request and return the response asynchronously."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

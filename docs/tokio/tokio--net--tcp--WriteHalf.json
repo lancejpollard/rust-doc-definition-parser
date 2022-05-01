@@ -1,0 +1,86 @@
+{
+  "title": "Struct tokio::net::tcp::WriteHalf",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub async fn ready(&self, interest: Interest) -> Result<Ready>",
+          "text": "Waits for any of the requested ready states."
+        },
+        {
+          "code": "pub async fn writable(&self) -> Result<()>",
+          "text": "Waits for the socket to become writable."
+        },
+        {
+          "code": "pub fn try_write(&self, buf: &[u8]) -> Result<usize>",
+          "text": "Tries to write a buffer to the stream, returning how many bytes were written."
+        },
+        {
+          "code": "pub fn try_write_vectored(&self, bufs: &[IoSlice<'_>]) -> Result<usize>",
+          "text": "Tries to write several buffers to the stream, returning how many bytes were written."
+        },
+        {
+          "code": "pub fn peer_addr(&self) -> Result<SocketAddr>",
+          "text": "Returns the remote address that this stream is connected to."
+        },
+        {
+          "code": "pub fn local_addr(&self) -> Result<SocketAddr>",
+          "text": "Returns the local address that this stream is bound to."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRef<TcpStream> for WriteHalf<'_>",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &TcpStream",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsyncWrite for WriteHalf<'_>",
+          "methods": [
+            {
+              "code": "fn poll_write( self: Pin<&mut Self>, cx: &mut Context<'_>, buf: &[u8]) -> Poll<Result<usize>>",
+              "text": "Attempt to write bytes from buf into the object."
+            },
+            {
+              "code": "fn poll_write_vectored( self: Pin<&mut Self>, cx: &mut Context<'_>, bufs: &[IoSlice<'_>]) -> Poll<Result<usize>>",
+              "text": "Like poll_write, except that it writes from a slice of buffers."
+            },
+            {
+              "code": "fn is_write_vectored(&self) -> bool",
+              "text": "Determines if this writer has an efficient poll_write_vectored implementation."
+            },
+            {
+              "code": "fn poll_flush(self: Pin<&mut Self>, _: &mut Context<'_>) -> Poll<Result<()>>",
+              "text": "Attempts to flush the object, ensuring that any buffered data reach their destination."
+            },
+            {
+              "code": "fn poll_shutdown(self: Pin<&mut Self>, _: &mut Context<'_>) -> Poll<Result<()>>",
+              "text": "Initiates or attempts to shut down this writer, returning success when the I/O connection has completely shut down."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Debug for WriteHalf<'a>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

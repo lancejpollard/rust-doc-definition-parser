@@ -1,0 +1,78 @@
+{
+  "title": "Struct hyper::header::OccupiedEntry",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a, T> Debug for OccupiedEntry<'a, T> where T: Debug,",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b, T> IntoIterator for &'b OccupiedEntry<'a, T> where 'b: 'a,",
+          "methods": [
+            {
+              "code": "type Item = &'a T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = ValueIter<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "fn into_iter(self) -> ValueIter<'a, T>ⓘNotable traits for ValueIter<'a, T>impl<'a, T> Iterator for ValueIter<'a, T> where T: 'a, type Item = &'a T;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> IntoIterator for OccupiedEntry<'a, T>",
+          "methods": [
+            {
+              "code": "type Item = &'a mut T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = ValueIterMut<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "fn into_iter(self) -> ValueIterMut<'a, T>ⓘNotable traits for ValueIterMut<'a, T>impl<'a, T> Iterator for ValueIterMut<'a, T> where T: 'a, type Item = &'a mut T;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b, T> IntoIterator for &'b mut OccupiedEntry<'a, T> where 'b: 'a,",
+          "methods": [
+            {
+              "code": "type Item = &'a mut T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = ValueIterMut<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "fn into_iter(self) -> ValueIterMut<'a, T>ⓘNotable traits for ValueIterMut<'a, T>impl<'a, T> Iterator for ValueIterMut<'a, T> where T: 'a, type Item = &'a mut T;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

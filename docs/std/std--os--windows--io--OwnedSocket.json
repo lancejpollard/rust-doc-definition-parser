@@ -1,0 +1,126 @@
+{
+  "title": "Struct std::os::windows::io::OwnedSocket",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRawSocket for OwnedSocket",
+          "methods": [
+            {
+              "code": "fn as_raw_socket(&self) -> RawSocket",
+              "text": "Extracts the underlying raw socket from this object."
+            }
+          ]
+        },
+        {
+          "title": "impl AsSocket for OwnedSocket",
+          "methods": [
+            {
+              "code": "fn as_socket(&self) -> BorrowedSocket<'_>",
+              "text": "Borrows the socket."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for OwnedSocket",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Drop for OwnedSocket",
+          "methods": [
+            {
+              "code": "fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedSocket> for TcpStream",
+          "methods": [
+            {
+              "code": "fn from(owned: OwnedSocket) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedSocket> for TcpListener",
+          "methods": [
+            {
+              "code": "fn from(owned: OwnedSocket) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedSocket> for UdpSocket",
+          "methods": [
+            {
+              "code": "fn from(owned: OwnedSocket) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<TcpListener> for OwnedSocket",
+          "methods": [
+            {
+              "code": "fn from(tcp_listener: TcpListener) -> OwnedSocket",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<TcpStream> for OwnedSocket",
+          "methods": [
+            {
+              "code": "fn from(tcp_stream: TcpStream) -> OwnedSocket",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<UdpSocket> for OwnedSocket",
+          "methods": [
+            {
+              "code": "fn from(udp_socket: UdpSocket) -> OwnedSocket",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl FromRawSocket for OwnedSocket",
+          "methods": [
+            {
+              "code": "unsafe fn from_raw_socket(socket: RawSocket) -> Self",
+              "text": "Constructs a new instance of Self from the given raw socket."
+            }
+          ]
+        },
+        {
+          "title": "impl IntoRawSocket for OwnedSocket",
+          "methods": [
+            {
+              "code": "fn into_raw_socket(self) -> RawSocket",
+              "text": "Consumes this object, returning the raw underlying socket."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

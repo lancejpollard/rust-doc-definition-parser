@@ -1,0 +1,44 @@
+{
+  "title": "Struct std::collections::hash_map::VacantEntry",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn key(&self) -> &K",
+          "text": "Gets a reference to the key that would be used when inserting a value through the VacantEntry."
+        },
+        {
+          "code": "pub fn into_key(self) -> K",
+          "text": "Take ownership of the key."
+        },
+        {
+          "code": "pub fn insert(self, value: V) -> &'a mut V",
+          "text": "Sets the value of the entry with the VacantEntry’s key, and returns a mutable reference to it."
+        },
+        {
+          "code": "pub fn insert_entry(self, value: V) -> OccupiedEntry<'a, K, V>",
+          "text": "Sets the value of the entry with the VacantEntry’s key, and returns an OccupiedEntry."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<K: Debug, V> Debug for VacantEntry<'_, K, V>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

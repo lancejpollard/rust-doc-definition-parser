@@ -1,0 +1,857 @@
+{
+  "title": "Struct std::vec::Vec",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn new() -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+          "text": "Constructs a new, empty Vec<T>."
+        },
+        {
+          "code": "pub fn with_capacity(capacity: usize) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+          "text": "Constructs a new, empty Vec<T> with the specified capacity."
+        },
+        {
+          "code": "pub unsafe fn from_raw_parts( ptr: *mut T, length: usize, capacity: usize) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+          "text": "Creates a Vec<T> directly from the raw components of another vector."
+        },
+        {
+          "code": "pub const fn new_in(alloc: A) -> Vec<T, A>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+          "text": "Constructs a new, empty Vec<T, A>."
+        },
+        {
+          "code": "pub fn with_capacity_in(capacity: usize, alloc: A) -> Vec<T, A>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+          "text": "Constructs a new, empty Vec<T, A> with the specified capacity with the provided allocator."
+        },
+        {
+          "code": "pub unsafe fn from_raw_parts_in( ptr: *mut T, length: usize, capacity: usize, alloc: A) -> Vec<T, A>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+          "text": "Creates a Vec<T, A> directly from the raw components of another vector."
+        },
+        {
+          "code": "pub fn into_raw_parts(self) -> (*mut T, usize, usize)",
+          "text": "Decomposes a Vec<T> into its raw components."
+        },
+        {
+          "code": "pub fn into_raw_parts_with_alloc(self) -> (*mut T, usize, usize, A)",
+          "text": "Decomposes a Vec<T> into its raw components."
+        },
+        {
+          "code": "pub fn capacity(&self) -> usize",
+          "text": "Returns the number of elements the vector can hold without reallocating."
+        },
+        {
+          "code": "pub fn reserve(&mut self, additional: usize)",
+          "text": "Reserves capacity for at least additional more elements to be inserted in the given Vec<T>. The collection may reserve more space to avoid frequent reallocations. After calling reserve, capacity will be greater than or equal to self.len() + additional. Does nothing if capacity is already sufficient."
+        },
+        {
+          "code": "pub fn reserve_exact(&mut self, additional: usize)",
+          "text": "Reserves the minimum capacity for exactly additional more elements to be inserted in the given Vec<T>. After calling reserve_exact, capacity will be greater than or equal to self.len() + additional. Does nothing if the capacity is already sufficient."
+        },
+        {
+          "code": "pub fn try_reserve(&mut self, additional: usize) -> Result<(), TryReserveError>",
+          "text": "Tries to reserve capacity for at least additional more elements to be inserted in the given Vec<T>. The collection may reserve more space to avoid frequent reallocations. After calling try_reserve, capacity will be greater than or equal to self.len() + additional. Does nothing if capacity is already sufficient."
+        },
+        {
+          "code": "pub fn try_reserve_exact( &mut self, additional: usize) -> Result<(), TryReserveError>",
+          "text": "Tries to reserve the minimum capacity for exactly additional elements to be inserted in the given Vec<T>. After calling try_reserve_exact, capacity will be greater than or equal to self.len() + additional if it returns Ok(()). Does nothing if the capacity is already sufficient."
+        },
+        {
+          "code": "pub fn shrink_to_fit(&mut self)",
+          "text": "Shrinks the capacity of the vector as much as possible."
+        },
+        {
+          "code": "pub fn shrink_to(&mut self, min_capacity: usize)",
+          "text": "Shrinks the capacity of the vector with a lower bound."
+        },
+        {
+          "code": "pub fn into_boxed_slice(self) -> Box<[T], A>ⓘNotable traits for Box<F, A>impl<F, A> Future for Box<F, A> where F: Future + Unpin + ?Sized, A: Allocator + 'static, type Output = <F as Future>::Output;impl<I, A> Iterator for Box<I, A> where I: Iterator + ?Sized, A: Allocator, type Item = <I as Iterator>::Item;impl<R: Read + ?Sized> Read for Box<R>impl<W: Write + ?Sized> Write for Box<W>",
+          "text": "Converts the vector into Box<[T]>."
+        },
+        {
+          "code": "pub fn truncate(&mut self, len: usize)",
+          "text": "Shortens the vector, keeping the first len elements and dropping the rest."
+        },
+        {
+          "code": "pub fn as_slice(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+          "text": "Extracts a slice containing the entire vector."
+        },
+        {
+          "code": "pub fn as_mut_slice(&mut self) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+          "text": "Extracts a mutable slice of the entire vector."
+        },
+        {
+          "code": "pub fn as_ptr(&self) -> *const T",
+          "text": "Returns a raw pointer to the vector’s buffer."
+        },
+        {
+          "code": "pub fn as_mut_ptr(&mut self) -> *mut T",
+          "text": "Returns an unsafe mutable pointer to the vector’s buffer."
+        },
+        {
+          "code": "pub fn allocator(&self) -> &A",
+          "text": "Returns a reference to the underlying allocator."
+        },
+        {
+          "code": "pub unsafe fn set_len(&mut self, new_len: usize)",
+          "text": "Forces the length of the vector to new_len."
+        },
+        {
+          "code": "pub fn swap_remove(&mut self, index: usize) -> T",
+          "text": "Removes an element from the vector and returns it."
+        },
+        {
+          "code": "pub fn insert(&mut self, index: usize, element: T)",
+          "text": "Inserts an element at position index within the vector, shifting all elements after it to the right."
+        },
+        {
+          "code": "pub fn remove(&mut self, index: usize) -> T",
+          "text": "Removes and returns the element at position index within the vector, shifting all elements after it to the left."
+        },
+        {
+          "code": "pub fn retain<F>(&mut self, f: F) where F: FnMut(&T) -> bool,",
+          "text": "Retains only the elements specified by the predicate."
+        },
+        {
+          "code": "pub fn retain_mut<F>(&mut self, f: F) where F: FnMut(&mut T) -> bool,",
+          "text": "Retains only the elements specified by the predicate, passing a mutable reference to it."
+        },
+        {
+          "code": "pub fn dedup_by_key<F, K>(&mut self, key: F) where F: FnMut(&mut T) -> K, K: PartialEq<K>,",
+          "text": "Removes all but the first of consecutive elements in the vector that resolve to the same key."
+        },
+        {
+          "code": "pub fn dedup_by<F>(&mut self, same_bucket: F) where F: FnMut(&mut T, &mut T) -> bool,",
+          "text": "Removes all but the first of consecutive elements in the vector satisfying a given equality relation."
+        },
+        {
+          "code": "pub fn push(&mut self, value: T)",
+          "text": "Appends an element to the back of a collection."
+        },
+        {
+          "code": "pub fn pop(&mut self) -> Option<T>",
+          "text": "Removes the last element from a vector and returns it, or None if it is empty."
+        },
+        {
+          "code": "pub fn append(&mut self, other: &mut Vec<T, A>)",
+          "text": "Moves all the elements of other into Self, leaving other empty."
+        },
+        {
+          "code": "pub fn drain<R>(&mut self, range: R) -> Drain<'_, T, A>ⓘNotable traits for Drain<'_, T, A>impl<'_, T, A> Iterator for Drain<'_, T, A> where A: Allocator, type Item = T; where R: RangeBounds<usize>,",
+          "text": "Creates a draining iterator that removes the specified range in the vector and yields the removed items."
+        },
+        {
+          "code": "pub fn clear(&mut self)",
+          "text": "Clears the vector, removing all values."
+        },
+        {
+          "code": "pub fn len(&self) -> usize",
+          "text": "Returns the number of elements in the vector, also referred to as its ‘length’."
+        },
+        {
+          "code": "pub fn is_empty(&self) -> bool",
+          "text": "Returns true if the vector contains no elements."
+        },
+        {
+          "code": "pub fn split_off(&mut self, at: usize) -> Vec<T, A>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A> where A: Clone,",
+          "text": "Splits the collection into two at the given index."
+        },
+        {
+          "code": "pub fn resize_with<F>(&mut self, new_len: usize, f: F) where F: FnMut() -> T,",
+          "text": "Resizes the Vec in-place so that len is equal to new_len."
+        },
+        {
+          "code": "pub fn leak<'a>(self) -> &'a mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8] where A: 'a,",
+          "text": "Consumes and leaks the Vec, returning a mutable reference to the contents, &'a mut [T]. Note that the type T must outlive the chosen lifetime 'a. If the type has only static references, or none at all, then this may be chosen to be 'static."
+        },
+        {
+          "code": "pub fn spare_capacity_mut(&mut self) -> &mut [MaybeUninit<T>]",
+          "text": "Returns the remaining spare capacity of the vector as a slice of MaybeUninit<T>."
+        },
+        {
+          "code": "pub fn split_at_spare_mut(&mut self) -> (&mut [T], &mut [MaybeUninit<T>])",
+          "text": "Returns vector content as a slice of T, along with the remaining spare capacity of the vector as a slice of MaybeUninit<T>."
+        },
+        {
+          "code": "pub fn resize(&mut self, new_len: usize, value: T)",
+          "text": "Resizes the Vec in-place so that len is equal to new_len."
+        },
+        {
+          "code": "pub fn extend_from_slice(&mut self, other: &[T])",
+          "text": "Clones and appends all elements in a slice to the Vec."
+        },
+        {
+          "code": "pub fn extend_from_within<R>(&mut self, src: R) where R: RangeBounds<usize>,",
+          "text": "Copies elements from src range to the end of the vector."
+        },
+        {
+          "code": "pub fn dedup(&mut self)",
+          "text": "Removes consecutive repeated elements in the vector according to the PartialEq trait implementation."
+        },
+        {
+          "code": "pub fn splice<R, I>( &mut self, range: R, replace_with: I) -> Splice<'_, <I as IntoIterator>::IntoIter, A>ⓘNotable traits for Splice<'_, I, A>impl<'_, I, A> Iterator for Splice<'_, I, A> where I: Iterator, A: Allocator, type Item = <I as Iterator>::Item; where R: RangeBounds<usize>, I: IntoIterator<Item = T>,",
+          "text": "Creates a splicing iterator that replaces the specified range in the vector with the given replace_with iterator and yields the removed items. replace_with does not need to be the same length as range."
+        },
+        {
+          "code": "pub fn drain_filter<F>(&mut self, filter: F) -> DrainFilter<'_, T, F, A>ⓘNotable traits for DrainFilter<'_, T, F, A>impl<'_, T, F, A> Iterator for DrainFilter<'_, T, F, A> where A: Allocator, F: FnMut(&mut T) -> bool, type Item = T; where F: FnMut(&mut T) -> bool,",
+          "text": "Creates an iterator which uses a closure to determine if an element should be removed."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T, A> AsMut<[T]> for Vec<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn as_mut(&mut self) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> AsMut<Vec<T, A>> for Vec<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn as_mut(&mut self) -> &mut Vec<T, A>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> AsRef<[T]> for Vec<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> AsRef<Vec<T, A>> for Vec<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &Vec<T, A>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Borrow<[T]> for Vec<T, Global>",
+          "methods": [
+            {
+              "code": "pub fn borrow(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Immutably borrows from an owned value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> BorrowMut<[T]> for Vec<T, Global>",
+          "methods": [
+            {
+              "code": "pub fn borrow_mut(&mut self) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Mutably borrows from an owned value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> Clone for Vec<T, A> where T: Clone, A: Allocator + Clone,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> Vec<T, A>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "pub fn clone_from(&mut self, other: &Vec<T, A>)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> Debug for Vec<T, A> where T: Debug, A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for Vec<T, Global>",
+          "methods": [
+            {
+              "code": "pub fn default() -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Creates an empty Vec<T>."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> Deref for Vec<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "type Target = [T]",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "pub fn deref(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> DerefMut for Vec<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn deref_mut(&mut self) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Mutably dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> Drop for Vec<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T, A> Extend<&'a T> for Vec<T, A> where T: 'a + Copy, A: 'a + Allocator,",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = &'a T>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, &'a T)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "pub fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> Extend<T> for Vec<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = T>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, item: T)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "pub fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> From<&'_ [T]> for Vec<T, Global> where T: Clone,",
+          "methods": [
+            {
+              "code": "pub fn from(s: &[T]) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Allocate a Vec<T> and fill it by cloning s’s items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> From<&'_ mut [T]> for Vec<T, Global> where T: Clone,",
+          "methods": [
+            {
+              "code": "pub fn from(s: &mut [T]) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Allocate a Vec<T> and fill it by cloning s’s items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> From<&'_ str> for Vec<u8, Global>",
+          "methods": [
+            {
+              "code": "pub fn from(s: &str) -> Vec<u8, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Allocate a Vec<u8> and fill it with a UTF-8 string."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> From<&'a Vec<T, Global>> for Cow<'a, [T]> where T: Clone,",
+          "methods": [
+            {
+              "code": "pub fn from(v: &'a Vec<T, Global>) -> Cow<'a, [T]>",
+              "text": "Creates a Borrowed variant of Cow from a reference to Vec."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> From<[T; N]> for Vec<T, Global>",
+          "methods": [
+            {
+              "code": "pub fn from(s: [T; N]) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<BinaryHeap<T>> for Vec<T, Global>",
+          "methods": [
+            {
+              "code": "pub fn from(heap: BinaryHeap<T>) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Converts a BinaryHeap<T> into a Vec<T>."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> From<Box<[T], A>> for Vec<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn from(s: Box<[T], A>) -> Vec<T, A>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Convert a boxed slice into a vector by transferring ownership of the existing heap allocation."
+            }
+          ]
+        },
+        {
+          "title": "impl From<CString> for Vec<u8>",
+          "methods": [
+            {
+              "code": "fn from(s: CString) -> Vec<u8>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Converts a CString into a Vec<u8>."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> From<Cow<'a, [T]>> for Vec<T, Global> where [T]: ToOwned, <[T] as ToOwned>::Owned == Vec<T, Global>,",
+          "methods": [
+            {
+              "code": "pub fn from(s: Cow<'a, [T]>) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Convert a clone-on-write slice into a vector."
+            }
+          ]
+        },
+        {
+          "title": "impl From<String> for Vec<u8, Global>",
+          "methods": [
+            {
+              "code": "pub fn from(string: String) -> Vec<u8, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Converts the given String to a vector Vec that holds values of type u8."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Vec<NonZeroU8, Global>> for CString",
+          "methods": [
+            {
+              "code": "fn from(v: Vec<NonZeroU8>) -> CString",
+              "text": "Converts a Vec<NonZeroU8> into a CString without copying nor checking for inner null bytes."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> From<Vec<T, A>> for Box<[T], A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn from(v: Vec<T, A>) -> Box<[T], A>ⓘNotable traits for Box<F, A>impl<F, A> Future for Box<F, A> where F: Future + Unpin + ?Sized, A: Allocator + 'static, type Output = <F as Future>::Output;impl<I, A> Iterator for Box<I, A> where I: Iterator + ?Sized, A: Allocator, type Item = <I as Iterator>::Item;impl<R: Read + ?Sized> Read for Box<R>impl<W: Write + ?Sized> Write for Box<W>",
+              "text": "Convert a vector into a boxed slice."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> From<Vec<T, A>> for VecDeque<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn from(other: Vec<T, A>) -> VecDeque<T, A>",
+              "text": "Turn a Vec<T> into a VecDeque<T>."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<Vec<T, Global>> for Rc<[T]>",
+          "methods": [
+            {
+              "code": "pub fn from(v: Vec<T, Global>) -> Rc<[T]>",
+              "text": "Allocate a reference-counted slice and move v’s items into it."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<Vec<T, Global>> for Arc<[T]>",
+          "methods": [
+            {
+              "code": "pub fn from(v: Vec<T, Global>) -> Arc<[T]>",
+              "text": "Allocate a reference-counted slice and move v’s items into it."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> From<Vec<T, Global>> for Cow<'a, [T]> where T: Clone,",
+          "methods": [
+            {
+              "code": "pub fn from(v: Vec<T, Global>) -> Cow<'a, [T]>",
+              "text": "Creates an Owned variant of Cow from an owned instance of Vec."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<Vec<T, Global>> for BinaryHeap<T> where T: Ord,",
+          "methods": [
+            {
+              "code": "pub fn from(vec: Vec<T, Global>) -> BinaryHeap<T>",
+              "text": "Converts a Vec<T> into a BinaryHeap<T>."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> From<VecDeque<T, A>> for Vec<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn from(other: VecDeque<T, A>) -> Vec<T, A>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Turn a VecDeque<T> into a Vec<T>."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> FromIterator<T> for Vec<T, Global>",
+          "methods": [
+            {
+              "code": "pub fn from_iter<I>(iter: I) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A> where I: IntoIterator<Item = T>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> Hash for Vec<T, A> where T: Hash, A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, state: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, I, A> Index<I> for Vec<T, A> where I: SliceIndex<[T]>, A: Allocator,",
+          "methods": [
+            {
+              "code": "type Output = <I as SliceIndex<[T]>>::Output",
+              "text": "The returned type after indexing."
+            },
+            {
+              "code": "pub fn index(&self, index: I) -> &<Vec<T, A> as Index<I>>::OutputⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Performs the indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, I, A> IndexMut<I> for Vec<T, A> where I: SliceIndex<[T]>, A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn index_mut(&mut self, index: I) -> &mut <Vec<T, A> as Index<I>>::OutputⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Performs the mutable indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T, A> IntoIterator for &'a Vec<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "type Item = &'a T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = Iter<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "pub fn into_iter(self) -> Iter<'a, T>ⓘNotable traits for Iter<'a, T>impl<'a, T> Iterator for Iter<'a, T> type Item = &'a T;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> IntoIterator for Vec<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn into_iter(self) -> IntoIter<T, A>ⓘNotable traits for IntoIter<T, A>impl<T, A> Iterator for IntoIter<T, A> where A: Allocator, type Item = T;",
+              "text": "Creates a consuming iterator, that is, one that moves each value out of the vector (from start to end). The vector cannot be used after calling this."
+            },
+            {
+              "code": "type Item = T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = IntoIter<T, A>",
+              "text": "Which kind of iterator are we turning this into?"
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T, A> IntoIterator for &'a mut Vec<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "type Item = &'a mut T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = IterMut<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "pub fn into_iter(self) -> IterMut<'a, T>ⓘNotable traits for IterMut<'a, T>impl<'a, T> Iterator for IterMut<'a, T> type Item = &'a mut T;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> Ord for Vec<T, A> where T: Ord, A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &Vec<T, A>) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A, const N: usize> PartialEq<&'_ [U; N]> for Vec<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&[U; N]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&[U; N]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A> PartialEq<&'_ [U]> for Vec<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&[U]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&[U]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A> PartialEq<&'_ mut [U]> for Vec<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&mut [U]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&mut [U]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, A, const N: usize> PartialEq<[U; N]> for Vec<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &[U; N]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &[U; N]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, A> PartialEq<[U]> for Vec<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &[U]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &[U]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A> PartialEq<Vec<U, A>> for Cow<'_, [T]> where A: Allocator, T: PartialEq<U> + Clone,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Vec<U, A>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &Vec<U, A>) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A> PartialEq<Vec<U, A>> for &'_ [T] where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Vec<U, A>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &Vec<U, A>) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, A> PartialEq<Vec<U, A>> for Vec<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Vec<U, A>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &Vec<U, A>) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, A> PartialEq<Vec<U, A>> for [T] where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Vec<U, A>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &Vec<U, A>) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A> PartialEq<Vec<U, A>> for &'_ mut [T] where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Vec<U, A>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &Vec<U, A>) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, A> PartialEq<Vec<U, A>> for VecDeque<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Vec<U, A>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> PartialOrd<Vec<T, A>> for Vec<T, A> where T: PartialOrd<T>, A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &Vec<T, A>) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A, const N: usize> TryFrom<Vec<T, A>> for [T; N] where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn try_from(vec: Vec<T, A>) -> Result<[T; N], Vec<T, A>>",
+              "text": "Gets the entire contents of the Vec<T> as an array, if its size exactly matches that of the requested array."
+            },
+            {
+              "code": "type Error = Vec<T, A>",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl<A: Allocator> Write for Vec<u8, A>",
+          "methods": [
+            {
+              "code": "fn write(&mut self, buf: &[u8]) -> Result<usize>",
+              "text": "Write a buffer into this writer, returning how many bytes were written."
+            },
+            {
+              "code": "fn write_vectored(&mut self, bufs: &[IoSlice<'_>]) -> Result<usize>",
+              "text": "Like write, except that it writes from a slice of buffers."
+            },
+            {
+              "code": "fn is_write_vectored(&self) -> bool",
+              "text": "Determines if this Writer has an efficient write_vectored implementation."
+            },
+            {
+              "code": "fn write_all(&mut self, buf: &[u8]) -> Result<()>",
+              "text": "Attempts to write an entire buffer into this writer."
+            },
+            {
+              "code": "fn flush(&mut self) -> Result<()>",
+              "text": "Flush this output stream, ensuring that all intermediately buffered contents reach their destination."
+            },
+            {
+              "code": "fn write_all_vectored(&mut self, bufs: &mut [IoSlice<'_>]) -> Result<()>",
+              "text": "Attempts to write multiple buffers into this writer."
+            },
+            {
+              "code": "fn write_fmt(&mut self, fmt: Arguments<'_>) -> Result<()>",
+              "text": "Writes a formatted string into this writer, returning any error encountered."
+            },
+            {
+              "code": "fn by_ref(&mut self) -> &mut Self where Self: Sized,",
+              "text": "Creates a “by reference” adapter for this instance of Write."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

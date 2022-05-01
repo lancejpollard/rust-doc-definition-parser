@@ -1,0 +1,49 @@
+{
+  "title": "Struct std::fs::DirBuilder",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> DirBuilder",
+          "text": "Creates a new set of options with default mode/security settings for all platforms and also non-recursive."
+        },
+        {
+          "code": "pub fn recursive(&mut self, recursive: bool) -> &mut Self",
+          "text": "Indicates that directories should be created recursively, creating all parent directories. Parents that do not exist are created with the same security and permissions settings."
+        },
+        {
+          "code": "pub fn create<P: AsRef<Path>>(&self, path: P) -> Result<()>",
+          "text": "Creates the specified directory with the options configured in this builder."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for DirBuilder",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl DirBuilderExt for DirBuilder",
+          "methods": [
+            {
+              "code": "fn mode(&mut self, mode: u32) -> &mut DirBuilder",
+              "text": "Sets the mode to create new directories with. This option defaults to 0o777."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

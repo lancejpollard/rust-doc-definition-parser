@@ -1,0 +1,79 @@
+{
+  "title": "Struct nix::sys::uio::IoVec",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn as_slice(&self) -> &[u8]ⓘNotable traits for &'_ mut [u8]impl<'_> Write for &'_ mut [u8]impl<'_> Read for &'_ [u8]",
+          "text": "View the IoVec as a Rust slice."
+        },
+        {
+          "code": "pub fn from_slice(buf: &'a [u8]) -> IoVec<&'a [u8]>",
+          "text": "Create an IoVec from a Rust slice."
+        },
+        {
+          "code": "pub fn from_mut_slice(buf: &'a mut [u8]) -> IoVec<&'a mut [u8]>",
+          "text": "Create an IoVec from a mutable Rust slice."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T: Clone> Clone for IoVec<T>",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> IoVec<T>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: Debug> Debug for IoVec<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: Hash> Hash for IoVec<T>",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: PartialEq> PartialEq<IoVec<T>> for IoVec<T>",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &IoVec<T>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &IoVec<T>) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

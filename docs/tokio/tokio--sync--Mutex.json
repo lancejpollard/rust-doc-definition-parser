@@ -1,0 +1,78 @@
+{
+  "title": "Struct tokio::sync::Mutex",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(t: T) -> Self where T: Sized,",
+          "text": "Creates a new lock in an unlocked state ready for use."
+        },
+        {
+          "code": "pub async fn lock(&self) -> MutexGuard<'_, T>",
+          "text": "Locks this mutex, causing the current task to yield until the lock has been acquired. When the lock has been acquired, function returns a MutexGuard."
+        },
+        {
+          "code": "pub fn blocking_lock(&self) -> MutexGuard<'_, T>",
+          "text": "Blockingly locks this Mutex. When the lock has been acquired, function returns a MutexGuard."
+        },
+        {
+          "code": "pub async fn lock_owned(self: Arc<Self>) -> OwnedMutexGuard<T>",
+          "text": "Locks this mutex, causing the current task to yield until the lock has been acquired. When the lock has been acquired, this returns an OwnedMutexGuard."
+        },
+        {
+          "code": "pub fn try_lock(&self) -> Result<MutexGuard<'_, T>, TryLockError>",
+          "text": "Attempts to acquire the lock, and returns TryLockError if the lock is currently held somewhere else."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut T",
+          "text": "Returns a mutable reference to the underlying data."
+        },
+        {
+          "code": "pub fn try_lock_owned( self: Arc<Self>) -> Result<OwnedMutexGuard<T>, TryLockError>",
+          "text": "Attempts to acquire the lock, and returns TryLockError if the lock is currently held somewhere else."
+        },
+        {
+          "code": "pub fn into_inner(self) -> T where T: Sized,",
+          "text": "Consumes the mutex, returning the underlying data."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T: ?Sized> Debug for Mutex<T> where T: Debug,",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for Mutex<T> where T: Default,",
+          "methods": [
+            {
+              "code": "fn default() -> Self",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<T> for Mutex<T>",
+          "methods": [
+            {
+              "code": "fn from(s: T) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

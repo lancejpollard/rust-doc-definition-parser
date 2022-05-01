@@ -1,0 +1,66 @@
+{
+  "title": "Struct std::cell::UnsafeCell",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn new(value: T) -> UnsafeCell<T>",
+          "text": "Constructs a new instance of UnsafeCell which will wrap the specified value."
+        },
+        {
+          "code": "pub fn into_inner(self) -> T",
+          "text": "Unwraps the value."
+        },
+        {
+          "code": "pub const fn get(&self) -> *mut T",
+          "text": "Gets a mutable pointer to the wrapped value."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut T",
+          "text": "Returns a mutable reference to the underlying data."
+        },
+        {
+          "code": "pub const fn raw_get(this: *const UnsafeCell<T>) -> *mut T",
+          "text": "Gets a mutable pointer to the wrapped value. The difference from get is that this function accepts a raw pointer, which is useful to avoid the creation of temporary references."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Debug for UnsafeCell<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for UnsafeCell<T> where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> UnsafeCell<T>",
+              "text": "Creates an UnsafeCell, with the Default value for T."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<T> for UnsafeCell<T>",
+          "methods": [
+            {
+              "code": "pub fn from(t: T) -> UnsafeCell<T>",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

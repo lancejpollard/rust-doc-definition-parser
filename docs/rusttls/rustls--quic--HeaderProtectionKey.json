@@ -1,0 +1,30 @@
+{
+  "title": "Struct rustls::quic::HeaderProtectionKey",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn encrypt_in_place( &self, sample: &[u8], first: &mut u8, packet_number: &mut [u8]) -> Result<(), Error>",
+          "text": "Adds QUIC Header Protection."
+        },
+        {
+          "code": "pub fn decrypt_in_place( &self, sample: &[u8], first: &mut u8, packet_number: &mut [u8]) -> Result<(), Error>",
+          "text": "Removes QUIC Header Protection."
+        },
+        {
+          "code": "pub fn sample_len(&self) -> usize",
+          "text": "Expected sample length for the key’s algorithm"
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

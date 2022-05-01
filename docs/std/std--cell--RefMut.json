@@ -1,0 +1,75 @@
+{
+  "title": "Struct std::cell::RefMut",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn map<U, F>(orig: RefMut<'b, T>, f: F) -> RefMut<'b, U> where F: FnOnce(&mut T) -> &mut U, U: ?Sized,",
+          "text": "Makes a new RefMut for a component of the borrowed data, e.g., an enum variant."
+        },
+        {
+          "code": "pub fn filter_map<U, F>( orig: RefMut<'b, T>, f: F) -> Result<RefMut<'b, U>, RefMut<'b, T>> where F: FnOnce(&mut T) -> Option<&mut U>, U: ?Sized,",
+          "text": "Makes a new RefMut for an optional component of the borrowed data. The original guard is returned as an Err(..) if the closure returns None."
+        },
+        {
+          "code": "pub fn map_split<U, V, F>( orig: RefMut<'b, T>, f: F) -> (RefMut<'b, U>, RefMut<'b, V>) where F: FnOnce(&mut T) -> (&mut U, &mut V), U: ?Sized, V: ?Sized,",
+          "text": "Splits a RefMut into multiple RefMuts for different components of the borrowed data."
+        },
+        {
+          "code": "pub fn leak(orig: RefMut<'b, T>) -> &'b mut T",
+          "text": "Convert into a mutable reference to the underlying data."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'_, T> Debug for RefMut<'_, T> where T: Debug + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> Deref for RefMut<'_, T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "type Target = T",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "pub fn deref(&self) -> &T",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> DerefMut for RefMut<'_, T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn deref_mut(&mut self) -> &mut T",
+              "text": "Mutably dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> Display for RefMut<'_, T> where T: Display + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

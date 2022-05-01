@@ -1,0 +1,121 @@
+{
+  "title": "Struct tokio::sync::OnceCell",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> Self",
+          "text": "Creates a new empty OnceCell instance."
+        },
+        {
+          "code": "pub fn new_with(value: Option<T>) -> Self",
+          "text": "Creates a new OnceCell that contains the provided value, if any."
+        },
+        {
+          "code": "pub fn initialized(&self) -> bool",
+          "text": "Returns true if the OnceCell currently contains a value, and false otherwise."
+        },
+        {
+          "code": "pub fn get(&self) -> Option<&T>",
+          "text": "Returns a reference to the value currently stored in the OnceCell, or None if the OnceCell is empty."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> Option<&mut T>",
+          "text": "Returns a mutable reference to the value currently stored in the OnceCell, or None if the OnceCell is empty."
+        },
+        {
+          "code": "pub fn set(&self, value: T) -> Result<(), SetError<T>>",
+          "text": "Sets the value of the OnceCell to the given value if the OnceCell is empty."
+        },
+        {
+          "code": "pub async fn get_or_init<F, Fut>(&self, f: F) -> &T where F: FnOnce() -> Fut, Fut: Future<Output = T>,",
+          "text": "Gets the value currently in the OnceCell, or initialize it with the given asynchronous operation."
+        },
+        {
+          "code": "pub async fn get_or_try_init<E, F, Fut>(&self, f: F) -> Result<&T, E> where F: FnOnce() -> Fut, Fut: Future<Output = Result<T, E>>,",
+          "text": "Gets the value currently in the OnceCell, or initialize it with the given asynchronous operation."
+        },
+        {
+          "code": "pub fn into_inner(self) -> Option<T>",
+          "text": "Takes the value from the cell, destroying the cell in the process. Returns None if the cell is empty."
+        },
+        {
+          "code": "pub fn take(&mut self) -> Option<T>",
+          "text": "Takes ownership of the current value, leaving the cell empty. Returns None if the cell is empty."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T: Clone> Clone for OnceCell<T>",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> OnceCell<T>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: Debug> Debug for OnceCell<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for OnceCell<T>",
+          "methods": [
+            {
+              "code": "fn default() -> OnceCell<T>",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Drop for OnceCell<T>",
+          "methods": [
+            {
+              "code": "fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<T> for OnceCell<T>",
+          "methods": [
+            {
+              "code": "fn from(value: T) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: PartialEq> PartialEq<OnceCell<T>> for OnceCell<T>",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &OnceCell<T>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

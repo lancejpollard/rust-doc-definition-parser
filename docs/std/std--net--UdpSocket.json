@@ -1,0 +1,240 @@
+{
+  "title": "Struct std::net::UdpSocket",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn bind<A: ToSocketAddrs>(addr: A) -> Result<UdpSocket>",
+          "text": "Creates a UDP socket from the given address."
+        },
+        {
+          "code": "pub fn recv_from(&self, buf: &mut [u8]) -> Result<(usize, SocketAddr)>",
+          "text": "Receives a single datagram message on the socket. On success, returns the number of bytes read and the origin."
+        },
+        {
+          "code": "pub fn peek_from(&self, buf: &mut [u8]) -> Result<(usize, SocketAddr)>",
+          "text": "Receives a single datagram message on the socket, without removing it from the queue. On success, returns the number of bytes read and the origin."
+        },
+        {
+          "code": "pub fn send_to<A: ToSocketAddrs>(&self, buf: &[u8], addr: A) -> Result<usize>",
+          "text": "Sends data on the socket to the given address. On success, returns the number of bytes written."
+        },
+        {
+          "code": "pub fn peer_addr(&self) -> Result<SocketAddr>",
+          "text": "Returns the socket address of the remote peer this socket was connected to."
+        },
+        {
+          "code": "pub fn local_addr(&self) -> Result<SocketAddr>",
+          "text": "Returns the socket address that this socket was created from."
+        },
+        {
+          "code": "pub fn try_clone(&self) -> Result<UdpSocket>",
+          "text": "Creates a new independently owned handle to the underlying socket."
+        },
+        {
+          "code": "pub fn set_read_timeout(&self, dur: Option<Duration>) -> Result<()>",
+          "text": "Sets the read timeout to the timeout specified."
+        },
+        {
+          "code": "pub fn set_write_timeout(&self, dur: Option<Duration>) -> Result<()>",
+          "text": "Sets the write timeout to the timeout specified."
+        },
+        {
+          "code": "pub fn read_timeout(&self) -> Result<Option<Duration>>",
+          "text": "Returns the read timeout of this socket."
+        },
+        {
+          "code": "pub fn write_timeout(&self) -> Result<Option<Duration>>",
+          "text": "Returns the write timeout of this socket."
+        },
+        {
+          "code": "pub fn set_broadcast(&self, broadcast: bool) -> Result<()>",
+          "text": "Sets the value of the SO_BROADCAST option for this socket."
+        },
+        {
+          "code": "pub fn broadcast(&self) -> Result<bool>",
+          "text": "Gets the value of the SO_BROADCAST option for this socket."
+        },
+        {
+          "code": "pub fn set_multicast_loop_v4(&self, multicast_loop_v4: bool) -> Result<()>",
+          "text": "Sets the value of the IP_MULTICAST_LOOP option for this socket."
+        },
+        {
+          "code": "pub fn multicast_loop_v4(&self) -> Result<bool>",
+          "text": "Gets the value of the IP_MULTICAST_LOOP option for this socket."
+        },
+        {
+          "code": "pub fn set_multicast_ttl_v4(&self, multicast_ttl_v4: u32) -> Result<()>",
+          "text": "Sets the value of the IP_MULTICAST_TTL option for this socket."
+        },
+        {
+          "code": "pub fn multicast_ttl_v4(&self) -> Result<u32>",
+          "text": "Gets the value of the IP_MULTICAST_TTL option for this socket."
+        },
+        {
+          "code": "pub fn set_multicast_loop_v6(&self, multicast_loop_v6: bool) -> Result<()>",
+          "text": "Sets the value of the IPV6_MULTICAST_LOOP option for this socket."
+        },
+        {
+          "code": "pub fn multicast_loop_v6(&self) -> Result<bool>",
+          "text": "Gets the value of the IPV6_MULTICAST_LOOP option for this socket."
+        },
+        {
+          "code": "pub fn set_ttl(&self, ttl: u32) -> Result<()>",
+          "text": "Sets the value for the IP_TTL option on this socket."
+        },
+        {
+          "code": "pub fn ttl(&self) -> Result<u32>",
+          "text": "Gets the value of the IP_TTL option for this socket."
+        },
+        {
+          "code": "pub fn join_multicast_v4( &self, multiaddr: &Ipv4Addr, interface: &Ipv4Addr) -> Result<()>",
+          "text": "Executes an operation of the IP_ADD_MEMBERSHIP type."
+        },
+        {
+          "code": "pub fn join_multicast_v6( &self, multiaddr: &Ipv6Addr, interface: u32) -> Result<()>",
+          "text": "Executes an operation of the IPV6_ADD_MEMBERSHIP type."
+        },
+        {
+          "code": "pub fn leave_multicast_v4( &self, multiaddr: &Ipv4Addr, interface: &Ipv4Addr) -> Result<()>",
+          "text": "Executes an operation of the IP_DROP_MEMBERSHIP type."
+        },
+        {
+          "code": "pub fn leave_multicast_v6( &self, multiaddr: &Ipv6Addr, interface: u32) -> Result<()>",
+          "text": "Executes an operation of the IPV6_DROP_MEMBERSHIP type."
+        },
+        {
+          "code": "pub fn take_error(&self) -> Result<Option<Error>>",
+          "text": "Gets the value of the SO_ERROR option on this socket."
+        },
+        {
+          "code": "pub fn connect<A: ToSocketAddrs>(&self, addr: A) -> Result<()>",
+          "text": "Connects this UDP socket to a remote address, allowing the send and recv syscalls to be used to send data and also applies filters to only receive data from the specified address."
+        },
+        {
+          "code": "pub fn send(&self, buf: &[u8]) -> Result<usize>",
+          "text": "Sends data on the socket to the remote address to which it is connected."
+        },
+        {
+          "code": "pub fn recv(&self, buf: &mut [u8]) -> Result<usize>",
+          "text": "Receives a single datagram message on the socket from the remote address to which it is connected. On success, returns the number of bytes read."
+        },
+        {
+          "code": "pub fn peek(&self, buf: &mut [u8]) -> Result<usize>",
+          "text": "Receives single datagram on the socket from the remote address to which it is connected, without removing the message from input queue. On success, returns the number of bytes peeked."
+        },
+        {
+          "code": "pub fn set_nonblocking(&self, nonblocking: bool) -> Result<()>",
+          "text": "Moves this UDP socket into or out of nonblocking mode."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsFd for UdpSocket",
+          "methods": []
+        },
+        {
+          "title": "impl AsRawFd for UdpSocket",
+          "methods": []
+        },
+        {
+          "title": "impl AsRawSocket for UdpSocket",
+          "methods": [
+            {
+              "code": "fn as_raw_socket(&self) -> RawSocket",
+              "text": "Extracts the underlying raw socket from this object."
+            }
+          ]
+        },
+        {
+          "title": "impl AsSocket for UdpSocket",
+          "methods": [
+            {
+              "code": "fn as_socket(&self) -> BorrowedSocket<'_>",
+              "text": "Borrows the socket."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for UdpSocket",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedFd> for UdpSocket",
+          "methods": [
+            {
+              "code": "fn from(owned_fd: OwnedFd) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedSocket> for UdpSocket",
+          "methods": [
+            {
+              "code": "fn from(owned: OwnedSocket) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<UdpSocket> for OwnedSocket",
+          "methods": [
+            {
+              "code": "fn from(udp_socket: UdpSocket) -> OwnedSocket",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<UdpSocket> for OwnedFd",
+          "methods": [
+            {
+              "code": "fn from(udp_socket: UdpSocket) -> OwnedFd",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl FromRawFd for UdpSocket",
+          "methods": []
+        },
+        {
+          "title": "impl FromRawSocket for UdpSocket",
+          "methods": [
+            {
+              "code": "unsafe fn from_raw_socket(sock: RawSocket) -> UdpSocket",
+              "text": "Creates a new I/O object from the given raw socket."
+            }
+          ]
+        },
+        {
+          "title": "impl IntoRawFd for UdpSocket",
+          "methods": []
+        },
+        {
+          "title": "impl IntoRawSocket for UdpSocket",
+          "methods": [
+            {
+              "code": "fn into_raw_socket(self) -> RawSocket",
+              "text": "Consumes this object, returning the raw underlying socket."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

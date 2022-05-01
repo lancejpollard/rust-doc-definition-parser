@@ -1,0 +1,53 @@
+{
+  "title": "Struct rustls::IoState",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn tls_bytes_to_write(&self) -> usize",
+          "text": "How many bytes could be written by CommonState::write_tls if called right now. A non-zero value implies CommonState::wants_write."
+        },
+        {
+          "code": "pub fn plaintext_bytes_to_read(&self) -> usize",
+          "text": "How many plaintext bytes could be obtained via std::io::Read without further I/O."
+        },
+        {
+          "code": "pub fn peer_has_closed(&self) -> bool",
+          "text": "True if the peer has sent us a close_notify alert. This is the TLS mechanism to securely half-close a TLS connection, and signifies that the peer will not send any further data on this connection."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for IoState",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<IoState> for IoState",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &IoState) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &IoState) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

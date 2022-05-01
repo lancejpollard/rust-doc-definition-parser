@@ -1,0 +1,85 @@
+{
+  "title": "Struct tokio::net::windows::named_pipe::ServerOptions",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> ServerOptions",
+          "text": "Creates a new named pipe builder with the default settings."
+        },
+        {
+          "code": "pub fn pipe_mode(&mut self, pipe_mode: PipeMode) -> &mut Self",
+          "text": "The pipe mode."
+        },
+        {
+          "code": "pub fn access_inbound(&mut self, allowed: bool) -> &mut Self",
+          "text": "The flow of data in the pipe goes from client to server only."
+        },
+        {
+          "code": "pub fn access_outbound(&mut self, allowed: bool) -> &mut Self",
+          "text": "The flow of data in the pipe goes from server to client only."
+        },
+        {
+          "code": "pub fn first_pipe_instance(&mut self, first: bool) -> &mut Self",
+          "text": "If you attempt to create multiple instances of a pipe with this flag set, creation of the first server instance succeeds, but creation of any subsequent instances will fail with std::io::ErrorKind::PermissionDenied."
+        },
+        {
+          "code": "pub fn reject_remote_clients(&mut self, reject: bool) -> &mut Self",
+          "text": "Indicates whether this server can accept remote clients or not. Remote clients are disabled by default."
+        },
+        {
+          "code": "pub fn max_instances(&mut self, instances: usize) -> &mut Self",
+          "text": "The maximum number of instances that can be created for this pipe. The first instance of the pipe can specify this value; the same number must be specified for other instances of the pipe. Acceptable values are in the range 1 through 254. The default value is unlimited."
+        },
+        {
+          "code": "pub fn out_buffer_size(&mut self, buffer: u32) -> &mut Self",
+          "text": "The number of bytes to reserve for the output buffer."
+        },
+        {
+          "code": "pub fn in_buffer_size(&mut self, buffer: u32) -> &mut Self",
+          "text": "The number of bytes to reserve for the input buffer."
+        },
+        {
+          "code": "pub fn create(&self, addr: impl AsRef<OsStr>) -> Result<NamedPipeServer>",
+          "text": "Creates the named pipe identified by addr for use as a server."
+        },
+        {
+          "code": "pub unsafe fn create_with_security_attributes_raw( &self, addr: impl AsRef<OsStr>, attrs: *mut c_void) -> Result<NamedPipeServer>",
+          "text": "Creates the named pipe identified by addr for use as a server."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for ServerOptions",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> ServerOptions",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for ServerOptions",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

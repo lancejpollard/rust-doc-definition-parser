@@ -1,0 +1,4140 @@
+{
+  "title": "Struct std::simd::Simd",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn horizontal_and(self) -> T",
+          "text": "Horizontal bitwise “and”. Returns the cumulative bitwise “and” across the lanes of the vector."
+        },
+        {
+          "code": "pub fn horizontal_or(self) -> T",
+          "text": "Horizontal bitwise “or”. Returns the cumulative bitwise “or” across the lanes of the vector."
+        },
+        {
+          "code": "pub fn horizontal_xor(self) -> T",
+          "text": "Horizontal bitwise “xor”. Returns the cumulative bitwise “xor” across the lanes of the vector."
+        },
+        {
+          "code": "pub fn reverse(self) -> Simd<T, LANES>",
+          "text": "Reverse the order of the lanes in the vector."
+        },
+        {
+          "code": "pub fn rotate_lanes_left<const OFFSET: usize>(self) -> Simd<T, LANES>",
+          "text": "Rotates the vector such that the first OFFSET elements of the slice move to the end while the last LANES - OFFSET elements move to the front. After calling rotate_lanes_left, the element previously in lane OFFSET will become the first element in the slice."
+        },
+        {
+          "code": "pub fn rotate_lanes_right<const OFFSET: usize>(self) -> Simd<T, LANES>",
+          "text": "Rotates the vector such that the first LANES - OFFSET elements of the vector move to the end while the last OFFSET elements move to the front. After calling rotate_lanes_right, the element previously at index LANES - OFFSET will become the first element in the slice."
+        },
+        {
+          "code": "pub fn interleave( self, other: Simd<T, LANES>) -> (Simd<T, LANES>, Simd<T, LANES>)",
+          "text": "Interleave two vectors."
+        },
+        {
+          "code": "pub fn deinterleave( self, other: Simd<T, LANES>) -> (Simd<T, LANES>, Simd<T, LANES>)",
+          "text": "Deinterleave two vectors."
+        },
+        {
+          "code": "pub fn lanes_eq( self, other: Simd<T, LANES>) -> Mask<<T as SimdElement>::Mask, LANES>",
+          "text": "Test if each lane is equal to the corresponding lane in other."
+        },
+        {
+          "code": "pub fn lanes_ne( self, other: Simd<T, LANES>) -> Mask<<T as SimdElement>::Mask, LANES>",
+          "text": "Test if each lane is not equal to the corresponding lane in other."
+        },
+        {
+          "code": "pub fn lanes_lt( self, other: Simd<T, LANES>) -> Mask<<T as SimdElement>::Mask, LANES>",
+          "text": "Test if each lane is less than the corresponding lane in other."
+        },
+        {
+          "code": "pub fn lanes_gt( self, other: Simd<T, LANES>) -> Mask<<T as SimdElement>::Mask, LANES>",
+          "text": "Test if each lane is greater than the corresponding lane in other."
+        },
+        {
+          "code": "pub fn lanes_le( self, other: Simd<T, LANES>) -> Mask<<T as SimdElement>::Mask, LANES>",
+          "text": "Test if each lane is less than or equal to the corresponding lane in other."
+        },
+        {
+          "code": "pub fn lanes_ge( self, other: Simd<T, LANES>) -> Mask<<T as SimdElement>::Mask, LANES>",
+          "text": "Test if each lane is greater than or equal to the corresponding lane in other."
+        },
+        {
+          "code": "pub const LANES: usize",
+          "text": "Number of lanes in this vector."
+        },
+        {
+          "code": "pub const fn lanes(&self) -> usize",
+          "text": "Get the number of lanes in this vector."
+        },
+        {
+          "code": "pub const fn splat(value: T) -> Simd<T, LANES>",
+          "text": "Construct a SIMD vector by setting all lanes to the given value."
+        },
+        {
+          "code": "pub const fn as_array(&self) -> &[T; LANES]",
+          "text": "Returns an array reference containing the entire SIMD vector."
+        },
+        {
+          "code": "pub fn as_mut_array(&mut self) -> &mut [T; LANES]",
+          "text": "Returns a mutable array reference containing the entire SIMD vector."
+        },
+        {
+          "code": "pub const fn from_array(array: [T; LANES]) -> Simd<T, LANES>",
+          "text": "Converts an array to a SIMD vector."
+        },
+        {
+          "code": "pub const fn to_array(self) -> [T; LANES]",
+          "text": "Converts a SIMD vector to an array."
+        },
+        {
+          "code": "pub const fn from_slice(slice: &[T]) -> Simd<T, LANES>",
+          "text": "Converts a slice to a SIMD vector containing slice[..LANES]"
+        },
+        {
+          "code": "pub fn gather_or( slice: &[T], idxs: Simd<usize, LANES>, or: Simd<T, LANES>) -> Simd<T, LANES>",
+          "text": "Reads from potentially discontiguous indices in slice to construct a SIMD vector. If an index is out-of-bounds, the lane is instead selected from the or vector."
+        },
+        {
+          "code": "pub fn gather_or_default( slice: &[T], idxs: Simd<usize, LANES>) -> Simd<T, LANES> where T: Default,",
+          "text": "Reads from potentially discontiguous indices in slice to construct a SIMD vector. If an index is out-of-bounds, the lane is set to the default value for the type."
+        },
+        {
+          "code": "pub fn gather_select( slice: &[T], enable: Mask<isize, LANES>, idxs: Simd<usize, LANES>, or: Simd<T, LANES>) -> Simd<T, LANES>",
+          "text": "Reads from potentially discontiguous indices in slice to construct a SIMD vector. The mask enables all true lanes and disables all false lanes. If an index is disabled or is out-of-bounds, the lane is selected from the or vector."
+        },
+        {
+          "code": "pub unsafe fn gather_select_unchecked( slice: &[T], enable: Mask<isize, LANES>, idxs: Simd<usize, LANES>, or: Simd<T, LANES>) -> Simd<T, LANES>",
+          "text": "Reads from potentially discontiguous indices in slice to construct a SIMD vector. The mask enables all true lanes and disables all false lanes. If an index is disabled, the lane is selected from the or vector."
+        },
+        {
+          "code": "pub fn scatter(self, slice: &mut [T], idxs: Simd<usize, LANES>)",
+          "text": "Writes the values in a SIMD vector to potentially discontiguous indices in slice. If two lanes in the scattered vector would write to the same index only the last lane is guaranteed to actually be written."
+        },
+        {
+          "code": "pub fn scatter_select( self, slice: &mut [T], enable: Mask<isize, LANES>, idxs: Simd<usize, LANES>)",
+          "text": "Writes the values in a SIMD vector to multiple potentially discontiguous indices in slice. The mask enables all true lanes and disables all false lanes. If an enabled index is out-of-bounds, the lane is not written. If two enabled lanes in the scattered vector would write to the same index, only the last lane is guaranteed to actually be written."
+        },
+        {
+          "code": "pub unsafe fn scatter_select_unchecked( self, slice: &mut [T], enable: Mask<isize, LANES>, idxs: Simd<usize, LANES>)",
+          "text": "Writes the values in a SIMD vector to multiple potentially discontiguous indices in slice. The mask enables all true lanes and disables all false lanes. If two enabled lanes in the scattered vector would write to the same index, only the last lane is guaranteed to actually be written."
+        },
+        {
+          "code": "pub fn horizontal_sum(self) -> i8",
+          "text": "Horizontal wrapping add. Returns the sum of the lanes of the vector, with wrapping addition."
+        },
+        {
+          "code": "pub fn horizontal_product(self) -> i8",
+          "text": "Horizontal wrapping multiply. Returns the product of the lanes of the vector, with wrapping multiplication."
+        },
+        {
+          "code": "pub fn horizontal_max(self) -> i8",
+          "text": "Horizontal maximum. Returns the maximum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_min(self) -> i8",
+          "text": "Horizontal minimum. Returns the minimum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_sum(self) -> i16",
+          "text": "Horizontal wrapping add. Returns the sum of the lanes of the vector, with wrapping addition."
+        },
+        {
+          "code": "pub fn horizontal_product(self) -> i16",
+          "text": "Horizontal wrapping multiply. Returns the product of the lanes of the vector, with wrapping multiplication."
+        },
+        {
+          "code": "pub fn horizontal_max(self) -> i16",
+          "text": "Horizontal maximum. Returns the maximum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_min(self) -> i16",
+          "text": "Horizontal minimum. Returns the minimum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_sum(self) -> i32",
+          "text": "Horizontal wrapping add. Returns the sum of the lanes of the vector, with wrapping addition."
+        },
+        {
+          "code": "pub fn horizontal_product(self) -> i32",
+          "text": "Horizontal wrapping multiply. Returns the product of the lanes of the vector, with wrapping multiplication."
+        },
+        {
+          "code": "pub fn horizontal_max(self) -> i32",
+          "text": "Horizontal maximum. Returns the maximum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_min(self) -> i32",
+          "text": "Horizontal minimum. Returns the minimum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_sum(self) -> i64",
+          "text": "Horizontal wrapping add. Returns the sum of the lanes of the vector, with wrapping addition."
+        },
+        {
+          "code": "pub fn horizontal_product(self) -> i64",
+          "text": "Horizontal wrapping multiply. Returns the product of the lanes of the vector, with wrapping multiplication."
+        },
+        {
+          "code": "pub fn horizontal_max(self) -> i64",
+          "text": "Horizontal maximum. Returns the maximum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_min(self) -> i64",
+          "text": "Horizontal minimum. Returns the minimum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_sum(self) -> isize",
+          "text": "Horizontal wrapping add. Returns the sum of the lanes of the vector, with wrapping addition."
+        },
+        {
+          "code": "pub fn horizontal_product(self) -> isize",
+          "text": "Horizontal wrapping multiply. Returns the product of the lanes of the vector, with wrapping multiplication."
+        },
+        {
+          "code": "pub fn horizontal_max(self) -> isize",
+          "text": "Horizontal maximum. Returns the maximum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_min(self) -> isize",
+          "text": "Horizontal minimum. Returns the minimum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_sum(self) -> u8",
+          "text": "Horizontal wrapping add. Returns the sum of the lanes of the vector, with wrapping addition."
+        },
+        {
+          "code": "pub fn horizontal_product(self) -> u8",
+          "text": "Horizontal wrapping multiply. Returns the product of the lanes of the vector, with wrapping multiplication."
+        },
+        {
+          "code": "pub fn horizontal_max(self) -> u8",
+          "text": "Horizontal maximum. Returns the maximum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_min(self) -> u8",
+          "text": "Horizontal minimum. Returns the minimum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_sum(self) -> u16",
+          "text": "Horizontal wrapping add. Returns the sum of the lanes of the vector, with wrapping addition."
+        },
+        {
+          "code": "pub fn horizontal_product(self) -> u16",
+          "text": "Horizontal wrapping multiply. Returns the product of the lanes of the vector, with wrapping multiplication."
+        },
+        {
+          "code": "pub fn horizontal_max(self) -> u16",
+          "text": "Horizontal maximum. Returns the maximum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_min(self) -> u16",
+          "text": "Horizontal minimum. Returns the minimum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_sum(self) -> u32",
+          "text": "Horizontal wrapping add. Returns the sum of the lanes of the vector, with wrapping addition."
+        },
+        {
+          "code": "pub fn horizontal_product(self) -> u32",
+          "text": "Horizontal wrapping multiply. Returns the product of the lanes of the vector, with wrapping multiplication."
+        },
+        {
+          "code": "pub fn horizontal_max(self) -> u32",
+          "text": "Horizontal maximum. Returns the maximum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_min(self) -> u32",
+          "text": "Horizontal minimum. Returns the minimum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_sum(self) -> u64",
+          "text": "Horizontal wrapping add. Returns the sum of the lanes of the vector, with wrapping addition."
+        },
+        {
+          "code": "pub fn horizontal_product(self) -> u64",
+          "text": "Horizontal wrapping multiply. Returns the product of the lanes of the vector, with wrapping multiplication."
+        },
+        {
+          "code": "pub fn horizontal_max(self) -> u64",
+          "text": "Horizontal maximum. Returns the maximum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_min(self) -> u64",
+          "text": "Horizontal minimum. Returns the minimum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_sum(self) -> usize",
+          "text": "Horizontal wrapping add. Returns the sum of the lanes of the vector, with wrapping addition."
+        },
+        {
+          "code": "pub fn horizontal_product(self) -> usize",
+          "text": "Horizontal wrapping multiply. Returns the product of the lanes of the vector, with wrapping multiplication."
+        },
+        {
+          "code": "pub fn horizontal_max(self) -> usize",
+          "text": "Horizontal maximum. Returns the maximum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_min(self) -> usize",
+          "text": "Horizontal minimum. Returns the minimum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_sum(self) -> f32",
+          "text": "Horizontal add. Returns the sum of the lanes of the vector."
+        },
+        {
+          "code": "pub fn horizontal_product(self) -> f32",
+          "text": "Horizontal multiply. Returns the product of the lanes of the vector."
+        },
+        {
+          "code": "pub fn horizontal_max(self) -> f32",
+          "text": "Horizontal maximum. Returns the maximum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_min(self) -> f32",
+          "text": "Horizontal minimum. Returns the minimum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_sum(self) -> f64",
+          "text": "Horizontal add. Returns the sum of the lanes of the vector."
+        },
+        {
+          "code": "pub fn horizontal_product(self) -> f64",
+          "text": "Horizontal multiply. Returns the product of the lanes of the vector."
+        },
+        {
+          "code": "pub fn horizontal_max(self) -> f64",
+          "text": "Horizontal maximum. Returns the maximum lane in the vector."
+        },
+        {
+          "code": "pub fn horizontal_min(self) -> f64",
+          "text": "Horizontal minimum. Returns the minimum lane in the vector."
+        },
+        {
+          "code": "pub fn saturating_add(self, second: Simd<u8, LANES>) -> Simd<u8, LANES>",
+          "text": "Lanewise saturating add."
+        },
+        {
+          "code": "pub fn saturating_sub(self, second: Simd<u8, LANES>) -> Simd<u8, LANES>",
+          "text": "Lanewise saturating subtract."
+        },
+        {
+          "code": "pub fn saturating_add(self, second: Simd<u16, LANES>) -> Simd<u16, LANES>",
+          "text": "Lanewise saturating add."
+        },
+        {
+          "code": "pub fn saturating_sub(self, second: Simd<u16, LANES>) -> Simd<u16, LANES>",
+          "text": "Lanewise saturating subtract."
+        },
+        {
+          "code": "pub fn saturating_add(self, second: Simd<u32, LANES>) -> Simd<u32, LANES>",
+          "text": "Lanewise saturating add."
+        },
+        {
+          "code": "pub fn saturating_sub(self, second: Simd<u32, LANES>) -> Simd<u32, LANES>",
+          "text": "Lanewise saturating subtract."
+        },
+        {
+          "code": "pub fn saturating_add(self, second: Simd<u64, LANES>) -> Simd<u64, LANES>",
+          "text": "Lanewise saturating add."
+        },
+        {
+          "code": "pub fn saturating_sub(self, second: Simd<u64, LANES>) -> Simd<u64, LANES>",
+          "text": "Lanewise saturating subtract."
+        },
+        {
+          "code": "pub fn saturating_add(self, second: Simd<usize, LANES>) -> Simd<usize, LANES>",
+          "text": "Lanewise saturating add."
+        },
+        {
+          "code": "pub fn saturating_sub(self, second: Simd<usize, LANES>) -> Simd<usize, LANES>",
+          "text": "Lanewise saturating subtract."
+        },
+        {
+          "code": "pub fn saturating_add(self, second: Simd<i8, LANES>) -> Simd<i8, LANES>",
+          "text": "Lanewise saturating add."
+        },
+        {
+          "code": "pub fn saturating_sub(self, second: Simd<i8, LANES>) -> Simd<i8, LANES>",
+          "text": "Lanewise saturating subtract."
+        },
+        {
+          "code": "pub fn abs(self) -> Simd<i8, LANES>",
+          "text": "Lanewise absolute value, implemented in Rust. Every lane becomes its absolute value."
+        },
+        {
+          "code": "pub fn saturating_abs(self) -> Simd<i8, LANES>",
+          "text": "Lanewise saturating absolute value, implemented in Rust. As abs(), except the MIN value becomes MAX instead of itself."
+        },
+        {
+          "code": "pub fn saturating_neg(self) -> Simd<i8, LANES>",
+          "text": "Lanewise saturating negation, implemented in Rust. As neg(), except the MIN value becomes MAX instead of itself."
+        },
+        {
+          "code": "pub fn saturating_add(self, second: Simd<i16, LANES>) -> Simd<i16, LANES>",
+          "text": "Lanewise saturating add."
+        },
+        {
+          "code": "pub fn saturating_sub(self, second: Simd<i16, LANES>) -> Simd<i16, LANES>",
+          "text": "Lanewise saturating subtract."
+        },
+        {
+          "code": "pub fn abs(self) -> Simd<i16, LANES>",
+          "text": "Lanewise absolute value, implemented in Rust. Every lane becomes its absolute value."
+        },
+        {
+          "code": "pub fn saturating_abs(self) -> Simd<i16, LANES>",
+          "text": "Lanewise saturating absolute value, implemented in Rust. As abs(), except the MIN value becomes MAX instead of itself."
+        },
+        {
+          "code": "pub fn saturating_neg(self) -> Simd<i16, LANES>",
+          "text": "Lanewise saturating negation, implemented in Rust. As neg(), except the MIN value becomes MAX instead of itself."
+        },
+        {
+          "code": "pub fn saturating_add(self, second: Simd<i32, LANES>) -> Simd<i32, LANES>",
+          "text": "Lanewise saturating add."
+        },
+        {
+          "code": "pub fn saturating_sub(self, second: Simd<i32, LANES>) -> Simd<i32, LANES>",
+          "text": "Lanewise saturating subtract."
+        },
+        {
+          "code": "pub fn abs(self) -> Simd<i32, LANES>",
+          "text": "Lanewise absolute value, implemented in Rust. Every lane becomes its absolute value."
+        },
+        {
+          "code": "pub fn saturating_abs(self) -> Simd<i32, LANES>",
+          "text": "Lanewise saturating absolute value, implemented in Rust. As abs(), except the MIN value becomes MAX instead of itself."
+        },
+        {
+          "code": "pub fn saturating_neg(self) -> Simd<i32, LANES>",
+          "text": "Lanewise saturating negation, implemented in Rust. As neg(), except the MIN value becomes MAX instead of itself."
+        },
+        {
+          "code": "pub fn saturating_add(self, second: Simd<i64, LANES>) -> Simd<i64, LANES>",
+          "text": "Lanewise saturating add."
+        },
+        {
+          "code": "pub fn saturating_sub(self, second: Simd<i64, LANES>) -> Simd<i64, LANES>",
+          "text": "Lanewise saturating subtract."
+        },
+        {
+          "code": "pub fn abs(self) -> Simd<i64, LANES>",
+          "text": "Lanewise absolute value, implemented in Rust. Every lane becomes its absolute value."
+        },
+        {
+          "code": "pub fn saturating_abs(self) -> Simd<i64, LANES>",
+          "text": "Lanewise saturating absolute value, implemented in Rust. As abs(), except the MIN value becomes MAX instead of itself."
+        },
+        {
+          "code": "pub fn saturating_neg(self) -> Simd<i64, LANES>",
+          "text": "Lanewise saturating negation, implemented in Rust. As neg(), except the MIN value becomes MAX instead of itself."
+        },
+        {
+          "code": "pub fn saturating_add(self, second: Simd<isize, LANES>) -> Simd<isize, LANES>",
+          "text": "Lanewise saturating add."
+        },
+        {
+          "code": "pub fn saturating_sub(self, second: Simd<isize, LANES>) -> Simd<isize, LANES>",
+          "text": "Lanewise saturating subtract."
+        },
+        {
+          "code": "pub fn abs(self) -> Simd<isize, LANES>",
+          "text": "Lanewise absolute value, implemented in Rust. Every lane becomes its absolute value."
+        },
+        {
+          "code": "pub fn saturating_abs(self) -> Simd<isize, LANES>",
+          "text": "Lanewise saturating absolute value, implemented in Rust. As abs(), except the MIN value becomes MAX instead of itself."
+        },
+        {
+          "code": "pub fn saturating_neg(self) -> Simd<isize, LANES>",
+          "text": "Lanewise saturating negation, implemented in Rust. As neg(), except the MIN value becomes MAX instead of itself."
+        },
+        {
+          "code": "pub unsafe fn to_int_unchecked(self) -> Simd<i32, LANES>",
+          "text": "Rounds toward zero and converts to the same-width integer type, assuming that the value is finite and fits in that type."
+        },
+        {
+          "code": "pub fn round_from_int(value: Simd<i32, LANES>) -> Simd<f32, LANES>",
+          "text": "Creates a floating-point vector from an integer vector. Rounds values that are not exactly representable."
+        },
+        {
+          "code": "pub unsafe fn to_int_unchecked(self) -> Simd<i64, LANES>",
+          "text": "Rounds toward zero and converts to the same-width integer type, assuming that the value is finite and fits in that type."
+        },
+        {
+          "code": "pub fn round_from_int(value: Simd<i64, LANES>) -> Simd<f64, LANES>",
+          "text": "Creates a floating-point vector from an integer vector. Rounds values that are not exactly representable."
+        },
+        {
+          "code": "pub fn to_bits(self) -> Simd<u32, LANES>",
+          "text": "Raw transmutation to an unsigned integer vector type with the same size and number of lanes."
+        },
+        {
+          "code": "pub fn from_bits(bits: Simd<u32, LANES>) -> Simd<f32, LANES>",
+          "text": "Raw transmutation from an unsigned integer vector type with the same size and number of lanes."
+        },
+        {
+          "code": "pub fn abs(self) -> Simd<f32, LANES>",
+          "text": "Produces a vector where every lane has the absolute value of the equivalently-indexed lane in self."
+        },
+        {
+          "code": "pub fn recip(self) -> Simd<f32, LANES>",
+          "text": "Takes the reciprocal (inverse) of each lane, 1/x."
+        },
+        {
+          "code": "pub fn to_degrees(self) -> Simd<f32, LANES>",
+          "text": "Converts each lane from radians to degrees."
+        },
+        {
+          "code": "pub fn to_radians(self) -> Simd<f32, LANES>",
+          "text": "Converts each lane from degrees to radians."
+        },
+        {
+          "code": "pub fn is_sign_positive(self) -> Mask<i32, LANES>",
+          "text": "Returns true for each lane if it has a positive sign, including +0.0, NaNs with positive sign bit and positive infinity."
+        },
+        {
+          "code": "pub fn is_sign_negative(self) -> Mask<i32, LANES>",
+          "text": "Returns true for each lane if it has a negative sign, including -0.0, NaNs with negative sign bit and negative infinity."
+        },
+        {
+          "code": "pub fn is_nan(self) -> Mask<i32, LANES>",
+          "text": "Returns true for each lane if its value is NaN."
+        },
+        {
+          "code": "pub fn is_infinite(self) -> Mask<i32, LANES>",
+          "text": "Returns true for each lane if its value is positive infinity or negative infinity."
+        },
+        {
+          "code": "pub fn is_finite(self) -> Mask<i32, LANES>",
+          "text": "Returns true for each lane if its value is neither infinite nor NaN."
+        },
+        {
+          "code": "pub fn is_subnormal(self) -> Mask<i32, LANES>",
+          "text": "Returns true for each lane if its value is subnormal."
+        },
+        {
+          "code": "pub fn is_normal(self) -> Mask<i32, LANES>",
+          "text": "Returns true for each lane if its value is neither neither zero, infinite, subnormal, or NaN."
+        },
+        {
+          "code": "pub fn signum(self) -> Simd<f32, LANES>",
+          "text": "Replaces each lane with a number that represents its sign."
+        },
+        {
+          "code": "pub fn copysign(self, sign: Simd<f32, LANES>) -> Simd<f32, LANES>",
+          "text": "Returns each lane with the magnitude of self and the sign of sign."
+        },
+        {
+          "code": "pub fn min(self, other: Simd<f32, LANES>) -> Simd<f32, LANES>",
+          "text": "Returns the minimum of each lane."
+        },
+        {
+          "code": "pub fn max(self, other: Simd<f32, LANES>) -> Simd<f32, LANES>",
+          "text": "Returns the maximum of each lane."
+        },
+        {
+          "code": "pub fn clamp( self, min: Simd<f32, LANES>, max: Simd<f32, LANES>) -> Simd<f32, LANES>",
+          "text": "Restrict each lane to a certain interval unless it is NaN."
+        },
+        {
+          "code": "pub fn to_bits(self) -> Simd<u64, LANES>",
+          "text": "Raw transmutation to an unsigned integer vector type with the same size and number of lanes."
+        },
+        {
+          "code": "pub fn from_bits(bits: Simd<u64, LANES>) -> Simd<f64, LANES>",
+          "text": "Raw transmutation from an unsigned integer vector type with the same size and number of lanes."
+        },
+        {
+          "code": "pub fn abs(self) -> Simd<f64, LANES>",
+          "text": "Produces a vector where every lane has the absolute value of the equivalently-indexed lane in self."
+        },
+        {
+          "code": "pub fn recip(self) -> Simd<f64, LANES>",
+          "text": "Takes the reciprocal (inverse) of each lane, 1/x."
+        },
+        {
+          "code": "pub fn to_degrees(self) -> Simd<f64, LANES>",
+          "text": "Converts each lane from radians to degrees."
+        },
+        {
+          "code": "pub fn to_radians(self) -> Simd<f64, LANES>",
+          "text": "Converts each lane from degrees to radians."
+        },
+        {
+          "code": "pub fn is_sign_positive(self) -> Mask<i64, LANES>",
+          "text": "Returns true for each lane if it has a positive sign, including +0.0, NaNs with positive sign bit and positive infinity."
+        },
+        {
+          "code": "pub fn is_sign_negative(self) -> Mask<i64, LANES>",
+          "text": "Returns true for each lane if it has a negative sign, including -0.0, NaNs with negative sign bit and negative infinity."
+        },
+        {
+          "code": "pub fn is_nan(self) -> Mask<i64, LANES>",
+          "text": "Returns true for each lane if its value is NaN."
+        },
+        {
+          "code": "pub fn is_infinite(self) -> Mask<i64, LANES>",
+          "text": "Returns true for each lane if its value is positive infinity or negative infinity."
+        },
+        {
+          "code": "pub fn is_finite(self) -> Mask<i64, LANES>",
+          "text": "Returns true for each lane if its value is neither infinite nor NaN."
+        },
+        {
+          "code": "pub fn is_subnormal(self) -> Mask<i64, LANES>",
+          "text": "Returns true for each lane if its value is subnormal."
+        },
+        {
+          "code": "pub fn is_normal(self) -> Mask<i64, LANES>",
+          "text": "Returns true for each lane if its value is neither neither zero, infinite, subnormal, or NaN."
+        },
+        {
+          "code": "pub fn signum(self) -> Simd<f64, LANES>",
+          "text": "Replaces each lane with a number that represents its sign."
+        },
+        {
+          "code": "pub fn copysign(self, sign: Simd<f64, LANES>) -> Simd<f64, LANES>",
+          "text": "Returns each lane with the magnitude of self and the sign of sign."
+        },
+        {
+          "code": "pub fn min(self, other: Simd<f64, LANES>) -> Simd<f64, LANES>",
+          "text": "Returns the minimum of each lane."
+        },
+        {
+          "code": "pub fn max(self, other: Simd<f64, LANES>) -> Simd<f64, LANES>",
+          "text": "Returns the maximum of each lane."
+        },
+        {
+          "code": "pub fn clamp( self, min: Simd<f64, LANES>, max: Simd<f64, LANES>) -> Simd<f64, LANES>",
+          "text": "Restrict each lane to a certain interval unless it is NaN."
+        },
+        {
+          "code": "pub fn is_positive(self) -> Mask<isize, LANES>",
+          "text": "Returns true for each positive lane and false if it is zero or negative."
+        },
+        {
+          "code": "pub fn is_negative(self) -> Mask<isize, LANES>",
+          "text": "Returns true for each negative lane and false if it is zero or positive."
+        },
+        {
+          "code": "pub fn signum(self) -> Simd<isize, LANES>",
+          "text": "Returns numbers representing the sign of each lane."
+        },
+        {
+          "code": "pub fn is_positive(self) -> Mask<i16, LANES>",
+          "text": "Returns true for each positive lane and false if it is zero or negative."
+        },
+        {
+          "code": "pub fn is_negative(self) -> Mask<i16, LANES>",
+          "text": "Returns true for each negative lane and false if it is zero or positive."
+        },
+        {
+          "code": "pub fn signum(self) -> Simd<i16, LANES>",
+          "text": "Returns numbers representing the sign of each lane."
+        },
+        {
+          "code": "pub fn is_positive(self) -> Mask<i32, LANES>",
+          "text": "Returns true for each positive lane and false if it is zero or negative."
+        },
+        {
+          "code": "pub fn is_negative(self) -> Mask<i32, LANES>",
+          "text": "Returns true for each negative lane and false if it is zero or positive."
+        },
+        {
+          "code": "pub fn signum(self) -> Simd<i32, LANES>",
+          "text": "Returns numbers representing the sign of each lane."
+        },
+        {
+          "code": "pub fn is_positive(self) -> Mask<i64, LANES>",
+          "text": "Returns true for each positive lane and false if it is zero or negative."
+        },
+        {
+          "code": "pub fn is_negative(self) -> Mask<i64, LANES>",
+          "text": "Returns true for each negative lane and false if it is zero or positive."
+        },
+        {
+          "code": "pub fn signum(self) -> Simd<i64, LANES>",
+          "text": "Returns numbers representing the sign of each lane."
+        },
+        {
+          "code": "pub fn is_positive(self) -> Mask<i8, LANES>",
+          "text": "Returns true for each positive lane and false if it is zero or negative."
+        },
+        {
+          "code": "pub fn is_negative(self) -> Mask<i8, LANES>",
+          "text": "Returns true for each negative lane and false if it is zero or positive."
+        },
+        {
+          "code": "pub fn signum(self) -> Simd<i8, LANES>",
+          "text": "Returns numbers representing the sign of each lane."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'_, T, const LANES: usize> Add<&'_ Simd<T, LANES>> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Add<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Add<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add( self, rhs: &Simd<T, LANES>) -> <Simd<T, LANES> as Add<&'_ Simd<T, LANES>>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'lhs, 'rhs, T, const LANES: usize> Add<&'rhs Simd<T, LANES>> for &'lhs Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Add<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Add<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add( self, rhs: &Simd<T, LANES>) -> <&'lhs Simd<T, LANES> as Add<&'rhs Simd<T, LANES>>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> Add<Simd<T, LANES>> for &'_ Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Add<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Add<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add( self, rhs: Simd<T, LANES>) -> <&'_ Simd<T, LANES> as Add<Simd<T, LANES>>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Add<Simd<f32, LANES>> for Simd<f32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<f32, LANES>",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add( self, rhs: Simd<f32, LANES>) -> <Simd<f32, LANES> as Add<Simd<f32, LANES>>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Add<Simd<f64, LANES>> for Simd<f64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<f64, LANES>",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add( self, rhs: Simd<f64, LANES>) -> <Simd<f64, LANES> as Add<Simd<f64, LANES>>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Add<Simd<i16, LANES>> for Simd<i16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i16, LANES>",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add( self, rhs: Simd<i16, LANES>) -> <Simd<i16, LANES> as Add<Simd<i16, LANES>>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Add<Simd<i32, LANES>> for Simd<i32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i32, LANES>",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add( self, rhs: Simd<i32, LANES>) -> <Simd<i32, LANES> as Add<Simd<i32, LANES>>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Add<Simd<i64, LANES>> for Simd<i64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i64, LANES>",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add( self, rhs: Simd<i64, LANES>) -> <Simd<i64, LANES> as Add<Simd<i64, LANES>>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Add<Simd<i8, LANES>> for Simd<i8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i8, LANES>",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add( self, rhs: Simd<i8, LANES>) -> <Simd<i8, LANES> as Add<Simd<i8, LANES>>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Add<Simd<isize, LANES>> for Simd<isize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<isize, LANES>",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add( self, rhs: Simd<isize, LANES>) -> <Simd<isize, LANES> as Add<Simd<isize, LANES>>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Add<Simd<u16, LANES>> for Simd<u16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u16, LANES>",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add( self, rhs: Simd<u16, LANES>) -> <Simd<u16, LANES> as Add<Simd<u16, LANES>>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Add<Simd<u32, LANES>> for Simd<u32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u32, LANES>",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add( self, rhs: Simd<u32, LANES>) -> <Simd<u32, LANES> as Add<Simd<u32, LANES>>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Add<Simd<u64, LANES>> for Simd<u64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u64, LANES>",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add( self, rhs: Simd<u64, LANES>) -> <Simd<u64, LANES> as Add<Simd<u64, LANES>>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Add<Simd<u8, LANES>> for Simd<u8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u8, LANES>",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add( self, rhs: Simd<u8, LANES>) -> <Simd<u8, LANES> as Add<Simd<u8, LANES>>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Add<Simd<usize, LANES>> for Simd<usize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<usize, LANES>",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "pub fn add( self, rhs: Simd<usize, LANES>) -> <Simd<usize, LANES> as Add<Simd<usize, LANES>>>::Output",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, const LANES: usize> AddAssign<U> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Add<U>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Add<U>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "pub fn add_assign(&mut self, rhs: U)",
+              "text": "Performs the += operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> AsMut<[T; LANES]> for Simd<T, LANES> where T: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn as_mut(&mut self) -> &mut [T; LANES]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> AsMut<[T]> for Simd<T, LANES> where T: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn as_mut(&mut self) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> AsRef<[T; LANES]> for Simd<T, LANES> where T: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &[T; LANES]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> AsRef<[T]> for Simd<T, LANES> where T: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> Binary for Simd<T, LANES> where T: SimdElement + Binary, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> BitAnd<&'_ Simd<T, LANES>> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: BitAnd<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as BitAnd<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand( self, rhs: &Simd<T, LANES>) -> <Simd<T, LANES> as BitAnd<&'_ Simd<T, LANES>>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'lhs, 'rhs, T, const LANES: usize> BitAnd<&'rhs Simd<T, LANES>> for &'lhs Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: BitAnd<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as BitAnd<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand( self, rhs: &Simd<T, LANES>) -> <&'lhs Simd<T, LANES> as BitAnd<&'rhs Simd<T, LANES>>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> BitAnd<Simd<T, LANES>> for &'_ Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: BitAnd<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as BitAnd<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand( self, rhs: Simd<T, LANES>) -> <&'_ Simd<T, LANES> as BitAnd<Simd<T, LANES>>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitAnd<Simd<i16, LANES>> for Simd<i16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i16, LANES>",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand( self, rhs: Simd<i16, LANES>) -> <Simd<i16, LANES> as BitAnd<Simd<i16, LANES>>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitAnd<Simd<i32, LANES>> for Simd<i32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i32, LANES>",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand( self, rhs: Simd<i32, LANES>) -> <Simd<i32, LANES> as BitAnd<Simd<i32, LANES>>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitAnd<Simd<i64, LANES>> for Simd<i64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i64, LANES>",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand( self, rhs: Simd<i64, LANES>) -> <Simd<i64, LANES> as BitAnd<Simd<i64, LANES>>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitAnd<Simd<i8, LANES>> for Simd<i8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i8, LANES>",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand( self, rhs: Simd<i8, LANES>) -> <Simd<i8, LANES> as BitAnd<Simd<i8, LANES>>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitAnd<Simd<isize, LANES>> for Simd<isize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<isize, LANES>",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand( self, rhs: Simd<isize, LANES>) -> <Simd<isize, LANES> as BitAnd<Simd<isize, LANES>>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitAnd<Simd<u16, LANES>> for Simd<u16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u16, LANES>",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand( self, rhs: Simd<u16, LANES>) -> <Simd<u16, LANES> as BitAnd<Simd<u16, LANES>>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitAnd<Simd<u32, LANES>> for Simd<u32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u32, LANES>",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand( self, rhs: Simd<u32, LANES>) -> <Simd<u32, LANES> as BitAnd<Simd<u32, LANES>>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitAnd<Simd<u64, LANES>> for Simd<u64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u64, LANES>",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand( self, rhs: Simd<u64, LANES>) -> <Simd<u64, LANES> as BitAnd<Simd<u64, LANES>>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitAnd<Simd<u8, LANES>> for Simd<u8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u8, LANES>",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand( self, rhs: Simd<u8, LANES>) -> <Simd<u8, LANES> as BitAnd<Simd<u8, LANES>>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitAnd<Simd<usize, LANES>> for Simd<usize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<usize, LANES>",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand( self, rhs: Simd<usize, LANES>) -> <Simd<usize, LANES> as BitAnd<Simd<usize, LANES>>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, const LANES: usize> BitAndAssign<U> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: BitAnd<U>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as BitAnd<U>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "pub fn bitand_assign(&mut self, rhs: U)",
+              "text": "Performs the &= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> BitOr<&'_ Simd<T, LANES>> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: BitOr<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as BitOr<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor( self, rhs: &Simd<T, LANES>) -> <Simd<T, LANES> as BitOr<&'_ Simd<T, LANES>>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'lhs, 'rhs, T, const LANES: usize> BitOr<&'rhs Simd<T, LANES>> for &'lhs Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: BitOr<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as BitOr<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor( self, rhs: &Simd<T, LANES>) -> <&'lhs Simd<T, LANES> as BitOr<&'rhs Simd<T, LANES>>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> BitOr<Simd<T, LANES>> for &'_ Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: BitOr<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as BitOr<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor( self, rhs: Simd<T, LANES>) -> <&'_ Simd<T, LANES> as BitOr<Simd<T, LANES>>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitOr<Simd<i16, LANES>> for Simd<i16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i16, LANES>",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor( self, rhs: Simd<i16, LANES>) -> <Simd<i16, LANES> as BitOr<Simd<i16, LANES>>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitOr<Simd<i32, LANES>> for Simd<i32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i32, LANES>",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor( self, rhs: Simd<i32, LANES>) -> <Simd<i32, LANES> as BitOr<Simd<i32, LANES>>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitOr<Simd<i64, LANES>> for Simd<i64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i64, LANES>",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor( self, rhs: Simd<i64, LANES>) -> <Simd<i64, LANES> as BitOr<Simd<i64, LANES>>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitOr<Simd<i8, LANES>> for Simd<i8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i8, LANES>",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor( self, rhs: Simd<i8, LANES>) -> <Simd<i8, LANES> as BitOr<Simd<i8, LANES>>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitOr<Simd<isize, LANES>> for Simd<isize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<isize, LANES>",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor( self, rhs: Simd<isize, LANES>) -> <Simd<isize, LANES> as BitOr<Simd<isize, LANES>>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitOr<Simd<u16, LANES>> for Simd<u16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u16, LANES>",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor( self, rhs: Simd<u16, LANES>) -> <Simd<u16, LANES> as BitOr<Simd<u16, LANES>>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitOr<Simd<u32, LANES>> for Simd<u32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u32, LANES>",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor( self, rhs: Simd<u32, LANES>) -> <Simd<u32, LANES> as BitOr<Simd<u32, LANES>>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitOr<Simd<u64, LANES>> for Simd<u64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u64, LANES>",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor( self, rhs: Simd<u64, LANES>) -> <Simd<u64, LANES> as BitOr<Simd<u64, LANES>>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitOr<Simd<u8, LANES>> for Simd<u8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u8, LANES>",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor( self, rhs: Simd<u8, LANES>) -> <Simd<u8, LANES> as BitOr<Simd<u8, LANES>>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitOr<Simd<usize, LANES>> for Simd<usize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<usize, LANES>",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor( self, rhs: Simd<usize, LANES>) -> <Simd<usize, LANES> as BitOr<Simd<usize, LANES>>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, const LANES: usize> BitOrAssign<U> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: BitOr<U>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as BitOr<U>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "pub fn bitor_assign(&mut self, rhs: U)",
+              "text": "Performs the |= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> BitXor<&'_ Simd<T, LANES>> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: BitXor<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as BitXor<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor( self, rhs: &Simd<T, LANES>) -> <Simd<T, LANES> as BitXor<&'_ Simd<T, LANES>>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'lhs, 'rhs, T, const LANES: usize> BitXor<&'rhs Simd<T, LANES>> for &'lhs Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: BitXor<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as BitXor<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor( self, rhs: &Simd<T, LANES>) -> <&'lhs Simd<T, LANES> as BitXor<&'rhs Simd<T, LANES>>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> BitXor<Simd<T, LANES>> for &'_ Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: BitXor<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as BitXor<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor( self, rhs: Simd<T, LANES>) -> <&'_ Simd<T, LANES> as BitXor<Simd<T, LANES>>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitXor<Simd<i16, LANES>> for Simd<i16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i16, LANES>",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor( self, rhs: Simd<i16, LANES>) -> <Simd<i16, LANES> as BitXor<Simd<i16, LANES>>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitXor<Simd<i32, LANES>> for Simd<i32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i32, LANES>",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor( self, rhs: Simd<i32, LANES>) -> <Simd<i32, LANES> as BitXor<Simd<i32, LANES>>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitXor<Simd<i64, LANES>> for Simd<i64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i64, LANES>",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor( self, rhs: Simd<i64, LANES>) -> <Simd<i64, LANES> as BitXor<Simd<i64, LANES>>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitXor<Simd<i8, LANES>> for Simd<i8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i8, LANES>",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor( self, rhs: Simd<i8, LANES>) -> <Simd<i8, LANES> as BitXor<Simd<i8, LANES>>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitXor<Simd<isize, LANES>> for Simd<isize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<isize, LANES>",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor( self, rhs: Simd<isize, LANES>) -> <Simd<isize, LANES> as BitXor<Simd<isize, LANES>>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitXor<Simd<u16, LANES>> for Simd<u16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u16, LANES>",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor( self, rhs: Simd<u16, LANES>) -> <Simd<u16, LANES> as BitXor<Simd<u16, LANES>>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitXor<Simd<u32, LANES>> for Simd<u32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u32, LANES>",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor( self, rhs: Simd<u32, LANES>) -> <Simd<u32, LANES> as BitXor<Simd<u32, LANES>>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitXor<Simd<u64, LANES>> for Simd<u64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u64, LANES>",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor( self, rhs: Simd<u64, LANES>) -> <Simd<u64, LANES> as BitXor<Simd<u64, LANES>>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitXor<Simd<u8, LANES>> for Simd<u8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u8, LANES>",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor( self, rhs: Simd<u8, LANES>) -> <Simd<u8, LANES> as BitXor<Simd<u8, LANES>>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> BitXor<Simd<usize, LANES>> for Simd<usize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<usize, LANES>",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor( self, rhs: Simd<usize, LANES>) -> <Simd<usize, LANES> as BitXor<Simd<usize, LANES>>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, const LANES: usize> BitXorAssign<U> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: BitXor<U>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as BitXor<U>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "pub fn bitxor_assign(&mut self, rhs: U)",
+              "text": "Performs the ^= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> Clone for Simd<T, LANES> where T: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> Simd<T, LANES>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> Debug for Simd<T, LANES> where T: SimdElement + Debug, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> Default for Simd<T, LANES> where T: SimdElement + Default, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn default() -> Simd<T, LANES>",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> Div<&'_ Simd<T, LANES>> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Div<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Div<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div( self, rhs: &Simd<T, LANES>) -> <Simd<T, LANES> as Div<&'_ Simd<T, LANES>>>::Output",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'lhs, 'rhs, T, const LANES: usize> Div<&'rhs Simd<T, LANES>> for &'lhs Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Div<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Div<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div( self, rhs: &Simd<T, LANES>) -> <&'lhs Simd<T, LANES> as Div<&'rhs Simd<T, LANES>>>::Output",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> Div<Simd<T, LANES>> for &'_ Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Div<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Div<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div( self, rhs: Simd<T, LANES>) -> <&'_ Simd<T, LANES> as Div<Simd<T, LANES>>>::Output",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Div<Simd<f32, LANES>> for Simd<f32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<f32, LANES>",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div( self, rhs: Simd<f32, LANES>) -> <Simd<f32, LANES> as Div<Simd<f32, LANES>>>::Output",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Div<Simd<f64, LANES>> for Simd<f64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<f64, LANES>",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div( self, rhs: Simd<f64, LANES>) -> <Simd<f64, LANES> as Div<Simd<f64, LANES>>>::Output",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Div<Simd<i16, LANES>> for Simd<i16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i16, LANES>",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div( self, rhs: Simd<i16, LANES>) -> <Simd<i16, LANES> as Div<Simd<i16, LANES>>>::Output",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Div<Simd<i32, LANES>> for Simd<i32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i32, LANES>",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div( self, rhs: Simd<i32, LANES>) -> <Simd<i32, LANES> as Div<Simd<i32, LANES>>>::Output",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Div<Simd<i64, LANES>> for Simd<i64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i64, LANES>",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div( self, rhs: Simd<i64, LANES>) -> <Simd<i64, LANES> as Div<Simd<i64, LANES>>>::Output",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Div<Simd<i8, LANES>> for Simd<i8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i8, LANES>",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div( self, rhs: Simd<i8, LANES>) -> <Simd<i8, LANES> as Div<Simd<i8, LANES>>>::Output",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Div<Simd<isize, LANES>> for Simd<isize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<isize, LANES>",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div( self, rhs: Simd<isize, LANES>) -> <Simd<isize, LANES> as Div<Simd<isize, LANES>>>::Output",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Div<Simd<u16, LANES>> for Simd<u16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u16, LANES>",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div( self, rhs: Simd<u16, LANES>) -> <Simd<u16, LANES> as Div<Simd<u16, LANES>>>::Output",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Div<Simd<u32, LANES>> for Simd<u32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u32, LANES>",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div( self, rhs: Simd<u32, LANES>) -> <Simd<u32, LANES> as Div<Simd<u32, LANES>>>::Output",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Div<Simd<u64, LANES>> for Simd<u64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u64, LANES>",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div( self, rhs: Simd<u64, LANES>) -> <Simd<u64, LANES> as Div<Simd<u64, LANES>>>::Output",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Div<Simd<u8, LANES>> for Simd<u8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u8, LANES>",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div( self, rhs: Simd<u8, LANES>) -> <Simd<u8, LANES> as Div<Simd<u8, LANES>>>::Output",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Div<Simd<usize, LANES>> for Simd<usize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<usize, LANES>",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "pub fn div( self, rhs: Simd<usize, LANES>) -> <Simd<usize, LANES> as Div<Simd<usize, LANES>>>::Output",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, const LANES: usize> DivAssign<U> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Div<U>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Div<U>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "pub fn div_assign(&mut self, rhs: U)",
+              "text": "Performs the /= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> From<[T; LANES]> for Simd<T, LANES> where T: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(array: [T; LANES]) -> Simd<T, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> From<Mask<T, LANES>> for Simd<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<T, LANES>) -> Simd<T, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> From<Simd<T, LANES>> for [T; LANES] where T: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(vector: Simd<T, LANES>) -> [T; LANES]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<f32, 16_usize>> for __m512",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<f32, 16_usize>) -> __m512",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<f32, 4_usize>> for __m128",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<f32, 4_usize>) -> __m128",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<f32, 8_usize>> for __m256",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<f32, 8_usize>) -> __m256",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<f64, 2_usize>> for __m128d",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<f64, 2_usize>) -> __m128d",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<f64, 4_usize>> for __m256d",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<f64, 4_usize>) -> __m256d",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<f64, 8_usize>> for __m512d",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<f64, 8_usize>) -> __m512d",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<i16, 16_usize>> for __m256i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<i16, 16_usize>) -> __m256i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<i16, 32_usize>> for __m512i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<i16, 32_usize>) -> __m512i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<i16, 8_usize>> for __m128i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<i16, 8_usize>) -> __m128i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<i32, 16_usize>> for __m512i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<i32, 16_usize>) -> __m512i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<i32, 4_usize>> for __m128i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<i32, 4_usize>) -> __m128i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<i32, 8_usize>> for __m256i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<i32, 8_usize>) -> __m256i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<i64, 2_usize>> for __m128i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<i64, 2_usize>) -> __m128i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<i64, 4_usize>> for __m256i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<i64, 4_usize>) -> __m256i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<i64, 8_usize>> for __m512i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<i64, 8_usize>) -> __m512i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<i8, 16_usize>> for __m128i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<i8, 16_usize>) -> __m128i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<i8, 32_usize>> for __m256i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<i8, 32_usize>) -> __m256i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<i8, 64_usize>> for __m512i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<i8, 64_usize>) -> __m512i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<isize, 2_usize>> for __m128i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<isize, 2_usize>) -> __m128i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<isize, 4_usize>> for __m256i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<isize, 4_usize>) -> __m256i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<isize, 8_usize>> for __m512i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<isize, 8_usize>) -> __m512i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<u16, 16_usize>> for __m256i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<u16, 16_usize>) -> __m256i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<u16, 32_usize>> for __m512i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<u16, 32_usize>) -> __m512i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<u16, 8_usize>> for __m128i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<u16, 8_usize>) -> __m128i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<u32, 16_usize>> for __m512i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<u32, 16_usize>) -> __m512i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<u32, 4_usize>> for __m128i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<u32, 4_usize>) -> __m128i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<u32, 8_usize>> for __m256i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<u32, 8_usize>) -> __m256i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<u64, 2_usize>> for __m128i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<u64, 2_usize>) -> __m128i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<u64, 4_usize>> for __m256i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<u64, 4_usize>) -> __m256i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<u64, 8_usize>> for __m512i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<u64, 8_usize>) -> __m512i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<u8, 16_usize>> for __m128i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<u8, 16_usize>) -> __m128i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<u8, 32_usize>> for __m256i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<u8, 32_usize>) -> __m256i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<u8, 64_usize>> for __m512i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<u8, 64_usize>) -> __m512i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<usize, 2_usize>> for __m128i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<usize, 2_usize>) -> __m128i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<usize, 4_usize>> for __m256i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<usize, 4_usize>) -> __m256i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Simd<usize, 8_usize>> for __m512i",
+          "methods": [
+            {
+              "code": "pub fn from(value: Simd<usize, 8_usize>) -> __m512i",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m128> for Simd<f32, 4_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m128) -> Simd<f32, 4_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m128d> for Simd<f64, 2_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m128d) -> Simd<f64, 2_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m128i> for Simd<u64, 2_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m128i) -> Simd<u64, 2_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m128i> for Simd<u8, 16_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m128i) -> Simd<u8, 16_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m128i> for Simd<i16, 8_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m128i) -> Simd<i16, 8_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m128i> for Simd<usize, 2_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m128i) -> Simd<usize, 2_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m128i> for Simd<i64, 2_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m128i) -> Simd<i64, 2_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m128i> for Simd<i32, 4_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m128i) -> Simd<i32, 4_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m128i> for Simd<u32, 4_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m128i) -> Simd<u32, 4_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m128i> for Simd<u16, 8_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m128i) -> Simd<u16, 8_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m128i> for Simd<i8, 16_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m128i) -> Simd<i8, 16_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m128i> for Simd<isize, 2_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m128i) -> Simd<isize, 2_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m256> for Simd<f32, 8_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m256) -> Simd<f32, 8_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m256d> for Simd<f64, 4_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m256d) -> Simd<f64, 4_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m256i> for Simd<isize, 4_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m256i) -> Simd<isize, 4_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m256i> for Simd<i32, 8_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m256i) -> Simd<i32, 8_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m256i> for Simd<u32, 8_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m256i) -> Simd<u32, 8_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m256i> for Simd<i8, 32_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m256i) -> Simd<i8, 32_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m256i> for Simd<usize, 4_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m256i) -> Simd<usize, 4_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m256i> for Simd<i16, 16_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m256i) -> Simd<i16, 16_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m256i> for Simd<u8, 32_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m256i) -> Simd<u8, 32_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m256i> for Simd<i64, 4_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m256i) -> Simd<i64, 4_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m256i> for Simd<u64, 4_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m256i) -> Simd<u64, 4_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m256i> for Simd<u16, 16_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m256i) -> Simd<u16, 16_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m512> for Simd<f32, 16_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m512) -> Simd<f32, 16_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m512d> for Simd<f64, 8_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m512d) -> Simd<f64, 8_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m512i> for Simd<i32, 16_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m512i) -> Simd<i32, 16_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m512i> for Simd<u32, 16_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m512i) -> Simd<u32, 16_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m512i> for Simd<u64, 8_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m512i) -> Simd<u64, 8_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m512i> for Simd<u16, 32_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m512i) -> Simd<u16, 32_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m512i> for Simd<usize, 8_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m512i) -> Simd<usize, 8_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m512i> for Simd<isize, 8_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m512i) -> Simd<isize, 8_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m512i> for Simd<i64, 8_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m512i) -> Simd<i64, 8_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m512i> for Simd<i8, 64_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m512i) -> Simd<i8, 64_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m512i> for Simd<u8, 64_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m512i) -> Simd<u8, 64_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<__m512i> for Simd<i16, 32_usize>",
+          "methods": [
+            {
+              "code": "pub fn from(value: __m512i) -> Simd<i16, 32_usize>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> Hash for Simd<T, LANES> where T: SimdElement + Hash, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, state: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<I, T, const LANES: usize> Index<I> for Simd<T, LANES> where T: SimdElement, I: SliceIndex<[T]>, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = <I as SliceIndex<[T]>>::Output",
+              "text": "The returned type after indexing."
+            },
+            {
+              "code": "pub fn index(&self, index: I) -> &<Simd<T, LANES> as Index<I>>::Output",
+              "text": "Performs the indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<I, T, const LANES: usize> IndexMut<I> for Simd<T, LANES> where T: SimdElement, I: SliceIndex<[T]>, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn index_mut( &mut self, index: I) -> &mut <Simd<T, LANES> as Index<I>>::Output",
+              "text": "Performs the mutable indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> LowerExp for Simd<T, LANES> where T: SimdElement + LowerExp, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> LowerHex for Simd<T, LANES> where T: SimdElement + LowerHex, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> Mul<&'_ Simd<T, LANES>> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Mul<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Mul<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul( self, rhs: &Simd<T, LANES>) -> <Simd<T, LANES> as Mul<&'_ Simd<T, LANES>>>::Output",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'lhs, 'rhs, T, const LANES: usize> Mul<&'rhs Simd<T, LANES>> for &'lhs Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Mul<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Mul<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul( self, rhs: &Simd<T, LANES>) -> <&'lhs Simd<T, LANES> as Mul<&'rhs Simd<T, LANES>>>::Output",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> Mul<Simd<T, LANES>> for &'_ Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Mul<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Mul<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul( self, rhs: Simd<T, LANES>) -> <&'_ Simd<T, LANES> as Mul<Simd<T, LANES>>>::Output",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Mul<Simd<f32, LANES>> for Simd<f32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<f32, LANES>",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul( self, rhs: Simd<f32, LANES>) -> <Simd<f32, LANES> as Mul<Simd<f32, LANES>>>::Output",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Mul<Simd<f64, LANES>> for Simd<f64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<f64, LANES>",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul( self, rhs: Simd<f64, LANES>) -> <Simd<f64, LANES> as Mul<Simd<f64, LANES>>>::Output",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Mul<Simd<i16, LANES>> for Simd<i16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i16, LANES>",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul( self, rhs: Simd<i16, LANES>) -> <Simd<i16, LANES> as Mul<Simd<i16, LANES>>>::Output",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Mul<Simd<i32, LANES>> for Simd<i32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i32, LANES>",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul( self, rhs: Simd<i32, LANES>) -> <Simd<i32, LANES> as Mul<Simd<i32, LANES>>>::Output",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Mul<Simd<i64, LANES>> for Simd<i64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i64, LANES>",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul( self, rhs: Simd<i64, LANES>) -> <Simd<i64, LANES> as Mul<Simd<i64, LANES>>>::Output",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Mul<Simd<i8, LANES>> for Simd<i8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i8, LANES>",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul( self, rhs: Simd<i8, LANES>) -> <Simd<i8, LANES> as Mul<Simd<i8, LANES>>>::Output",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Mul<Simd<isize, LANES>> for Simd<isize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<isize, LANES>",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul( self, rhs: Simd<isize, LANES>) -> <Simd<isize, LANES> as Mul<Simd<isize, LANES>>>::Output",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Mul<Simd<u16, LANES>> for Simd<u16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u16, LANES>",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul( self, rhs: Simd<u16, LANES>) -> <Simd<u16, LANES> as Mul<Simd<u16, LANES>>>::Output",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Mul<Simd<u32, LANES>> for Simd<u32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u32, LANES>",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul( self, rhs: Simd<u32, LANES>) -> <Simd<u32, LANES> as Mul<Simd<u32, LANES>>>::Output",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Mul<Simd<u64, LANES>> for Simd<u64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u64, LANES>",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul( self, rhs: Simd<u64, LANES>) -> <Simd<u64, LANES> as Mul<Simd<u64, LANES>>>::Output",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Mul<Simd<u8, LANES>> for Simd<u8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u8, LANES>",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul( self, rhs: Simd<u8, LANES>) -> <Simd<u8, LANES> as Mul<Simd<u8, LANES>>>::Output",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Mul<Simd<usize, LANES>> for Simd<usize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<usize, LANES>",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "pub fn mul( self, rhs: Simd<usize, LANES>) -> <Simd<usize, LANES> as Mul<Simd<usize, LANES>>>::Output",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, const LANES: usize> MulAssign<U> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Mul<U>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Mul<U>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "pub fn mul_assign(&mut self, rhs: U)",
+              "text": "Performs the *= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Neg for Simd<f32, LANES> where f32: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<f32, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn neg(self) -> <Simd<f32, LANES> as Neg>::Output",
+              "text": "Performs the unary - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Neg for Simd<f64, LANES> where f64: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<f64, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn neg(self) -> <Simd<f64, LANES> as Neg>::Output",
+              "text": "Performs the unary - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Neg for Simd<i64, LANES> where i64: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i64, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn neg(self) -> <Simd<i64, LANES> as Neg>::Output",
+              "text": "Performs the unary - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Neg for Simd<i8, LANES> where i8: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i8, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn neg(self) -> <Simd<i8, LANES> as Neg>::Output",
+              "text": "Performs the unary - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Neg for Simd<i16, LANES> where i16: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i16, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn neg(self) -> <Simd<i16, LANES> as Neg>::Output",
+              "text": "Performs the unary - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Neg for Simd<isize, LANES> where isize: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<isize, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn neg(self) -> <Simd<isize, LANES> as Neg>::Output",
+              "text": "Performs the unary - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Neg for Simd<i32, LANES> where i32: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i32, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn neg(self) -> <Simd<i32, LANES> as Neg>::Output",
+              "text": "Performs the unary - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Not for Simd<isize, LANES> where isize: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<isize, LANES>",
+              "text": "The resulting type after applying the ! operator."
+            },
+            {
+              "code": "pub fn not(self) -> <Simd<isize, LANES> as Not>::Output",
+              "text": "Performs the unary ! operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Not for Simd<u16, LANES> where u16: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u16, LANES>",
+              "text": "The resulting type after applying the ! operator."
+            },
+            {
+              "code": "pub fn not(self) -> <Simd<u16, LANES> as Not>::Output",
+              "text": "Performs the unary ! operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Not for Simd<u64, LANES> where u64: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u64, LANES>",
+              "text": "The resulting type after applying the ! operator."
+            },
+            {
+              "code": "pub fn not(self) -> <Simd<u64, LANES> as Not>::Output",
+              "text": "Performs the unary ! operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Not for Simd<i8, LANES> where i8: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i8, LANES>",
+              "text": "The resulting type after applying the ! operator."
+            },
+            {
+              "code": "pub fn not(self) -> <Simd<i8, LANES> as Not>::Output",
+              "text": "Performs the unary ! operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Not for Simd<i16, LANES> where i16: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i16, LANES>",
+              "text": "The resulting type after applying the ! operator."
+            },
+            {
+              "code": "pub fn not(self) -> <Simd<i16, LANES> as Not>::Output",
+              "text": "Performs the unary ! operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Not for Simd<i32, LANES> where i32: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i32, LANES>",
+              "text": "The resulting type after applying the ! operator."
+            },
+            {
+              "code": "pub fn not(self) -> <Simd<i32, LANES> as Not>::Output",
+              "text": "Performs the unary ! operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Not for Simd<u32, LANES> where u32: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u32, LANES>",
+              "text": "The resulting type after applying the ! operator."
+            },
+            {
+              "code": "pub fn not(self) -> <Simd<u32, LANES> as Not>::Output",
+              "text": "Performs the unary ! operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Not for Simd<u8, LANES> where u8: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u8, LANES>",
+              "text": "The resulting type after applying the ! operator."
+            },
+            {
+              "code": "pub fn not(self) -> <Simd<u8, LANES> as Not>::Output",
+              "text": "Performs the unary ! operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Not for Simd<usize, LANES> where usize: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<usize, LANES>",
+              "text": "The resulting type after applying the ! operator."
+            },
+            {
+              "code": "pub fn not(self) -> <Simd<usize, LANES> as Not>::Output",
+              "text": "Performs the unary ! operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Not for Simd<i64, LANES> where i64: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i64, LANES>",
+              "text": "The resulting type after applying the ! operator."
+            },
+            {
+              "code": "pub fn not(self) -> <Simd<i64, LANES> as Not>::Output",
+              "text": "Performs the unary ! operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> Octal for Simd<T, LANES> where T: SimdElement + Octal, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> Ord for Simd<T, LANES> where T: SimdElement + Ord, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &Simd<T, LANES>) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> PartialEq<Simd<T, LANES>> for Simd<T, LANES> where T: SimdElement + PartialEq<T>, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Simd<T, LANES>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> PartialOrd<Simd<T, LANES>> for Simd<T, LANES> where T: SimdElement + PartialOrd<T>, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &Simd<T, LANES>) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Product<&'a Simd<f32, LANES>> for Simd<f32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<f32, LANES> where I: Iterator<Item = &'a Simd<f32, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Product<&'a Simd<f64, LANES>> for Simd<f64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<f64, LANES> where I: Iterator<Item = &'a Simd<f64, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Product<&'a Simd<i16, LANES>> for Simd<i16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<i16, LANES> where I: Iterator<Item = &'a Simd<i16, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Product<&'a Simd<i32, LANES>> for Simd<i32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<i32, LANES> where I: Iterator<Item = &'a Simd<i32, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Product<&'a Simd<i64, LANES>> for Simd<i64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<i64, LANES> where I: Iterator<Item = &'a Simd<i64, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Product<&'a Simd<i8, LANES>> for Simd<i8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<i8, LANES> where I: Iterator<Item = &'a Simd<i8, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Product<&'a Simd<isize, LANES>> for Simd<isize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<isize, LANES> where I: Iterator<Item = &'a Simd<isize, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Product<&'a Simd<u16, LANES>> for Simd<u16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<u16, LANES> where I: Iterator<Item = &'a Simd<u16, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Product<&'a Simd<u32, LANES>> for Simd<u32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<u32, LANES> where I: Iterator<Item = &'a Simd<u32, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Product<&'a Simd<u64, LANES>> for Simd<u64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<u64, LANES> where I: Iterator<Item = &'a Simd<u64, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Product<&'a Simd<u8, LANES>> for Simd<u8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<u8, LANES> where I: Iterator<Item = &'a Simd<u8, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Product<&'a Simd<usize, LANES>> for Simd<usize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<usize, LANES> where I: Iterator<Item = &'a Simd<usize, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Product<Simd<f32, LANES>> for Simd<f32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<f32, LANES> where I: Iterator<Item = Simd<f32, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Product<Simd<f64, LANES>> for Simd<f64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<f64, LANES> where I: Iterator<Item = Simd<f64, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Product<Simd<i16, LANES>> for Simd<i16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<i16, LANES> where I: Iterator<Item = Simd<i16, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Product<Simd<i32, LANES>> for Simd<i32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<i32, LANES> where I: Iterator<Item = Simd<i32, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Product<Simd<i64, LANES>> for Simd<i64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<i64, LANES> where I: Iterator<Item = Simd<i64, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Product<Simd<i8, LANES>> for Simd<i8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<i8, LANES> where I: Iterator<Item = Simd<i8, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Product<Simd<isize, LANES>> for Simd<isize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<isize, LANES> where I: Iterator<Item = Simd<isize, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Product<Simd<u16, LANES>> for Simd<u16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<u16, LANES> where I: Iterator<Item = Simd<u16, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Product<Simd<u32, LANES>> for Simd<u32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<u32, LANES> where I: Iterator<Item = Simd<u32, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Product<Simd<u64, LANES>> for Simd<u64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<u64, LANES> where I: Iterator<Item = Simd<u64, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Product<Simd<u8, LANES>> for Simd<u8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<u8, LANES> where I: Iterator<Item = Simd<u8, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Product<Simd<usize, LANES>> for Simd<usize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn product<I>(iter: I) -> Simd<usize, LANES> where I: Iterator<Item = Simd<usize, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by multiplying the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> Rem<&'_ Simd<T, LANES>> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Rem<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Rem<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem( self, rhs: &Simd<T, LANES>) -> <Simd<T, LANES> as Rem<&'_ Simd<T, LANES>>>::Output",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'lhs, 'rhs, T, const LANES: usize> Rem<&'rhs Simd<T, LANES>> for &'lhs Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Rem<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Rem<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem( self, rhs: &Simd<T, LANES>) -> <&'lhs Simd<T, LANES> as Rem<&'rhs Simd<T, LANES>>>::Output",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> Rem<Simd<T, LANES>> for &'_ Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Rem<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Rem<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem( self, rhs: Simd<T, LANES>) -> <&'_ Simd<T, LANES> as Rem<Simd<T, LANES>>>::Output",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Rem<Simd<f32, LANES>> for Simd<f32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<f32, LANES>",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem( self, rhs: Simd<f32, LANES>) -> <Simd<f32, LANES> as Rem<Simd<f32, LANES>>>::Output",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Rem<Simd<f64, LANES>> for Simd<f64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<f64, LANES>",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem( self, rhs: Simd<f64, LANES>) -> <Simd<f64, LANES> as Rem<Simd<f64, LANES>>>::Output",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Rem<Simd<i16, LANES>> for Simd<i16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i16, LANES>",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem( self, rhs: Simd<i16, LANES>) -> <Simd<i16, LANES> as Rem<Simd<i16, LANES>>>::Output",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Rem<Simd<i32, LANES>> for Simd<i32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i32, LANES>",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem( self, rhs: Simd<i32, LANES>) -> <Simd<i32, LANES> as Rem<Simd<i32, LANES>>>::Output",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Rem<Simd<i64, LANES>> for Simd<i64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i64, LANES>",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem( self, rhs: Simd<i64, LANES>) -> <Simd<i64, LANES> as Rem<Simd<i64, LANES>>>::Output",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Rem<Simd<i8, LANES>> for Simd<i8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i8, LANES>",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem( self, rhs: Simd<i8, LANES>) -> <Simd<i8, LANES> as Rem<Simd<i8, LANES>>>::Output",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Rem<Simd<isize, LANES>> for Simd<isize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<isize, LANES>",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem( self, rhs: Simd<isize, LANES>) -> <Simd<isize, LANES> as Rem<Simd<isize, LANES>>>::Output",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Rem<Simd<u16, LANES>> for Simd<u16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u16, LANES>",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem( self, rhs: Simd<u16, LANES>) -> <Simd<u16, LANES> as Rem<Simd<u16, LANES>>>::Output",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Rem<Simd<u32, LANES>> for Simd<u32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u32, LANES>",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem( self, rhs: Simd<u32, LANES>) -> <Simd<u32, LANES> as Rem<Simd<u32, LANES>>>::Output",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Rem<Simd<u64, LANES>> for Simd<u64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u64, LANES>",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem( self, rhs: Simd<u64, LANES>) -> <Simd<u64, LANES> as Rem<Simd<u64, LANES>>>::Output",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Rem<Simd<u8, LANES>> for Simd<u8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u8, LANES>",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem( self, rhs: Simd<u8, LANES>) -> <Simd<u8, LANES> as Rem<Simd<u8, LANES>>>::Output",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Rem<Simd<usize, LANES>> for Simd<usize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<usize, LANES>",
+              "text": "The resulting type after applying the % operator."
+            },
+            {
+              "code": "pub fn rem( self, rhs: Simd<usize, LANES>) -> <Simd<usize, LANES> as Rem<Simd<usize, LANES>>>::Output",
+              "text": "Performs the % operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, const LANES: usize> RemAssign<U> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Rem<U>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Rem<U>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "pub fn rem_assign(&mut self, rhs: U)",
+              "text": "Performs the %= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> Shl<&'_ Simd<T, LANES>> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Shl<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Shl<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl( self, rhs: &Simd<T, LANES>) -> <Simd<T, LANES> as Shl<&'_ Simd<T, LANES>>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'lhs, 'rhs, T, const LANES: usize> Shl<&'rhs Simd<T, LANES>> for &'lhs Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Shl<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Shl<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl( self, rhs: &Simd<T, LANES>) -> <&'lhs Simd<T, LANES> as Shl<&'rhs Simd<T, LANES>>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> Shl<Simd<T, LANES>> for &'_ Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Shl<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Shl<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl( self, rhs: Simd<T, LANES>) -> <&'_ Simd<T, LANES> as Shl<Simd<T, LANES>>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shl<Simd<i16, LANES>> for Simd<i16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i16, LANES>",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl( self, rhs: Simd<i16, LANES>) -> <Simd<i16, LANES> as Shl<Simd<i16, LANES>>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shl<Simd<i32, LANES>> for Simd<i32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i32, LANES>",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl( self, rhs: Simd<i32, LANES>) -> <Simd<i32, LANES> as Shl<Simd<i32, LANES>>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shl<Simd<i64, LANES>> for Simd<i64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i64, LANES>",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl( self, rhs: Simd<i64, LANES>) -> <Simd<i64, LANES> as Shl<Simd<i64, LANES>>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shl<Simd<i8, LANES>> for Simd<i8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i8, LANES>",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl( self, rhs: Simd<i8, LANES>) -> <Simd<i8, LANES> as Shl<Simd<i8, LANES>>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shl<Simd<isize, LANES>> for Simd<isize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<isize, LANES>",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl( self, rhs: Simd<isize, LANES>) -> <Simd<isize, LANES> as Shl<Simd<isize, LANES>>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shl<Simd<u16, LANES>> for Simd<u16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u16, LANES>",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl( self, rhs: Simd<u16, LANES>) -> <Simd<u16, LANES> as Shl<Simd<u16, LANES>>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shl<Simd<u32, LANES>> for Simd<u32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u32, LANES>",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl( self, rhs: Simd<u32, LANES>) -> <Simd<u32, LANES> as Shl<Simd<u32, LANES>>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shl<Simd<u64, LANES>> for Simd<u64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u64, LANES>",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl( self, rhs: Simd<u64, LANES>) -> <Simd<u64, LANES> as Shl<Simd<u64, LANES>>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shl<Simd<u8, LANES>> for Simd<u8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u8, LANES>",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl( self, rhs: Simd<u8, LANES>) -> <Simd<u8, LANES> as Shl<Simd<u8, LANES>>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shl<Simd<usize, LANES>> for Simd<usize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<usize, LANES>",
+              "text": "The resulting type after applying the << operator."
+            },
+            {
+              "code": "pub fn shl( self, rhs: Simd<usize, LANES>) -> <Simd<usize, LANES> as Shl<Simd<usize, LANES>>>::Output",
+              "text": "Performs the << operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, const LANES: usize> ShlAssign<U> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Shl<U>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Shl<U>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "pub fn shl_assign(&mut self, rhs: U)",
+              "text": "Performs the <<= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> Shr<&'_ Simd<T, LANES>> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Shr<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Shr<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr( self, rhs: &Simd<T, LANES>) -> <Simd<T, LANES> as Shr<&'_ Simd<T, LANES>>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'lhs, 'rhs, T, const LANES: usize> Shr<&'rhs Simd<T, LANES>> for &'lhs Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Shr<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Shr<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr( self, rhs: &Simd<T, LANES>) -> <&'lhs Simd<T, LANES> as Shr<&'rhs Simd<T, LANES>>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> Shr<Simd<T, LANES>> for &'_ Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Shr<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Shr<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr( self, rhs: Simd<T, LANES>) -> <&'_ Simd<T, LANES> as Shr<Simd<T, LANES>>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shr<Simd<i16, LANES>> for Simd<i16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i16, LANES>",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr( self, rhs: Simd<i16, LANES>) -> <Simd<i16, LANES> as Shr<Simd<i16, LANES>>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shr<Simd<i32, LANES>> for Simd<i32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i32, LANES>",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr( self, rhs: Simd<i32, LANES>) -> <Simd<i32, LANES> as Shr<Simd<i32, LANES>>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shr<Simd<i64, LANES>> for Simd<i64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i64, LANES>",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr( self, rhs: Simd<i64, LANES>) -> <Simd<i64, LANES> as Shr<Simd<i64, LANES>>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shr<Simd<i8, LANES>> for Simd<i8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i8, LANES>",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr( self, rhs: Simd<i8, LANES>) -> <Simd<i8, LANES> as Shr<Simd<i8, LANES>>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shr<Simd<isize, LANES>> for Simd<isize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<isize, LANES>",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr( self, rhs: Simd<isize, LANES>) -> <Simd<isize, LANES> as Shr<Simd<isize, LANES>>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shr<Simd<u16, LANES>> for Simd<u16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u16, LANES>",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr( self, rhs: Simd<u16, LANES>) -> <Simd<u16, LANES> as Shr<Simd<u16, LANES>>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shr<Simd<u32, LANES>> for Simd<u32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u32, LANES>",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr( self, rhs: Simd<u32, LANES>) -> <Simd<u32, LANES> as Shr<Simd<u32, LANES>>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shr<Simd<u64, LANES>> for Simd<u64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u64, LANES>",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr( self, rhs: Simd<u64, LANES>) -> <Simd<u64, LANES> as Shr<Simd<u64, LANES>>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shr<Simd<u8, LANES>> for Simd<u8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u8, LANES>",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr( self, rhs: Simd<u8, LANES>) -> <Simd<u8, LANES> as Shr<Simd<u8, LANES>>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Shr<Simd<usize, LANES>> for Simd<usize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<usize, LANES>",
+              "text": "The resulting type after applying the >> operator."
+            },
+            {
+              "code": "pub fn shr( self, rhs: Simd<usize, LANES>) -> <Simd<usize, LANES> as Shr<Simd<usize, LANES>>>::Output",
+              "text": "Performs the >> operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, const LANES: usize> ShrAssign<U> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Shr<U>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Shr<U>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "pub fn shr_assign(&mut self, rhs: U)",
+              "text": "Performs the >>= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> Sub<&'_ Simd<T, LANES>> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Sub<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Sub<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub( self, rhs: &Simd<T, LANES>) -> <Simd<T, LANES> as Sub<&'_ Simd<T, LANES>>>::Output",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'lhs, 'rhs, T, const LANES: usize> Sub<&'rhs Simd<T, LANES>> for &'lhs Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Sub<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Sub<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub( self, rhs: &Simd<T, LANES>) -> <&'lhs Simd<T, LANES> as Sub<&'rhs Simd<T, LANES>>>::Output",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const LANES: usize> Sub<Simd<T, LANES>> for &'_ Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Sub<Simd<T, LANES>>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Sub<Simd<T, LANES>>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "type Output = Simd<T, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub( self, rhs: Simd<T, LANES>) -> <&'_ Simd<T, LANES> as Sub<Simd<T, LANES>>>::Output",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sub<Simd<f32, LANES>> for Simd<f32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<f32, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub( self, rhs: Simd<f32, LANES>) -> <Simd<f32, LANES> as Sub<Simd<f32, LANES>>>::Output",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sub<Simd<f64, LANES>> for Simd<f64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<f64, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub( self, rhs: Simd<f64, LANES>) -> <Simd<f64, LANES> as Sub<Simd<f64, LANES>>>::Output",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sub<Simd<i16, LANES>> for Simd<i16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i16, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub( self, rhs: Simd<i16, LANES>) -> <Simd<i16, LANES> as Sub<Simd<i16, LANES>>>::Output",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sub<Simd<i32, LANES>> for Simd<i32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i32, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub( self, rhs: Simd<i32, LANES>) -> <Simd<i32, LANES> as Sub<Simd<i32, LANES>>>::Output",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sub<Simd<i64, LANES>> for Simd<i64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i64, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub( self, rhs: Simd<i64, LANES>) -> <Simd<i64, LANES> as Sub<Simd<i64, LANES>>>::Output",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sub<Simd<i8, LANES>> for Simd<i8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<i8, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub( self, rhs: Simd<i8, LANES>) -> <Simd<i8, LANES> as Sub<Simd<i8, LANES>>>::Output",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sub<Simd<isize, LANES>> for Simd<isize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<isize, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub( self, rhs: Simd<isize, LANES>) -> <Simd<isize, LANES> as Sub<Simd<isize, LANES>>>::Output",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sub<Simd<u16, LANES>> for Simd<u16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u16, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub( self, rhs: Simd<u16, LANES>) -> <Simd<u16, LANES> as Sub<Simd<u16, LANES>>>::Output",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sub<Simd<u32, LANES>> for Simd<u32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u32, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub( self, rhs: Simd<u32, LANES>) -> <Simd<u32, LANES> as Sub<Simd<u32, LANES>>>::Output",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sub<Simd<u64, LANES>> for Simd<u64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u64, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub( self, rhs: Simd<u64, LANES>) -> <Simd<u64, LANES> as Sub<Simd<u64, LANES>>>::Output",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sub<Simd<u8, LANES>> for Simd<u8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<u8, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub( self, rhs: Simd<u8, LANES>) -> <Simd<u8, LANES> as Sub<Simd<u8, LANES>>>::Output",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sub<Simd<usize, LANES>> for Simd<usize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Simd<usize, LANES>",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "pub fn sub( self, rhs: Simd<usize, LANES>) -> <Simd<usize, LANES> as Sub<Simd<usize, LANES>>>::Output",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, const LANES: usize> SubAssign<U> for Simd<T, LANES> where T: SimdElement, Simd<T, LANES>: Sub<U>, LaneCount<LANES>: SupportedLaneCount, <Simd<T, LANES> as Sub<U>>::Output == Simd<T, LANES>,",
+          "methods": [
+            {
+              "code": "pub fn sub_assign(&mut self, rhs: U)",
+              "text": "Performs the -= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Sum<&'a Simd<f32, LANES>> for Simd<f32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<f32, LANES> where I: Iterator<Item = &'a Simd<f32, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Sum<&'a Simd<f64, LANES>> for Simd<f64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<f64, LANES> where I: Iterator<Item = &'a Simd<f64, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Sum<&'a Simd<i16, LANES>> for Simd<i16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<i16, LANES> where I: Iterator<Item = &'a Simd<i16, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Sum<&'a Simd<i32, LANES>> for Simd<i32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<i32, LANES> where I: Iterator<Item = &'a Simd<i32, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Sum<&'a Simd<i64, LANES>> for Simd<i64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<i64, LANES> where I: Iterator<Item = &'a Simd<i64, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Sum<&'a Simd<i8, LANES>> for Simd<i8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<i8, LANES> where I: Iterator<Item = &'a Simd<i8, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Sum<&'a Simd<isize, LANES>> for Simd<isize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<isize, LANES> where I: Iterator<Item = &'a Simd<isize, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Sum<&'a Simd<u16, LANES>> for Simd<u16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<u16, LANES> where I: Iterator<Item = &'a Simd<u16, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Sum<&'a Simd<u32, LANES>> for Simd<u32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<u32, LANES> where I: Iterator<Item = &'a Simd<u32, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Sum<&'a Simd<u64, LANES>> for Simd<u64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<u64, LANES> where I: Iterator<Item = &'a Simd<u64, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Sum<&'a Simd<u8, LANES>> for Simd<u8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<u8, LANES> where I: Iterator<Item = &'a Simd<u8, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const LANES: usize> Sum<&'a Simd<usize, LANES>> for Simd<usize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<usize, LANES> where I: Iterator<Item = &'a Simd<usize, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sum<Simd<f32, LANES>> for Simd<f32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<f32, LANES> where I: Iterator<Item = Simd<f32, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sum<Simd<f64, LANES>> for Simd<f64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<f64, LANES> where I: Iterator<Item = Simd<f64, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sum<Simd<i16, LANES>> for Simd<i16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<i16, LANES> where I: Iterator<Item = Simd<i16, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sum<Simd<i32, LANES>> for Simd<i32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<i32, LANES> where I: Iterator<Item = Simd<i32, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sum<Simd<i64, LANES>> for Simd<i64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<i64, LANES> where I: Iterator<Item = Simd<i64, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sum<Simd<i8, LANES>> for Simd<i8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<i8, LANES> where I: Iterator<Item = Simd<i8, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sum<Simd<isize, LANES>> for Simd<isize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<isize, LANES> where I: Iterator<Item = Simd<isize, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sum<Simd<u16, LANES>> for Simd<u16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<u16, LANES> where I: Iterator<Item = Simd<u16, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sum<Simd<u32, LANES>> for Simd<u32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<u32, LANES> where I: Iterator<Item = Simd<u32, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sum<Simd<u64, LANES>> for Simd<u64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<u64, LANES> where I: Iterator<Item = Simd<u64, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sum<Simd<u8, LANES>> for Simd<u8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<u8, LANES> where I: Iterator<Item = Simd<u8, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> Sum<Simd<usize, LANES>> for Simd<usize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn sum<I>(iter: I) -> Simd<usize, LANES> where I: Iterator<Item = Simd<usize, LANES>>,",
+              "text": "Method which takes an iterator and generates Self from the elements by “summing up” the items."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> UpperExp for Simd<T, LANES> where T: SimdElement + UpperExp, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> UpperHex for Simd<T, LANES> where T: SimdElement + UpperHex, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

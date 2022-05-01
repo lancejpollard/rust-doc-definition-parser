@@ -1,0 +1,174 @@
+{
+  "title": "Struct std::cell::RefCell",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn new(value: T) -> RefCell<T>",
+          "text": "Creates a new RefCell containing value."
+        },
+        {
+          "code": "pub fn into_inner(self) -> T",
+          "text": "Consumes the RefCell, returning the wrapped value."
+        },
+        {
+          "code": "pub fn replace(&self, t: T) -> T",
+          "text": "Replaces the wrapped value with a new one, returning the old value, without deinitializing either one."
+        },
+        {
+          "code": "pub fn replace_with<F>(&self, f: F) -> T where F: FnOnce(&mut T) -> T,",
+          "text": "Replaces the wrapped value with a new one computed from f, returning the old value, without deinitializing either one."
+        },
+        {
+          "code": "pub fn swap(&self, other: &RefCell<T>)",
+          "text": "Swaps the wrapped value of self with the wrapped value of other, without deinitializing either one."
+        },
+        {
+          "code": "pub fn borrow(&self) -> Ref<'_, T>",
+          "text": "Immutably borrows the wrapped value."
+        },
+        {
+          "code": "pub fn try_borrow(&self) -> Result<Ref<'_, T>, BorrowError>",
+          "text": "Immutably borrows the wrapped value, returning an error if the value is currently mutably borrowed."
+        },
+        {
+          "code": "pub fn borrow_mut(&self) -> RefMut<'_, T>",
+          "text": "Mutably borrows the wrapped value."
+        },
+        {
+          "code": "pub fn try_borrow_mut(&self) -> Result<RefMut<'_, T>, BorrowMutError>",
+          "text": "Mutably borrows the wrapped value, returning an error if the value is currently borrowed."
+        },
+        {
+          "code": "pub fn as_ptr(&self) -> *mut T",
+          "text": "Returns a raw pointer to the underlying data in this cell."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut T",
+          "text": "Returns a mutable reference to the underlying data."
+        },
+        {
+          "code": "pub fn undo_leak(&mut self) -> &mut T",
+          "text": "Undo the effect of leaked guards on the borrow state of the RefCell."
+        },
+        {
+          "code": "pub unsafe fn try_borrow_unguarded(&self) -> Result<&T, BorrowError>",
+          "text": "Immutably borrows the wrapped value, returning an error if the value is currently mutably borrowed."
+        },
+        {
+          "code": "pub fn take(&self) -> T",
+          "text": "Takes the wrapped value, leaving Default::default() in its place."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Clone for RefCell<T> where T: Clone,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> RefCell<T>",
+              "text": "Panics if the value is currently mutably borrowed."
+            },
+            {
+              "code": "pub fn clone_from(&mut self, other: &RefCell<T>)",
+              "text": "Panics if other is currently mutably borrowed."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for RefCell<T> where T: Debug + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for RefCell<T> where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> RefCell<T>",
+              "text": "Creates a RefCell<T>, with the Default value for T."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<T> for RefCell<T>",
+          "methods": [
+            {
+              "code": "pub fn from(t: T) -> RefCell<T>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Ord for RefCell<T> where T: Ord + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &RefCell<T>) -> Ordering",
+              "text": "Panics if the value in either RefCell is currently borrowed."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialEq<RefCell<T>> for RefCell<T> where T: PartialEq<T> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &RefCell<T>) -> bool",
+              "text": "Panics if the value in either RefCell is currently borrowed."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialOrd<RefCell<T>> for RefCell<T> where T: PartialOrd<T> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &RefCell<T>) -> Option<Ordering>",
+              "text": "Panics if the value in either RefCell is currently borrowed."
+            },
+            {
+              "code": "pub fn lt(&self, other: &RefCell<T>) -> bool",
+              "text": "Panics if the value in either RefCell is currently borrowed."
+            },
+            {
+              "code": "pub fn le(&self, other: &RefCell<T>) -> bool",
+              "text": "Panics if the value in either RefCell is currently borrowed."
+            },
+            {
+              "code": "pub fn gt(&self, other: &RefCell<T>) -> bool",
+              "text": "Panics if the value in either RefCell is currently borrowed."
+            },
+            {
+              "code": "pub fn ge(&self, other: &RefCell<T>) -> bool",
+              "text": "Panics if the value in either RefCell is currently borrowed."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

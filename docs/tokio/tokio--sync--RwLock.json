@@ -1,0 +1,102 @@
+{
+  "title": "Struct tokio::sync::RwLock",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(value: T) -> RwLock<T> where T: Sized,",
+          "text": "Creates a new instance of an RwLock<T> which is unlocked."
+        },
+        {
+          "code": "pub fn with_max_readers(value: T, max_reads: u32) -> RwLock<T> where T: Sized,",
+          "text": "Creates a new instance of an RwLock<T> which is unlocked and allows a maximum of max_reads concurrent readers."
+        },
+        {
+          "code": "pub async fn read(&self) -> RwLockReadGuard<'_, T>",
+          "text": "Locks this RwLock with shared read access, causing the current task to yield until the lock has been acquired."
+        },
+        {
+          "code": "pub fn blocking_read(&self) -> RwLockReadGuard<'_, T>",
+          "text": "Blockingly locks this RwLock with shared read access."
+        },
+        {
+          "code": "pub async fn read_owned(self: Arc<Self>) -> OwnedRwLockReadGuard<T>",
+          "text": "Locks this RwLock with shared read access, causing the current task to yield until the lock has been acquired."
+        },
+        {
+          "code": "pub fn try_read(&self) -> Result<RwLockReadGuard<'_, T>, TryLockError>",
+          "text": "Attempts to acquire this RwLock with shared read access."
+        },
+        {
+          "code": "pub fn try_read_owned( self: Arc<Self>) -> Result<OwnedRwLockReadGuard<T>, TryLockError>",
+          "text": "Attempts to acquire this RwLock with shared read access."
+        },
+        {
+          "code": "pub async fn write(&self) -> RwLockWriteGuard<'_, T>",
+          "text": "Locks this RwLock with exclusive write access, causing the current task to yield until the lock has been acquired."
+        },
+        {
+          "code": "pub fn blocking_write(&self) -> RwLockWriteGuard<'_, T>",
+          "text": "Blockingly locks this RwLock with exclusive write access."
+        },
+        {
+          "code": "pub async fn write_owned(self: Arc<Self>) -> OwnedRwLockWriteGuard<T>",
+          "text": "Locks this RwLock with exclusive write access, causing the current task to yield until the lock has been acquired."
+        },
+        {
+          "code": "pub fn try_write(&self) -> Result<RwLockWriteGuard<'_, T>, TryLockError>",
+          "text": "Attempts to acquire this RwLock with exclusive write access."
+        },
+        {
+          "code": "pub fn try_write_owned( self: Arc<Self>) -> Result<OwnedRwLockWriteGuard<T>, TryLockError>",
+          "text": "Attempts to acquire this RwLock with exclusive write access."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut T",
+          "text": "Returns a mutable reference to the underlying data."
+        },
+        {
+          "code": "pub fn into_inner(self) -> T where T: Sized,",
+          "text": "Consumes the lock, returning the underlying data."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T: Debug + ?Sized> Debug for RwLock<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: ?Sized> Default for RwLock<T> where T: Default,",
+          "methods": [
+            {
+              "code": "fn default() -> Self",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<T> for RwLock<T>",
+          "methods": [
+            {
+              "code": "fn from(s: T) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

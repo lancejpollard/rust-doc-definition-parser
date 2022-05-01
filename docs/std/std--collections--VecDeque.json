@@ -1,0 +1,559 @@
+{
+  "title": "Struct std::collections::VecDeque",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> VecDeque<T, Global>",
+          "text": "Creates an empty VecDeque."
+        },
+        {
+          "code": "pub fn with_capacity(capacity: usize) -> VecDeque<T, Global>",
+          "text": "Creates an empty VecDeque with space for at least capacity elements."
+        },
+        {
+          "code": "pub fn new_in(alloc: A) -> VecDeque<T, A>",
+          "text": "Creates an empty VecDeque."
+        },
+        {
+          "code": "pub fn with_capacity_in(capacity: usize, alloc: A) -> VecDeque<T, A>",
+          "text": "Creates an empty VecDeque with space for at least capacity elements."
+        },
+        {
+          "code": "pub fn get(&self, index: usize) -> Option<&T>",
+          "text": "Provides a reference to the element at the given index."
+        },
+        {
+          "code": "pub fn get_mut(&mut self, index: usize) -> Option<&mut T>",
+          "text": "Provides a mutable reference to the element at the given index."
+        },
+        {
+          "code": "pub fn swap(&mut self, i: usize, j: usize)",
+          "text": "Swaps elements at indices i and j."
+        },
+        {
+          "code": "pub fn capacity(&self) -> usize",
+          "text": "Returns the number of elements the VecDeque can hold without reallocating."
+        },
+        {
+          "code": "pub fn reserve_exact(&mut self, additional: usize)",
+          "text": "Reserves the minimum capacity for exactly additional more elements to be inserted in the given VecDeque. Does nothing if the capacity is already sufficient."
+        },
+        {
+          "code": "pub fn reserve(&mut self, additional: usize)",
+          "text": "Reserves capacity for at least additional more elements to be inserted in the given VecDeque. The collection may reserve more space to avoid frequent reallocations."
+        },
+        {
+          "code": "pub fn try_reserve_exact( &mut self, additional: usize) -> Result<(), TryReserveError>",
+          "text": "Tries to reserve the minimum capacity for exactly additional more elements to be inserted in the given VecDeque<T>. After calling try_reserve_exact, capacity will be greater than or equal to self.len() + additional. Does nothing if the capacity is already sufficient."
+        },
+        {
+          "code": "pub fn try_reserve(&mut self, additional: usize) -> Result<(), TryReserveError>",
+          "text": "Tries to reserve capacity for at least additional more elements to be inserted in the given VecDeque<T>. The collection may reserve more space to avoid frequent reallocations. After calling try_reserve, capacity will be greater than or equal to self.len() + additional. Does nothing if capacity is already sufficient."
+        },
+        {
+          "code": "pub fn shrink_to_fit(&mut self)",
+          "text": "Shrinks the capacity of the VecDeque as much as possible."
+        },
+        {
+          "code": "pub fn shrink_to(&mut self, min_capacity: usize)",
+          "text": "Shrinks the capacity of the VecDeque with a lower bound."
+        },
+        {
+          "code": "pub fn truncate(&mut self, len: usize)",
+          "text": "Shortens the VecDeque, keeping the first len elements and dropping the rest."
+        },
+        {
+          "code": "pub fn allocator(&self) -> &A",
+          "text": "Returns a reference to the underlying allocator."
+        },
+        {
+          "code": "pub fn iter(&self) -> Iter<'_, T>ⓘNotable traits for Iter<'a, T>impl<'a, T> Iterator for Iter<'a, T> type Item = &'a T;",
+          "text": "Returns a front-to-back iterator."
+        },
+        {
+          "code": "pub fn iter_mut(&mut self) -> IterMut<'_, T>ⓘNotable traits for IterMut<'a, T>impl<'a, T> Iterator for IterMut<'a, T> type Item = &'a mut T;",
+          "text": "Returns a front-to-back iterator that returns mutable references."
+        },
+        {
+          "code": "pub fn as_slices(&self) -> (&[T], &[T])",
+          "text": "Returns a pair of slices which contain, in order, the contents of the VecDeque."
+        },
+        {
+          "code": "pub fn as_mut_slices(&mut self) -> (&mut [T], &mut [T])",
+          "text": "Returns a pair of slices which contain, in order, the contents of the VecDeque."
+        },
+        {
+          "code": "pub fn len(&self) -> usize",
+          "text": "Returns the number of elements in the VecDeque."
+        },
+        {
+          "code": "pub fn is_empty(&self) -> bool",
+          "text": "Returns true if the VecDeque is empty."
+        },
+        {
+          "code": "pub fn range<R>(&self, range: R) -> Iter<'_, T>ⓘNotable traits for Iter<'a, T>impl<'a, T> Iterator for Iter<'a, T> type Item = &'a T; where R: RangeBounds<usize>,",
+          "text": "Creates an iterator that covers the specified range in the VecDeque."
+        },
+        {
+          "code": "pub fn range_mut<R>(&mut self, range: R) -> IterMut<'_, T>ⓘNotable traits for IterMut<'a, T>impl<'a, T> Iterator for IterMut<'a, T> type Item = &'a mut T; where R: RangeBounds<usize>,",
+          "text": "Creates an iterator that covers the specified mutable range in the VecDeque."
+        },
+        {
+          "code": "pub fn drain<R>(&mut self, range: R) -> Drain<'_, T, A>ⓘNotable traits for Drain<'_, T, A>impl<'_, T, A> Iterator for Drain<'_, T, A> where A: Allocator, type Item = T; where R: RangeBounds<usize>,",
+          "text": "Creates a draining iterator that removes the specified range in the VecDeque and yields the removed items."
+        },
+        {
+          "code": "pub fn clear(&mut self)",
+          "text": "Clears the VecDeque, removing all values."
+        },
+        {
+          "code": "pub fn contains(&self, x: &T) -> bool where T: PartialEq<T>,",
+          "text": "Returns true if the VecDeque contains an element equal to the given value."
+        },
+        {
+          "code": "pub fn front(&self) -> Option<&T>",
+          "text": "Provides a reference to the front element, or None if the VecDeque is empty."
+        },
+        {
+          "code": "pub fn front_mut(&mut self) -> Option<&mut T>",
+          "text": "Provides a mutable reference to the front element, or None if the VecDeque is empty."
+        },
+        {
+          "code": "pub fn back(&self) -> Option<&T>",
+          "text": "Provides a reference to the back element, or None if the VecDeque is empty."
+        },
+        {
+          "code": "pub fn back_mut(&mut self) -> Option<&mut T>",
+          "text": "Provides a mutable reference to the back element, or None if the VecDeque is empty."
+        },
+        {
+          "code": "pub fn pop_front(&mut self) -> Option<T>",
+          "text": "Removes the first element and returns it, or None if the VecDeque is empty."
+        },
+        {
+          "code": "pub fn pop_back(&mut self) -> Option<T>",
+          "text": "Removes the last element from the VecDeque and returns it, or None if it is empty."
+        },
+        {
+          "code": "pub fn push_front(&mut self, value: T)",
+          "text": "Prepends an element to the VecDeque."
+        },
+        {
+          "code": "pub fn push_back(&mut self, value: T)",
+          "text": "Appends an element to the back of the VecDeque."
+        },
+        {
+          "code": "pub fn swap_remove_front(&mut self, index: usize) -> Option<T>",
+          "text": "Removes an element from anywhere in the VecDeque and returns it, replacing it with the first element."
+        },
+        {
+          "code": "pub fn swap_remove_back(&mut self, index: usize) -> Option<T>",
+          "text": "Removes an element from anywhere in the VecDeque and returns it, replacing it with the last element."
+        },
+        {
+          "code": "pub fn insert(&mut self, index: usize, value: T)",
+          "text": "Inserts an element at index within the VecDeque, shifting all elements with indices greater than or equal to index towards the back."
+        },
+        {
+          "code": "pub fn remove(&mut self, index: usize) -> Option<T>",
+          "text": "Removes and returns the element at index from the VecDeque. Whichever end is closer to the removal point will be moved to make room, and all the affected elements will be moved to new positions. Returns None if index is out of bounds."
+        },
+        {
+          "code": "pub fn split_off(&mut self, at: usize) -> VecDeque<T, A> where A: Clone,",
+          "text": "Splits the VecDeque into two at the given index."
+        },
+        {
+          "code": "pub fn append(&mut self, other: &mut VecDeque<T, A>)",
+          "text": "Moves all the elements of other into self, leaving other empty."
+        },
+        {
+          "code": "pub fn retain<F>(&mut self, f: F) where F: FnMut(&T) -> bool,",
+          "text": "Retains only the elements specified by the predicate."
+        },
+        {
+          "code": "pub fn retain_mut<F>(&mut self, f: F) where F: FnMut(&mut T) -> bool,",
+          "text": "Retains only the elements specified by the predicate."
+        },
+        {
+          "code": "pub fn resize_with(&mut self, new_len: usize, generator: impl FnMut() -> T)",
+          "text": "Modifies the VecDeque in-place so that len() is equal to new_len, either by removing excess elements from the back or by appending elements generated by calling generator to the back."
+        },
+        {
+          "code": "pub fn make_contiguous(&mut self) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+          "text": "Rearranges the internal storage of this deque so it is one contiguous slice, which is then returned."
+        },
+        {
+          "code": "pub fn rotate_left(&mut self, mid: usize)",
+          "text": "Rotates the double-ended queue mid places to the left."
+        },
+        {
+          "code": "pub fn rotate_right(&mut self, k: usize)",
+          "text": "Rotates the double-ended queue k places to the right."
+        },
+        {
+          "code": "pub fn binary_search(&self, x: &T) -> Result<usize, usize> where T: Ord,",
+          "text": "Binary searches this sorted VecDeque for a given element."
+        },
+        {
+          "code": "pub fn binary_search_by<'a, F>(&'a self, f: F) -> Result<usize, usize> where F: FnMut(&'a T) -> Ordering,",
+          "text": "Binary searches this sorted VecDeque with a comparator function."
+        },
+        {
+          "code": "pub fn binary_search_by_key<'a, B, F>( &'a self, b: &B, f: F) -> Result<usize, usize> where F: FnMut(&'a T) -> B, B: Ord,",
+          "text": "Binary searches this sorted VecDeque with a key extraction function."
+        },
+        {
+          "code": "pub fn partition_point<P>(&self, pred: P) -> usize where P: FnMut(&T) -> bool,",
+          "text": "Returns the index of the partition point according to the given predicate (the index of the first element of the second partition)."
+        },
+        {
+          "code": "pub fn resize(&mut self, new_len: usize, value: T)",
+          "text": "Modifies the VecDeque in-place so that len() is equal to new_len, either by removing excess elements from the back or by appending clones of value to the back."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T, A> Clone for VecDeque<T, A> where T: Clone, A: Allocator + Clone,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> VecDeque<T, A>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "pub fn clone_from(&mut self, other: &VecDeque<T, A>)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> Debug for VecDeque<T, A> where T: Debug, A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for VecDeque<T, Global>",
+          "methods": [
+            {
+              "code": "pub fn default() -> VecDeque<T, Global>",
+              "text": "Creates an empty VecDeque<T>."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> Drop for VecDeque<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T, A> Extend<&'a T> for VecDeque<T, A> where T: 'a + Copy, A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = &'a T>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, &T)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "pub fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> Extend<T> for VecDeque<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = T>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, elem: T)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "pub fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> From<[T; N]> for VecDeque<T, Global>",
+          "methods": [
+            {
+              "code": "pub fn from(arr: [T; N]) -> VecDeque<T, Global>"
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> From<Vec<T, A>> for VecDeque<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn from(other: Vec<T, A>) -> VecDeque<T, A>",
+              "text": "Turn a Vec<T> into a VecDeque<T>."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> From<VecDeque<T, A>> for Vec<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn from(other: VecDeque<T, A>) -> Vec<T, A>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Turn a VecDeque<T> into a Vec<T>."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> FromIterator<T> for VecDeque<T, Global>",
+          "methods": [
+            {
+              "code": "pub fn from_iter<I>(iter: I) -> VecDeque<T, Global> where I: IntoIterator<Item = T>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> Hash for VecDeque<T, A> where T: Hash, A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, state: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> Index<usize> for VecDeque<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "type Output = T",
+              "text": "The returned type after indexing."
+            },
+            {
+              "code": "pub fn index(&self, index: usize) -> &T",
+              "text": "Performs the indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> IndexMut<usize> for VecDeque<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn index_mut(&mut self, index: usize) -> &mut T",
+              "text": "Performs the mutable indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T, A> IntoIterator for &'a VecDeque<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "type Item = &'a T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = Iter<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "pub fn into_iter(self) -> Iter<'a, T>ⓘNotable traits for Iter<'a, T>impl<'a, T> Iterator for Iter<'a, T> type Item = &'a T;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> IntoIterator for VecDeque<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn into_iter(self) -> IntoIter<T, A>ⓘNotable traits for IntoIter<T, A>impl<T, A> Iterator for IntoIter<T, A> where A: Allocator, type Item = T;",
+              "text": "Consumes the VecDeque into a front-to-back iterator yielding elements by value."
+            },
+            {
+              "code": "type Item = T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = IntoIter<T, A>",
+              "text": "Which kind of iterator are we turning this into?"
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T, A> IntoIterator for &'a mut VecDeque<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "type Item = &'a mut T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = IterMut<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "pub fn into_iter(self) -> IterMut<'a, T>ⓘNotable traits for IterMut<'a, T>impl<'a, T> Iterator for IterMut<'a, T> type Item = &'a mut T;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> Ord for VecDeque<T, A> where T: Ord, A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &VecDeque<T, A>) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A, const N: usize> PartialEq<&'_ [U; N]> for VecDeque<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&[U; N]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A> PartialEq<&'_ [U]> for VecDeque<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&[U]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A, const N: usize> PartialEq<&'_ mut [U; N]> for VecDeque<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&mut [U; N]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A> PartialEq<&'_ mut [U]> for VecDeque<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&mut [U]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, A, const N: usize> PartialEq<[U; N]> for VecDeque<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &[U; N]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, A> PartialEq<Vec<U, A>> for VecDeque<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Vec<U, A>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> PartialEq<VecDeque<T, A>> for VecDeque<T, A> where T: PartialEq<T>, A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &VecDeque<T, A>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> PartialOrd<VecDeque<T, A>> for VecDeque<T, A> where T: PartialOrd<T>, A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &VecDeque<T, A>) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

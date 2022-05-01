@@ -1,0 +1,101 @@
+{
+  "title": "Struct tokio::process::Command",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new<S: AsRef<OsStr>>(program: S) -> Command",
+          "text": "Constructs a new Command for launching the program at path program, with the following default configuration:"
+        },
+        {
+          "code": "pub fn as_std(&self) -> &StdCommand",
+          "text": "Cheaply convert to a &std::process::Command for places where the type from the standard library is expected."
+        },
+        {
+          "code": "pub fn arg<S: AsRef<OsStr>>(&mut self, arg: S) -> &mut Command",
+          "text": "Adds an argument to pass to the program."
+        },
+        {
+          "code": "pub fn args<I, S>(&mut self, args: I) -> &mut Command where I: IntoIterator<Item = S>, S: AsRef<OsStr>,",
+          "text": "Adds multiple arguments to pass to the program."
+        },
+        {
+          "code": "pub fn env<K, V>(&mut self, key: K, val: V) -> &mut Command where K: AsRef<OsStr>, V: AsRef<OsStr>,",
+          "text": "Inserts or updates an environment variable mapping."
+        },
+        {
+          "code": "pub fn envs<I, K, V>(&mut self, vars: I) -> &mut Command where I: IntoIterator<Item = (K, V)>, K: AsRef<OsStr>, V: AsRef<OsStr>,",
+          "text": "Adds or updates multiple environment variable mappings."
+        },
+        {
+          "code": "pub fn env_remove<K: AsRef<OsStr>>(&mut self, key: K) -> &mut Command",
+          "text": "Removes an environment variable mapping."
+        },
+        {
+          "code": "pub fn env_clear(&mut self) -> &mut Command",
+          "text": "Clears the entire environment map for the child process."
+        },
+        {
+          "code": "pub fn current_dir<P: AsRef<Path>>(&mut self, dir: P) -> &mut Command",
+          "text": "Sets the working directory for the child process."
+        },
+        {
+          "code": "pub fn stdin<T: Into<Stdio>>(&mut self, cfg: T) -> &mut Command",
+          "text": "Sets configuration for the child process’s standard input (stdin) handle."
+        },
+        {
+          "code": "pub fn stdout<T: Into<Stdio>>(&mut self, cfg: T) -> &mut Command",
+          "text": "Sets configuration for the child process’s standard output (stdout) handle."
+        },
+        {
+          "code": "pub fn stderr<T: Into<Stdio>>(&mut self, cfg: T) -> &mut Command",
+          "text": "Sets configuration for the child process’s standard error (stderr) handle."
+        },
+        {
+          "code": "pub fn kill_on_drop(&mut self, kill_on_drop: bool) -> &mut Command",
+          "text": "Controls whether a kill operation should be invoked on a spawned child process when its corresponding Child handle is dropped."
+        },
+        {
+          "code": "pub fn spawn(&mut self) -> Result<Child>",
+          "text": "Executes the command as a child process, returning a handle to it."
+        },
+        {
+          "code": "pub fn status(&mut self) -> impl Future<Output = Result<ExitStatus>>",
+          "text": "Executes the command as a child process, waiting for it to finish and collecting its exit status."
+        },
+        {
+          "code": "pub fn output(&mut self) -> impl Future<Output = Result<Output>>",
+          "text": "Executes the command as a child process, waiting for it to finish and collecting all of its output."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Command",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Command> for Command",
+          "methods": [
+            {
+              "code": "fn from(std: StdCommand) -> Command",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

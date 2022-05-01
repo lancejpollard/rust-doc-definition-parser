@@ -1,0 +1,253 @@
+{
+  "title": "Struct std::collections::binary_heap::BinaryHeap",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> BinaryHeap<T>",
+          "text": "Creates an empty BinaryHeap as a max-heap."
+        },
+        {
+          "code": "pub fn with_capacity(capacity: usize) -> BinaryHeap<T>",
+          "text": "Creates an empty BinaryHeap with a specific capacity. This preallocates enough memory for capacity elements, so that the BinaryHeap does not have to be reallocated until it contains at least that many values."
+        },
+        {
+          "code": "pub fn peek_mut(&mut self) -> Option<PeekMut<'_, T>>",
+          "text": "Returns a mutable reference to the greatest item in the binary heap, or None if it is empty."
+        },
+        {
+          "code": "pub fn pop(&mut self) -> Option<T>",
+          "text": "Removes the greatest item from the binary heap and returns it, or None if it is empty."
+        },
+        {
+          "code": "pub fn push(&mut self, item: T)",
+          "text": "Pushes an item onto the binary heap."
+        },
+        {
+          "code": "pub fn into_sorted_vec(self) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+          "text": "Consumes the BinaryHeap and returns a vector in sorted (ascending) order."
+        },
+        {
+          "code": "pub fn append(&mut self, other: &mut BinaryHeap<T>)",
+          "text": "Moves all the elements of other into self, leaving other empty."
+        },
+        {
+          "code": "pub fn drain_sorted(&mut self) -> DrainSorted<'_, T>ⓘNotable traits for DrainSorted<'_, T>impl<'_, T> Iterator for DrainSorted<'_, T> where T: Ord, type Item = T;",
+          "text": "Returns an iterator which retrieves elements in heap order. The retrieved elements are removed from the original heap. The remaining elements will be removed on drop in heap order."
+        },
+        {
+          "code": "pub fn retain<F>(&mut self, f: F) where F: FnMut(&T) -> bool,",
+          "text": "Retains only the elements specified by the predicate."
+        },
+        {
+          "code": "pub fn iter(&self) -> Iter<'_, T>ⓘNotable traits for Iter<'a, T>impl<'a, T> Iterator for Iter<'a, T> type Item = &'a T;",
+          "text": "Returns an iterator visiting all values in the underlying vector, in arbitrary order."
+        },
+        {
+          "code": "pub fn into_iter_sorted(self) -> IntoIterSorted<T>ⓘNotable traits for IntoIterSorted<T>impl<T> Iterator for IntoIterSorted<T> where T: Ord, type Item = T;",
+          "text": "Returns an iterator which retrieves elements in heap order. This method consumes the original heap."
+        },
+        {
+          "code": "pub fn peek(&self) -> Option<&T>",
+          "text": "Returns the greatest item in the binary heap, or None if it is empty."
+        },
+        {
+          "code": "pub fn capacity(&self) -> usize",
+          "text": "Returns the number of elements the binary heap can hold without reallocating."
+        },
+        {
+          "code": "pub fn reserve_exact(&mut self, additional: usize)",
+          "text": "Reserves the minimum capacity for exactly additional more elements to be inserted in the given BinaryHeap. Does nothing if the capacity is already sufficient."
+        },
+        {
+          "code": "pub fn reserve(&mut self, additional: usize)",
+          "text": "Reserves capacity for at least additional more elements to be inserted in the BinaryHeap. The collection may reserve more space to avoid frequent reallocations."
+        },
+        {
+          "code": "pub fn try_reserve_exact( &mut self, additional: usize) -> Result<(), TryReserveError>",
+          "text": "Tries to reserve the minimum capacity for exactly additional elements to be inserted in the given BinaryHeap<T>. After calling try_reserve_exact, capacity will be greater than or equal to self.len() + additional if it returns Ok(()). Does nothing if the capacity is already sufficient."
+        },
+        {
+          "code": "pub fn try_reserve(&mut self, additional: usize) -> Result<(), TryReserveError>",
+          "text": "Tries to reserve capacity for at least additional more elements to be inserted in the given BinaryHeap<T>. The collection may reserve more space to avoid frequent reallocations. After calling try_reserve, capacity will be greater than or equal to self.len() + additional. Does nothing if capacity is already sufficient."
+        },
+        {
+          "code": "pub fn shrink_to_fit(&mut self)",
+          "text": "Discards as much additional capacity as possible."
+        },
+        {
+          "code": "pub fn shrink_to(&mut self, min_capacity: usize)",
+          "text": "Discards capacity with a lower bound."
+        },
+        {
+          "code": "pub fn as_slice(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+          "text": "Returns a slice of all values in the underlying vector, in arbitrary order."
+        },
+        {
+          "code": "pub fn into_vec(self) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+          "text": "Consumes the BinaryHeap and returns the underlying vector in arbitrary order."
+        },
+        {
+          "code": "pub fn len(&self) -> usize",
+          "text": "Returns the length of the binary heap."
+        },
+        {
+          "code": "pub fn is_empty(&self) -> bool",
+          "text": "Checks if the binary heap is empty."
+        },
+        {
+          "code": "pub fn drain(&mut self) -> Drain<'_, T>ⓘNotable traits for Drain<'_, T>impl<'_, T> Iterator for Drain<'_, T> type Item = T;",
+          "text": "Clears the binary heap, returning an iterator over the removed elements."
+        },
+        {
+          "code": "pub fn clear(&mut self)",
+          "text": "Drops all items from the binary heap."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Clone for BinaryHeap<T> where T: Clone,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> BinaryHeap<T>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "pub fn clone_from(&mut self, source: &BinaryHeap<T>)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for BinaryHeap<T> where T: Debug,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for BinaryHeap<T> where T: Ord,",
+          "methods": [
+            {
+              "code": "pub fn default() -> BinaryHeap<T>",
+              "text": "Creates an empty BinaryHeap<T>."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> Extend<&'a T> for BinaryHeap<T> where T: 'a + Ord + Copy,",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = &'a T>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, &'a T)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "pub fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Extend<T> for BinaryHeap<T> where T: Ord,",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = T>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, item: T)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "pub fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> From<[T; N]> for BinaryHeap<T> where T: Ord,",
+          "methods": [
+            {
+              "code": "pub fn from(arr: [T; N]) -> BinaryHeap<T>"
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<BinaryHeap<T>> for Vec<T, Global>",
+          "methods": [
+            {
+              "code": "pub fn from(heap: BinaryHeap<T>) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Converts a BinaryHeap<T> into a Vec<T>."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<Vec<T, Global>> for BinaryHeap<T> where T: Ord,",
+          "methods": [
+            {
+              "code": "pub fn from(vec: Vec<T, Global>) -> BinaryHeap<T>",
+              "text": "Converts a Vec<T> into a BinaryHeap<T>."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> FromIterator<T> for BinaryHeap<T> where T: Ord,",
+          "methods": [
+            {
+              "code": "pub fn from_iter<I>(iter: I) -> BinaryHeap<T> where I: IntoIterator<Item = T>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> IntoIterator for BinaryHeap<T>",
+          "methods": [
+            {
+              "code": "pub fn into_iter(self) -> IntoIter<T>ⓘNotable traits for IntoIter<T>impl<T> Iterator for IntoIter<T> type Item = T;",
+              "text": "Creates a consuming iterator, that is, one that moves each value out of the binary heap in arbitrary order. The binary heap cannot be used after calling this."
+            },
+            {
+              "code": "type Item = T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = IntoIter<T>",
+              "text": "Which kind of iterator are we turning this into?"
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> IntoIterator for &'a BinaryHeap<T>",
+          "methods": [
+            {
+              "code": "type Item = &'a T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = Iter<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "pub fn into_iter(self) -> Iter<'a, T>ⓘNotable traits for Iter<'a, T>impl<'a, T> Iterator for Iter<'a, T> type Item = &'a T;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

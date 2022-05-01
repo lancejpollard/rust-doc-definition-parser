@@ -1,0 +1,49 @@
+{
+  "title": "Struct std::ffi::VaList",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a, 'f> Debug for VaList<'a, 'f> where 'f: 'a,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'f> Deref for VaList<'a, 'f> where 'f: 'a,",
+          "methods": [
+            {
+              "code": "type Target = VaListImpl<'f>",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "pub fn deref(&self) -> &VaListImpl<'f>",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'f> DerefMut for VaList<'a, 'f> where 'f: 'a,",
+          "methods": [
+            {
+              "code": "pub fn deref_mut(&mut self) -> &mut VaListImpl<'f>",
+              "text": "Mutably dereferences the value."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

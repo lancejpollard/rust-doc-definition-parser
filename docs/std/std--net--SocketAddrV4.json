@@ -1,0 +1,177 @@
+{
+  "title": "Struct std::net::SocketAddrV4",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(ip: Ipv4Addr, port: u16) -> SocketAddrV4",
+          "text": "Creates a new socket address from an IPv4 address and a port number."
+        },
+        {
+          "code": "pub fn ip(&self) -> &Ipv4Addr",
+          "text": "Returns the IP address associated with this socket address."
+        },
+        {
+          "code": "pub fn set_ip(&mut self, new_ip: Ipv4Addr)",
+          "text": "Changes the IP address associated with this socket address."
+        },
+        {
+          "code": "pub fn port(&self) -> u16",
+          "text": "Returns the port number associated with this socket address."
+        },
+        {
+          "code": "pub fn set_port(&mut self, new_port: u16)",
+          "text": "Changes the port number associated with this socket address."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for SocketAddrV4",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> SocketAddrV4",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for SocketAddrV4",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for SocketAddrV4",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<SocketAddrV4> for SocketAddr",
+          "methods": [
+            {
+              "code": "fn from(sock4: SocketAddrV4) -> SocketAddr",
+              "text": "Converts a SocketAddrV4 into a SocketAddr::V4."
+            }
+          ]
+        },
+        {
+          "title": "impl FromStr for SocketAddrV4",
+          "methods": [
+            {
+              "code": "type Err = AddrParseError",
+              "text": "The associated error which can be returned from parsing."
+            },
+            {
+              "code": "fn from_str(s: &str) -> Result<SocketAddrV4, AddrParseError>",
+              "text": "Parses a string s to return a value of this type."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for SocketAddrV4",
+          "methods": [
+            {
+              "code": "fn hash<H: Hasher>(&self, s: &mut H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for SocketAddrV4",
+          "methods": [
+            {
+              "code": "fn cmp(&self, other: &SocketAddrV4) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<SocketAddrV4> for SocketAddrV4",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &SocketAddrV4) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<SocketAddrV4> for SocketAddrV4",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &SocketAddrV4) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl ToSocketAddrs for SocketAddrV4",
+          "methods": [
+            {
+              "code": "type Iter = IntoIter<SocketAddr>",
+              "text": "Returned iterator over socket addresses which this type may correspond to."
+            },
+            {
+              "code": "fn to_socket_addrs(&self) -> Result<IntoIter<SocketAddr>>",
+              "text": "Converts this object to an iterator of resolved SocketAddrs."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

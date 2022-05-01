@@ -1,0 +1,65 @@
+{
+  "title": "Struct tokio::sync::watch::Sender",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn send(&self, value: T) -> Result<(), SendError<T>>",
+          "text": "Sends a new value via the channel, notifying all receivers."
+        },
+        {
+          "code": "pub fn send_replace(&self, value: T) -> T",
+          "text": "Sends a new value via the channel, notifying all receivers and returning the previous value in the channel."
+        },
+        {
+          "code": "pub fn borrow(&self) -> Ref<'_, T>",
+          "text": "Returns a reference to the most recently sent value"
+        },
+        {
+          "code": "pub fn is_closed(&self) -> bool",
+          "text": "Checks if the channel has been closed. This happens when all receivers have dropped."
+        },
+        {
+          "code": "pub async fn closed(&self)",
+          "text": "Completes when all receivers have dropped."
+        },
+        {
+          "code": "pub fn subscribe(&self) -> Receiver<T>",
+          "text": "Creates a new Receiver connected to this Sender."
+        },
+        {
+          "code": "pub fn receiver_count(&self) -> usize",
+          "text": "Returns the number of receivers that currently exist."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T: Debug> Debug for Sender<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Drop for Sender<T>",
+          "methods": [
+            {
+              "code": "fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

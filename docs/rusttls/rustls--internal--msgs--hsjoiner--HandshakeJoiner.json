@@ -1,0 +1,44 @@
+{
+  "title": "Struct rustls::internal::msgs::hsjoiner::HandshakeJoiner",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> Self",
+          "text": "Make a new HandshakeJoiner."
+        },
+        {
+          "code": "pub fn want_message(&self, msg: &PlainMessage) -> bool",
+          "text": "Do we want to process this message?"
+        },
+        {
+          "code": "pub fn is_empty(&self) -> bool",
+          "text": "Do we have any buffered data?"
+        },
+        {
+          "code": "pub fn take_message(&mut self, msg: PlainMessage) -> Option<usize>",
+          "text": "Take the message, and join/split it as needed. Return the number of new messages added to the output deque as a result of this message."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Default for HandshakeJoiner",
+          "methods": [
+            {
+              "code": "fn default() -> Self",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

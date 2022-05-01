@@ -1,0 +1,78 @@
+{
+  "title": "Struct std::str::pattern::CharArraySearcher",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a, const N: usize> Clone for CharArraySearcher<'a, N>",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> CharArraySearcher<'a, N>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const N: usize> Debug for CharArraySearcher<'a, N>",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const N: usize> ReverseSearcher<'a> for CharArraySearcher<'a, N>",
+          "methods": [
+            {
+              "code": "pub fn next_back(&mut self) -> SearchStep",
+              "text": "Performs the next search step starting from the back."
+            },
+            {
+              "code": "pub fn next_match_back(&mut self) -> Option<(usize, usize)>",
+              "text": "Finds the next Match result. See next_back()."
+            },
+            {
+              "code": "pub fn next_reject_back(&mut self) -> Option<(usize, usize)>",
+              "text": "Finds the next Reject result. See next_back()."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const N: usize> Searcher<'a> for CharArraySearcher<'a, N>",
+          "methods": [
+            {
+              "code": "pub fn haystack(&self) -> &'a str",
+              "text": "Getter for the underlying string to be searched in"
+            },
+            {
+              "code": "pub fn next(&mut self) -> SearchStep",
+              "text": "Performs the next search step starting from the front."
+            },
+            {
+              "code": "pub fn next_match(&mut self) -> Option<(usize, usize)>",
+              "text": "Finds the next Match result. See next()."
+            },
+            {
+              "code": "pub fn next_reject(&mut self) -> Option<(usize, usize)>",
+              "text": "Finds the next Reject result. See next() and next_match()."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

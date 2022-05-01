@@ -1,0 +1,122 @@
+{
+  "title": "Struct std::sync::atomic::AtomicI16",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn new(v: i16) -> AtomicI16",
+          "text": "Creates a new atomic integer."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut i16",
+          "text": "Returns a mutable reference to the underlying integer."
+        },
+        {
+          "code": "pub fn from_mut(v: &mut i16) -> &AtomicI16",
+          "text": "Get atomic access to a &mut i16."
+        },
+        {
+          "code": "pub fn into_inner(self) -> i16",
+          "text": "Consumes the atomic and returns the contained value."
+        },
+        {
+          "code": "pub fn load(&self, order: Ordering) -> i16",
+          "text": "Loads a value from the atomic integer."
+        },
+        {
+          "code": "pub fn store(&self, val: i16, order: Ordering)",
+          "text": "Stores a value into the atomic integer."
+        },
+        {
+          "code": "pub fn swap(&self, val: i16, order: Ordering) -> i16",
+          "text": "Stores a value into the atomic integer, returning the previous value."
+        },
+        {
+          "code": "pub fn compare_exchange( &self, current: i16, new: i16, success: Ordering, failure: Ordering) -> Result<i16, i16>",
+          "text": "Stores a value into the atomic integer if the current value is the same as the current value."
+        },
+        {
+          "code": "pub fn compare_exchange_weak( &self, current: i16, new: i16, success: Ordering, failure: Ordering) -> Result<i16, i16>",
+          "text": "Stores a value into the atomic integer if the current value is the same as the current value."
+        },
+        {
+          "code": "pub fn fetch_add(&self, val: i16, order: Ordering) -> i16",
+          "text": "Adds to the current value, returning the previous value."
+        },
+        {
+          "code": "pub fn fetch_sub(&self, val: i16, order: Ordering) -> i16",
+          "text": "Subtracts from the current value, returning the previous value."
+        },
+        {
+          "code": "pub fn fetch_and(&self, val: i16, order: Ordering) -> i16",
+          "text": "Bitwise “and” with the current value."
+        },
+        {
+          "code": "pub fn fetch_nand(&self, val: i16, order: Ordering) -> i16",
+          "text": "Bitwise “nand” with the current value."
+        },
+        {
+          "code": "pub fn fetch_or(&self, val: i16, order: Ordering) -> i16",
+          "text": "Bitwise “or” with the current value."
+        },
+        {
+          "code": "pub fn fetch_xor(&self, val: i16, order: Ordering) -> i16",
+          "text": "Bitwise “xor” with the current value."
+        },
+        {
+          "code": "pub fn fetch_update<F>( &self, set_order: Ordering, fetch_order: Ordering, f: F) -> Result<i16, i16> where F: FnMut(i16) -> Option<i16>,",
+          "text": "Fetches the value, and applies a function to it that returns an optional new value. Returns a Result of Ok(previous_value) if the function returned Some(_), else Err(previous_value)."
+        },
+        {
+          "code": "pub fn fetch_max(&self, val: i16, order: Ordering) -> i16",
+          "text": "Maximum with the current value."
+        },
+        {
+          "code": "pub fn fetch_min(&self, val: i16, order: Ordering) -> i16",
+          "text": "Minimum with the current value."
+        },
+        {
+          "code": "pub fn as_mut_ptr(&self) -> *mut i16",
+          "text": "Returns a mutable pointer to the underlying integer."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for AtomicI16",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for AtomicI16",
+          "methods": [
+            {
+              "code": "pub fn default() -> AtomicI16",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<i16> for AtomicI16",
+          "methods": [
+            {
+              "code": "pub fn from(v: i16) -> AtomicI16",
+              "text": "Converts an i16 into an AtomicI16."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

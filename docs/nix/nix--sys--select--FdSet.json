@@ -1,0 +1,104 @@
+{
+  "title": "Struct nix::sys::select::FdSet",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> FdSet",
+          "text": "Create an empty FdSet"
+        },
+        {
+          "code": "pub fn insert(&mut self, fd: RawFd)",
+          "text": "Add a file descriptor to an FdSet"
+        },
+        {
+          "code": "pub fn remove(&mut self, fd: RawFd)",
+          "text": "Remove a file descriptor from an FdSet"
+        },
+        {
+          "code": "pub fn contains(&self, fd: RawFd) -> bool",
+          "text": "Test an FdSet for the presence of a certain file descriptor."
+        },
+        {
+          "code": "pub fn clear(&mut self)",
+          "text": "Remove all file descriptors from this FdSet."
+        },
+        {
+          "code": "pub fn highest(&self) -> Option<RawFd>",
+          "text": "Finds the highest file descriptor in the set."
+        },
+        {
+          "code": "pub fn fds(&self, highest: Option<RawFd>) -> Fds<'_>ⓘNotable traits for Fds<'a>impl<'a> Iterator for Fds<'a> type Item = RawFd;",
+          "text": "Returns an iterator over the file descriptors in the set."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for FdSet",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> FdSet",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for FdSet",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for FdSet",
+          "methods": [
+            {
+              "code": "fn default() -> Self",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for FdSet",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<FdSet> for FdSet",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &FdSet) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &FdSet) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "title": "Struct nix::net::if_::Interface",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn index(&self) -> c_uint",
+          "text": "Obtain the index of this interface."
+        },
+        {
+          "code": "pub fn name(&self) -> &CStr",
+          "text": "Obtain the name of this interface."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Interface",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

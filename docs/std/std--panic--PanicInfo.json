@@ -1,0 +1,49 @@
+{
+  "title": "Struct std::panic::PanicInfo",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn payload(&self) -> &(dyn Any + Send + 'static)",
+          "text": "Returns the payload associated with the panic."
+        },
+        {
+          "code": "pub fn message(&self) -> Option<&Arguments<'_>>",
+          "text": "If the panic! macro from the core crate (not from std) was used with a formatting string and some additional arguments, returns that message ready to be used for example with fmt::write"
+        },
+        {
+          "code": "pub fn location(&self) -> Option<&Location<'_>>",
+          "text": "Returns information about the location from which the panic originated, if available."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a> Debug for PanicInfo<'a>",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Display for PanicInfo<'_>",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, formatter: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

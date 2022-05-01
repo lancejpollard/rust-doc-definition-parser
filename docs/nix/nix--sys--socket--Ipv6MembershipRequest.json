@@ -1,0 +1,58 @@
+{
+  "title": "Struct nix::sys::socket::Ipv6MembershipRequest",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn new(group: Ipv6Addr) -> Self",
+          "text": "Instantiate a new Ipv6MembershipRequest"
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for Ipv6MembershipRequest",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Ipv6MembershipRequest",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Ipv6MembershipRequest",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Ipv6MembershipRequest> for Ipv6MembershipRequest",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Ipv6MembershipRequest) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Ipv6MembershipRequest) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

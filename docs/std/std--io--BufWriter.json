@@ -1,0 +1,127 @@
+{
+  "title": "Struct std::io::BufWriter",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(inner: W) -> BufWriter<W>ⓘNotable traits for BufWriter<W>impl<W: Write> Write for BufWriter<W>",
+          "text": "Creates a new BufWriter<W> with a default buffer capacity. The default is currently 8 KB, but may change in the future."
+        },
+        {
+          "code": "pub fn with_capacity(capacity: usize, inner: W) -> BufWriter<W>ⓘNotable traits for BufWriter<W>impl<W: Write> Write for BufWriter<W>",
+          "text": "Creates a new BufWriter<W> with the specified buffer capacity."
+        },
+        {
+          "code": "pub fn get_ref(&self) -> &W",
+          "text": "Gets a reference to the underlying writer."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut W",
+          "text": "Gets a mutable reference to the underlying writer."
+        },
+        {
+          "code": "pub fn buffer(&self) -> &[u8]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+          "text": "Returns a reference to the internally buffered data."
+        },
+        {
+          "code": "pub fn capacity(&self) -> usize",
+          "text": "Returns the number of bytes the internal buffer can hold without flushing."
+        },
+        {
+          "code": "pub fn into_inner(self) -> Result<W, IntoInnerError<BufWriter<W>>>",
+          "text": "Unwraps this BufWriter<W>, returning the underlying writer."
+        },
+        {
+          "code": "pub fn into_parts(self) -> (W, Result<Vec<u8>, WriterPanicked>)",
+          "text": "Disassembles this BufWriter<W>, returning the underlying writer, and any buffered but unwritten data."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<W: Write> Debug for BufWriter<W> where W: Debug,",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<W: Write> Drop for BufWriter<W>",
+          "methods": [
+            {
+              "code": "fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        },
+        {
+          "title": "impl<W: Write + Seek> Seek for BufWriter<W>",
+          "methods": [
+            {
+              "code": "fn seek(&mut self, pos: SeekFrom) -> Result<u64>",
+              "text": "Seek to the offset, in bytes, in the underlying writer."
+            },
+            {
+              "code": "fn rewind(&mut self) -> Result<()>",
+              "text": "Rewind to the beginning of a stream."
+            },
+            {
+              "code": "fn stream_len(&mut self) -> Result<u64>",
+              "text": "Returns the length of this stream (in bytes)."
+            },
+            {
+              "code": "fn stream_position(&mut self) -> Result<u64>",
+              "text": "Returns the current seek position from the start of the stream."
+            }
+          ]
+        },
+        {
+          "title": "impl<W: Write> Write for BufWriter<W>",
+          "methods": [
+            {
+              "code": "fn write(&mut self, buf: &[u8]) -> Result<usize>",
+              "text": "Write a buffer into this writer, returning how many bytes were written."
+            },
+            {
+              "code": "fn write_all(&mut self, buf: &[u8]) -> Result<()>",
+              "text": "Attempts to write an entire buffer into this writer."
+            },
+            {
+              "code": "fn write_vectored(&mut self, bufs: &[IoSlice<'_>]) -> Result<usize>",
+              "text": "Like write, except that it writes from a slice of buffers."
+            },
+            {
+              "code": "fn is_write_vectored(&self) -> bool",
+              "text": "Determines if this Writer has an efficient write_vectored implementation."
+            },
+            {
+              "code": "fn flush(&mut self) -> Result<()>",
+              "text": "Flush this output stream, ensuring that all intermediately buffered contents reach their destination."
+            },
+            {
+              "code": "fn write_all_vectored(&mut self, bufs: &mut [IoSlice<'_>]) -> Result<()>",
+              "text": "Attempts to write multiple buffers into this writer."
+            },
+            {
+              "code": "fn write_fmt(&mut self, fmt: Arguments<'_>) -> Result<()>",
+              "text": "Writes a formatted string into this writer, returning any error encountered."
+            },
+            {
+              "code": "fn by_ref(&mut self) -> &mut Self where Self: Sized,",
+              "text": "Creates a “by reference” adapter for this instance of Write."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "title": "Struct tokio::io::Repeat",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsyncRead for Repeat",
+          "methods": [
+            {
+              "code": "fn poll_read( self: Pin<&mut Self>, _: &mut Context<'_>, buf: &mut ReadBuf<'_>) -> Poll<Result<()>>",
+              "text": "Attempts to read from the AsyncRead into buf."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Repeat",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "title": "Struct std::sync::mpsc::SyncSender",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn send(&self, t: T) -> Result<(), SendError<T>>",
+          "text": "Sends a value on this synchronous channel."
+        },
+        {
+          "code": "pub fn try_send(&self, t: T) -> Result<(), TrySendError<T>>",
+          "text": "Attempts to send a value on this channel without blocking."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Clone for SyncSender<T>",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> SyncSender<T>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for SyncSender<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Drop for SyncSender<T>",
+          "methods": [
+            {
+              "code": "fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

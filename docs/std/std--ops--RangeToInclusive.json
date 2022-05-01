@@ -1,0 +1,193 @@
+{
+  "title": "Struct std::ops::RangeToInclusive",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn contains<U>(&self, item: &U) -> bool where Idx: PartialOrd<U>, U: PartialOrd<Idx> + ?Sized,",
+          "text": "Returns true if item is contained in the range."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<Idx> Clone for RangeToInclusive<Idx> where Idx: Clone,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> RangeToInclusive<Idx>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<Idx> Debug for RangeToInclusive<Idx> where Idx: Debug,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, fmt: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<Idx> Hash for RangeToInclusive<Idx> where Idx: Hash,",
+          "methods": [
+            {
+              "code": "pub fn hash<__H>(&self, state: &mut __H) where __H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl Index<RangeToInclusive<usize>> for String",
+          "methods": [
+            {
+              "code": "type Output = str",
+              "text": "The returned type after indexing."
+            },
+            {
+              "code": "pub fn index(&self, index: RangeToInclusive<usize>) -> &str",
+              "text": "Performs the indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl IndexMut<RangeToInclusive<usize>> for String",
+          "methods": [
+            {
+              "code": "pub fn index_mut(&mut self, index: RangeToInclusive<usize>) -> &mut str",
+              "text": "Performs the mutable indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<Idx> PartialEq<RangeToInclusive<Idx>> for RangeToInclusive<Idx> where Idx: PartialEq<Idx>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &RangeToInclusive<Idx>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &RangeToInclusive<Idx>) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> RangeBounds<T> for RangeToInclusive<&'_ T>",
+          "methods": [
+            {
+              "code": "pub fn start_bound(&self) -> Bound<&T>",
+              "text": "Start index bound."
+            },
+            {
+              "code": "pub fn end_bound(&self) -> Bound<&T>",
+              "text": "End index bound."
+            },
+            {
+              "code": "fn contains<U>(&self, item: &U) -> bool where T: PartialOrd<U>, U: PartialOrd<T> + ?Sized,",
+              "text": "Returns true if item is contained in the range."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> RangeBounds<T> for RangeToInclusive<T>",
+          "methods": [
+            {
+              "code": "pub fn start_bound(&self) -> Bound<&T>",
+              "text": "Start index bound."
+            },
+            {
+              "code": "pub fn end_bound(&self) -> Bound<&T>",
+              "text": "End index bound."
+            },
+            {
+              "code": "fn contains<U>(&self, item: &U) -> bool where T: PartialOrd<U>, U: PartialOrd<T> + ?Sized,",
+              "text": "Returns true if item is contained in the range."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> SliceIndex<[T]> for RangeToInclusive<usize>",
+          "methods": [
+            {
+              "code": "type Output = [T]",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get(self, slice: &[T]) -> Option<&[T]>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut(self, slice: &mut [T]) -> Option<&mut [T]>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked(self, slice: *const [T]) -> *const [T]",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut(self, slice: *mut [T]) -> *mut [T]",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index(self, slice: &[T]) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut(self, slice: &mut [T]) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        },
+        {
+          "title": "impl SliceIndex<str> for RangeToInclusive<usize>",
+          "methods": [
+            {
+              "code": "type Output = str",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get( self, slice: &str) -> Option<&<RangeToInclusive<usize> as SliceIndex<str>>::Output>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut( self, slice: &mut str) -> Option<&mut <RangeToInclusive<usize> as SliceIndex<str>>::Output>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked( self, slice: *const str) -> *const <RangeToInclusive<usize> as SliceIndex<str>>::Output",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut( self, slice: *mut str) -> *mut <RangeToInclusive<usize> as SliceIndex<str>>::Output",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index( self, slice: &str) -> &<RangeToInclusive<usize> as SliceIndex<str>>::Output",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut( self, slice: &mut str) -> &mut <RangeToInclusive<usize> as SliceIndex<str>>::Output",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

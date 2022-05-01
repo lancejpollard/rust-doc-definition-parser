@@ -1,0 +1,53 @@
+{
+  "title": "Struct tokio::time::Timeout",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn get_ref(&self) -> &T",
+          "text": "Gets a reference to the underlying value in this timeout."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut T",
+          "text": "Gets a mutable reference to the underlying value in this timeout."
+        },
+        {
+          "code": "pub fn into_inner(self) -> T",
+          "text": "Consumes this timeout, returning the underlying value."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T: Debug> Debug for Timeout<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Future for Timeout<T> where T: Future,",
+          "methods": [
+            {
+              "code": "type Output = Result<T::Output, Elapsed>",
+              "text": "The type of value produced on completion."
+            },
+            {
+              "code": "fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output>",
+              "text": "Attempt to resolve the future to a final value, registering the current task for wakeup if the value is not yet available."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

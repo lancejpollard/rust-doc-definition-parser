@@ -1,0 +1,78 @@
+{
+  "title": "Struct tokio::net::UnixListener",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn bind<P>(path: P) -> Result<UnixListener> where P: AsRef<Path>,",
+          "text": "Creates a new UnixListener bound to the specified path."
+        },
+        {
+          "code": "pub fn from_std(listener: UnixListener) -> Result<UnixListener>",
+          "text": "Creates new UnixListener from a std::os::unix::net::UnixListener ."
+        },
+        {
+          "code": "pub fn into_std(self) -> Result<UnixListener>",
+          "text": "Turns a tokio::net::UnixListener into a std::os::unix::net::UnixListener."
+        },
+        {
+          "code": "pub fn local_addr(&self) -> Result<SocketAddr>",
+          "text": "Returns the local socket address of this listener."
+        },
+        {
+          "code": "pub fn take_error(&self) -> Result<Option<Error>>",
+          "text": "Returns the value of the SO_ERROR option."
+        },
+        {
+          "code": "pub async fn accept(&self) -> Result<(UnixStream, SocketAddr)>",
+          "text": "Accepts a new incoming connection to this listener."
+        },
+        {
+          "code": "pub fn poll_accept( &self, cx: &mut Context<'_>) -> Poll<Result<(UnixStream, SocketAddr)>>",
+          "text": "Polls to accept a new incoming connection to this listener."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRawFd for UnixListener",
+          "methods": [
+            {
+              "code": "fn as_raw_fd(&self) -> RawFd",
+              "text": "Extracts the raw file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for UnixListener",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<UnixListener> for UnixListener",
+          "methods": [
+            {
+              "code": "fn try_from(stream: UnixListener) -> Result<Self>",
+              "text": "Consumes stream, returning the tokio I/O object."
+            },
+            {
+              "code": "type Error = Error",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

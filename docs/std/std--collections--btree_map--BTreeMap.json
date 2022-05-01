@@ -1,0 +1,374 @@
+{
+  "title": "Struct std::collections::btree_map::BTreeMap",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> BTreeMap<K, V>",
+          "text": "Makes a new, empty BTreeMap."
+        },
+        {
+          "code": "pub fn clear(&mut self)",
+          "text": "Clears the map, removing all elements."
+        },
+        {
+          "code": "pub fn get<Q>(&self, key: &Q) -> Option<&V> where K: Borrow<Q> + Ord, Q: Ord + ?Sized,",
+          "text": "Returns a reference to the value corresponding to the key."
+        },
+        {
+          "code": "pub fn get_key_value<Q>(&self, k: &Q) -> Option<(&K, &V)> where K: Borrow<Q> + Ord, Q: Ord + ?Sized,",
+          "text": "Returns the key-value pair corresponding to the supplied key."
+        },
+        {
+          "code": "pub fn first_key_value(&self) -> Option<(&K, &V)> where K: Ord,",
+          "text": "Returns the first key-value pair in the map. The key in this pair is the minimum key in the map."
+        },
+        {
+          "code": "pub fn first_entry(&mut self) -> Option<OccupiedEntry<'_, K, V>> where K: Ord,",
+          "text": "Returns the first entry in the map for in-place manipulation. The key of this entry is the minimum key in the map."
+        },
+        {
+          "code": "pub fn pop_first(&mut self) -> Option<(K, V)> where K: Ord,",
+          "text": "Removes and returns the first element in the map. The key of this element is the minimum key that was in the map."
+        },
+        {
+          "code": "pub fn last_key_value(&self) -> Option<(&K, &V)> where K: Ord,",
+          "text": "Returns the last key-value pair in the map. The key in this pair is the maximum key in the map."
+        },
+        {
+          "code": "pub fn last_entry(&mut self) -> Option<OccupiedEntry<'_, K, V>> where K: Ord,",
+          "text": "Returns the last entry in the map for in-place manipulation. The key of this entry is the maximum key in the map."
+        },
+        {
+          "code": "pub fn pop_last(&mut self) -> Option<(K, V)> where K: Ord,",
+          "text": "Removes and returns the last element in the map. The key of this element is the maximum key that was in the map."
+        },
+        {
+          "code": "pub fn contains_key<Q>(&self, key: &Q) -> bool where K: Borrow<Q> + Ord, Q: Ord + ?Sized,",
+          "text": "Returns true if the map contains a value for the specified key."
+        },
+        {
+          "code": "pub fn get_mut<Q>(&mut self, key: &Q) -> Option<&mut V> where K: Borrow<Q> + Ord, Q: Ord + ?Sized,",
+          "text": "Returns a mutable reference to the value corresponding to the key."
+        },
+        {
+          "code": "pub fn insert(&mut self, key: K, value: V) -> Option<V> where K: Ord,",
+          "text": "Inserts a key-value pair into the map."
+        },
+        {
+          "code": "pub fn try_insert( &mut self, key: K, value: V) -> Result<&mut V, OccupiedError<'_, K, V>> where K: Ord,",
+          "text": "Tries to insert a key-value pair into the map, and returns a mutable reference to the value in the entry."
+        },
+        {
+          "code": "pub fn remove<Q>(&mut self, key: &Q) -> Option<V> where K: Borrow<Q> + Ord, Q: Ord + ?Sized,",
+          "text": "Removes a key from the map, returning the value at the key if the key was previously in the map."
+        },
+        {
+          "code": "pub fn remove_entry<Q>(&mut self, key: &Q) -> Option<(K, V)> where K: Borrow<Q> + Ord, Q: Ord + ?Sized,",
+          "text": "Removes a key from the map, returning the stored key and value if the key was previously in the map."
+        },
+        {
+          "code": "pub fn retain<F>(&mut self, f: F) where K: Ord, F: FnMut(&K, &mut V) -> bool,",
+          "text": "Retains only the elements specified by the predicate."
+        },
+        {
+          "code": "pub fn append(&mut self, other: &mut BTreeMap<K, V>) where K: Ord,",
+          "text": "Moves all elements from other into Self, leaving other empty."
+        },
+        {
+          "code": "pub fn range<T, R>(&self, range: R) -> Range<'_, K, V>ⓘNotable traits for Range<'a, K, V>impl<'a, K, V> Iterator for Range<'a, K, V> type Item = (&'a K, &'a V); where T: Ord + ?Sized, K: Borrow<T> + Ord, R: RangeBounds<T>,",
+          "text": "Constructs a double-ended iterator over a sub-range of elements in the map. The simplest way is to use the range syntax min..max, thus range(min..max) will yield elements from min (inclusive) to max (exclusive). The range may also be entered as (Bound<T>, Bound<T>), so for example range((Excluded(4), Included(10))) will yield a left-exclusive, right-inclusive range from 4 to 10."
+        },
+        {
+          "code": "pub fn range_mut<T, R>(&mut self, range: R) -> RangeMut<'_, K, V>ⓘNotable traits for RangeMut<'a, K, V>impl<'a, K, V> Iterator for RangeMut<'a, K, V> type Item = (&'a K, &'a mut V); where T: Ord + ?Sized, K: Borrow<T> + Ord, R: RangeBounds<T>,",
+          "text": "Constructs a mutable double-ended iterator over a sub-range of elements in the map. The simplest way is to use the range syntax min..max, thus range(min..max) will yield elements from min (inclusive) to max (exclusive). The range may also be entered as (Bound<T>, Bound<T>), so for example range((Excluded(4), Included(10))) will yield a left-exclusive, right-inclusive range from 4 to 10."
+        },
+        {
+          "code": "pub fn entry(&mut self, key: K) -> Entry<'_, K, V> where K: Ord,",
+          "text": "Gets the given key’s corresponding entry in the map for in-place manipulation."
+        },
+        {
+          "code": "pub fn split_off<Q>(&mut self, key: &Q) -> BTreeMap<K, V> where Q: Ord + ?Sized, K: Borrow<Q> + Ord,",
+          "text": "Splits the collection into two at the given key. Returns everything after the given key, including the key."
+        },
+        {
+          "code": "pub fn drain_filter<F>(&mut self, pred: F) -> DrainFilter<'_, K, V, F>ⓘNotable traits for DrainFilter<'_, K, V, F>impl<'_, K, V, F> Iterator for DrainFilter<'_, K, V, F> where F: FnMut(&K, &mut V) -> bool, type Item = (K, V); where K: Ord, F: FnMut(&K, &mut V) -> bool,",
+          "text": "Creates an iterator that visits all elements (key-value pairs) in ascending key order and uses a closure to determine if an element should be removed. If the closure returns true, the element is removed from the map and yielded. If the closure returns false, or panics, the element remains in the map and will not be yielded."
+        },
+        {
+          "code": "pub fn into_keys(self) -> IntoKeys<K, V>ⓘNotable traits for IntoKeys<K, V>impl<K, V> Iterator for IntoKeys<K, V> type Item = K;",
+          "text": "Creates a consuming iterator visiting all the keys, in sorted order. The map cannot be used after calling this. The iterator element type is K."
+        },
+        {
+          "code": "pub fn into_values(self) -> IntoValues<K, V>ⓘNotable traits for IntoValues<K, V>impl<K, V> Iterator for IntoValues<K, V> type Item = V;",
+          "text": "Creates a consuming iterator visiting all the values, in order by key. The map cannot be used after calling this. The iterator element type is V."
+        },
+        {
+          "code": "pub fn iter(&self) -> Iter<'_, K, V>ⓘNotable traits for Iter<'a, K, V>impl<'a, K, V> Iterator for Iter<'a, K, V> where K: 'a, V: 'a, type Item = (&'a K, &'a V);",
+          "text": "Gets an iterator over the entries of the map, sorted by key."
+        },
+        {
+          "code": "pub fn iter_mut(&mut self) -> IterMut<'_, K, V>ⓘNotable traits for IterMut<'a, K, V>impl<'a, K, V> Iterator for IterMut<'a, K, V> where K: 'a, V: 'a, type Item = (&'a K, &'a mut V);",
+          "text": "Gets a mutable iterator over the entries of the map, sorted by key."
+        },
+        {
+          "code": "pub fn keys(&self) -> Keys<'_, K, V>ⓘNotable traits for Keys<'a, K, V>impl<'a, K, V> Iterator for Keys<'a, K, V> type Item = &'a K;",
+          "text": "Gets an iterator over the keys of the map, in sorted order."
+        },
+        {
+          "code": "pub fn values(&self) -> Values<'_, K, V>ⓘNotable traits for Values<'a, K, V>impl<'a, K, V> Iterator for Values<'a, K, V> type Item = &'a V;",
+          "text": "Gets an iterator over the values of the map, in order by key."
+        },
+        {
+          "code": "pub fn values_mut(&mut self) -> ValuesMut<'_, K, V>ⓘNotable traits for ValuesMut<'a, K, V>impl<'a, K, V> Iterator for ValuesMut<'a, K, V> type Item = &'a mut V;",
+          "text": "Gets a mutable iterator over the values of the map, in order by key."
+        },
+        {
+          "code": "pub fn len(&self) -> usize",
+          "text": "Returns the number of elements in the map."
+        },
+        {
+          "code": "pub fn is_empty(&self) -> bool",
+          "text": "Returns true if the map contains no elements."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<K, V> Clone for BTreeMap<K, V> where K: Clone, V: Clone,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> BTreeMap<K, V>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V> Debug for BTreeMap<K, V> where K: Debug, V: Debug,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V> Default for BTreeMap<K, V>",
+          "methods": [
+            {
+              "code": "pub fn default() -> BTreeMap<K, V>",
+              "text": "Creates an empty BTreeMap."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V> Drop for BTreeMap<K, V>",
+          "methods": [
+            {
+              "code": "pub fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, K, V> Extend<(&'a K, &'a V)> for BTreeMap<K, V> where K: Ord + Copy, V: Copy,",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = (&'a K, &'a V)>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, (&'a K, &'a V))",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V> Extend<(K, V)> for BTreeMap<K, V> where K: Ord,",
+          "methods": [
+            {
+              "code": "pub fn extend<T>(&mut self, iter: T) where T: IntoIterator<Item = (K, V)>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, (K, V))",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V, const N: usize> From<[(K, V); N]> for BTreeMap<K, V> where K: Ord,",
+          "methods": [
+            {
+              "code": "pub fn from(arr: [(K, V); N]) -> BTreeMap<K, V>"
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V> FromIterator<(K, V)> for BTreeMap<K, V> where K: Ord,",
+          "methods": [
+            {
+              "code": "pub fn from_iter<T>(iter: T) -> BTreeMap<K, V> where T: IntoIterator<Item = (K, V)>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V> Hash for BTreeMap<K, V> where K: Hash, V: Hash,",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, state: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, K, Q, V> Index<&'_ Q> for BTreeMap<K, V> where K: Borrow<Q> + Ord, Q: Ord + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn index(&self, key: &Q) -> &V",
+              "text": "Returns a reference to the value corresponding to the supplied key."
+            },
+            {
+              "code": "type Output = V",
+              "text": "The returned type after indexing."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, K, V> IntoIterator for &'a mut BTreeMap<K, V>",
+          "methods": [
+            {
+              "code": "type Item = (&'a K, &'a mut V)",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = IterMut<'a, K, V>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "pub fn into_iter(self) -> IterMut<'a, K, V>ⓘNotable traits for IterMut<'a, K, V>impl<'a, K, V> Iterator for IterMut<'a, K, V> where K: 'a, V: 'a, type Item = (&'a K, &'a mut V);",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V> IntoIterator for BTreeMap<K, V>",
+          "methods": [
+            {
+              "code": "type Item = (K, V)",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = IntoIter<K, V>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "pub fn into_iter(self) -> IntoIter<K, V>ⓘNotable traits for IntoIter<K, V>impl<K, V> Iterator for IntoIter<K, V> type Item = (K, V);",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, K, V> IntoIterator for &'a BTreeMap<K, V>",
+          "methods": [
+            {
+              "code": "type Item = (&'a K, &'a V)",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = Iter<'a, K, V>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "pub fn into_iter(self) -> Iter<'a, K, V>ⓘNotable traits for Iter<'a, K, V>impl<'a, K, V> Iterator for Iter<'a, K, V> where K: 'a, V: 'a, type Item = (&'a K, &'a V);",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V> Ord for BTreeMap<K, V> where K: Ord, V: Ord,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &BTreeMap<K, V>) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V> PartialEq<BTreeMap<K, V>> for BTreeMap<K, V> where K: PartialEq<K>, V: PartialEq<V>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &BTreeMap<K, V>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V> PartialOrd<BTreeMap<K, V>> for BTreeMap<K, V> where K: PartialOrd<K>, V: PartialOrd<V>,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &BTreeMap<K, V>) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "title": "Struct hyper::client::HttpConnector",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<R: Clone> Clone for HttpConnector<R>",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> HttpConnector<R>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<R: Debug> Debug for HttpConnector<R>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<R> Service<Uri> for HttpConnector<R> where R: Resolve + Clone + Send + Sync + 'static, R::Future: Send,",
+          "methods": [
+            {
+              "code": "type Response = TcpStream",
+              "text": "Responses given by the service."
+            },
+            {
+              "code": "type Error = ConnectError",
+              "text": "Errors produced by the service."
+            },
+            {
+              "code": "type Future = HttpConnecting<R>",
+              "text": "The future response value."
+            },
+            {
+              "code": "fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>>",
+              "text": "Returns Poll::Ready(Ok(())) when the service is able to process requests."
+            },
+            {
+              "code": "fn call(&mut self, dst: Uri) -> Self::Future",
+              "text": "Process the request and return the response asynchronously."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "title": "Struct std::collections::linked_list::Cursor",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn index(&self) -> Option<usize>",
+          "text": "Returns the cursor position index within the LinkedList."
+        },
+        {
+          "code": "pub fn move_next(&mut self)",
+          "text": "Moves the cursor to the next element of the LinkedList."
+        },
+        {
+          "code": "pub fn move_prev(&mut self)",
+          "text": "Moves the cursor to the previous element of the LinkedList."
+        },
+        {
+          "code": "pub fn current(&self) -> Option<&'a T>",
+          "text": "Returns a reference to the element that the cursor is currently pointing to."
+        },
+        {
+          "code": "pub fn peek_next(&self) -> Option<&'a T>",
+          "text": "Returns a reference to the next element."
+        },
+        {
+          "code": "pub fn peek_prev(&self) -> Option<&'a T>",
+          "text": "Returns a reference to the previous element."
+        },
+        {
+          "code": "pub fn front(&self) -> Option<&'a T>",
+          "text": "Provides a reference to the front element of the cursor’s parent list, or None if the list is empty."
+        },
+        {
+          "code": "pub fn back(&self) -> Option<&'a T>",
+          "text": "Provides a reference to the back element of the cursor’s parent list, or None if the list is empty."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'_, T> Clone for Cursor<'_, T>",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> Cursor<'_, T>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> Debug for Cursor<'_, T> where T: Debug,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "title": "Struct std::collections::btree_map::VacantEntry",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn key(&self) -> &K",
+          "text": "Gets a reference to the key that would be used when inserting a value through the VacantEntry."
+        },
+        {
+          "code": "pub fn into_key(self) -> K",
+          "text": "Take ownership of the key."
+        },
+        {
+          "code": "pub fn insert(self, value: V) -> &'a mut V",
+          "text": "Sets the value of the entry with the VacantEntry’s key, and returns a mutable reference to it."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'_, K, V> Debug for VacantEntry<'_, K, V> where K: Debug + Ord,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

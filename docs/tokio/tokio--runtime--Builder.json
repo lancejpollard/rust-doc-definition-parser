@@ -1,0 +1,80 @@
+{
+  "title": "Struct tokio::runtime::Builder",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new_current_thread() -> Builder",
+          "text": "Returns a new builder with the current thread scheduler selected."
+        },
+        {
+          "code": "pub fn enable_all(&mut self) -> &mut Self",
+          "text": "Enables both I/O and time drivers."
+        },
+        {
+          "code": "pub fn worker_threads(&mut self, val: usize) -> &mut Self",
+          "text": "Sets the number of worker threads the Runtime will use."
+        },
+        {
+          "code": "pub fn max_blocking_threads(&mut self, val: usize) -> &mut Self",
+          "text": "Specifies the limit for additional threads spawned by the Runtime."
+        },
+        {
+          "code": "pub fn thread_name(&mut self, val: impl Into<String>) -> &mut Self",
+          "text": "Sets name of threads spawned by the Runtime’s thread pool."
+        },
+        {
+          "code": "pub fn thread_name_fn<F>(&mut self, f: F) -> &mut Self where F: Fn() -> String + Send + Sync + 'static,",
+          "text": "Sets a function used to generate the name of threads spawned by the Runtime’s thread pool."
+        },
+        {
+          "code": "pub fn thread_stack_size(&mut self, val: usize) -> &mut Self",
+          "text": "Sets the stack size (in bytes) for worker threads."
+        },
+        {
+          "code": "pub fn on_thread_start<F>(&mut self, f: F) -> &mut Self where F: Fn() + Send + Sync + 'static,",
+          "text": "Executes function f after each thread is started but before it starts doing work."
+        },
+        {
+          "code": "pub fn on_thread_stop<F>(&mut self, f: F) -> &mut Self where F: Fn() + Send + Sync + 'static,",
+          "text": "Executes function f before each thread stops."
+        },
+        {
+          "code": "pub fn on_thread_park<F>(&mut self, f: F) -> &mut Self where F: Fn() + Send + Sync + 'static,",
+          "text": "Executes function f just before a thread is parked (goes idle). f is called within the Tokio context, so functions like tokio::spawn can be called, and may result in this thread being unparked immediately."
+        },
+        {
+          "code": "pub fn on_thread_unpark<F>(&mut self, f: F) -> &mut Self where F: Fn() + Send + Sync + 'static,",
+          "text": "Executes function f just after a thread unparks (starts executing tasks)."
+        },
+        {
+          "code": "pub fn build(&mut self) -> Result<Runtime>",
+          "text": "Creates the configured Runtime."
+        },
+        {
+          "code": "pub fn thread_keep_alive(&mut self, duration: Duration) -> &mut Self",
+          "text": "Sets a custom timeout for a thread in the blocking pool."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Builder",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

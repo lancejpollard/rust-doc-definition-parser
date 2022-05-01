@@ -1,0 +1,297 @@
+{
+  "title": "Primitive Type reference",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a, T, A> Extend<&'a T> for VecDeque<T, A> where T: 'a + Copy, A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = &'a T>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, &T)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "pub fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> Extend<&'a T> for LinkedList<T> where T: 'a + Copy,",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = &'a T>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, &'a T)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T, A> Extend<&'a T> for Vec<T, A> where T: 'a + Copy, A: 'a + Allocator,",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = &'a T>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, &'a T)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "pub fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> Extend<&'a T> for BinaryHeap<T> where T: 'a + Ord + Copy,",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = &'a T>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, &'a T)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "pub fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> Extend<&'a T> for BTreeSet<T> where T: 'a + Ord + Copy,",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = &'a T>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, &'a T)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T, S> Extend<&'a T> for HashSet<T, S> where T: 'a + Eq + Hash + Copy, S: BuildHasher,",
+          "methods": [
+            {
+              "code": "fn extend<I: IntoIterator<Item = &'a T>>(&mut self, iter: I)",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "fn extend_one(&mut self, item: &'a T)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> From<&'_ T> for NonNull<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn from(reference: &T) -> NonNull<T>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: ?Sized + AsRef<OsStr>> From<&'_ T> for OsString",
+          "methods": [
+            {
+              "code": "fn from(s: &T) -> OsString",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: ?Sized + AsRef<OsStr>> From<&'_ T> for PathBuf",
+          "methods": [
+            {
+              "code": "fn from(s: &T) -> PathBuf",
+              "text": "Converts a borrowed OsStr to a PathBuf."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> From<&'_ mut T> for NonNull<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn from(reference: &mut T) -> NonNull<T>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, K, Q, V> Index<&'_ Q> for BTreeMap<K, V> where K: Borrow<Q> + Ord, Q: Ord + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn index(&self, key: &Q) -> &V",
+              "text": "Returns a reference to the value corresponding to the supplied key."
+            },
+            {
+              "code": "type Output = V",
+              "text": "The returned type after indexing."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, Q: ?Sized, V, S> Index<&'_ Q> for HashMap<K, V, S> where K: Eq + Hash + Borrow<Q>, Q: Eq + Hash, S: BuildHasher,",
+          "methods": [
+            {
+              "code": "fn index(&self, key: &Q) -> &V",
+              "text": "Returns a reference to the value corresponding to the supplied key."
+            },
+            {
+              "code": "type Output = V",
+              "text": "The returned type after indexing."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, V> Join<&'_ T> for [V] where T: Clone, V: Borrow<[T]>,",
+          "methods": [
+            {
+              "code": "type Output = Vec<T, Global>",
+              "text": "The resulting type after concatenation"
+            },
+            {
+              "code": "pub fn join(slice: &[V], sep: &T) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Implementation of [T]::join"
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_, A, B> PartialEq<&'_ B> for &'_ A where A: PartialEq<B> + ?Sized, B: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&B) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&B) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_, A, B> PartialEq<&'_ B> for &'_ mut A where A: PartialEq<B> + ?Sized, B: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&B) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&B) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_, A, B> PartialEq<&'_ mut B> for &'_ mut A where A: PartialEq<B> + ?Sized, B: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&mut B) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&mut B) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_, A, B> PartialEq<&'_ mut B> for &'_ A where A: PartialEq<B> + ?Sized, B: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&mut B) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&mut B) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_, A, B> PartialOrd<&'_ B> for &'_ A where A: PartialOrd<B> + ?Sized, B: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &&B) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &&B) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &&B) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &&B) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &&B) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_, A, B> PartialOrd<&'_ mut B> for &'_ mut A where A: PartialOrd<B> + ?Sized, B: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &&mut B) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &&mut B) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &&mut B) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &&mut B) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &&mut B) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

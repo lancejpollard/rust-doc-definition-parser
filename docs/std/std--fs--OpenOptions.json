@@ -1,0 +1,152 @@
+{
+  "title": "Struct std::fs::OpenOptions",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> Self",
+          "text": "Creates a blank new set of options ready for configuration."
+        },
+        {
+          "code": "pub fn read(&mut self, read: bool) -> &mut Self",
+          "text": "Sets the option for read access."
+        },
+        {
+          "code": "pub fn write(&mut self, write: bool) -> &mut Self",
+          "text": "Sets the option for write access."
+        },
+        {
+          "code": "pub fn append(&mut self, append: bool) -> &mut Self",
+          "text": "Sets the option for the append mode."
+        },
+        {
+          "code": "pub fn truncate(&mut self, truncate: bool) -> &mut Self",
+          "text": "Sets the option for truncating a previous file."
+        },
+        {
+          "code": "pub fn create(&mut self, create: bool) -> &mut Self",
+          "text": "Sets the option to create a new file, or open it if it already exists."
+        },
+        {
+          "code": "pub fn create_new(&mut self, create_new: bool) -> &mut Self",
+          "text": "Sets the option to create a new file, failing if it already exists."
+        },
+        {
+          "code": "pub fn open<P: AsRef<Path>>(&self, path: P) -> Result<File>",
+          "text": "Opens a file at path with the options specified by self."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for OpenOptions",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> OpenOptions",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for OpenOptions",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl OpenOptionsExt for OpenOptions",
+          "methods": [
+            {
+              "code": "fn mode(&mut self, mode: u32) -> &mut OpenOptions",
+              "text": "Sets the mode bits that a new file will be created with."
+            },
+            {
+              "code": "fn custom_flags(&mut self, flags: i32) -> &mut OpenOptions",
+              "text": "Pass custom flags to the flags argument of open."
+            }
+          ]
+        },
+        {
+          "title": "impl OpenOptionsExt for OpenOptions",
+          "methods": [
+            {
+              "code": "fn access_mode(&mut self, access: u32) -> &mut OpenOptions",
+              "text": "Overrides the dwDesiredAccess argument to the call to CreateFile with the specified value."
+            },
+            {
+              "code": "fn share_mode(&mut self, share: u32) -> &mut OpenOptions",
+              "text": "Overrides the dwShareMode argument to the call to CreateFile with the specified value."
+            },
+            {
+              "code": "fn custom_flags(&mut self, flags: u32) -> &mut OpenOptions",
+              "text": "Sets extra flags for the dwFileFlags argument to the call to CreateFile2 to the specified value (or combines it with attributes and security_qos_flags to set the dwFlagsAndAttributes for CreateFile)."
+            },
+            {
+              "code": "fn attributes(&mut self, attributes: u32) -> &mut OpenOptions",
+              "text": "Sets the dwFileAttributes argument to the call to CreateFile2 to the specified value (or combines it with custom_flags and security_qos_flags to set the dwFlagsAndAttributes for CreateFile)."
+            },
+            {
+              "code": "fn security_qos_flags(&mut self, flags: u32) -> &mut OpenOptions",
+              "text": "Sets the dwSecurityQosFlags argument to the call to CreateFile2 to the specified value (or combines it with custom_flags and attributes to set the dwFlagsAndAttributes for CreateFile)."
+            }
+          ]
+        },
+        {
+          "title": "impl OpenOptionsExt for OpenOptions",
+          "methods": [
+            {
+              "code": "fn lookup_flags(&mut self, flags: u32) -> &mut OpenOptions",
+              "text": "Pass custom dirflags argument to path_open."
+            },
+            {
+              "code": "fn directory(&mut self, dir: bool) -> &mut OpenOptions",
+              "text": "Indicates whether OpenOptions must open a directory or not."
+            },
+            {
+              "code": "fn dsync(&mut self, enabled: bool) -> &mut OpenOptions",
+              "text": "Indicates whether __WASI_FDFLAG_DSYNC is passed in the fs_flags field of path_open."
+            },
+            {
+              "code": "fn nonblock(&mut self, enabled: bool) -> &mut OpenOptions",
+              "text": "Indicates whether __WASI_FDFLAG_NONBLOCK is passed in the fs_flags field of path_open."
+            },
+            {
+              "code": "fn rsync(&mut self, enabled: bool) -> &mut OpenOptions",
+              "text": "Indicates whether __WASI_FDFLAG_RSYNC is passed in the fs_flags field of path_open."
+            },
+            {
+              "code": "fn sync(&mut self, enabled: bool) -> &mut OpenOptions",
+              "text": "Indicates whether __WASI_FDFLAG_SYNC is passed in the fs_flags field of path_open."
+            },
+            {
+              "code": "fn fs_rights_base(&mut self, rights: u64) -> &mut OpenOptions",
+              "text": "Indicates the value that should be passed in for the fs_rights_base parameter of path_open."
+            },
+            {
+              "code": "fn fs_rights_inheriting(&mut self, rights: u64) -> &mut OpenOptions",
+              "text": "Indicates the value that should be passed in for the fs_rights_inheriting parameter of path_open."
+            },
+            {
+              "code": "fn open_at<P: AsRef<Path>>(&self, file: &File, path: P) -> Result<File>",
+              "text": "Open a file or directory."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

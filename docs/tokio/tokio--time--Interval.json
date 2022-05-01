@@ -1,0 +1,52 @@
+{
+  "title": "Struct tokio::time::Interval",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub async fn tick(&mut self) -> Instant",
+          "text": "Completes when the next instant in the interval has been reached."
+        },
+        {
+          "code": "pub fn poll_tick(&mut self, cx: &mut Context<'_>) -> Poll<Instant>",
+          "text": "Polls for the next instant in the interval to be reached."
+        },
+        {
+          "code": "pub fn reset(&mut self)",
+          "text": "Resets the interval to complete one period after the current time."
+        },
+        {
+          "code": "pub fn missed_tick_behavior(&self) -> MissedTickBehavior",
+          "text": "Returns the MissedTickBehavior strategy currently being used."
+        },
+        {
+          "code": "pub fn set_missed_tick_behavior(&mut self, behavior: MissedTickBehavior)",
+          "text": "Sets the MissedTickBehavior strategy that should be used."
+        },
+        {
+          "code": "pub fn period(&self) -> Duration",
+          "text": "Returns the period of the interval."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Interval",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

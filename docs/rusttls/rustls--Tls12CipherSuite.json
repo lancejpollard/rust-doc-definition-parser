@@ -1,0 +1,58 @@
+{
+  "title": "Struct rustls::Tls12CipherSuite",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn resolve_sig_schemes( &self, offered: &[SignatureScheme]) -> Vec<SignatureScheme>",
+          "text": "Resolve the set of supported SignatureSchemes from the offered SupportedSignatureSchemes. If we return an empty set, the handshake terminates."
+        },
+        {
+          "code": "pub fn hash_algorithm(&self) -> &'static Algorithm",
+          "text": "Which hash function to use with this suite."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Tls12CipherSuite",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<&'static Tls12CipherSuite> for SupportedCipherSuite",
+          "methods": [
+            {
+              "code": "fn from(s: &'static Tls12CipherSuite) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Tls12CipherSuite> for Tls12CipherSuite",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Self) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

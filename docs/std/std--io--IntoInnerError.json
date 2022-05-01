@@ -1,0 +1,75 @@
+{
+  "title": "Struct std::io::IntoInnerError",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn error(&self) -> &Error",
+          "text": "Returns the error which caused the call to BufWriter::into_inner() to fail."
+        },
+        {
+          "code": "pub fn into_inner(self) -> W",
+          "text": "Returns the buffered writer instance which generated the error."
+        },
+        {
+          "code": "pub fn into_error(self) -> Error",
+          "text": "Consumes the IntoInnerError and returns the error which caused the call to BufWriter::into_inner() to fail. Unlike error, this can be used to obtain ownership of the underlying error."
+        },
+        {
+          "code": "pub fn into_parts(self) -> (Error, W)",
+          "text": "Consumes the IntoInnerError and returns the error which caused the call to BufWriter::into_inner() to fail, and the underlying writer."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<W: Debug> Debug for IntoInnerError<W>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<W> Display for IntoInnerError<W>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<W: Send + Debug> Error for IntoInnerError<W>",
+          "methods": [
+            {
+              "code": "fn source(&self) -> Option<&(dyn Error + 'static)>",
+              "text": "The lower-level source of this error, if any."
+            },
+            {
+              "code": "fn backtrace(&self) -> Option<&Backtrace>",
+              "text": "Returns a stack backtrace, if available, of where this error occurred."
+            }
+          ]
+        },
+        {
+          "title": "impl<W> From<IntoInnerError<W>> for Error",
+          "methods": [
+            {
+              "code": "fn from(iie: IntoInnerError<W>) -> Error",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

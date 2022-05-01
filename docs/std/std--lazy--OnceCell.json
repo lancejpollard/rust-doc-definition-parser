@@ -1,0 +1,104 @@
+{
+  "title": "Struct std::lazy::OnceCell",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn new() -> OnceCell<T>",
+          "text": "Creates a new empty cell."
+        },
+        {
+          "code": "pub fn get(&self) -> Option<&T>",
+          "text": "Gets the reference to the underlying value."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> Option<&mut T>",
+          "text": "Gets the mutable reference to the underlying value."
+        },
+        {
+          "code": "pub fn set(&self, value: T) -> Result<(), T>",
+          "text": "Sets the contents of the cell to value."
+        },
+        {
+          "code": "pub fn get_or_init<F>(&self, f: F) -> &T where F: FnOnce() -> T,",
+          "text": "Gets the contents of the cell, initializing it with f if the cell was empty."
+        },
+        {
+          "code": "pub fn get_or_try_init<F, E>(&self, f: F) -> Result<&T, E> where F: FnOnce() -> Result<T, E>,",
+          "text": "Gets the contents of the cell, initializing it with f if the cell was empty. If the cell was empty and f failed, an error is returned."
+        },
+        {
+          "code": "pub fn into_inner(self) -> Option<T>",
+          "text": "Consumes the cell, returning the wrapped value."
+        },
+        {
+          "code": "pub fn take(&mut self) -> Option<T>",
+          "text": "Takes the value out of this OnceCell, moving it back to an uninitialized state."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Clone for OnceCell<T> where T: Clone,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> OnceCell<T>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for OnceCell<T> where T: Debug,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for OnceCell<T>",
+          "methods": [
+            {
+              "code": "pub fn default() -> OnceCell<T>",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<T> for OnceCell<T>",
+          "methods": [
+            {
+              "code": "pub const fn from(value: T) -> OnceCell<T>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialEq<OnceCell<T>> for OnceCell<T> where T: PartialEq<T>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &OnceCell<T>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

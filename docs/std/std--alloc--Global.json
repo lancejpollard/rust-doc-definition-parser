@@ -1,0 +1,82 @@
+{
+  "title": "Struct std::alloc::Global",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Allocator for Global",
+          "methods": [
+            {
+              "code": "pub fn allocate(&self, layout: Layout) -> Result<NonNull<[u8]>, AllocError>",
+              "text": "Attempts to allocate a block of memory."
+            },
+            {
+              "code": "pub fn allocate_zeroed( &self, layout: Layout) -> Result<NonNull<[u8]>, AllocError>",
+              "text": "Behaves like allocate, but also ensures that the returned memory is zero-initialized."
+            },
+            {
+              "code": "pub unsafe fn deallocate(&self, ptr: NonNull<u8>, layout: Layout)",
+              "text": "Deallocates the memory referenced by ptr."
+            },
+            {
+              "code": "pub unsafe fn grow( &self, ptr: NonNull<u8>, old_layout: Layout, new_layout: Layout) -> Result<NonNull<[u8]>, AllocError>",
+              "text": "Attempts to extend the memory block."
+            },
+            {
+              "code": "pub unsafe fn grow_zeroed( &self, ptr: NonNull<u8>, old_layout: Layout, new_layout: Layout) -> Result<NonNull<[u8]>, AllocError>",
+              "text": "Behaves like grow, but also ensures that the new contents are set to zero before being returned."
+            },
+            {
+              "code": "pub unsafe fn shrink( &self, ptr: NonNull<u8>, old_layout: Layout, new_layout: Layout) -> Result<NonNull<[u8]>, AllocError>",
+              "text": "Attempts to shrink the memory block."
+            },
+            {
+              "code": "fn by_ref(&self) -> &Self",
+              "text": "Creates a “by reference” adapter for this instance of Allocator."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for Global",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> Global",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Global",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for Global",
+          "methods": [
+            {
+              "code": "pub fn default() -> Global",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

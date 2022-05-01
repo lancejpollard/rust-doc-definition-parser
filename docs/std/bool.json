@@ -1,0 +1,610 @@
+{
+  "title": "Primitive Type bool",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn then_some<T>(self, t: T) -> Option<T>",
+          "text": "Returns Some(t) if the bool is true, or None otherwise."
+        },
+        {
+          "code": "pub fn then<T, F>(self, f: F) -> Option<T> where F: FnOnce() -> T,",
+          "text": "Returns Some(f()) if the bool is true, or None otherwise."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'_> BitAnd<&'_ bool> for bool",
+          "methods": [
+            {
+              "code": "type Output = <bool as BitAnd<bool>>::Output",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand(self, other: &bool) -> <bool as BitAnd<bool>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> BitAnd<&'_ bool> for &'_ bool",
+          "methods": [
+            {
+              "code": "type Output = <bool as BitAnd<bool>>::Output",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand(self, other: &bool) -> <bool as BitAnd<bool>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitAnd<Mask<T, LANES>> for bool where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Mask<T, LANES>",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand(self, rhs: Mask<T, LANES>) -> Mask<T, LANES>",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitAnd<bool> for bool",
+          "methods": [
+            {
+              "code": "type Output = bool",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand(self, rhs: bool) -> bool",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> BitAnd<bool> for &'a bool",
+          "methods": [
+            {
+              "code": "type Output = <bool as BitAnd<bool>>::Output",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand(self, other: bool) -> <bool as BitAnd<bool>>::Output",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitAnd<bool> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Mask<T, LANES>",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand(self, rhs: bool) -> Mask<T, LANES>",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> BitAndAssign<&'_ bool> for bool",
+          "methods": [
+            {
+              "code": "pub fn bitand_assign(&mut self, other: &bool)",
+              "text": "Performs the &= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitAndAssign<bool> for bool",
+          "methods": [
+            {
+              "code": "pub fn bitand_assign(&mut self, other: bool)",
+              "text": "Performs the &= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitAndAssign<bool> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn bitand_assign(&mut self, rhs: bool)",
+              "text": "Performs the &= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> BitOr<&'_ bool> for &'_ bool",
+          "methods": [
+            {
+              "code": "type Output = <bool as BitOr<bool>>::Output",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor(self, other: &bool) -> <bool as BitOr<bool>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> BitOr<&'_ bool> for bool",
+          "methods": [
+            {
+              "code": "type Output = <bool as BitOr<bool>>::Output",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor(self, other: &bool) -> <bool as BitOr<bool>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitOr<Mask<T, LANES>> for bool where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Mask<T, LANES>",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor(self, rhs: Mask<T, LANES>) -> Mask<T, LANES>",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOr<bool> for bool",
+          "methods": [
+            {
+              "code": "type Output = bool",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor(self, rhs: bool) -> bool",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitOr<bool> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Mask<T, LANES>",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor(self, rhs: bool) -> Mask<T, LANES>",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> BitOr<bool> for &'a bool",
+          "methods": [
+            {
+              "code": "type Output = <bool as BitOr<bool>>::Output",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor(self, other: bool) -> <bool as BitOr<bool>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> BitOrAssign<&'_ bool> for bool",
+          "methods": [
+            {
+              "code": "pub fn bitor_assign(&mut self, other: &bool)",
+              "text": "Performs the |= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitOrAssign<bool> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn bitor_assign(&mut self, rhs: bool)",
+              "text": "Performs the |= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOrAssign<bool> for bool",
+          "methods": [
+            {
+              "code": "pub fn bitor_assign(&mut self, other: bool)",
+              "text": "Performs the |= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> BitXor<&'_ bool> for bool",
+          "methods": [
+            {
+              "code": "type Output = <bool as BitXor<bool>>::Output",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor(self, other: &bool) -> <bool as BitXor<bool>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_> BitXor<&'_ bool> for &'_ bool",
+          "methods": [
+            {
+              "code": "type Output = <bool as BitXor<bool>>::Output",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor(self, other: &bool) -> <bool as BitXor<bool>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitXor<Mask<T, LANES>> for bool where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Mask<T, LANES>",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor( self, rhs: Mask<T, LANES>) -> <bool as BitXor<Mask<T, LANES>>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitXor<bool> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Mask<T, LANES>",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor(self, rhs: bool) -> <Mask<T, LANES> as BitXor<bool>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitXor<bool> for bool",
+          "methods": [
+            {
+              "code": "type Output = bool",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor(self, other: bool) -> bool",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> BitXor<bool> for &'a bool",
+          "methods": [
+            {
+              "code": "type Output = <bool as BitXor<bool>>::Output",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor(self, other: bool) -> <bool as BitXor<bool>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> BitXorAssign<&'_ bool> for bool",
+          "methods": [
+            {
+              "code": "pub fn bitxor_assign(&mut self, other: &bool)",
+              "text": "Performs the ^= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitXorAssign<bool> for bool",
+          "methods": [
+            {
+              "code": "pub fn bitxor_assign(&mut self, other: bool)",
+              "text": "Performs the ^= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitXorAssign<bool> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn bitxor_assign(&mut self, rhs: bool)",
+              "text": "Performs the ^= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for bool",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> bool",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for bool",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for bool",
+          "methods": [
+            {
+              "code": "pub fn default() -> bool",
+              "text": "Returns the default value of false"
+            }
+          ]
+        },
+        {
+          "title": "impl Display for bool",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<bool> for u64",
+          "methods": [
+            {
+              "code": "pub fn from(small: bool) -> u64",
+              "text": "Converts a bool to a u64. The resulting value is 0 for false and 1 for true values."
+            }
+          ]
+        },
+        {
+          "title": "impl From<bool> for i128",
+          "methods": [
+            {
+              "code": "pub fn from(small: bool) -> i128",
+              "text": "Converts a bool to a i128. The resulting value is 0 for false and 1 for true values."
+            }
+          ]
+        },
+        {
+          "title": "impl From<bool> for u32",
+          "methods": [
+            {
+              "code": "pub fn from(small: bool) -> u32",
+              "text": "Converts a bool to a u32. The resulting value is 0 for false and 1 for true values."
+            }
+          ]
+        },
+        {
+          "title": "impl From<bool> for i16",
+          "methods": [
+            {
+              "code": "pub fn from(small: bool) -> i16",
+              "text": "Converts a bool to a i16. The resulting value is 0 for false and 1 for true values."
+            }
+          ]
+        },
+        {
+          "title": "impl From<bool> for AtomicBool",
+          "methods": [
+            {
+              "code": "pub fn from(b: bool) -> AtomicBool",
+              "text": "Converts a bool into an AtomicBool."
+            }
+          ]
+        },
+        {
+          "title": "impl From<bool> for i8",
+          "methods": [
+            {
+              "code": "pub fn from(small: bool) -> i8",
+              "text": "Converts a bool to a i8. The resulting value is 0 for false and 1 for true values."
+            }
+          ]
+        },
+        {
+          "title": "impl From<bool> for u128",
+          "methods": [
+            {
+              "code": "pub fn from(small: bool) -> u128",
+              "text": "Converts a bool to a u128. The resulting value is 0 for false and 1 for true values."
+            }
+          ]
+        },
+        {
+          "title": "impl From<bool> for usize",
+          "methods": [
+            {
+              "code": "pub fn from(small: bool) -> usize",
+              "text": "Converts a bool to a usize. The resulting value is 0 for false and 1 for true values."
+            }
+          ]
+        },
+        {
+          "title": "impl From<bool> for u8",
+          "methods": [
+            {
+              "code": "pub fn from(small: bool) -> u8",
+              "text": "Converts a bool to a u8. The resulting value is 0 for false and 1 for true values."
+            }
+          ]
+        },
+        {
+          "title": "impl From<bool> for isize",
+          "methods": [
+            {
+              "code": "pub fn from(small: bool) -> isize",
+              "text": "Converts a bool to a isize. The resulting value is 0 for false and 1 for true values."
+            }
+          ]
+        },
+        {
+          "title": "impl From<bool> for i32",
+          "methods": [
+            {
+              "code": "pub fn from(small: bool) -> i32",
+              "text": "Converts a bool to a i32. The resulting value is 0 for false and 1 for true values."
+            }
+          ]
+        },
+        {
+          "title": "impl From<bool> for u16",
+          "methods": [
+            {
+              "code": "pub fn from(small: bool) -> u16",
+              "text": "Converts a bool to a u16. The resulting value is 0 for false and 1 for true values."
+            }
+          ]
+        },
+        {
+          "title": "impl From<bool> for i64",
+          "methods": [
+            {
+              "code": "pub fn from(small: bool) -> i64",
+              "text": "Converts a bool to a i64. The resulting value is 0 for false and 1 for true values."
+            }
+          ]
+        },
+        {
+          "title": "impl FromStr for bool",
+          "methods": [
+            {
+              "code": "pub fn from_str(s: &str) -> Result<bool, ParseBoolError>",
+              "text": "Parse a bool from a string."
+            },
+            {
+              "code": "type Err = ParseBoolError",
+              "text": "The associated error which can be returned from parsing."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for bool",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, state: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Not for &'_ bool",
+          "methods": [
+            {
+              "code": "type Output = <bool as Not>::Output",
+              "text": "The resulting type after applying the ! operator."
+            },
+            {
+              "code": "pub fn not(self) -> <bool as Not>::Output",
+              "text": "Performs the unary ! operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Not for bool",
+          "methods": [
+            {
+              "code": "type Output = bool",
+              "text": "The resulting type after applying the ! operator."
+            },
+            {
+              "code": "pub fn not(self) -> bool",
+              "text": "Performs the unary ! operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for bool",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &bool) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<bool> for bool",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &bool) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &bool) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<bool> for bool",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &bool) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

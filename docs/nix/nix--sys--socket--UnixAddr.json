@@ -1,0 +1,104 @@
+{
+  "title": "Struct nix::sys::socket::UnixAddr",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new<P: ?Sized + NixPath>(path: &P) -> Result<UnixAddr>",
+          "text": "Create a new sockaddr_un representing a filesystem path."
+        },
+        {
+          "code": "pub fn new_abstract(path: &[u8]) -> Result<UnixAddr>",
+          "text": "Create a new sockaddr_un representing an address in the “abstract namespace”."
+        },
+        {
+          "code": "pub fn path(&self) -> Option<&Path>",
+          "text": "If this address represents a filesystem path, return that path."
+        },
+        {
+          "code": "pub fn as_abstract(&self) -> Option<&[u8]>",
+          "text": "If this address represents an abstract socket, return its name."
+        },
+        {
+          "code": "pub fn path_len(&self) -> usize",
+          "text": "Returns the addrlen of this socket - offsetof(struct sockaddr_un, sun_path)"
+        },
+        {
+          "code": "pub fn as_ptr(&self) -> *const sockaddr_un",
+          "text": "Returns a pointer to the raw sockaddr_un struct"
+        },
+        {
+          "code": "pub fn as_mut_ptr(&mut self) -> *mut sockaddr_un",
+          "text": "Returns a mutable pointer to the raw sockaddr_un struct"
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for UnixAddr",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> UnixAddr",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for UnixAddr",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for UnixAddr",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for UnixAddr",
+          "methods": [
+            {
+              "code": "fn hash<H: Hasher>(&self, s: &mut H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<UnixAddr> for UnixAddr",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &UnixAddr) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

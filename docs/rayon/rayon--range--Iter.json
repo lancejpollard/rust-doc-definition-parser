@@ -1,0 +1,36 @@
+{
+  "title": "Struct rayon::range::Iter",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "methods": []
+        },
+        {
+          "methods": []
+        },
+        {
+          "methods": []
+        },
+        {
+          "methods": []
+        },
+        {
+          "methods": []
+        },
+        {
+          "methods": []
+        }
+      ]
+    }
+  ]
+}

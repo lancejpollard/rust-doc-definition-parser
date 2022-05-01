@@ -1,0 +1,40 @@
+{
+  "title": "Struct hyper::server::conn::Connecting",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<I: Debug, F: Debug, E: Debug> Debug for Connecting<I, F, E>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<I, F, S, FE, E, B> Future for Connecting<I, F, E> where I: AsyncRead + AsyncWrite + Unpin, F: Future<Output = Result<S, FE>>, S: HttpService<Body, ResBody = B>, B: HttpBody + 'static, B::Error: Into<Box<dyn StdError + Send + Sync>>, E: ConnStreamExec<S::Future, B>,",
+          "methods": [
+            {
+              "code": "type Output = Result<Connection<I, S, E>, FE>",
+              "text": "The type of value produced on completion."
+            },
+            {
+              "code": "fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output>",
+              "text": "Attempt to resolve the future to a final value, registering the current task for wakeup if the value is not yet available."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

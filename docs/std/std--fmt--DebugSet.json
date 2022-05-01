@@ -1,0 +1,30 @@
+{
+  "title": "Struct std::fmt::DebugSet",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn entry(&mut self, entry: &dyn Debug) -> &mut DebugSet<'a, 'b>",
+          "text": "Adds a new entry to the set output."
+        },
+        {
+          "code": "pub fn entries<D, I>(&mut self, entries: I) -> &mut DebugSet<'a, 'b> where D: Debug, I: IntoIterator<Item = D>,",
+          "text": "Adds the contents of an iterator of entries to the set output."
+        },
+        {
+          "code": "pub fn finish(&mut self) -> Result<(), Error>",
+          "text": "Finishes output and returns any error encountered."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

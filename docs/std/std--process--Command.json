@@ -1,0 +1,155 @@
+{
+  "title": "Struct std::process::Command",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new<S: AsRef<OsStr>>(program: S) -> Command",
+          "text": "Constructs a new Command for launching the program at path program, with the following default configuration:"
+        },
+        {
+          "code": "pub fn arg<S: AsRef<OsStr>>(&mut self, arg: S) -> &mut Command",
+          "text": "Adds an argument to pass to the program."
+        },
+        {
+          "code": "pub fn args<I, S>(&mut self, args: I) -> &mut Command where I: IntoIterator<Item = S>, S: AsRef<OsStr>,",
+          "text": "Adds multiple arguments to pass to the program."
+        },
+        {
+          "code": "pub fn env<K, V>(&mut self, key: K, val: V) -> &mut Command where K: AsRef<OsStr>, V: AsRef<OsStr>,",
+          "text": "Inserts or updates an environment variable mapping."
+        },
+        {
+          "code": "pub fn envs<I, K, V>(&mut self, vars: I) -> &mut Command where I: IntoIterator<Item = (K, V)>, K: AsRef<OsStr>, V: AsRef<OsStr>,",
+          "text": "Adds or updates multiple environment variable mappings."
+        },
+        {
+          "code": "pub fn env_remove<K: AsRef<OsStr>>(&mut self, key: K) -> &mut Command",
+          "text": "Removes an environment variable mapping."
+        },
+        {
+          "code": "pub fn env_clear(&mut self) -> &mut Command",
+          "text": "Clears the entire environment map for the child process."
+        },
+        {
+          "code": "pub fn current_dir<P: AsRef<Path>>(&mut self, dir: P) -> &mut Command",
+          "text": "Sets the working directory for the child process."
+        },
+        {
+          "code": "pub fn stdin<T: Into<Stdio>>(&mut self, cfg: T) -> &mut Command",
+          "text": "Configuration for the child process’s standard input (stdin) handle."
+        },
+        {
+          "code": "pub fn stdout<T: Into<Stdio>>(&mut self, cfg: T) -> &mut Command",
+          "text": "Configuration for the child process’s standard output (stdout) handle."
+        },
+        {
+          "code": "pub fn stderr<T: Into<Stdio>>(&mut self, cfg: T) -> &mut Command",
+          "text": "Configuration for the child process’s standard error (stderr) handle."
+        },
+        {
+          "code": "pub fn spawn(&mut self) -> Result<Child>",
+          "text": "Executes the command as a child process, returning a handle to it."
+        },
+        {
+          "code": "pub fn output(&mut self) -> Result<Output>",
+          "text": "Executes the command as a child process, waiting for it to finish and collecting all of its output."
+        },
+        {
+          "code": "pub fn status(&mut self) -> Result<ExitStatus>",
+          "text": "Executes a command as a child process, waiting for it to finish and collecting its status."
+        },
+        {
+          "code": "pub fn get_program(&self) -> &OsStr",
+          "text": "Returns the path to the program that was given to Command::new."
+        },
+        {
+          "code": "pub fn get_args(&self) -> CommandArgs<'_>ⓘNotable traits for CommandArgs<'a>impl<'a> Iterator for CommandArgs<'a> type Item = &'a OsStr;",
+          "text": "Returns an iterator of the arguments that will be passed to the program."
+        },
+        {
+          "code": "pub fn get_envs(&self) -> CommandEnvs<'_>ⓘNotable traits for CommandEnvs<'a>impl<'a> Iterator for CommandEnvs<'a> type Item = (&'a OsStr, Option<&'a OsStr>);",
+          "text": "Returns an iterator of the environment variables that will be set when the process is spawned."
+        },
+        {
+          "code": "pub fn get_current_dir(&self) -> Option<&Path>",
+          "text": "Returns the working directory for the child process."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl CommandExt for Command",
+          "methods": [
+            {
+              "code": "fn create_pidfd(&mut self, val: bool) -> &mut Command",
+              "text": "Sets whether a PidFd should be created for the Child spawned by this Command. By default, no pidfd will be created."
+            }
+          ]
+        },
+        {
+          "title": "impl CommandExt for Command",
+          "methods": [
+            {
+              "code": "fn creation_flags(&mut self, flags: u32) -> &mut Command",
+              "text": "Sets the process creation flags to be passed to CreateProcess."
+            },
+            {
+              "code": "fn force_quotes(&mut self, enabled: bool) -> &mut Command",
+              "text": "Forces all arguments to be wrapped in quote (\") characters."
+            },
+            {
+              "code": "fn raw_arg<S: AsRef<OsStr>>(&mut self, raw_text: S) -> &mut Command",
+              "text": "Append literal text to the command line without any quoting or escaping."
+            }
+          ]
+        },
+        {
+          "title": "impl CommandExt for Command",
+          "methods": [
+            {
+              "code": "fn uid(&mut self, id: u32) -> &mut Command",
+              "text": "Sets the child process’s user ID. This translates to a setuid call in the child process. Failure in the setuid call will cause the spawn to fail."
+            },
+            {
+              "code": "fn gid(&mut self, id: u32) -> &mut Command",
+              "text": "Similar to uid, but sets the group ID of the child process. This has the same semantics as the uid field."
+            },
+            {
+              "code": "fn groups(&mut self, groups: &[u32]) -> &mut Command",
+              "text": "Sets the supplementary group IDs for the calling process. Translates to a setgroups call in the child process."
+            },
+            {
+              "code": "unsafe fn pre_exec<F>(&mut self, f: F) -> &mut Command where F: FnMut() -> Result<()> + Send + Sync + 'static,",
+              "text": "Schedules a closure to be run just before the exec function is invoked."
+            },
+            {
+              "code": "fn exec(&mut self) -> Error",
+              "text": "Performs all the required setup by this Command, followed by calling the execvp syscall."
+            },
+            {
+              "code": "fn arg0<S>(&mut self, arg: S) -> &mut Command where S: AsRef<OsStr>,",
+              "text": "Set executable argument"
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Command",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Format the program and arguments of a Command for display. Any non-utf8 data is lossily converted using the utf8 replacement character."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

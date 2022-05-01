@@ -1,0 +1,27 @@
+{
+  "title": "Struct rayon::collections::linked_list::IntoIter",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "methods": []
+        },
+        {
+          "methods": []
+        },
+        {
+          "methods": []
+        }
+      ]
+    }
+  ]
+}

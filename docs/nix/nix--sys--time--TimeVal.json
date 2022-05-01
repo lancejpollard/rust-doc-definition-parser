@@ -1,0 +1,226 @@
+{
+  "title": "Struct nix::sys::time::TimeVal",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Add<TimeVal> for TimeVal",
+          "methods": [
+            {
+              "code": "type Output = TimeVal",
+              "text": "The resulting type after applying the + operator."
+            },
+            {
+              "code": "fn add(self, rhs: TimeVal) -> TimeVal",
+              "text": "Performs the + operation."
+            }
+          ]
+        },
+        {
+          "title": "impl AsMut<timeval> for TimeVal",
+          "methods": [
+            {
+              "code": "fn as_mut(&mut self) -> &mut timeval",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRef<timeval> for TimeVal",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &timeval",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for TimeVal",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> TimeVal",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for TimeVal",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for TimeVal",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Div<i32> for TimeVal",
+          "methods": [
+            {
+              "code": "type Output = TimeVal",
+              "text": "The resulting type after applying the / operator."
+            },
+            {
+              "code": "fn div(self, rhs: i32) -> TimeVal",
+              "text": "Performs the / operation."
+            }
+          ]
+        },
+        {
+          "title": "impl From<timeval> for TimeVal",
+          "methods": [
+            {
+              "code": "fn from(tv: timeval) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for TimeVal",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl Mul<i32> for TimeVal",
+          "methods": [
+            {
+              "code": "type Output = TimeVal",
+              "text": "The resulting type after applying the * operator."
+            },
+            {
+              "code": "fn mul(self, rhs: i32) -> TimeVal",
+              "text": "Performs the * operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Neg for TimeVal",
+          "methods": [
+            {
+              "code": "type Output = TimeVal",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "fn neg(self) -> TimeVal",
+              "text": "Performs the unary - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for TimeVal",
+          "methods": [
+            {
+              "code": "fn cmp(&self, other: &TimeVal) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<TimeVal> for TimeVal",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &TimeVal) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &TimeVal) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<TimeVal> for TimeVal",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &TimeVal) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl Sub<TimeVal> for TimeVal",
+          "methods": [
+            {
+              "code": "type Output = TimeVal",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "fn sub(self, rhs: TimeVal) -> TimeVal",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl TimeValLike for TimeVal",
+          "methods": [
+            {
+              "code": "fn microseconds(microseconds: i64) -> TimeVal",
+              "text": "Makes a new TimeVal with given number of microseconds."
+            },
+            {
+              "code": "fn nanoseconds(nanoseconds: i64) -> TimeVal",
+              "text": "Makes a new TimeVal with given number of nanoseconds. Some precision will be lost"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

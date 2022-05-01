@@ -1,0 +1,74 @@
+{
+  "title": "Struct tokio::io::Take",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn limit(&self) -> u64",
+          "text": "Returns the remaining number of bytes that can be read before this instance will return EOF."
+        },
+        {
+          "code": "pub fn set_limit(&mut self, limit: u64)",
+          "text": "Sets the number of bytes that can be read before this instance will return EOF. This is the same as constructing a new Take instance, so the amount of bytes read and the previous limit value don’t matter when calling this method."
+        },
+        {
+          "code": "pub fn get_ref(&self) -> &R",
+          "text": "Gets a reference to the underlying reader."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut R",
+          "text": "Gets a mutable reference to the underlying reader."
+        },
+        {
+          "code": "pub fn get_pin_mut(self: Pin<&mut Self>) -> Pin<&mut R>ⓘNotable traits for Pin<P>impl<P> Future for Pin<P> where P: DerefMut, <P as Deref>::Target: Future, type Output = <<P as Deref>::Target as Future>::Output;",
+          "text": "Gets a pinned mutable reference to the underlying reader."
+        },
+        {
+          "code": "pub fn into_inner(self) -> R",
+          "text": "Consumes the Take, returning the wrapped reader."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<R: AsyncBufRead> AsyncBufRead for Take<R>",
+          "methods": [
+            {
+              "code": "fn poll_fill_buf( self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<&[u8]>>",
+              "text": "Attempts to return the contents of the internal buffer, filling it with more data from the inner reader if it is empty."
+            },
+            {
+              "code": "fn consume(self: Pin<&mut Self>, amt: usize)",
+              "text": "Tells this buffer that amt bytes have been consumed from the buffer, so they should no longer be returned in calls to poll_read."
+            }
+          ]
+        },
+        {
+          "title": "impl<R: AsyncRead> AsyncRead for Take<R>",
+          "methods": [
+            {
+              "code": "fn poll_read( self: Pin<&mut Self>, cx: &mut Context<'_>, buf: &mut ReadBuf<'_>) -> Poll<Result<(), Error>>",
+              "text": "Attempts to read from the AsyncRead into buf."
+            }
+          ]
+        },
+        {
+          "title": "impl<R: Debug> Debug for Take<R>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

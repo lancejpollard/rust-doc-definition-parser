@@ -1,0 +1,36 @@
+{
+  "title": "Struct std::sync::Barrier",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(n: usize) -> Barrier",
+          "text": "Creates a new barrier that can block a given number of threads."
+        },
+        {
+          "code": "pub fn wait(&self) -> BarrierWaitResult",
+          "text": "Blocks the current thread until all threads have rendezvoused here."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Barrier",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

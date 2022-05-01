@@ -1,0 +1,75 @@
+{
+  "title": "Struct tokio::task::JoinError",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn is_cancelled(&self) -> bool",
+          "text": "Returns true if the error was caused by the task being cancelled."
+        },
+        {
+          "code": "pub fn is_panic(&self) -> bool",
+          "text": "Returns true if the error was caused by the task panicking."
+        },
+        {
+          "code": "pub fn into_panic(self) -> Box<dyn Any + Send + 'static>ⓘNotable traits for Box<F, A>impl<F, A> Future for Box<F, A> where F: Future + Unpin + ?Sized, A: Allocator + 'static, type Output = <F as Future>::Output;",
+          "text": "Consumes the join error, returning the object with which the task panicked."
+        },
+        {
+          "code": "pub fn try_into_panic(self) -> Result<Box<dyn Any + Send + 'static>, JoinError>",
+          "text": "Consumes the join error, returning the object with which the task panicked if the task terminated due to a panic. Otherwise, self is returned."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for JoinError",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for JoinError",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Error for JoinError",
+          "methods": [
+            {
+              "code": "fn source(&self) -> Option<&(dyn Error + 'static)>",
+              "text": "The lower-level source of this error, if any."
+            },
+            {
+              "code": "fn backtrace(&self) -> Option<&Backtrace>",
+              "text": "Returns a stack backtrace, if available, of where this error occurred."
+            }
+          ]
+        },
+        {
+          "title": "impl From<JoinError> for Error",
+          "methods": [
+            {
+              "code": "fn from(src: JoinError) -> Error",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

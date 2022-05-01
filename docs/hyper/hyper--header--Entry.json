@@ -1,0 +1,41 @@
+{
+  "title": "Enum hyper::header::Entry",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn or_insert(self, default: T) -> &'a mut T",
+          "text": "Ensures a value is in the entry by inserting the default if empty."
+        },
+        {
+          "code": "pub fn or_insert_with<F>(self, default: F) -> &'a mut T where F: FnOnce() -> T,",
+          "text": "Ensures a value is in the entry by inserting the result of the default function if empty."
+        },
+        {
+          "code": "pub fn key(&self) -> &HeaderName",
+          "text": "Returns a reference to the entry’s key"
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a, T> Debug for Entry<'a, T> where    T: 'a + Debug,",
+          "text": "Formats the value using the given formatter.",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

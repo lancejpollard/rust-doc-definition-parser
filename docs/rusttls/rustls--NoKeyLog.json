@@ -1,0 +1,31 @@
+{
+  "title": "Struct rustls::NoKeyLog",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl KeyLog for NoKeyLog",
+          "methods": [
+            {
+              "code": "fn log(&self, _: &str, _: &[u8], _: &[u8])",
+              "text": "Log the given secret. client_random is provided for session identification. label describes precisely what secret means:"
+            },
+            {
+              "code": "fn will_log(&self, _label: &str) -> bool",
+              "text": "Indicates whether the secret with label label will be logged."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

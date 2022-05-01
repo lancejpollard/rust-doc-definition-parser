@@ -1,0 +1,52 @@
+{
+  "title": "Struct tokio::process::Child",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn id(&self) -> Option<u32>",
+          "text": "Returns the OS-assigned process identifier associated with this child while it is still running."
+        },
+        {
+          "code": "pub fn start_kill(&mut self) -> Result<()>",
+          "text": "Attempts to force the child to exit, but does not wait for the request to take effect."
+        },
+        {
+          "code": "pub async fn kill(&mut self) -> Result<()>",
+          "text": "Forces the child to exit."
+        },
+        {
+          "code": "pub async fn wait(&mut self) -> Result<ExitStatus>",
+          "text": "Waits for the child to exit completely, returning the status that it exited with. This function will continue to have the same return value after it has been called at least once."
+        },
+        {
+          "code": "pub fn try_wait(&mut self) -> Result<Option<ExitStatus>>",
+          "text": "Attempts to collect the exit status of the child if it has already exited."
+        },
+        {
+          "code": "pub async fn wait_with_output(self) -> Result<Output>",
+          "text": "Returns a future that will resolve to an Output, containing the exit status, stdout, and stderr of the child process."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Child",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "title": "Struct tokio::fs::File",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub async fn open(path: impl AsRef<Path>) -> Result<File>",
+          "text": "Attempts to open a file in read-only mode."
+        },
+        {
+          "code": "pub async fn create(path: impl AsRef<Path>) -> Result<File>",
+          "text": "Opens a file in write-only mode."
+        },
+        {
+          "code": "pub fn from_std(std: StdFile) -> File",
+          "text": "Converts a std::fs::File to a tokio::fs::File."
+        },
+        {
+          "code": "pub async fn sync_all(&self) -> Result<()>",
+          "text": "Attempts to sync all OS-internal metadata to disk."
+        },
+        {
+          "code": "pub async fn sync_data(&self) -> Result<()>",
+          "text": "This function is similar to sync_all, except that it may not synchronize file metadata to the filesystem."
+        },
+        {
+          "code": "pub async fn set_len(&self, size: u64) -> Result<()>",
+          "text": "Truncates or extends the underlying file, updating the size of this file to become size."
+        },
+        {
+          "code": "pub async fn metadata(&self) -> Result<Metadata>",
+          "text": "Queries metadata about the underlying file."
+        },
+        {
+          "code": "pub async fn try_clone(&self) -> Result<File>",
+          "text": "Creates a new File instance that shares the same underlying file handle as the existing File instance. Reads, writes, and seeks will affect both File instances simultaneously."
+        },
+        {
+          "code": "pub async fn into_std(self) -> StdFile",
+          "text": "Destructures File into a std::fs::File. This function is async to allow any in-flight operations to complete."
+        },
+        {
+          "code": "pub fn try_into_std(self) -> Result<StdFile, Self>",
+          "text": "Tries to immediately destructure File into a std::fs::File."
+        },
+        {
+          "code": "pub async fn set_permissions(&self, perm: Permissions) -> Result<()>",
+          "text": "Changes the permissions on the underlying file."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRawFd for File",
+          "methods": [
+            {
+              "code": "fn as_raw_fd(&self) -> RawFd",
+              "text": "Extracts the raw file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl AsyncRead for File",
+          "methods": [
+            {
+              "code": "fn poll_read( self: Pin<&mut Self>, cx: &mut Context<'_>, dst: &mut ReadBuf<'_>) -> Poll<Result<()>>",
+              "text": "Attempts to read from the AsyncRead into buf."
+            }
+          ]
+        },
+        {
+          "title": "impl AsyncSeek for File",
+          "methods": [
+            {
+              "code": "fn start_seek(self: Pin<&mut Self>, pos: SeekFrom) -> Result<()>",
+              "text": "Attempts to seek to an offset, in bytes, in a stream."
+            },
+            {
+              "code": "fn poll_complete( self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<u64>>",
+              "text": "Waits for a seek operation to complete."
+            }
+          ]
+        },
+        {
+          "title": "impl AsyncWrite for File",
+          "methods": [
+            {
+              "code": "fn poll_write( self: Pin<&mut Self>, cx: &mut Context<'_>, src: &[u8]) -> Poll<Result<usize>>",
+              "text": "Attempt to write bytes from buf into the object."
+            },
+            {
+              "code": "fn poll_flush( self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<(), Error>>",
+              "text": "Attempts to flush the object, ensuring that any buffered data reach their destination."
+            },
+            {
+              "code": "fn poll_shutdown( self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<(), Error>>",
+              "text": "Initiates or attempts to shut down this writer, returning success when the I/O connection has completely shut down."
+            },
+            {
+              "code": "fn poll_write_vectored( self: Pin<&mut Self>, cx: &mut Context<'_>, bufs: &[IoSlice<'_>]) -> Poll<Result<usize, Error>>",
+              "text": "Like poll_write, except that it writes from a slice of buffers."
+            },
+            {
+              "code": "fn is_write_vectored(&self) -> bool",
+              "text": "Determines if this writer has an efficient poll_write_vectored implementation."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for File",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<File> for File",
+          "methods": [
+            {
+              "code": "fn from(std: StdFile) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl FromRawFd for File",
+          "methods": [
+            {
+              "code": "unsafe fn from_raw_fd(fd: RawFd) -> Self",
+              "text": "Constructs a new instance of Self from the given raw file descriptor."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

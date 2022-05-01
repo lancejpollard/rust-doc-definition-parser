@@ -1,0 +1,36 @@
+{
+  "title": "Struct rustls::internal::msgs::deframer::MessageDeframer",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn read(&mut self, rd: &mut dyn Read) -> Result<usize>",
+          "text": "Read some bytes from rd, and add them to our internal buffer. If this means our internal buffer contains full messages, decode them all."
+        },
+        {
+          "code": "pub fn has_pending(&self) -> bool",
+          "text": "Returns true if we have messages for the caller to process, either whole messages in our output queue or partial messages in our buffer."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Default for MessageDeframer",
+          "methods": [
+            {
+              "code": "fn default() -> Self",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

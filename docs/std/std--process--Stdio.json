@@ -1,0 +1,112 @@
+{
+  "title": "Struct std::process::Stdio",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn piped() -> Stdio",
+          "text": "A new pipe should be arranged to connect the parent and child processes."
+        },
+        {
+          "code": "pub fn inherit() -> Stdio",
+          "text": "The child inherits from the corresponding parent descriptor."
+        },
+        {
+          "code": "pub fn null() -> Stdio",
+          "text": "This stream will be ignored. This is the equivalent of attaching the stream to /dev/null."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Stdio",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<ChildStderr> for Stdio",
+          "methods": [
+            {
+              "code": "fn from(child: ChildStderr) -> Stdio",
+              "text": "Converts a ChildStderr into a Stdio"
+            }
+          ]
+        },
+        {
+          "title": "impl From<ChildStdin> for Stdio",
+          "methods": [
+            {
+              "code": "fn from(child: ChildStdin) -> Stdio",
+              "text": "Converts a ChildStdin into a Stdio"
+            }
+          ]
+        },
+        {
+          "title": "impl From<ChildStdout> for Stdio",
+          "methods": [
+            {
+              "code": "fn from(child: ChildStdout) -> Stdio",
+              "text": "Converts a ChildStdout into a Stdio"
+            }
+          ]
+        },
+        {
+          "title": "impl From<File> for Stdio",
+          "methods": [
+            {
+              "code": "fn from(file: File) -> Stdio",
+              "text": "Converts a File into a Stdio"
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedFd> for Stdio",
+          "methods": [
+            {
+              "code": "fn from(fd: OwnedFd) -> Stdio",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedHandle> for Stdio",
+          "methods": [
+            {
+              "code": "fn from(handle: OwnedHandle) -> Stdio",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl FromRawFd for Stdio",
+          "methods": [
+            {
+              "code": "unsafe fn from_raw_fd(fd: RawFd) -> Stdio",
+              "text": "Constructs a new instance of Self from the given raw file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl FromRawHandle for Stdio",
+          "methods": [
+            {
+              "code": "unsafe fn from_raw_handle(handle: RawHandle) -> Stdio",
+              "text": "Constructs a new I/O object from the specified raw handle."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

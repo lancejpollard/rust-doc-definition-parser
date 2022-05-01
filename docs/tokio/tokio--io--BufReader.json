@@ -1,0 +1,125 @@
+{
+  "title": "Struct tokio::io::BufReader",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(inner: R) -> Self",
+          "text": "Creates a new BufReader with a default buffer capacity. The default is currently 8 KB, but may change in the future."
+        },
+        {
+          "code": "pub fn with_capacity(capacity: usize, inner: R) -> Self",
+          "text": "Creates a new BufReader with the specified buffer capacity."
+        },
+        {
+          "code": "pub fn get_ref(&self) -> &R",
+          "text": "Gets a reference to the underlying reader."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut R",
+          "text": "Gets a mutable reference to the underlying reader."
+        },
+        {
+          "code": "pub fn get_pin_mut(self: Pin<&mut Self>) -> Pin<&mut R>ⓘNotable traits for Pin<P>impl<P> Future for Pin<P> where P: DerefMut, <P as Deref>::Target: Future, type Output = <<P as Deref>::Target as Future>::Output;",
+          "text": "Gets a pinned mutable reference to the underlying reader."
+        },
+        {
+          "code": "pub fn into_inner(self) -> R",
+          "text": "Consumes this BufReader, returning the underlying reader."
+        },
+        {
+          "code": "pub fn buffer(&self) -> &[u8]ⓘNotable traits for &'_ [u8]impl Read for &'_ [u8]impl Write for &'_ mut [u8]",
+          "text": "Returns a reference to the internally buffered data."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<R: AsyncRead> AsyncBufRead for BufReader<R>",
+          "methods": [
+            {
+              "code": "fn poll_fill_buf( self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<&[u8]>>",
+              "text": "Attempts to return the contents of the internal buffer, filling it with more data from the inner reader if it is empty."
+            },
+            {
+              "code": "fn consume(self: Pin<&mut Self>, amt: usize)",
+              "text": "Tells this buffer that amt bytes have been consumed from the buffer, so they should no longer be returned in calls to poll_read."
+            }
+          ]
+        },
+        {
+          "title": "impl<R: AsyncRead> AsyncRead for BufReader<R>",
+          "methods": [
+            {
+              "code": "fn poll_read( self: Pin<&mut Self>, cx: &mut Context<'_>, buf: &mut ReadBuf<'_>) -> Poll<Result<()>>",
+              "text": "Attempts to read from the AsyncRead into buf."
+            }
+          ]
+        },
+        {
+          "title": "impl<R: AsyncRead + AsyncSeek> AsyncSeek for BufReader<R>",
+          "methods": [
+            {
+              "code": "fn start_seek(self: Pin<&mut Self>, pos: SeekFrom) -> Result<()>",
+              "text": "Attempts to seek to an offset, in bytes, in a stream."
+            },
+            {
+              "code": "fn poll_complete( self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<u64>>",
+              "text": "Waits for a seek operation to complete."
+            }
+          ]
+        },
+        {
+          "title": "impl<R: AsyncRead + AsyncWrite> AsyncWrite for BufReader<R>",
+          "methods": [
+            {
+              "code": "fn poll_write( self: Pin<&mut Self>, cx: &mut Context<'_>, buf: &[u8]) -> Poll<Result<usize>>",
+              "text": "Attempt to write bytes from buf into the object."
+            },
+            {
+              "code": "fn poll_write_vectored( self: Pin<&mut Self>, cx: &mut Context<'_>, bufs: &[IoSlice<'_>]) -> Poll<Result<usize>>",
+              "text": "Like poll_write, except that it writes from a slice of buffers."
+            },
+            {
+              "code": "fn is_write_vectored(&self) -> bool",
+              "text": "Determines if this writer has an efficient poll_write_vectored implementation."
+            },
+            {
+              "code": "fn poll_flush(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<()>>",
+              "text": "Attempts to flush the object, ensuring that any buffered data reach their destination."
+            },
+            {
+              "code": "fn poll_shutdown(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<()>>",
+              "text": "Initiates or attempts to shut down this writer, returning success when the I/O connection has completely shut down."
+            }
+          ]
+        },
+        {
+          "title": "impl<R: Debug> Debug for BufReader<R>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<RW> From<BufReader<BufWriter<RW>>> for BufStream<RW>",
+          "methods": [
+            {
+              "code": "fn from(b: BufReader<BufWriter<RW>>) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

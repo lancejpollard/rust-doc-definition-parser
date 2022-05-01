@@ -1,0 +1,36 @@
+{
+  "title": "Struct tokio::fs::ReadDir",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub async fn next_entry(&mut self) -> Result<Option<DirEntry>>",
+          "text": "Returns the next entry in the directory stream."
+        },
+        {
+          "code": "pub fn poll_next_entry( &mut self, cx: &mut Context<'_>) -> Poll<Result<Option<DirEntry>>>",
+          "text": "Polls for the next directory entry in the stream."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for ReadDir",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

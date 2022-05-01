@@ -1,0 +1,167 @@
+{
+  "title": "Struct std::io::BufReader",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(inner: R) -> BufReader<R>ⓘNotable traits for BufReader<R>impl<R: Read> Read for BufReader<R>",
+          "text": "Creates a new BufReader<R> with a default buffer capacity. The default is currently 8 KB, but may change in the future."
+        },
+        {
+          "code": "pub fn with_capacity(capacity: usize, inner: R) -> BufReader<R>ⓘNotable traits for BufReader<R>impl<R: Read> Read for BufReader<R>",
+          "text": "Creates a new BufReader<R> with the specified buffer capacity."
+        },
+        {
+          "code": "pub fn get_ref(&self) -> &R",
+          "text": "Gets a reference to the underlying reader."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut R",
+          "text": "Gets a mutable reference to the underlying reader."
+        },
+        {
+          "code": "pub fn buffer(&self) -> &[u8]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+          "text": "Returns a reference to the internally buffered data."
+        },
+        {
+          "code": "pub fn capacity(&self) -> usize",
+          "text": "Returns the number of bytes the internal buffer can hold at once."
+        },
+        {
+          "code": "pub fn into_inner(self) -> R",
+          "text": "Unwraps this BufReader<R>, returning the underlying reader."
+        },
+        {
+          "code": "pub fn seek_relative(&mut self, offset: i64) -> Result<()>",
+          "text": "Seeks relative to the current position. If the new position lies within the buffer, the buffer will not be flushed, allowing for more efficient seeks. This method does not return the location of the underlying reader, so the caller must track this information themselves if it is required."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<R: Read> BufRead for BufReader<R>",
+          "methods": [
+            {
+              "code": "fn fill_buf(&mut self) -> Result<&[u8]>",
+              "text": "Returns the contents of the internal buffer, filling it with more data from the inner reader if it is empty."
+            },
+            {
+              "code": "fn consume(&mut self, amt: usize)",
+              "text": "Tells this buffer that amt bytes have been consumed from the buffer, so they should no longer be returned in calls to read."
+            },
+            {
+              "code": "fn has_data_left(&mut self) -> Result<bool>",
+              "text": "Check if the underlying Read has any data left to be read."
+            },
+            {
+              "code": "fn read_until(&mut self, byte: u8, buf: &mut Vec<u8>) -> Result<usize>",
+              "text": "Read all bytes into buf until the delimiter byte or EOF is reached."
+            },
+            {
+              "code": "fn read_line(&mut self, buf: &mut String) -> Result<usize>",
+              "text": "Read all bytes until a newline (the 0xA byte) is reached, and append them to the provided buffer."
+            },
+            {
+              "code": "fn split(self, byte: u8) -> Split<Self>ⓘNotable traits for Split<B>impl<B: BufRead> Iterator for Split<B> type Item = Result<Vec<u8>>; where Self: Sized,",
+              "text": "Returns an iterator over the contents of this reader split on the byte byte."
+            },
+            {
+              "code": "fn lines(self) -> Lines<Self>ⓘNotable traits for Lines<B>impl<B: BufRead> Iterator for Lines<B> type Item = Result<String>; where Self: Sized,",
+              "text": "Returns an iterator over the lines of this reader."
+            }
+          ]
+        },
+        {
+          "title": "impl<R> Debug for BufReader<R> where R: Debug,",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<R: Read> Read for BufReader<R>",
+          "methods": [
+            {
+              "code": "fn read(&mut self, buf: &mut [u8]) -> Result<usize>",
+              "text": "Pull some bytes from this source into the specified buffer, returning how many bytes were read."
+            },
+            {
+              "code": "fn read_buf(&mut self, buf: &mut ReadBuf<'_>) -> Result<()>",
+              "text": "Pull some bytes from this source into the specified buffer."
+            },
+            {
+              "code": "fn read_exact(&mut self, buf: &mut [u8]) -> Result<()>",
+              "text": "Read the exact number of bytes required to fill buf."
+            },
+            {
+              "code": "fn read_vectored(&mut self, bufs: &mut [IoSliceMut<'_>]) -> Result<usize>",
+              "text": "Like read, except that it reads into a slice of buffers."
+            },
+            {
+              "code": "fn is_read_vectored(&self) -> bool",
+              "text": "Determines if this Reader has an efficient read_vectored implementation."
+            },
+            {
+              "code": "fn read_to_end(&mut self, buf: &mut Vec<u8>) -> Result<usize>",
+              "text": "Read all bytes until EOF in this source, placing them into buf."
+            },
+            {
+              "code": "fn read_to_string(&mut self, buf: &mut String) -> Result<usize>",
+              "text": "Read all bytes until EOF in this source, appending them to buf."
+            },
+            {
+              "code": "fn read_buf_exact(&mut self, buf: &mut ReadBuf<'_>) -> Result<()>",
+              "text": "Read the exact number of bytes required to fill buf."
+            },
+            {
+              "code": "fn by_ref(&mut self) -> &mut Self where Self: Sized,",
+              "text": "Creates a “by reference” adaptor for this instance of Read."
+            },
+            {
+              "code": "fn bytes(self) -> Bytes<Self>ⓘNotable traits for Bytes<R>impl<R: Read> Iterator for Bytes<R> type Item = Result<u8>; where Self: Sized,",
+              "text": "Transforms this Read instance to an Iterator over its bytes."
+            },
+            {
+              "code": "fn chain<R: Read>(self, next: R) -> Chain<Self, R>ⓘNotable traits for Chain<T, U>impl<T: Read, U: Read> Read for Chain<T, U> where Self: Sized,",
+              "text": "Creates an adapter which will chain this stream with another."
+            },
+            {
+              "code": "fn take(self, limit: u64) -> Take<Self>ⓘNotable traits for Take<T>impl<T: Read> Read for Take<T> where Self: Sized,",
+              "text": "Creates an adapter which will read at most limit bytes from it."
+            }
+          ]
+        },
+        {
+          "title": "impl<R: Seek> Seek for BufReader<R>",
+          "methods": [
+            {
+              "code": "fn seek(&mut self, pos: SeekFrom) -> Result<u64>",
+              "text": "Seek to an offset, in bytes, in the underlying reader."
+            },
+            {
+              "code": "fn stream_position(&mut self) -> Result<u64>",
+              "text": "Returns the current seek position from the start of the stream."
+            },
+            {
+              "code": "fn rewind(&mut self) -> Result<()>",
+              "text": "Rewind to the beginning of a stream."
+            },
+            {
+              "code": "fn stream_len(&mut self) -> Result<u64>",
+              "text": "Returns the length of this stream (in bytes)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

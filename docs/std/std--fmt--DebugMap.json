@@ -1,0 +1,38 @@
+{
+  "title": "Struct std::fmt::DebugMap",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn entry( &mut self, key: &dyn Debug, value: &dyn Debug) -> &mut DebugMap<'a, 'b>",
+          "text": "Adds a new entry to the map output."
+        },
+        {
+          "code": "pub fn key(&mut self, key: &dyn Debug) -> &mut DebugMap<'a, 'b>",
+          "text": "Adds the key part of a new entry to the map output."
+        },
+        {
+          "code": "pub fn value(&mut self, value: &dyn Debug) -> &mut DebugMap<'a, 'b>",
+          "text": "Adds the value part of a new entry to the map output."
+        },
+        {
+          "code": "pub fn entries<K, V, I>(&mut self, entries: I) -> &mut DebugMap<'a, 'b> where K: Debug, V: Debug, I: IntoIterator<Item = (K, V)>,",
+          "text": "Adds the contents of an iterator of entries to the map output."
+        },
+        {
+          "code": "pub fn finish(&mut self) -> Result<(), Error>",
+          "text": "Finishes output and returns any error encountered."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

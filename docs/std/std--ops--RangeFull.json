@@ -1,0 +1,215 @@
+{
+  "title": "Struct std::ops::RangeFull",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for RangeFull",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> RangeFull",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for RangeFull",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, fmt: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for RangeFull",
+          "methods": [
+            {
+              "code": "pub fn default() -> RangeFull",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for RangeFull",
+          "methods": [
+            {
+              "code": "pub fn hash<__H>(&self, state: &mut __H) where __H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl Index<RangeFull> for String",
+          "methods": [
+            {
+              "code": "type Output = str",
+              "text": "The returned type after indexing."
+            },
+            {
+              "code": "pub fn index(&self, _index: RangeFull) -> &str",
+              "text": "Performs the indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Index<RangeFull> for CString",
+          "methods": [
+            {
+              "code": "type Output = CStr",
+              "text": "The returned type after indexing."
+            },
+            {
+              "code": "fn index(&self, _index: RangeFull) -> &CStr",
+              "text": "Performs the indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Index<RangeFull> for OsString",
+          "methods": [
+            {
+              "code": "type Output = OsStr",
+              "text": "The returned type after indexing."
+            },
+            {
+              "code": "fn index(&self, _index: RangeFull) -> &OsStr",
+              "text": "Performs the indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl IndexMut<RangeFull> for String",
+          "methods": [
+            {
+              "code": "pub fn index_mut(&mut self, _index: RangeFull) -> &mut str",
+              "text": "Performs the mutable indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl IndexMut<RangeFull> for OsString",
+          "methods": [
+            {
+              "code": "fn index_mut(&mut self, _index: RangeFull) -> &mut OsStr",
+              "text": "Performs the mutable indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<RangeFull> for RangeFull",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &RangeFull) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> RangeBounds<T> for RangeFull where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn start_bound(&self) -> Bound<&T>",
+              "text": "Start index bound."
+            },
+            {
+              "code": "pub fn end_bound(&self) -> Bound<&T>",
+              "text": "End index bound."
+            },
+            {
+              "code": "fn contains<U>(&self, item: &U) -> bool where T: PartialOrd<U>, U: PartialOrd<T> + ?Sized,",
+              "text": "Returns true if item is contained in the range."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> SliceIndex<[T]> for RangeFull",
+          "methods": [
+            {
+              "code": "type Output = [T]",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get(self, slice: &[T]) -> Option<&[T]>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut(self, slice: &mut [T]) -> Option<&mut [T]>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked(self, slice: *const [T]) -> *const [T]",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut(self, slice: *mut [T]) -> *mut [T]",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index(self, slice: &[T]) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut(self, slice: &mut [T]) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        },
+        {
+          "title": "impl SliceIndex<str> for RangeFull",
+          "methods": [
+            {
+              "code": "type Output = str",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get(self, slice: &str) -> Option<&<RangeFull as SliceIndex<str>>::Output>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut( self, slice: &mut str) -> Option<&mut <RangeFull as SliceIndex<str>>::Output>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked( self, slice: *const str) -> *const <RangeFull as SliceIndex<str>>::Output",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut( self, slice: *mut str) -> *mut <RangeFull as SliceIndex<str>>::Output",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index(self, slice: &str) -> &<RangeFull as SliceIndex<str>>::Output",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut( self, slice: &mut str) -> &mut <RangeFull as SliceIndex<str>>::Output",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

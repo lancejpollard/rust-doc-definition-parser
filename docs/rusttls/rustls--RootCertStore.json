@@ -1,0 +1,69 @@
+{
+  "title": "Struct rustls::RootCertStore",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn empty() -> Self",
+          "text": "Make a new, empty RootCertStore."
+        },
+        {
+          "code": "pub fn is_empty(&self) -> bool",
+          "text": "Return true if there are no certificates."
+        },
+        {
+          "code": "pub fn len(&self) -> usize",
+          "text": "Say how many certificates are in the container."
+        },
+        {
+          "code": "pub fn subjects(&self) -> DistinguishedNames",
+          "text": "Return the Subject Names for certificates in the container."
+        },
+        {
+          "code": "pub fn add(&mut self, der: &Certificate) -> Result<(), Error>",
+          "text": "Add a single DER-encoded certificate to the store."
+        },
+        {
+          "code": "pub fn add_server_trust_anchors( &mut self, trust_anchors: impl Iterator<Item = OwnedTrustAnchor>)",
+          "text": "Adds all the given TrustAnchors anchors. This does not fail."
+        },
+        {
+          "code": "pub fn add_parsable_certificates( &mut self, der_certs: &[Vec<u8>]) -> (usize, usize)",
+          "text": "Parse the given DER-encoded certificates and add all that can be parsed in a best-effort fashion."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for RootCertStore",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> RootCertStore",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for RootCertStore",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "title": "Struct tokio::net::TcpSocket",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new_v4() -> Result<TcpSocket>",
+          "text": "Creates a new socket configured for IPv4."
+        },
+        {
+          "code": "pub fn new_v6() -> Result<TcpSocket>",
+          "text": "Creates a new socket configured for IPv6."
+        },
+        {
+          "code": "pub fn set_reuseaddr(&self, reuseaddr: bool) -> Result<()>",
+          "text": "Allows the socket to bind to an in-use address."
+        },
+        {
+          "code": "pub fn reuseaddr(&self) -> Result<bool>",
+          "text": "Retrieves the value set for SO_REUSEADDR on this socket."
+        },
+        {
+          "code": "pub fn set_send_buffer_size(&self, size: u32) -> Result<()>",
+          "text": "Sets the size of the TCP send buffer on this socket."
+        },
+        {
+          "code": "pub fn send_buffer_size(&self) -> Result<u32>",
+          "text": "Returns the size of the TCP send buffer for this socket."
+        },
+        {
+          "code": "pub fn set_recv_buffer_size(&self, size: u32) -> Result<()>",
+          "text": "Sets the size of the TCP receive buffer on this socket."
+        },
+        {
+          "code": "pub fn recv_buffer_size(&self) -> Result<u32>",
+          "text": "Returns the size of the TCP receive buffer for this socket."
+        },
+        {
+          "code": "pub fn set_linger(&self, dur: Option<Duration>) -> Result<()>",
+          "text": "Sets the linger duration of this socket by setting the SO_LINGER option."
+        },
+        {
+          "code": "pub fn linger(&self) -> Result<Option<Duration>>",
+          "text": "Reads the linger duration for this socket by getting the SO_LINGER option."
+        },
+        {
+          "code": "pub fn local_addr(&self) -> Result<SocketAddr>",
+          "text": "Gets the local address of this socket."
+        },
+        {
+          "code": "pub fn bind(&self, addr: SocketAddr) -> Result<()>",
+          "text": "Binds the socket to the given address."
+        },
+        {
+          "code": "pub async fn connect(self, addr: SocketAddr) -> Result<TcpStream>",
+          "text": "Establishes a TCP connection with a peer at the specified socket address."
+        },
+        {
+          "code": "pub fn listen(self, backlog: u32) -> Result<TcpListener>",
+          "text": "Converts the socket into a TcpListener."
+        },
+        {
+          "code": "pub fn from_std_stream(std_stream: TcpStream) -> TcpSocket",
+          "text": "Converts a std::net::TcpStream into a TcpSocket. The provided socket must not have been connected prior to calling this function. This function is typically used together with crates such as socket2 to configure socket options that are not available on TcpSocket."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRawFd for TcpSocket",
+          "methods": [
+            {
+              "code": "fn as_raw_fd(&self) -> RawFd",
+              "text": "Extracts the raw file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for TcpSocket",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl FromRawFd for TcpSocket",
+          "methods": [
+            {
+              "code": "unsafe fn from_raw_fd(fd: RawFd) -> TcpSocket",
+              "text": "Converts a RawFd to a TcpSocket."
+            }
+          ]
+        },
+        {
+          "title": "impl IntoRawFd for TcpSocket",
+          "methods": [
+            {
+              "code": "fn into_raw_fd(self) -> RawFd",
+              "text": "Consumes this object, returning the raw underlying file descriptor."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

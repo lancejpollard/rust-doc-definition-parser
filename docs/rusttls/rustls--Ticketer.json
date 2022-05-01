@@ -1,0 +1,22 @@
+{
+  "title": "Struct rustls::Ticketer",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> Result<Arc<dyn ProducesTickets>, Error>",
+          "text": "Make the recommended Ticketer. This produces tickets with a 12 hour life and randomly generated keys."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

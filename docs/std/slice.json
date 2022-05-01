@@ -1,0 +1,1659 @@
+{
+  "title": "Primitive Type slice",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn len(&self) -> usize",
+          "text": "Returns the number of elements in the slice."
+        },
+        {
+          "code": "pub const fn is_empty(&self) -> bool",
+          "text": "Returns true if the slice has a length of 0."
+        },
+        {
+          "code": "pub const fn first(&self) -> Option<&T>",
+          "text": "Returns the first element of the slice, or None if it is empty."
+        },
+        {
+          "code": "pub fn first_mut(&mut self) -> Option<&mut T>",
+          "text": "Returns a mutable pointer to the first element of the slice, or None if it is empty."
+        },
+        {
+          "code": "pub const fn split_first(&self) -> Option<(&T, &[T])>",
+          "text": "Returns the first and all the rest of the elements of the slice, or None if it is empty."
+        },
+        {
+          "code": "pub fn split_first_mut(&mut self) -> Option<(&mut T, &mut [T])>",
+          "text": "Returns the first and all the rest of the elements of the slice, or None if it is empty."
+        },
+        {
+          "code": "pub const fn split_last(&self) -> Option<(&T, &[T])>",
+          "text": "Returns the last and all the rest of the elements of the slice, or None if it is empty."
+        },
+        {
+          "code": "pub fn split_last_mut(&mut self) -> Option<(&mut T, &mut [T])>",
+          "text": "Returns the last and all the rest of the elements of the slice, or None if it is empty."
+        },
+        {
+          "code": "pub const fn last(&self) -> Option<&T>",
+          "text": "Returns the last element of the slice, or None if it is empty."
+        },
+        {
+          "code": "pub fn last_mut(&mut self) -> Option<&mut T>",
+          "text": "Returns a mutable pointer to the last item in the slice."
+        },
+        {
+          "code": "pub fn get<I>(&self, index: I) -> Option<&<I as SliceIndex<[T]>>::Output> where I: SliceIndex<[T]>,",
+          "text": "Returns a reference to an element or subslice depending on the type of index."
+        },
+        {
+          "code": "pub fn get_mut<I>( &mut self, index: I) -> Option<&mut <I as SliceIndex<[T]>>::Output> where I: SliceIndex<[T]>,",
+          "text": "Returns a mutable reference to an element or subslice depending on the type of index (see get) or None if the index is out of bounds."
+        },
+        {
+          "code": "pub unsafe fn get_unchecked<I>( &self, index: I) -> &<I as SliceIndex<[T]>>::Output where I: SliceIndex<[T]>,",
+          "text": "Returns a reference to an element or subslice, without doing bounds checking."
+        },
+        {
+          "code": "pub unsafe fn get_unchecked_mut<I>( &mut self, index: I) -> &mut <I as SliceIndex<[T]>>::Output where I: SliceIndex<[T]>,",
+          "text": "Returns a mutable reference to an element or subslice, without doing bounds checking."
+        },
+        {
+          "code": "pub const fn as_ptr(&self) -> *const T",
+          "text": "Returns a raw pointer to the slice’s buffer."
+        },
+        {
+          "code": "pub fn as_mut_ptr(&mut self) -> *mut T",
+          "text": "Returns an unsafe mutable pointer to the slice’s buffer."
+        },
+        {
+          "code": "pub fn as_ptr_range(&self) -> Range<*const T>ⓘNotable traits for Range<A>impl<A> Iterator for Range<A> where A: Step, type Item = A;",
+          "text": "Returns the two raw pointers spanning the slice."
+        },
+        {
+          "code": "pub fn as_mut_ptr_range(&mut self) -> Range<*mut T>ⓘNotable traits for Range<A>impl<A> Iterator for Range<A> where A: Step, type Item = A;",
+          "text": "Returns the two unsafe mutable pointers spanning the slice."
+        },
+        {
+          "code": "pub fn swap(&mut self, a: usize, b: usize)",
+          "text": "Swaps two elements in the slice."
+        },
+        {
+          "code": "pub unsafe fn swap_unchecked(&mut self, a: usize, b: usize)",
+          "text": "Swaps two elements in the slice, without doing bounds checking."
+        },
+        {
+          "code": "pub fn reverse(&mut self)",
+          "text": "Reverses the order of elements in the slice, in place."
+        },
+        {
+          "code": "pub fn iter(&self) -> Iter<'_, T>ⓘNotable traits for Iter<'a, T>impl<'a, T> Iterator for Iter<'a, T> type Item = &'a T;",
+          "text": "Returns an iterator over the slice."
+        },
+        {
+          "code": "pub fn iter_mut(&mut self) -> IterMut<'_, T>ⓘNotable traits for IterMut<'a, T>impl<'a, T> Iterator for IterMut<'a, T> type Item = &'a mut T;",
+          "text": "Returns an iterator that allows modifying each value."
+        },
+        {
+          "code": "pub fn windows(&self, size: usize) -> Windows<'_, T>ⓘNotable traits for Windows<'a, T>impl<'a, T> Iterator for Windows<'a, T> type Item = &'a [T];",
+          "text": "Returns an iterator over all contiguous windows of length size. The windows overlap. If the slice is shorter than size, the iterator returns no values."
+        },
+        {
+          "code": "pub fn chunks(&self, chunk_size: usize) -> Chunks<'_, T>ⓘNotable traits for Chunks<'a, T>impl<'a, T> Iterator for Chunks<'a, T> type Item = &'a [T];",
+          "text": "Returns an iterator over chunk_size elements of the slice at a time, starting at the beginning of the slice."
+        },
+        {
+          "code": "pub fn chunks_mut(&mut self, chunk_size: usize) -> ChunksMut<'_, T>ⓘNotable traits for ChunksMut<'a, T>impl<'a, T> Iterator for ChunksMut<'a, T> type Item = &'a mut [T];",
+          "text": "Returns an iterator over chunk_size elements of the slice at a time, starting at the beginning of the slice."
+        },
+        {
+          "code": "pub fn chunks_exact(&self, chunk_size: usize) -> ChunksExact<'_, T>ⓘNotable traits for ChunksExact<'a, T>impl<'a, T> Iterator for ChunksExact<'a, T> type Item = &'a [T];",
+          "text": "Returns an iterator over chunk_size elements of the slice at a time, starting at the beginning of the slice."
+        },
+        {
+          "code": "pub fn chunks_exact_mut(&mut self, chunk_size: usize) -> ChunksExactMut<'_, T>ⓘNotable traits for ChunksExactMut<'a, T>impl<'a, T> Iterator for ChunksExactMut<'a, T> type Item = &'a mut [T];",
+          "text": "Returns an iterator over chunk_size elements of the slice at a time, starting at the beginning of the slice."
+        },
+        {
+          "code": "pub unsafe fn as_chunks_unchecked<const N: usize>(&self) -> &[[T; N]]",
+          "text": "Splits the slice into a slice of N-element arrays, assuming that there’s no remainder."
+        },
+        {
+          "code": "pub fn as_chunks<const N: usize>(&self) -> (&[[T; N]], &[T])",
+          "text": "Splits the slice into a slice of N-element arrays, starting at the beginning of the slice, and a remainder slice with length strictly less than N."
+        },
+        {
+          "code": "pub fn as_rchunks<const N: usize>(&self) -> (&[T], &[[T; N]])",
+          "text": "Splits the slice into a slice of N-element arrays, starting at the end of the slice, and a remainder slice with length strictly less than N."
+        },
+        {
+          "code": "pub fn array_chunks<const N: usize>(&self) -> ArrayChunks<'_, T, N>ⓘNotable traits for ArrayChunks<'a, T, N>impl<'a, T, const N: usize> Iterator for ArrayChunks<'a, T, N> type Item = &'a [T; N];",
+          "text": "Returns an iterator over N elements of the slice at a time, starting at the beginning of the slice."
+        },
+        {
+          "code": "pub unsafe fn as_chunks_unchecked_mut<const N: usize>( &mut self) -> &mut [[T; N]]",
+          "text": "Splits the slice into a slice of N-element arrays, assuming that there’s no remainder."
+        },
+        {
+          "code": "pub fn as_chunks_mut<const N: usize>(&mut self) -> (&mut [[T; N]], &mut [T])",
+          "text": "Splits the slice into a slice of N-element arrays, starting at the beginning of the slice, and a remainder slice with length strictly less than N."
+        },
+        {
+          "code": "pub fn as_rchunks_mut<const N: usize>(&mut self) -> (&mut [T], &mut [[T; N]])",
+          "text": "Splits the slice into a slice of N-element arrays, starting at the end of the slice, and a remainder slice with length strictly less than N."
+        },
+        {
+          "code": "pub fn array_chunks_mut<const N: usize>(&mut self) -> ArrayChunksMut<'_, T, N>ⓘNotable traits for ArrayChunksMut<'a, T, N>impl<'a, T, const N: usize> Iterator for ArrayChunksMut<'a, T, N> type Item = &'a mut [T; N];",
+          "text": "Returns an iterator over N elements of the slice at a time, starting at the beginning of the slice."
+        },
+        {
+          "code": "pub fn array_windows<const N: usize>(&self) -> ArrayWindows<'_, T, N>ⓘNotable traits for ArrayWindows<'a, T, N>impl<'a, T, const N: usize> Iterator for ArrayWindows<'a, T, N> type Item = &'a [T; N];",
+          "text": "Returns an iterator over overlapping windows of N elements of a slice, starting at the beginning of the slice."
+        },
+        {
+          "code": "pub fn rchunks(&self, chunk_size: usize) -> RChunks<'_, T>ⓘNotable traits for RChunks<'a, T>impl<'a, T> Iterator for RChunks<'a, T> type Item = &'a [T];",
+          "text": "Returns an iterator over chunk_size elements of the slice at a time, starting at the end of the slice."
+        },
+        {
+          "code": "pub fn rchunks_mut(&mut self, chunk_size: usize) -> RChunksMut<'_, T>ⓘNotable traits for RChunksMut<'a, T>impl<'a, T> Iterator for RChunksMut<'a, T> type Item = &'a mut [T];",
+          "text": "Returns an iterator over chunk_size elements of the slice at a time, starting at the end of the slice."
+        },
+        {
+          "code": "pub fn rchunks_exact(&self, chunk_size: usize) -> RChunksExact<'_, T>ⓘNotable traits for RChunksExact<'a, T>impl<'a, T> Iterator for RChunksExact<'a, T> type Item = &'a [T];",
+          "text": "Returns an iterator over chunk_size elements of the slice at a time, starting at the end of the slice."
+        },
+        {
+          "code": "pub fn rchunks_exact_mut(&mut self, chunk_size: usize) -> RChunksExactMut<'_, T>ⓘNotable traits for RChunksExactMut<'a, T>impl<'a, T> Iterator for RChunksExactMut<'a, T> type Item = &'a mut [T];",
+          "text": "Returns an iterator over chunk_size elements of the slice at a time, starting at the end of the slice."
+        },
+        {
+          "code": "pub fn group_by<F>(&self, pred: F) -> GroupBy<'_, T, F>ⓘNotable traits for GroupBy<'a, T, P>impl<'a, T, P> Iterator for GroupBy<'a, T, P> where T: 'a, P: FnMut(&T, &T) -> bool, type Item = &'a [T]; where F: FnMut(&T, &T) -> bool,",
+          "text": "Returns an iterator over the slice producing non-overlapping runs of elements using the predicate to separate them."
+        },
+        {
+          "code": "pub fn group_by_mut<F>(&mut self, pred: F) -> GroupByMut<'_, T, F>ⓘNotable traits for GroupByMut<'a, T, P>impl<'a, T, P> Iterator for GroupByMut<'a, T, P> where T: 'a, P: FnMut(&T, &T) -> bool, type Item = &'a mut [T]; where F: FnMut(&T, &T) -> bool,",
+          "text": "Returns an iterator over the slice producing non-overlapping mutable runs of elements using the predicate to separate them."
+        },
+        {
+          "code": "pub fn split_at(&self, mid: usize) -> (&[T], &[T])",
+          "text": "Divides one slice into two at an index."
+        },
+        {
+          "code": "pub fn split_at_mut(&mut self, mid: usize) -> (&mut [T], &mut [T])",
+          "text": "Divides one mutable slice into two at an index."
+        },
+        {
+          "code": "pub unsafe fn split_at_unchecked(&self, mid: usize) -> (&[T], &[T])",
+          "text": "Divides one slice into two at an index, without doing bounds checking."
+        },
+        {
+          "code": "pub unsafe fn split_at_mut_unchecked( &mut self, mid: usize) -> (&mut [T], &mut [T])",
+          "text": "Divides one mutable slice into two at an index, without doing bounds checking."
+        },
+        {
+          "code": "pub fn split_array_ref<const N: usize>(&self) -> (&[T; N], &[T])",
+          "text": "Divides one slice into an array and a remainder slice at an index."
+        },
+        {
+          "code": "pub fn split_array_mut<const N: usize>(&mut self) -> (&mut [T; N], &mut [T])",
+          "text": "Divides one mutable slice into an array and a remainder slice at an index."
+        },
+        {
+          "code": "pub fn rsplit_array_ref<const N: usize>(&self) -> (&[T], &[T; N])",
+          "text": "Divides one slice into an array and a remainder slice at an index from the end."
+        },
+        {
+          "code": "pub fn rsplit_array_mut<const N: usize>(&mut self) -> (&mut [T], &mut [T; N])",
+          "text": "Divides one mutable slice into an array and a remainder slice at an index from the end."
+        },
+        {
+          "code": "pub fn split<F>(&self, pred: F) -> Split<'_, T, F>ⓘNotable traits for Split<'a, T, P>impl<'a, T, P> Iterator for Split<'a, T, P> where P: FnMut(&T) -> bool, type Item = &'a [T]; where F: FnMut(&T) -> bool,",
+          "text": "Returns an iterator over subslices separated by elements that match pred. The matched element is not contained in the subslices."
+        },
+        {
+          "code": "pub fn split_mut<F>(&mut self, pred: F) -> SplitMut<'_, T, F>ⓘNotable traits for SplitMut<'a, T, P>impl<'a, T, P> Iterator for SplitMut<'a, T, P> where P: FnMut(&T) -> bool, type Item = &'a mut [T]; where F: FnMut(&T) -> bool,",
+          "text": "Returns an iterator over mutable subslices separated by elements that match pred. The matched element is not contained in the subslices."
+        },
+        {
+          "code": "pub fn split_inclusive<F>(&self, pred: F) -> SplitInclusive<'_, T, F>ⓘNotable traits for SplitInclusive<'a, T, P>impl<'a, T, P> Iterator for SplitInclusive<'a, T, P> where P: FnMut(&T) -> bool, type Item = &'a [T]; where F: FnMut(&T) -> bool,",
+          "text": "Returns an iterator over subslices separated by elements that match pred. The matched element is contained in the end of the previous subslice as a terminator."
+        },
+        {
+          "code": "pub fn split_inclusive_mut<F>(&mut self, pred: F) -> SplitInclusiveMut<'_, T, F>ⓘNotable traits for SplitInclusiveMut<'a, T, P>impl<'a, T, P> Iterator for SplitInclusiveMut<'a, T, P> where P: FnMut(&T) -> bool, type Item = &'a mut [T]; where F: FnMut(&T) -> bool,",
+          "text": "Returns an iterator over mutable subslices separated by elements that match pred. The matched element is contained in the previous subslice as a terminator."
+        },
+        {
+          "code": "pub fn rsplit<F>(&self, pred: F) -> RSplit<'_, T, F>ⓘNotable traits for RSplit<'a, T, P>impl<'a, T, P> Iterator for RSplit<'a, T, P> where P: FnMut(&T) -> bool, type Item = &'a [T]; where F: FnMut(&T) -> bool,",
+          "text": "Returns an iterator over subslices separated by elements that match pred, starting at the end of the slice and working backwards. The matched element is not contained in the subslices."
+        },
+        {
+          "code": "pub fn rsplit_mut<F>(&mut self, pred: F) -> RSplitMut<'_, T, F>ⓘNotable traits for RSplitMut<'a, T, P>impl<'a, T, P> Iterator for RSplitMut<'a, T, P> where P: FnMut(&T) -> bool, type Item = &'a mut [T]; where F: FnMut(&T) -> bool,",
+          "text": "Returns an iterator over mutable subslices separated by elements that match pred, starting at the end of the slice and working backwards. The matched element is not contained in the subslices."
+        },
+        {
+          "code": "pub fn splitn<F>(&self, n: usize, pred: F) -> SplitN<'_, T, F>ⓘNotable traits for SplitN<'a, T, P>impl<'a, T, P> Iterator for SplitN<'a, T, P> where P: FnMut(&T) -> bool, type Item = &'a [T]; where F: FnMut(&T) -> bool,",
+          "text": "Returns an iterator over subslices separated by elements that match pred, limited to returning at most n items. The matched element is not contained in the subslices."
+        },
+        {
+          "code": "pub fn splitn_mut<F>(&mut self, n: usize, pred: F) -> SplitNMut<'_, T, F>ⓘNotable traits for SplitNMut<'a, T, P>impl<'a, T, P> Iterator for SplitNMut<'a, T, P> where P: FnMut(&T) -> bool, type Item = &'a mut [T]; where F: FnMut(&T) -> bool,",
+          "text": "Returns an iterator over subslices separated by elements that match pred, limited to returning at most n items. The matched element is not contained in the subslices."
+        },
+        {
+          "code": "pub fn rsplitn<F>(&self, n: usize, pred: F) -> RSplitN<'_, T, F>ⓘNotable traits for RSplitN<'a, T, P>impl<'a, T, P> Iterator for RSplitN<'a, T, P> where P: FnMut(&T) -> bool, type Item = &'a [T]; where F: FnMut(&T) -> bool,",
+          "text": "Returns an iterator over subslices separated by elements that match pred limited to returning at most n items. This starts at the end of the slice and works backwards. The matched element is not contained in the subslices."
+        },
+        {
+          "code": "pub fn rsplitn_mut<F>(&mut self, n: usize, pred: F) -> RSplitNMut<'_, T, F>ⓘNotable traits for RSplitNMut<'a, T, P>impl<'a, T, P> Iterator for RSplitNMut<'a, T, P> where P: FnMut(&T) -> bool, type Item = &'a mut [T]; where F: FnMut(&T) -> bool,",
+          "text": "Returns an iterator over subslices separated by elements that match pred limited to returning at most n items. This starts at the end of the slice and works backwards. The matched element is not contained in the subslices."
+        },
+        {
+          "code": "pub fn contains(&self, x: &T) -> bool where T: PartialEq<T>,",
+          "text": "Returns true if the slice contains an element with the given value."
+        },
+        {
+          "code": "pub fn starts_with(&self, needle: &[T]) -> bool where T: PartialEq<T>,",
+          "text": "Returns true if needle is a prefix of the slice."
+        },
+        {
+          "code": "pub fn ends_with(&self, needle: &[T]) -> bool where T: PartialEq<T>,",
+          "text": "Returns true if needle is a suffix of the slice."
+        },
+        {
+          "code": "pub fn strip_prefix<P>(&self, prefix: &P) -> Option<&[T]> where P: SlicePattern<Item = T> + ?Sized, T: PartialEq<T>,",
+          "text": "Returns a subslice with the prefix removed."
+        },
+        {
+          "code": "pub fn strip_suffix<P>(&self, suffix: &P) -> Option<&[T]> where P: SlicePattern<Item = T> + ?Sized, T: PartialEq<T>,",
+          "text": "Returns a subslice with the suffix removed."
+        },
+        {
+          "code": "pub fn binary_search(&self, x: &T) -> Result<usize, usize> where T: Ord,",
+          "text": "Binary searches this sorted slice for a given element."
+        },
+        {
+          "code": "pub fn binary_search_by<'a, F>(&'a self, f: F) -> Result<usize, usize> where F: FnMut(&'a T) -> Ordering,",
+          "text": "Binary searches this sorted slice with a comparator function."
+        },
+        {
+          "code": "pub fn binary_search_by_key<'a, B, F>( &'a self, b: &B, f: F) -> Result<usize, usize> where F: FnMut(&'a T) -> B, B: Ord,",
+          "text": "Binary searches this sorted slice with a key extraction function."
+        },
+        {
+          "code": "pub fn sort_unstable(&mut self) where T: Ord,",
+          "text": "Sorts the slice, but might not preserve the order of equal elements."
+        },
+        {
+          "code": "pub fn sort_unstable_by<F>(&mut self, compare: F) where F: FnMut(&T, &T) -> Ordering,",
+          "text": "Sorts the slice with a comparator function, but might not preserve the order of equal elements."
+        },
+        {
+          "code": "pub fn sort_unstable_by_key<K, F>(&mut self, f: F) where F: FnMut(&T) -> K, K: Ord,",
+          "text": "Sorts the slice with a key extraction function, but might not preserve the order of equal elements."
+        },
+        {
+          "code": "pub fn select_nth_unstable( &mut self, index: usize) -> (&mut [T], &mut T, &mut [T]) where T: Ord,",
+          "text": "Reorder the slice such that the element at index is at its final sorted position."
+        },
+        {
+          "code": "pub fn select_nth_unstable_by<F>( &mut self, index: usize, compare: F) -> (&mut [T], &mut T, &mut [T]) where F: FnMut(&T, &T) -> Ordering,",
+          "text": "Reorder the slice with a comparator function such that the element at index is at its final sorted position."
+        },
+        {
+          "code": "pub fn select_nth_unstable_by_key<K, F>( &mut self, index: usize, f: F) -> (&mut [T], &mut T, &mut [T]) where F: FnMut(&T) -> K, K: Ord,",
+          "text": "Reorder the slice with a key extraction function such that the element at index is at its final sorted position."
+        },
+        {
+          "code": "pub fn partition_dedup(&mut self) -> (&mut [T], &mut [T]) where T: PartialEq<T>,",
+          "text": "Moves all consecutive repeated elements to the end of the slice according to the PartialEq trait implementation."
+        },
+        {
+          "code": "pub fn partition_dedup_by<F>(&mut self, same_bucket: F) -> (&mut [T], &mut [T]) where F: FnMut(&mut T, &mut T) -> bool,",
+          "text": "Moves all but the first of consecutive elements to the end of the slice satisfying a given equality relation."
+        },
+        {
+          "code": "pub fn partition_dedup_by_key<K, F>(&mut self, key: F) -> (&mut [T], &mut [T]) where F: FnMut(&mut T) -> K, K: PartialEq<K>,",
+          "text": "Moves all but the first of consecutive elements to the end of the slice that resolve to the same key."
+        },
+        {
+          "code": "pub fn rotate_left(&mut self, mid: usize)",
+          "text": "Rotates the slice in-place such that the first mid elements of the slice move to the end while the last self.len() - mid elements move to the front. After calling rotate_left, the element previously at index mid will become the first element in the slice."
+        },
+        {
+          "code": "pub fn rotate_right(&mut self, k: usize)",
+          "text": "Rotates the slice in-place such that the first self.len() - k elements of the slice move to the end while the last k elements move to the front. After calling rotate_right, the element previously at index self.len() - k will become the first element in the slice."
+        },
+        {
+          "code": "pub fn fill(&mut self, value: T) where T: Clone,",
+          "text": "Fills self with elements by cloning value."
+        },
+        {
+          "code": "pub fn fill_with<F>(&mut self, f: F) where F: FnMut() -> T,",
+          "text": "Fills self with elements returned by calling a closure repeatedly."
+        },
+        {
+          "code": "pub fn clone_from_slice(&mut self, src: &[T]) where T: Clone,",
+          "text": "Copies the elements from src into self."
+        },
+        {
+          "code": "pub fn copy_from_slice(&mut self, src: &[T]) where T: Copy,",
+          "text": "Copies all elements from src into self, using a memcpy."
+        },
+        {
+          "code": "pub fn copy_within<R>(&mut self, src: R, dest: usize) where R: RangeBounds<usize>, T: Copy,",
+          "text": "Copies elements from one part of the slice to another part of itself, using a memmove."
+        },
+        {
+          "code": "pub fn swap_with_slice(&mut self, other: &mut [T])",
+          "text": "Swaps all elements in self with those in other."
+        },
+        {
+          "code": "pub unsafe fn align_to<U>(&self) -> (&[T], &[U], &[T])",
+          "text": "Transmute the slice to a slice of another type, ensuring alignment of the types is maintained."
+        },
+        {
+          "code": "pub unsafe fn align_to_mut<U>(&mut self) -> (&mut [T], &mut [U], &mut [T])",
+          "text": "Transmute the slice to a slice of another type, ensuring alignment of the types is maintained."
+        },
+        {
+          "code": "pub fn as_simd<const LANES: usize>(&self) -> (&[T], &[Simd<T, LANES>], &[T]) where T: SimdElement, Simd<T, LANES>: AsRef<[T; LANES]>, LaneCount<LANES>: SupportedLaneCount,",
+          "text": "Split a slice into a prefix, a middle of aligned SIMD types, and a suffix."
+        },
+        {
+          "code": "pub fn as_simd_mut<const LANES: usize>( &mut self) -> (&mut [T], &mut [Simd<T, LANES>], &mut [T]) where T: SimdElement, Simd<T, LANES>: AsMut<[T; LANES]>, LaneCount<LANES>: SupportedLaneCount,",
+          "text": "Split a slice into a prefix, a middle of aligned SIMD types, and a suffix."
+        },
+        {
+          "code": "pub fn is_sorted(&self) -> bool where T: PartialOrd<T>,",
+          "text": "Checks if the elements of this slice are sorted."
+        },
+        {
+          "code": "pub fn is_sorted_by<F>(&self, compare: F) -> bool where F: FnMut(&T, &T) -> Option<Ordering>,",
+          "text": "Checks if the elements of this slice are sorted using the given comparator function."
+        },
+        {
+          "code": "pub fn is_sorted_by_key<F, K>(&self, f: F) -> bool where F: FnMut(&T) -> K, K: PartialOrd<K>,",
+          "text": "Checks if the elements of this slice are sorted using the given key extraction function."
+        },
+        {
+          "code": "pub fn partition_point<P>(&self, pred: P) -> usize where P: FnMut(&T) -> bool,",
+          "text": "Returns the index of the partition point according to the given predicate (the index of the first element of the second partition)."
+        },
+        {
+          "code": "pub fn take<R>(self: &mut &'a [T], range: R) -> Option<&'a [T]> where R: OneSidedRange<usize>,",
+          "text": "Removes the subslice corresponding to the given range and returns a reference to it."
+        },
+        {
+          "code": "pub fn take_mut<R>(self: &mut &'a mut [T], range: R) -> Option<&'a mut [T]> where R: OneSidedRange<usize>,",
+          "text": "Removes the subslice corresponding to the given range and returns a mutable reference to it."
+        },
+        {
+          "code": "pub fn take_first(self: &mut &'a [T]) -> Option<&'a T>",
+          "text": "Removes the first element of the slice and returns a reference to it."
+        },
+        {
+          "code": "pub fn take_first_mut(self: &mut &'a mut [T]) -> Option<&'a mut T>",
+          "text": "Removes the first element of the slice and returns a mutable reference to it."
+        },
+        {
+          "code": "pub fn take_last(self: &mut &'a [T]) -> Option<&'a T>",
+          "text": "Removes the last element of the slice and returns a reference to it."
+        },
+        {
+          "code": "pub fn take_last_mut(self: &mut &'a mut [T]) -> Option<&'a mut T>",
+          "text": "Removes the last element of the slice and returns a mutable reference to it."
+        },
+        {
+          "code": "pub fn is_ascii(&self) -> bool",
+          "text": "Checks if all bytes in this slice are within the ASCII range."
+        },
+        {
+          "code": "pub fn eq_ignore_ascii_case(&self, other: &[u8]) -> bool",
+          "text": "Checks that two slices are an ASCII case-insensitive match."
+        },
+        {
+          "code": "pub fn make_ascii_uppercase(&mut self)",
+          "text": "Converts this slice to its ASCII upper case equivalent in-place."
+        },
+        {
+          "code": "pub fn make_ascii_lowercase(&mut self)",
+          "text": "Converts this slice to its ASCII lower case equivalent in-place."
+        },
+        {
+          "code": "pub fn escape_ascii(&self) -> EscapeAscii<'_>ⓘNotable traits for EscapeAscii<'a>impl<'a> Iterator for EscapeAscii<'a> type Item = u8;",
+          "text": "Returns an iterator that produces an escaped version of this slice, treating it as an ASCII string."
+        },
+        {
+          "code": "pub fn sort(&mut self) where T: Ord,",
+          "text": "Sorts the slice."
+        },
+        {
+          "code": "pub fn sort_by<F>(&mut self, compare: F) where F: FnMut(&T, &T) -> Ordering,",
+          "text": "Sorts the slice with a comparator function."
+        },
+        {
+          "code": "pub fn sort_by_key<K, F>(&mut self, f: F) where F: FnMut(&T) -> K, K: Ord,",
+          "text": "Sorts the slice with a key extraction function."
+        },
+        {
+          "code": "pub fn sort_by_cached_key<K, F>(&mut self, f: F) where F: FnMut(&T) -> K, K: Ord,",
+          "text": "Sorts the slice with a key extraction function."
+        },
+        {
+          "code": "pub fn to_vec(&self) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A> where T: Clone,",
+          "text": "Copies self into a new Vec."
+        },
+        {
+          "code": "pub fn to_vec_in<A>(&self, alloc: A) -> Vec<T, A>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A> where A: Allocator, T: Clone,",
+          "text": "Copies self into a new Vec with an allocator."
+        },
+        {
+          "code": "pub fn into_vec<A>(self: Box<[T], A>) -> Vec<T, A>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A> where A: Allocator,",
+          "text": "Converts self into a vector without clones or allocation."
+        },
+        {
+          "code": "pub fn repeat(&self, n: usize) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A> where T: Copy,",
+          "text": "Creates a vector by repeating a slice n times."
+        },
+        {
+          "code": "pub fn concat<Item>(&self) -> <[T] as Concat<Item>>::OutputⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8] where Item: ?Sized, [T]: Concat<Item>,",
+          "text": "Flattens a slice of T into a single value Self::Output."
+        },
+        {
+          "code": "pub fn join<Separator>( &self, sep: Separator) -> <[T] as Join<Separator>>::OutputⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8] where [T]: Join<Separator>,",
+          "text": "Flattens a slice of T into a single value Self::Output, placing a given separator between each."
+        },
+        {
+          "code": "pub fn to_ascii_uppercase(&self) -> Vec<u8, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+          "text": "Returns a vector containing a copy of this slice where each byte is mapped to its ASCII upper case equivalent."
+        },
+        {
+          "code": "pub fn to_ascii_lowercase(&self) -> Vec<u8, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+          "text": "Returns a vector containing a copy of this slice where each byte is mapped to its ASCII lower case equivalent."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T, const N: usize> AsMut<[T]> for [T; N]",
+          "methods": [
+            {
+              "code": "pub fn as_mut(&mut self) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> AsMut<[T]> for Simd<T, LANES> where T: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn as_mut(&mut self) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> AsMut<[T]> for [T]",
+          "methods": [
+            {
+              "code": "pub fn as_mut(&mut self) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> AsMut<[T]> for Vec<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn as_mut(&mut self) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> AsRef<[T]> for [T; N]",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> AsRef<[T]> for IterMut<'_, T>",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> AsRef<[T]> for Iter<'_, T>",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> AsRef<[T]> for Simd<T, LANES> where T: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> AsRef<[T]> for [T]",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> AsRef<[T]> for Vec<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> AsRef<[T]> for IntoIter<T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T, A> AsRef<[T]> for Drain<'a, T, A> where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRef<[u8]> for str",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &[u8]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRef<[u8]> for String",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &[u8]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> AsRef<[u8]> for Drain<'a>",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &[u8]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsciiExt for [u8]",
+          "methods": []
+        },
+        {
+          "title": "impl<T, const N: usize> Borrow<[T]> for [T; N]",
+          "methods": [
+            {
+              "code": "pub fn borrow(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Immutably borrows from an owned value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Borrow<[T]> for Vec<T, Global>",
+          "methods": [
+            {
+              "code": "pub fn borrow(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Immutably borrows from an owned value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> BorrowMut<[T]> for [T; N]",
+          "methods": [
+            {
+              "code": "pub fn borrow_mut(&mut self) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Mutably borrows from an owned value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> BorrowMut<[T]> for Vec<T, Global>",
+          "methods": [
+            {
+              "code": "pub fn borrow_mut(&mut self) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Mutably borrows from an owned value."
+            }
+          ]
+        },
+        {
+          "title": "impl BufRead for &[u8]",
+          "methods": [
+            {
+              "code": "fn fill_buf(&mut self) -> Result<&[u8]>",
+              "text": "Returns the contents of the internal buffer, filling it with more data from the inner reader if it is empty."
+            },
+            {
+              "code": "fn consume(&mut self, amt: usize)",
+              "text": "Tells this buffer that amt bytes have been consumed from the buffer, so they should no longer be returned in calls to read."
+            },
+            {
+              "code": "fn has_data_left(&mut self) -> Result<bool>",
+              "text": "Check if the underlying Read has any data left to be read."
+            },
+            {
+              "code": "fn read_until(&mut self, byte: u8, buf: &mut Vec<u8>) -> Result<usize>",
+              "text": "Read all bytes into buf until the delimiter byte or EOF is reached."
+            },
+            {
+              "code": "fn read_line(&mut self, buf: &mut String) -> Result<usize>",
+              "text": "Read all bytes until a newline (the 0xA byte) is reached, and append them to the provided buffer."
+            },
+            {
+              "code": "fn split(self, byte: u8) -> Split<Self>ⓘNotable traits for Split<B>impl<B: BufRead> Iterator for Split<B> type Item = Result<Vec<u8>>; where Self: Sized,",
+              "text": "Returns an iterator over the contents of this reader split on the byte byte."
+            },
+            {
+              "code": "fn lines(self) -> Lines<Self>ⓘNotable traits for Lines<B>impl<B: BufRead> Iterator for Lines<B> type Item = Result<String>; where Self: Sized,",
+              "text": "Returns an iterator over the lines of this reader."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, V> Concat<T> for [V] where T: Clone, V: Borrow<[T]>,",
+          "methods": [
+            {
+              "code": "type Output = Vec<T, Global>",
+              "text": "The resulting type after concatenation"
+            },
+            {
+              "code": "pub fn concat(slice: &[V]) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Implementation of [T]::concat"
+            }
+          ]
+        },
+        {
+          "title": "impl<S> Concat<str> for [S] where S: Borrow<str>,",
+          "methods": [
+            {
+              "code": "type Output = String",
+              "text": "The resulting type after concatenation"
+            },
+            {
+              "code": "pub fn concat(slice: &[S]) -> String",
+              "text": "Implementation of [T]::concat"
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for [T] where T: Debug,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> Default for &'_ [T]",
+          "methods": [
+            {
+              "code": "pub fn default() -> &'_ [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Creates an empty slice."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> Default for &'_ mut [T]",
+          "methods": [
+            {
+              "code": "pub fn default() -> &'_ mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Creates a mutable empty slice."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> From<&'_ [T]> for Rc<[T]> where T: Clone,",
+          "methods": [
+            {
+              "code": "pub fn from(v: &[T]) -> Rc<[T]>",
+              "text": "Allocate a reference-counted slice and fill it by cloning v’s items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> From<&'_ [T]> for Box<[T], Global> where T: Copy,",
+          "methods": [
+            {
+              "code": "pub fn from(slice: &[T]) -> Box<[T], Global>ⓘNotable traits for Box<F, A>impl<F, A> Future for Box<F, A> where F: Future + Unpin + ?Sized, A: Allocator + 'static, type Output = <F as Future>::Output;impl<I, A> Iterator for Box<I, A> where I: Iterator + ?Sized, A: Allocator, type Item = <I as Iterator>::Item;impl<R: Read + ?Sized> Read for Box<R>impl<W: Write + ?Sized> Write for Box<W>",
+              "text": "Converts a &[T] into a Box<[T]>"
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> From<&'_ [T]> for Vec<T, Global> where T: Clone,",
+          "methods": [
+            {
+              "code": "pub fn from(s: &[T]) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Allocate a Vec<T> and fill it by cloning s’s items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> From<&'_ [T]> for Arc<[T]> where T: Clone,",
+          "methods": [
+            {
+              "code": "pub fn from(v: &[T]) -> Arc<[T]>",
+              "text": "Allocate a reference-counted slice and fill it by cloning v’s items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> From<&'_ mut [T]> for Vec<T, Global> where T: Clone,",
+          "methods": [
+            {
+              "code": "pub fn from(s: &mut [T]) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Allocate a Vec<T> and fill it by cloning s’s items."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> From<&'a [T]> for Cow<'a, [T]> where T: Clone,",
+          "methods": [
+            {
+              "code": "pub fn from(s: &'a [T]) -> Cow<'a, [T]>",
+              "text": "Creates a Borrowed variant of Cow from a slice."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Hash for [T] where T: Hash,",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, state: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, I> Index<I> for [T] where I: SliceIndex<[T]>,",
+          "methods": [
+            {
+              "code": "type Output = <I as SliceIndex<[T]>>::Output",
+              "text": "The returned type after indexing."
+            },
+            {
+              "code": "pub fn index(&self, index: I) -> &<I as SliceIndex<[T]>>::Output",
+              "text": "Performs the indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, I> IndexMut<I> for [T] where I: SliceIndex<[T]>,",
+          "methods": [
+            {
+              "code": "pub fn index_mut(&mut self, index: I) -> &mut <I as SliceIndex<[T]>>::Output",
+              "text": "Performs the mutable indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> IntoIterator for &'a [T]",
+          "methods": [
+            {
+              "code": "type Item = &'a T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = Iter<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "pub fn into_iter(self) -> Iter<'a, T>ⓘNotable traits for Iter<'a, T>impl<'a, T> Iterator for Iter<'a, T> type Item = &'a T;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> IntoIterator for &'a mut [T]",
+          "methods": [
+            {
+              "code": "type Item = &'a mut T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = IterMut<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "pub fn into_iter(self) -> IterMut<'a, T>ⓘNotable traits for IterMut<'a, T>impl<'a, T> Iterator for IterMut<'a, T> type Item = &'a mut T;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, V> Join<&'_ [T]> for [V] where T: Clone, V: Borrow<[T]>,",
+          "methods": [
+            {
+              "code": "type Output = Vec<T, Global>",
+              "text": "The resulting type after concatenation"
+            },
+            {
+              "code": "pub fn join(slice: &[V], sep: &[T]) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Implementation of [T]::join"
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, V> Join<&'_ T> for [V] where T: Clone, V: Borrow<[T]>,",
+          "methods": [
+            {
+              "code": "type Output = Vec<T, Global>",
+              "text": "The resulting type after concatenation"
+            },
+            {
+              "code": "pub fn join(slice: &[V], sep: &T) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Implementation of [T]::join"
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, S> Join<&'_ str> for [S] where S: Borrow<str>,",
+          "methods": [
+            {
+              "code": "type Output = String",
+              "text": "The resulting type after concatenation"
+            },
+            {
+              "code": "pub fn join(slice: &[S], sep: &str) -> String",
+              "text": "Implementation of [T]::join"
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Ord for [T] where T: Ord,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &[T]) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, A, B, const N: usize> PartialEq<&'_ [B]> for [A; N] where A: PartialEq<B>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&[B]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&[B]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_, T, U> PartialEq<&'_ [U]> for Cow<'_, [T]> where T: PartialEq<U> + Clone,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&[U]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&[U]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A> PartialEq<&'_ [U]> for VecDeque<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&[U]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A> PartialEq<&'_ [U]> for Vec<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&[U]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&[U]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, A, B, const N: usize> PartialEq<&'_ mut [B]> for [A; N] where A: PartialEq<B>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&mut [B]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&mut [B]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A> PartialEq<&'_ mut [U]> for Vec<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&mut [U]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&mut [U]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A> PartialEq<&'_ mut [U]> for VecDeque<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&mut [U]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, '_, T, U> PartialEq<&'_ mut [U]> for Cow<'_, [T]> where T: PartialEq<U> + Clone,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&mut [U]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&mut [U]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, A, B, const N: usize> PartialEq<[A; N]> for &'_ mut [B] where B: PartialEq<A>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &[A; N]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &[A; N]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, const N: usize> PartialEq<[A; N]> for [B] where B: PartialEq<A>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &[A; N]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &[A; N]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, A, B, const N: usize> PartialEq<[A; N]> for &'_ [B] where B: PartialEq<A>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &[A; N]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &[A; N]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, const N: usize> PartialEq<[B]> for [A; N] where A: PartialEq<B>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &[B]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &[B]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B> PartialEq<[B]> for [A] where A: PartialEq<B>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &[B]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &[B]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, A> PartialEq<[U]> for Vec<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &[U]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &[U]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A> PartialEq<Vec<U, A>> for &'_ [T] where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Vec<U, A>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &Vec<U, A>) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, A> PartialEq<Vec<U, A>> for [T] where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Vec<U, A>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &Vec<U, A>) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A> PartialEq<Vec<U, A>> for &'_ mut [T] where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Vec<U, A>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &Vec<U, A>) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialOrd<[T]> for [T] where T: PartialOrd<T>,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &[T]) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> Pattern<'a> for &'b [char]",
+          "methods": [
+            {
+              "code": "type Searcher = CharSliceSearcher<'a, 'b>",
+              "text": "Associated searcher for this pattern"
+            },
+            {
+              "code": "pub fn into_searcher(self, haystack: &'a str) -> CharSliceSearcher<'a, 'b>",
+              "text": "Constructs the associated searcher from self and the haystack to search in."
+            },
+            {
+              "code": "pub fn is_contained_in(self, haystack: &'a str) -> bool",
+              "text": "Checks whether the pattern matches anywhere in the haystack"
+            },
+            {
+              "code": "pub fn is_prefix_of(self, haystack: &'a str) -> bool",
+              "text": "Checks whether the pattern matches at the front of the haystack"
+            },
+            {
+              "code": "pub fn strip_prefix_of(self, haystack: &'a str) -> Option<&'a str>",
+              "text": "Removes the pattern from the front of haystack, if it matches."
+            },
+            {
+              "code": "pub fn is_suffix_of(self, haystack: &'a str) -> bool where CharSliceSearcher<'a, 'b>: ReverseSearcher<'a>,",
+              "text": "Checks whether the pattern matches at the back of the haystack"
+            },
+            {
+              "code": "pub fn strip_suffix_of(self, haystack: &'a str) -> Option<&'a str> where CharSliceSearcher<'a, 'b>: ReverseSearcher<'a>,",
+              "text": "Removes the pattern from the back of haystack, if it matches."
+            }
+          ]
+        },
+        {
+          "title": "impl Read for &[u8]",
+          "methods": [
+            {
+              "code": "fn read(&mut self, buf: &mut [u8]) -> Result<usize>",
+              "text": "Pull some bytes from this source into the specified buffer, returning how many bytes were read."
+            },
+            {
+              "code": "fn read_buf(&mut self, buf: &mut ReadBuf<'_>) -> Result<()>",
+              "text": "Pull some bytes from this source into the specified buffer."
+            },
+            {
+              "code": "fn read_vectored(&mut self, bufs: &mut [IoSliceMut<'_>]) -> Result<usize>",
+              "text": "Like read, except that it reads into a slice of buffers."
+            },
+            {
+              "code": "fn is_read_vectored(&self) -> bool",
+              "text": "Determines if this Reader has an efficient read_vectored implementation."
+            },
+            {
+              "code": "fn read_exact(&mut self, buf: &mut [u8]) -> Result<()>",
+              "text": "Read the exact number of bytes required to fill buf."
+            },
+            {
+              "code": "fn read_to_end(&mut self, buf: &mut Vec<u8>) -> Result<usize>",
+              "text": "Read all bytes until EOF in this source, placing them into buf."
+            },
+            {
+              "code": "fn read_to_string(&mut self, buf: &mut String) -> Result<usize>",
+              "text": "Read all bytes until EOF in this source, appending them to buf."
+            },
+            {
+              "code": "fn read_buf_exact(&mut self, buf: &mut ReadBuf<'_>) -> Result<()>",
+              "text": "Read the exact number of bytes required to fill buf."
+            },
+            {
+              "code": "fn by_ref(&mut self) -> &mut Self where Self: Sized,",
+              "text": "Creates a “by reference” adaptor for this instance of Read."
+            },
+            {
+              "code": "fn bytes(self) -> Bytes<Self>ⓘNotable traits for Bytes<R>impl<R: Read> Iterator for Bytes<R> type Item = Result<u8>; where Self: Sized,",
+              "text": "Transforms this Read instance to an Iterator over its bytes."
+            },
+            {
+              "code": "fn chain<R: Read>(self, next: R) -> Chain<Self, R>ⓘNotable traits for Chain<T, U>impl<T: Read, U: Read> Read for Chain<T, U> where Self: Sized,",
+              "text": "Creates an adapter which will chain this stream with another."
+            },
+            {
+              "code": "fn take(self, limit: u64) -> Take<Self>ⓘNotable traits for Take<T>impl<T: Read> Read for Take<T> where Self: Sized,",
+              "text": "Creates an adapter which will read at most limit bytes from it."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> SliceIndex<[T]> for RangeFrom<usize>",
+          "methods": [
+            {
+              "code": "type Output = [T]",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get(self, slice: &[T]) -> Option<&[T]>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut(self, slice: &mut [T]) -> Option<&mut [T]>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked(self, slice: *const [T]) -> *const [T]",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut(self, slice: *mut [T]) -> *mut [T]",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index(self, slice: &[T]) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut(self, slice: &mut [T]) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> SliceIndex<[T]> for RangeInclusive<usize>",
+          "methods": [
+            {
+              "code": "type Output = [T]",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get(self, slice: &[T]) -> Option<&[T]>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut(self, slice: &mut [T]) -> Option<&mut [T]>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked(self, slice: *const [T]) -> *const [T]",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut(self, slice: *mut [T]) -> *mut [T]",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index(self, slice: &[T]) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut(self, slice: &mut [T]) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> SliceIndex<[T]> for RangeToInclusive<usize>",
+          "methods": [
+            {
+              "code": "type Output = [T]",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get(self, slice: &[T]) -> Option<&[T]>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut(self, slice: &mut [T]) -> Option<&mut [T]>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked(self, slice: *const [T]) -> *const [T]",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut(self, slice: *mut [T]) -> *mut [T]",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index(self, slice: &[T]) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut(self, slice: &mut [T]) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> SliceIndex<[T]> for usize",
+          "methods": [
+            {
+              "code": "type Output = T",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get(self, slice: &[T]) -> Option<&T>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut(self, slice: &mut [T]) -> Option<&mut T>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked(self, slice: *const [T]) -> *const T",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut(self, slice: *mut [T]) -> *mut T",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index(self, slice: &[T]) -> &T",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut(self, slice: &mut [T]) -> &mut T",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> SliceIndex<[T]> for RangeFull",
+          "methods": [
+            {
+              "code": "type Output = [T]",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get(self, slice: &[T]) -> Option<&[T]>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut(self, slice: &mut [T]) -> Option<&mut [T]>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked(self, slice: *const [T]) -> *const [T]",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut(self, slice: *mut [T]) -> *mut [T]",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index(self, slice: &[T]) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut(self, slice: &mut [T]) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> SliceIndex<[T]> for Range<usize>",
+          "methods": [
+            {
+              "code": "type Output = [T]",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get(self, slice: &[T]) -> Option<&[T]>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut(self, slice: &mut [T]) -> Option<&mut [T]>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked(self, slice: *const [T]) -> *const [T]",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut(self, slice: *mut [T]) -> *mut [T]",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index(self, slice: &[T]) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut(self, slice: &mut [T]) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> SliceIndex<[T]> for RangeTo<usize>",
+          "methods": [
+            {
+              "code": "type Output = [T]",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get(self, slice: &[T]) -> Option<&[T]>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut(self, slice: &mut [T]) -> Option<&mut [T]>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked(self, slice: *const [T]) -> *const [T]",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut(self, slice: *mut [T]) -> *mut [T]",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index(self, slice: &[T]) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut(self, slice: &mut [T]) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> SliceIndex<[T]> for (Bound<usize>, Bound<usize>)",
+          "methods": [
+            {
+              "code": "type Output = [T]",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get( self, slice: &[T]) -> Option<&<(Bound<usize>, Bound<usize>) as SliceIndex<[T]>>::Output>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut( self, slice: &mut [T]) -> Option<&mut <(Bound<usize>, Bound<usize>) as SliceIndex<[T]>>::Output>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked( self, slice: *const [T]) -> *const <(Bound<usize>, Bound<usize>) as SliceIndex<[T]>>::Output",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut( self, slice: *mut [T]) -> *mut <(Bound<usize>, Bound<usize>) as SliceIndex<[T]>>::Output",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index( self, slice: &[T]) -> &<(Bound<usize>, Bound<usize>) as SliceIndex<[T]>>::Output",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut( self, slice: &mut [T]) -> &mut <(Bound<usize>, Bound<usize>) as SliceIndex<[T]>>::Output",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> SlicePattern for [T]",
+          "methods": [
+            {
+              "code": "type Item = T",
+              "text": "The element type of the slice being matched on."
+            },
+            {
+              "code": "pub fn as_slice(&self) -> &[<[T] as SlicePattern>::Item]",
+              "text": "Currently, the consumers of SlicePattern need a slice."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> ToOwned for [T] where T: Clone,",
+          "methods": [
+            {
+              "code": "type Owned = Vec<T, Global>",
+              "text": "The resulting type after obtaining ownership."
+            },
+            {
+              "code": "pub fn to_owned(&self) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Creates owned data from borrowed data, usually by cloning."
+            },
+            {
+              "code": "pub fn clone_into(&self, target: &mut Vec<T, Global>)",
+              "text": "Uses borrowed data to replace owned data, usually by cloning."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> ToSocketAddrs for &'a [SocketAddr]",
+          "methods": [
+            {
+              "code": "type Iter = Cloned<Iter<'a, SocketAddr>>",
+              "text": "Returned iterator over socket addresses which this type may correspond to."
+            },
+            {
+              "code": "fn to_socket_addrs(&self) -> Result<Self::Iter>",
+              "text": "Converts this object to an iterator of resolved SocketAddrs."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const N: usize> TryFrom<&'_ [T]> for [T; N] where T: Copy,",
+          "methods": [
+            {
+              "code": "type Error = TryFromSliceError",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "pub fn try_from(slice: &[T]) -> Result<[T; N], TryFromSliceError>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const N: usize> TryFrom<&'_ mut [T]> for [T; N] where T: Copy,",
+          "methods": [
+            {
+              "code": "type Error = TryFromSliceError",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "pub fn try_from(slice: &mut [T]) -> Result<[T; N], TryFromSliceError>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T, const N: usize> TryFrom<&'a [T]> for &'a [T; N]",
+          "methods": [
+            {
+              "code": "type Error = TryFromSliceError",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "pub fn try_from(slice: &[T]) -> Result<&[T; N], TryFromSliceError>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T, const N: usize> TryFrom<&'a mut [T]> for &'a mut [T; N]",
+          "methods": [
+            {
+              "code": "type Error = TryFromSliceError",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "pub fn try_from(slice: &mut [T]) -> Result<&mut [T; N], TryFromSliceError>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl Write for &mut [u8]",
+          "methods": [
+            {
+              "code": "fn write(&mut self, data: &[u8]) -> Result<usize>",
+              "text": "Write a buffer into this writer, returning how many bytes were written."
+            },
+            {
+              "code": "fn write_vectored(&mut self, bufs: &[IoSlice<'_>]) -> Result<usize>",
+              "text": "Like write, except that it writes from a slice of buffers."
+            },
+            {
+              "code": "fn is_write_vectored(&self) -> bool",
+              "text": "Determines if this Writer has an efficient write_vectored implementation."
+            },
+            {
+              "code": "fn write_all(&mut self, data: &[u8]) -> Result<()>",
+              "text": "Attempts to write an entire buffer into this writer."
+            },
+            {
+              "code": "fn flush(&mut self) -> Result<()>",
+              "text": "Flush this output stream, ensuring that all intermediately buffered contents reach their destination."
+            },
+            {
+              "code": "fn write_all_vectored(&mut self, bufs: &mut [IoSlice<'_>]) -> Result<()>",
+              "text": "Attempts to write multiple buffers into this writer."
+            },
+            {
+              "code": "fn write_fmt(&mut self, fmt: Arguments<'_>) -> Result<()>",
+              "text": "Writes a formatted string into this writer, returning any error encountered."
+            },
+            {
+              "code": "fn by_ref(&mut self) -> &mut Self where Self: Sized,",
+              "text": "Creates a “by reference” adapter for this instance of Write."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

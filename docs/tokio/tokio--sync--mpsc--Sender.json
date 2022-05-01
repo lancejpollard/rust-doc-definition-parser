@@ -1,0 +1,85 @@
+{
+  "title": "Struct tokio::sync::mpsc::Sender",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub async fn send(&self, value: T) -> Result<(), SendError<T>>",
+          "text": "Sends a value, waiting until there is capacity."
+        },
+        {
+          "code": "pub async fn closed(&self)",
+          "text": "Completes when the receiver has dropped."
+        },
+        {
+          "code": "pub fn try_send(&self, message: T) -> Result<(), TrySendError<T>>",
+          "text": "Attempts to immediately send a message on this Sender"
+        },
+        {
+          "code": "pub fn blocking_send(&self, value: T) -> Result<(), SendError<T>>",
+          "text": "Blocking send to call outside of asynchronous contexts."
+        },
+        {
+          "code": "pub fn is_closed(&self) -> bool",
+          "text": "Checks if the channel has been closed. This happens when the Receiver is dropped, or when the Receiver::close method is called."
+        },
+        {
+          "code": "pub async fn reserve(&self) -> Result<Permit<'_, T>, SendError<()>>",
+          "text": "Waits for channel capacity. Once capacity to send one message is available, it is reserved for the caller."
+        },
+        {
+          "code": "pub async fn reserve_owned(self) -> Result<OwnedPermit<T>, SendError<()>>",
+          "text": "Waits for channel capacity, moving the Sender and returning an owned permit. Once capacity to send one message is available, it is reserved for the caller."
+        },
+        {
+          "code": "pub fn try_reserve(&self) -> Result<Permit<'_, T>, TrySendError<()>>",
+          "text": "Tries to acquire a slot in the channel without waiting for the slot to become available."
+        },
+        {
+          "code": "pub fn try_reserve_owned(self) -> Result<OwnedPermit<T>, TrySendError<Self>>",
+          "text": "Tries to acquire a slot in the channel without waiting for the slot to become available, returning an owned permit."
+        },
+        {
+          "code": "pub fn same_channel(&self, other: &Self) -> bool",
+          "text": "Returns true if senders belong to the same channel."
+        },
+        {
+          "code": "pub fn capacity(&self) -> usize",
+          "text": "Returns the current capacity of the channel."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Clone for Sender<T>",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Self",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for Sender<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "title": "Struct rustls::StreamOwned",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(conn: C, sock: T) -> Self",
+          "text": "Make a new StreamOwned taking the Connection conn and socket-like object sock. This does not fail and does no IO."
+        },
+        {
+          "code": "pub fn get_ref(&self) -> &T",
+          "text": "Get a reference to the underlying socket"
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut T",
+          "text": "Get a mutable reference to the underlying socket"
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<C: Debug + Sized, T: Debug + Read + Write + Sized> Debug for StreamOwned<C, T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<C, T, S> Read for StreamOwned<C, T> where C: DerefMut + Deref<Target = ConnectionCommon<S>>, T: Read + Write, S: SideData,",
+          "methods": [
+            {
+              "code": "fn read(&mut self, buf: &mut [u8]) -> Result<usize>",
+              "text": "Pull some bytes from this source into the specified buffer, returning how many bytes were read."
+            },
+            {
+              "code": "fn read_buf(&mut self, buf: &mut ReadBuf<'_>) -> Result<()>",
+              "text": "Pull some bytes from this source into the specified buffer."
+            },
+            {
+              "code": "fn read_vectored(&mut self, bufs: &mut [IoSliceMut<'_>]) -> Result<usize, Error>",
+              "text": "Like read, except that it reads into a slice of buffers."
+            },
+            {
+              "code": "fn is_read_vectored(&self) -> bool",
+              "text": "Determines if this Reader has an efficient read_vectored implementation."
+            },
+            {
+              "code": "fn read_to_end(&mut self, buf: &mut Vec<u8, Global>) -> Result<usize, Error>",
+              "text": "Read all bytes until EOF in this source, placing them into buf."
+            },
+            {
+              "code": "fn read_to_string(&mut self, buf: &mut String) -> Result<usize, Error>",
+              "text": "Read all bytes until EOF in this source, appending them to buf."
+            },
+            {
+              "code": "fn read_exact(&mut self, buf: &mut [u8]) -> Result<(), Error>",
+              "text": "Read the exact number of bytes required to fill buf."
+            },
+            {
+              "code": "fn read_buf_exact(&mut self, buf: &mut ReadBuf<'_>) -> Result<(), Error>",
+              "text": "Read the exact number of bytes required to fill buf."
+            },
+            {
+              "code": "fn by_ref(&mut self) -> &mut Self",
+              "text": "Creates a “by reference” adaptor for this instance of Read."
+            },
+            {
+              "code": "fn bytes(self) -> Bytes<Self>",
+              "text": "Transforms this Read instance to an Iterator over its bytes."
+            },
+            {
+              "code": "fn chain<R>(self, next: R) -> Chain<Self, R> where R: Read,",
+              "text": "Creates an adapter which will chain this stream with another."
+            },
+            {
+              "code": "fn take(self, limit: u64) -> Take<Self>",
+              "text": "Creates an adapter which will read at most limit bytes from it."
+            }
+          ]
+        },
+        {
+          "title": "impl<C, T, S> Write for StreamOwned<C, T> where C: DerefMut + Deref<Target = ConnectionCommon<S>>, T: Read + Write, S: SideData,",
+          "methods": [
+            {
+              "code": "fn write(&mut self, buf: &[u8]) -> Result<usize>",
+              "text": "Write a buffer into this writer, returning how many bytes were written."
+            },
+            {
+              "code": "fn flush(&mut self) -> Result<()>",
+              "text": "Flush this output stream, ensuring that all intermediately buffered contents reach their destination."
+            },
+            {
+              "code": "fn write_vectored(&mut self, bufs: &[IoSlice<'_>]) -> Result<usize, Error>",
+              "text": "Like write, except that it writes from a slice of buffers."
+            },
+            {
+              "code": "fn is_write_vectored(&self) -> bool",
+              "text": "Determines if this Writer has an efficient write_vectored implementation."
+            },
+            {
+              "code": "fn write_all(&mut self, buf: &[u8]) -> Result<(), Error>",
+              "text": "Attempts to write an entire buffer into this writer."
+            },
+            {
+              "code": "fn write_all_vectored(&mut self, bufs: &mut [IoSlice<'_>]) -> Result<(), Error>",
+              "text": "Attempts to write multiple buffers into this writer."
+            },
+            {
+              "code": "fn write_fmt(&mut self, fmt: Arguments<'_>) -> Result<(), Error>",
+              "text": "Writes a formatted string into this writer, returning any error encountered."
+            },
+            {
+              "code": "fn by_ref(&mut self) -> &mut Self",
+              "text": "Creates a “by reference” adapter for this instance of Write."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

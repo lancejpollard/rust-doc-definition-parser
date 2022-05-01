@@ -1,0 +1,36 @@
+{
+  "title": "Struct std::collections::hash_map::RawVacantEntryMut",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn insert(self, key: K, value: V) -> (&'a mut K, &'a mut V) where K: Hash, S: BuildHasher,",
+          "text": "Sets the value of the entry with the VacantEntry’s key, and returns a mutable reference to it."
+        },
+        {
+          "code": "pub fn insert_hashed_nocheck( self, hash: u64, key: K, value: V) -> (&'a mut K, &'a mut V) where K: Hash, S: BuildHasher,",
+          "text": "Sets the value of the entry with the VacantEntry’s key, and returns a mutable reference to it."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<K, V, S> Debug for RawVacantEntryMut<'_, K, V, S>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

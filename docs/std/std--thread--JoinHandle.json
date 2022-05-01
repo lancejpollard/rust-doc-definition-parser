@@ -1,0 +1,89 @@
+{
+  "title": "Struct std::thread::JoinHandle",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn thread(&self) -> &Thread",
+          "text": "Extracts a handle to the underlying thread."
+        },
+        {
+          "code": "pub fn join(self) -> Result<T>",
+          "text": "Waits for the associated thread to finish."
+        },
+        {
+          "code": "pub fn is_running(&self) -> bool",
+          "text": "Checks if the the associated thread is still running its main function."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> AsHandle for JoinHandle<T>",
+          "methods": [
+            {
+              "code": "fn as_handle(&self) -> BorrowedHandle<'_>",
+              "text": "Borrows the handle."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> AsRawHandle for JoinHandle<T>",
+          "methods": [
+            {
+              "code": "fn as_raw_handle(&self) -> RawHandle",
+              "text": "Extracts the raw handle, without taking any ownership."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for JoinHandle<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<JoinHandle<T>> for OwnedHandle",
+          "methods": [
+            {
+              "code": "fn from(join_handle: JoinHandle<T>) -> OwnedHandle",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> IntoRawHandle for JoinHandle<T>",
+          "methods": [
+            {
+              "code": "fn into_raw_handle(self) -> RawHandle",
+              "text": "Consumes this object, returning the raw underlying handle."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> JoinHandleExt for JoinHandle<T>",
+          "methods": [
+            {
+              "code": "fn as_pthread_t(&self) -> RawPthread",
+              "text": "Extracts the raw pthread_t without taking ownership"
+            },
+            {
+              "code": "fn into_pthread_t(self) -> RawPthread",
+              "text": "Consumes the thread, returning the raw pthread_t"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

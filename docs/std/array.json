@@ -1,0 +1,1032 @@
+{
+  "title": "Primitive Type array",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn map<F, U>(self, f: F) -> [U; N] where F: FnMut(T) -> U,",
+          "text": "Returns an array of the same size as self, with function f applied to each element in order."
+        },
+        {
+          "code": "pub fn try_map<F, R>( self, f: F) -> <<R as Try>::Residual as Residual<[<R as Try>::Output; N]>>::TryType where F: FnMut(T) -> R, R: Try, <R as Try>::Residual: Residual<[<R as Try>::Output; N]>,",
+          "text": "A fallible function f applied to each element on array self in order to return an array the same size as self or the first error encountered."
+        },
+        {
+          "code": "pub fn zip<U>(self, rhs: [U; N]) -> [(T, U); N]",
+          "text": "‘Zips up’ two arrays into a single array of pairs."
+        },
+        {
+          "code": "pub const fn as_slice(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+          "text": "Returns a slice containing the entire array. Equivalent to &s[..]."
+        },
+        {
+          "code": "pub fn as_mut_slice(&mut self) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+          "text": "Returns a mutable slice containing the entire array. Equivalent to &mut s[..]."
+        },
+        {
+          "code": "pub fn each_ref(&self) -> [&T; N]",
+          "text": "Borrows each element and returns an array of references with the same size as self."
+        },
+        {
+          "code": "pub fn each_mut(&mut self) -> [&mut T; N]",
+          "text": "Borrows each element mutably and returns an array of mutable references with the same size as self."
+        },
+        {
+          "code": "pub fn split_array_ref<const M: usize>(&self) -> (&[T; M], &[T])",
+          "text": "Divides one array reference into two at an index."
+        },
+        {
+          "code": "pub fn split_array_mut<const M: usize>(&mut self) -> (&mut [T; M], &mut [T])",
+          "text": "Divides one mutable array reference into two at an index."
+        },
+        {
+          "code": "pub fn rsplit_array_ref<const M: usize>(&self) -> (&[T], &[T; M])",
+          "text": "Divides one array reference into two at an index from the end."
+        },
+        {
+          "code": "pub fn rsplit_array_mut<const M: usize>(&mut self) -> (&mut [T], &mut [T; M])",
+          "text": "Divides one mutable array reference into two at an index from the end."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T, const LANES: usize> AsMut<[T; LANES]> for Simd<T, LANES> where T: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn as_mut(&mut self) -> &mut [T; LANES]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> AsMut<[T]> for [T; N]",
+          "methods": [
+            {
+              "code": "pub fn as_mut(&mut self) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> AsRef<[T; LANES]> for Simd<T, LANES> where T: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &[T; LANES]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> AsRef<[T]> for [T; N]",
+          "methods": [
+            {
+              "code": "pub fn as_ref(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> Borrow<[T]> for [T; N]",
+          "methods": [
+            {
+              "code": "pub fn borrow(&self) -> &[T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Immutably borrows from an owned value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> BorrowMut<[T]> for [T; N]",
+          "methods": [
+            {
+              "code": "pub fn borrow_mut(&mut self) -> &mut [T]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Mutably borrows from an owned value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> Clone for [T; N] where T: Clone,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> [T; N]",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "pub fn clone_from(&mut self, other: &[T; N])",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> Debug for [T; N] where T: Debug,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 29] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 29]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 0]",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 0]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 5] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 5]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 15] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 15]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 25] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 25]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 31] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 31]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 6] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 6]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 12] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 12]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 17] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 17]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 3] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 3]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 30] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 30]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 32] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 32]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 2] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 2]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 13] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 13]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 23] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 23]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 14] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 14]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 21] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 21]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 16] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 16]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 11] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 11]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 22] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 22]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 26] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 26]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 4] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 4]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 1] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 1]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 19] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 19]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 9] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 9]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 28] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 28]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 18] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 18]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 10] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 10]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 20] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 20]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 7] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 7]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 24] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 24]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 8] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 8]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for [T; 27] where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> [T; 27]",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V, const N: usize> From<[(K, V); N]> for BTreeMap<K, V> where K: Ord,",
+          "methods": [
+            {
+              "code": "pub fn from(arr: [(K, V); N]) -> BTreeMap<K, V>"
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V, const N: usize> From<[(K, V); N]> for HashMap<K, V, RandomState> where K: Eq + Hash,",
+          "methods": [
+            {
+              "code": "fn from(arr: [(K, V); N]) -> Self"
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> From<[T; LANES]> for Simd<T, LANES> where T: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(array: [T; LANES]) -> Simd<T, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> From<[T; N]> for LinkedList<T>",
+          "methods": [
+            {
+              "code": "pub fn from(arr: [T; N]) -> LinkedList<T>"
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> From<[T; N]> for BTreeSet<T> where T: Ord,",
+          "methods": [
+            {
+              "code": "pub fn from(arr: [T; N]) -> BTreeSet<T>"
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> From<[T; N]> for Vec<T, Global>",
+          "methods": [
+            {
+              "code": "pub fn from(s: [T; N]) -> Vec<T, Global>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> From<[T; N]> for BinaryHeap<T> where T: Ord,",
+          "methods": [
+            {
+              "code": "pub fn from(arr: [T; N]) -> BinaryHeap<T>"
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> From<[T; N]> for Box<[T], Global>",
+          "methods": [
+            {
+              "code": "pub fn from(array: [T; N]) -> Box<[T], Global>ⓘNotable traits for Box<F, A>impl<F, A> Future for Box<F, A> where F: Future + Unpin + ?Sized, A: Allocator + 'static, type Output = <F as Future>::Output;impl<I, A> Iterator for Box<I, A> where I: Iterator + ?Sized, A: Allocator, type Item = <I as Iterator>::Item;impl<R: Read + ?Sized> Read for Box<R>impl<W: Write + ?Sized> Write for Box<W>",
+              "text": "Converts a [T; N] into a Box<[T]>"
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> From<[T; N]> for VecDeque<T, Global>",
+          "methods": [
+            {
+              "code": "pub fn from(arr: [T; N]) -> VecDeque<T, Global>"
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> From<[T; N]> for HashSet<T, RandomState> where T: Eq + Hash,",
+          "methods": [
+            {
+              "code": "fn from(arr: [T; N]) -> Self"
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> From<[bool; LANES]> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(array: [bool; LANES]) -> Mask<T, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<[u16; 8]> for Ipv6Addr",
+          "methods": [
+            {
+              "code": "fn from(segments: [u16; 8]) -> Ipv6Addr",
+              "text": "Creates an Ipv6Addr from an eight element 16-bit array."
+            }
+          ]
+        },
+        {
+          "title": "impl From<[u16; 8]> for IpAddr",
+          "methods": [
+            {
+              "code": "fn from(segments: [u16; 8]) -> IpAddr",
+              "text": "Creates an IpAddr::V6 from an eight element 16-bit array."
+            }
+          ]
+        },
+        {
+          "title": "impl From<[u8; 16]> for Ipv6Addr",
+          "methods": [
+            {
+              "code": "fn from(octets: [u8; 16]) -> Ipv6Addr",
+              "text": "Creates an Ipv6Addr from a sixteen element byte array."
+            }
+          ]
+        },
+        {
+          "title": "impl From<[u8; 16]> for IpAddr",
+          "methods": [
+            {
+              "code": "fn from(octets: [u8; 16]) -> IpAddr",
+              "text": "Creates an IpAddr::V6 from a sixteen element byte array."
+            }
+          ]
+        },
+        {
+          "title": "impl From<[u8; 4]> for Ipv4Addr",
+          "methods": [
+            {
+              "code": "fn from(octets: [u8; 4]) -> Ipv4Addr",
+              "text": "Creates an Ipv4Addr from a four element byte array."
+            }
+          ]
+        },
+        {
+          "title": "impl From<[u8; 4]> for IpAddr",
+          "methods": [
+            {
+              "code": "fn from(octets: [u8; 4]) -> IpAddr",
+              "text": "Creates an IpAddr::V4 from a four element byte array."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> From<Mask<T, LANES>> for [bool; LANES] where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(vector: Mask<T, LANES>) -> [bool; LANES]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> From<Simd<T, LANES>> for [T; LANES] where T: SimdElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(vector: Simd<T, LANES>) -> [T; LANES]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> Hash for [T; N] where T: Hash,",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, state: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, I, const N: usize> Index<I> for [T; N] where [T]: Index<I>,",
+          "methods": [
+            {
+              "code": "type Output = <[T] as Index<I>>::Output",
+              "text": "The returned type after indexing."
+            },
+            {
+              "code": "pub fn index(&self, index: I) -> &<[T; N] as Index<I>>::Output",
+              "text": "Performs the indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, I, const N: usize> IndexMut<I> for [T; N] where [T]: IndexMut<I>,",
+          "methods": [
+            {
+              "code": "pub fn index_mut(&mut self, index: I) -> &mut <[T; N] as Index<I>>::Output",
+              "text": "Performs the mutable indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T, const N: usize> IntoIterator for &'a mut [T; N]",
+          "methods": [
+            {
+              "code": "type Item = &'a mut T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = IterMut<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "pub fn into_iter(self) -> IterMut<'a, T>ⓘNotable traits for IterMut<'a, T>impl<'a, T> Iterator for IterMut<'a, T> type Item = &'a mut T;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> IntoIterator for [T; N]",
+          "methods": [
+            {
+              "code": "pub fn into_iter(self) -> <[T; N] as IntoIterator>::IntoIter",
+              "text": "Creates a consuming iterator, that is, one that moves each value out of the array (from start to end). The array cannot be used after calling this unless T implements Copy, so the whole array is copied."
+            },
+            {
+              "code": "type Item = T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = IntoIter<T, N>",
+              "text": "Which kind of iterator are we turning this into?"
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T, const N: usize> IntoIterator for &'a [T; N]",
+          "methods": [
+            {
+              "code": "type Item = &'a T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = Iter<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "pub fn into_iter(self) -> Iter<'a, T>ⓘNotable traits for Iter<'a, T>impl<'a, T> Iterator for Iter<'a, T> type Item = &'a T;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> Ord for [T; N] where T: Ord,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &[T; N]) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, A, B, const N: usize> PartialEq<&'_ [B]> for [A; N] where A: PartialEq<B>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&[B]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&[B]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A, const N: usize> PartialEq<&'_ [U; N]> for Vec<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&[U; N]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&[U; N]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A, const N: usize> PartialEq<&'_ [U; N]> for VecDeque<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&[U; N]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, A, B, const N: usize> PartialEq<&'_ mut [B]> for [A; N] where A: PartialEq<B>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&mut [B]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &&mut [B]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, U, A, const N: usize> PartialEq<&'_ mut [U; N]> for VecDeque<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &&mut [U; N]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, A, B, const N: usize> PartialEq<[A; N]> for &'_ mut [B] where B: PartialEq<A>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &[A; N]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &[A; N]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, const N: usize> PartialEq<[A; N]> for [B] where B: PartialEq<A>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &[A; N]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &[A; N]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, A, B, const N: usize> PartialEq<[A; N]> for &'_ [B] where B: PartialEq<A>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &[A; N]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &[A; N]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, const N: usize> PartialEq<[B; N]> for [A; N] where A: PartialEq<B>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &[B; N]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &[B; N]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, const N: usize> PartialEq<[B]> for [A; N] where A: PartialEq<B>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &[B]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &[B]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, A, const N: usize> PartialEq<[U; N]> for VecDeque<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &[U; N]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, U, A, const N: usize> PartialEq<[U; N]> for Vec<T, A> where A: Allocator, T: PartialEq<U>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &[U; N]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &[U; N]) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> PartialOrd<[T; N]> for [T; N] where T: PartialOrd<T>,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &[T; N]) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &[T; N]) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &[T; N]) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &[T; N]) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &[T; N]) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b, const N: usize> Pattern<'a> for &'b [char; N]",
+          "methods": [
+            {
+              "code": "type Searcher = CharArrayRefSearcher<'a, 'b, N>",
+              "text": "Associated searcher for this pattern"
+            },
+            {
+              "code": "pub fn into_searcher(self, haystack: &'a str) -> CharArrayRefSearcher<'a, 'b, N>",
+              "text": "Constructs the associated searcher from self and the haystack to search in."
+            },
+            {
+              "code": "pub fn is_contained_in(self, haystack: &'a str) -> bool",
+              "text": "Checks whether the pattern matches anywhere in the haystack"
+            },
+            {
+              "code": "pub fn is_prefix_of(self, haystack: &'a str) -> bool",
+              "text": "Checks whether the pattern matches at the front of the haystack"
+            },
+            {
+              "code": "pub fn strip_prefix_of(self, haystack: &'a str) -> Option<&'a str>",
+              "text": "Removes the pattern from the front of haystack, if it matches."
+            },
+            {
+              "code": "pub fn is_suffix_of(self, haystack: &'a str) -> bool where CharArrayRefSearcher<'a, 'b, N>: ReverseSearcher<'a>,",
+              "text": "Checks whether the pattern matches at the back of the haystack"
+            },
+            {
+              "code": "pub fn strip_suffix_of(self, haystack: &'a str) -> Option<&'a str> where CharArrayRefSearcher<'a, 'b, N>: ReverseSearcher<'a>,",
+              "text": "Removes the pattern from the back of haystack, if it matches."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, const N: usize> Pattern<'a> for [char; N]",
+          "methods": [
+            {
+              "code": "type Searcher = CharArraySearcher<'a, N>",
+              "text": "Associated searcher for this pattern"
+            },
+            {
+              "code": "pub fn into_searcher(self, haystack: &'a str) -> CharArraySearcher<'a, N>",
+              "text": "Constructs the associated searcher from self and the haystack to search in."
+            },
+            {
+              "code": "pub fn is_contained_in(self, haystack: &'a str) -> bool",
+              "text": "Checks whether the pattern matches anywhere in the haystack"
+            },
+            {
+              "code": "pub fn is_prefix_of(self, haystack: &'a str) -> bool",
+              "text": "Checks whether the pattern matches at the front of the haystack"
+            },
+            {
+              "code": "pub fn strip_prefix_of(self, haystack: &'a str) -> Option<&'a str>",
+              "text": "Removes the pattern from the front of haystack, if it matches."
+            },
+            {
+              "code": "pub fn is_suffix_of(self, haystack: &'a str) -> bool where CharArraySearcher<'a, N>: ReverseSearcher<'a>,",
+              "text": "Checks whether the pattern matches at the back of the haystack"
+            },
+            {
+              "code": "pub fn strip_suffix_of(self, haystack: &'a str) -> Option<&'a str> where CharArraySearcher<'a, N>: ReverseSearcher<'a>,",
+              "text": "Removes the pattern from the back of haystack, if it matches."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const N: usize> SlicePattern for [T; N]",
+          "methods": [
+            {
+              "code": "type Item = T",
+              "text": "The element type of the slice being matched on."
+            },
+            {
+              "code": "pub fn as_slice(&self) -> &[<[T; N] as SlicePattern>::Item]",
+              "text": "Currently, the consumers of SlicePattern need a slice."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const N: usize> TryFrom<&'_ [T]> for [T; N] where T: Copy,",
+          "methods": [
+            {
+              "code": "type Error = TryFromSliceError",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "pub fn try_from(slice: &[T]) -> Result<[T; N], TryFromSliceError>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T, const N: usize> TryFrom<&'_ mut [T]> for [T; N] where T: Copy,",
+          "methods": [
+            {
+              "code": "type Error = TryFromSliceError",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "pub fn try_from(slice: &mut [T]) -> Result<[T; N], TryFromSliceError>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T, const N: usize> TryFrom<&'a [T]> for &'a [T; N]",
+          "methods": [
+            {
+              "code": "type Error = TryFromSliceError",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "pub fn try_from(slice: &[T]) -> Result<&[T; N], TryFromSliceError>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T, const N: usize> TryFrom<&'a mut [T]> for &'a mut [T; N]",
+          "methods": [
+            {
+              "code": "type Error = TryFromSliceError",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "pub fn try_from(slice: &mut [T]) -> Result<&mut [T; N], TryFromSliceError>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A, const N: usize> TryFrom<Vec<T, A>> for [T; N] where A: Allocator,",
+          "methods": [
+            {
+              "code": "pub fn try_from(vec: Vec<T, A>) -> Result<[T; N], Vec<T, A>>",
+              "text": "Gets the entire contents of the Vec<T> as an array, if its size exactly matches that of the requested array."
+            },
+            {
+              "code": "type Error = Vec<T, A>",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

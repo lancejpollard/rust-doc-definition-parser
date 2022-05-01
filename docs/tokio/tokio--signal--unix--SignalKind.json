@@ -1,0 +1,89 @@
+{
+  "title": "Struct tokio::signal::unix::SignalKind",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn from_raw(signum: c_int) -> Self",
+          "text": "Allows for listening to any valid OS signal."
+        },
+        {
+          "code": "pub fn alarm() -> Self",
+          "text": "Represents the SIGALRM signal."
+        },
+        {
+          "code": "pub fn child() -> Self",
+          "text": "Represents the SIGCHLD signal."
+        },
+        {
+          "code": "pub fn hangup() -> Self",
+          "text": "Represents the SIGHUP signal."
+        },
+        {
+          "code": "pub fn interrupt() -> Self",
+          "text": "Represents the SIGINT signal."
+        },
+        {
+          "code": "pub fn io() -> Self",
+          "text": "Represents the SIGIO signal."
+        },
+        {
+          "code": "pub fn pipe() -> Self",
+          "text": "Represents the SIGPIPE signal."
+        },
+        {
+          "code": "pub fn quit() -> Self",
+          "text": "Represents the SIGQUIT signal."
+        },
+        {
+          "code": "pub fn terminate() -> Self",
+          "text": "Represents the SIGTERM signal."
+        },
+        {
+          "code": "pub fn user_defined1() -> Self",
+          "text": "Represents the SIGUSR1 signal."
+        },
+        {
+          "code": "pub fn user_defined2() -> Self",
+          "text": "Represents the SIGUSR2 signal."
+        },
+        {
+          "code": "pub fn window_change() -> Self",
+          "text": "Represents the SIGWINCH signal."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for SignalKind",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> SignalKind",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for SignalKind",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

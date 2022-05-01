@@ -1,0 +1,40 @@
+{
+  "title": "Struct std::collections::hash_map::RawEntryBuilder",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn from_key<Q: ?Sized>(self, k: &Q) -> Option<(&'a K, &'a V)> where K: Borrow<Q>, Q: Hash + Eq,",
+          "text": "Access an entry by key."
+        },
+        {
+          "code": "pub fn from_key_hashed_nocheck<Q: ?Sized>( self, hash: u64, k: &Q) -> Option<(&'a K, &'a V)> where K: Borrow<Q>, Q: Hash + Eq,",
+          "text": "Access an entry by a key and its hash."
+        },
+        {
+          "code": "pub fn from_hash<F>(self, hash: u64, is_match: F) -> Option<(&'a K, &'a V)> where F: FnMut(&K) -> bool,",
+          "text": "Access an entry by hash."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<K, V, S> Debug for RawEntryBuilder<'_, K, V, S>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

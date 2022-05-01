@@ -1,0 +1,48 @@
+{
+  "title": "Struct tokio::task::LocalKey",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn scope<F>(&'static self, value: T, f: F) -> TaskLocalFuture<T, F>ⓘNotable traits for TaskLocalFuture<T, F>impl<T: 'static, F: Future> Future for TaskLocalFuture<T, F> type Output = F::Output; where F: Future,",
+          "text": "Sets a value T as the task-local value for the future F."
+        },
+        {
+          "code": "pub fn sync_scope<F, R>(&'static self, value: T, f: F) -> R where F: FnOnce() -> R,",
+          "text": "Sets a value T as the task-local value for the closure F."
+        },
+        {
+          "code": "pub fn with<F, R>(&'static self, f: F) -> R where F: FnOnce(&T) -> R,",
+          "text": "Accesses the current task-local and runs the provided closure."
+        },
+        {
+          "code": "pub fn try_with<F, R>(&'static self, f: F) -> Result<R, AccessError> where F: FnOnce(&T) -> R,",
+          "text": "Accesses the current task-local and runs the provided closure."
+        },
+        {
+          "code": "pub fn get(&'static self) -> T",
+          "text": "Returns a copy of the task-local value if the task-local value implements Copy."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T: 'static> Debug for LocalKey<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

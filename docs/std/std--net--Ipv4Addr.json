@@ -1,0 +1,319 @@
+{
+  "title": "Struct std::net::Ipv4Addr",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn new(a: u8, b: u8, c: u8, d: u8) -> Ipv4Addr",
+          "text": "Creates a new IPv4 address from four eight-bit octets."
+        },
+        {
+          "code": "pub const LOCALHOST: Self",
+          "text": "An IPv4 address with the address pointing to localhost: 127.0.0.1"
+        },
+        {
+          "code": "pub const UNSPECIFIED: Self",
+          "text": "An IPv4 address representing an unspecified address: 0.0.0.0"
+        },
+        {
+          "code": "pub const BROADCAST: Self",
+          "text": "An IPv4 address representing the broadcast address: 255.255.255.255"
+        },
+        {
+          "code": "pub const fn octets(&self) -> [u8; 4]",
+          "text": "Returns the four eight-bit integers that make up this address."
+        },
+        {
+          "code": "pub const fn is_unspecified(&self) -> bool",
+          "text": "Returns true for the special ‘unspecified’ address (0.0.0.0)."
+        },
+        {
+          "code": "pub const fn is_loopback(&self) -> bool",
+          "text": "Returns true if this is a loopback address (127.0.0.0/8)."
+        },
+        {
+          "code": "pub const fn is_private(&self) -> bool",
+          "text": "Returns true if this is a private address."
+        },
+        {
+          "code": "pub const fn is_link_local(&self) -> bool",
+          "text": "Returns true if the address is link-local (169.254.0.0/16)."
+        },
+        {
+          "code": "pub fn is_global(&self) -> bool",
+          "text": "Returns true if the address appears to be globally routable. See iana-ipv4-special-registry."
+        },
+        {
+          "code": "pub fn is_shared(&self) -> bool",
+          "text": "Returns true if this address is part of the Shared Address Space defined in IETF RFC 6598 (100.64.0.0/10)."
+        },
+        {
+          "code": "pub fn is_benchmarking(&self) -> bool",
+          "text": "Returns true if this address part of the 198.18.0.0/15 range, which is reserved for network devices benchmarking. This range is defined in IETF RFC 2544 as 192.18.0.0 through 198.19.255.255 but errata 423 corrects it to 198.18.0.0/15."
+        },
+        {
+          "code": "pub fn is_reserved(&self) -> bool",
+          "text": "Returns true if this address is reserved by IANA for future use. IETF RFC 1112 defines the block of reserved addresses as 240.0.0.0/4. This range normally includes the broadcast address 255.255.255.255, but this implementation explicitly excludes it, since it is obviously not reserved for future use."
+        },
+        {
+          "code": "pub const fn is_multicast(&self) -> bool",
+          "text": "Returns true if this is a multicast address (224.0.0.0/4)."
+        },
+        {
+          "code": "pub const fn is_broadcast(&self) -> bool",
+          "text": "Returns true if this is a broadcast address (255.255.255.255)."
+        },
+        {
+          "code": "pub const fn is_documentation(&self) -> bool",
+          "text": "Returns true if this address is in a range designated for documentation."
+        },
+        {
+          "code": "pub const fn to_ipv6_compatible(&self) -> Ipv6Addr",
+          "text": "Converts this address to an IPv4-compatible IPv6 address."
+        },
+        {
+          "code": "pub const fn to_ipv6_mapped(&self) -> Ipv6Addr",
+          "text": "Converts this address to an IPv4-mapped IPv6 address."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for Ipv4Addr",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Ipv4Addr",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Ipv4Addr",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for Ipv4Addr",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<[u8; 4]> for Ipv4Addr",
+          "methods": [
+            {
+              "code": "fn from(octets: [u8; 4]) -> Ipv4Addr",
+              "text": "Creates an Ipv4Addr from a four element byte array."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Ipv4Addr> for IpAddr",
+          "methods": [
+            {
+              "code": "fn from(ipv4: Ipv4Addr) -> IpAddr",
+              "text": "Copies this address to a new IpAddr::V4."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Ipv4Addr> for u32",
+          "methods": [
+            {
+              "code": "fn from(ip: Ipv4Addr) -> u32",
+              "text": "Converts an Ipv4Addr into a host byte order u32."
+            }
+          ]
+        },
+        {
+          "title": "impl From<u32> for Ipv4Addr",
+          "methods": [
+            {
+              "code": "fn from(ip: u32) -> Ipv4Addr",
+              "text": "Converts a host byte order u32 into an Ipv4Addr."
+            }
+          ]
+        },
+        {
+          "title": "impl FromStr for Ipv4Addr",
+          "methods": [
+            {
+              "code": "type Err = AddrParseError",
+              "text": "The associated error which can be returned from parsing."
+            },
+            {
+              "code": "fn from_str(s: &str) -> Result<Ipv4Addr, AddrParseError>",
+              "text": "Parses a string s to return a value of this type."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for Ipv4Addr",
+          "methods": [
+            {
+              "code": "fn hash<H: Hasher>(&self, s: &mut H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for Ipv4Addr",
+          "methods": [
+            {
+              "code": "fn cmp(&self, other: &Ipv4Addr) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<IpAddr> for Ipv4Addr",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &IpAddr) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Ipv4Addr> for Ipv4Addr",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Ipv4Addr) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Ipv4Addr> for IpAddr",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Ipv4Addr) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<IpAddr> for Ipv4Addr",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &IpAddr) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<Ipv4Addr> for Ipv4Addr",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &Ipv4Addr) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<Ipv4Addr> for IpAddr",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &Ipv4Addr) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

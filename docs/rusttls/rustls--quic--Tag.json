@@ -1,0 +1,27 @@
+{
+  "title": "Struct rustls::quic::Tag",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRef<[u8]> for Tag",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &[u8]ⓘNotable traits for &'_ [u8]impl<'_> Read for &'_ [u8]impl<'_> Write for &'_ mut [u8]",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

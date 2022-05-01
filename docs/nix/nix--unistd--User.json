@@ -1,0 +1,80 @@
+{
+  "title": "Struct nix::unistd::User",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn from_uid(uid: Uid) -> Result<Option<Self>>",
+          "text": "Get a user by UID."
+        },
+        {
+          "code": "pub fn from_name(name: &str) -> Result<Option<Self>>",
+          "text": "Get a user by name."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for User",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> User",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for User",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<&'_ passwd> for User",
+          "methods": [
+            {
+              "code": "fn from(pw: &passwd) -> User",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<User> for passwd",
+          "methods": [
+            {
+              "code": "fn from(u: User) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<User> for User",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &User) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &User) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

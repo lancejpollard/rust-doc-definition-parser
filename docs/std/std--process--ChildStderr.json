@@ -1,0 +1,161 @@
+{
+  "title": "Struct std::process::ChildStderr",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsFd for ChildStderr",
+          "methods": [
+            {
+              "code": "fn as_fd(&self) -> BorrowedFd<'_>",
+              "text": "Borrows the file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl AsHandle for ChildStderr",
+          "methods": [
+            {
+              "code": "fn as_handle(&self) -> BorrowedHandle<'_>",
+              "text": "Borrows the handle."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRawFd for ChildStderr",
+          "methods": [
+            {
+              "code": "fn as_raw_fd(&self) -> RawFd",
+              "text": "Extracts the raw file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRawHandle for ChildStderr",
+          "methods": [
+            {
+              "code": "fn as_raw_handle(&self) -> RawHandle",
+              "text": "Extracts the raw handle, without taking any ownership."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for ChildStderr",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<ChildStderr> for OwnedFd",
+          "methods": [
+            {
+              "code": "fn from(child_stderr: ChildStderr) -> OwnedFd",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<ChildStderr> for OwnedHandle",
+          "methods": [
+            {
+              "code": "fn from(child_stderr: ChildStderr) -> OwnedHandle",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<ChildStderr> for Stdio",
+          "methods": [
+            {
+              "code": "fn from(child: ChildStderr) -> Stdio",
+              "text": "Converts a ChildStderr into a Stdio"
+            }
+          ]
+        },
+        {
+          "title": "impl IntoRawFd for ChildStderr",
+          "methods": [
+            {
+              "code": "fn into_raw_fd(self) -> RawFd",
+              "text": "Consumes this object, returning the raw underlying file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl IntoRawHandle for ChildStderr",
+          "methods": [
+            {
+              "code": "fn into_raw_handle(self) -> RawHandle",
+              "text": "Consumes this object, returning the raw underlying handle."
+            }
+          ]
+        },
+        {
+          "title": "impl Read for ChildStderr",
+          "methods": [
+            {
+              "code": "fn read(&mut self, buf: &mut [u8]) -> Result<usize>",
+              "text": "Pull some bytes from this source into the specified buffer, returning how many bytes were read."
+            },
+            {
+              "code": "fn read_vectored(&mut self, bufs: &mut [IoSliceMut<'_>]) -> Result<usize>",
+              "text": "Like read, except that it reads into a slice of buffers."
+            },
+            {
+              "code": "fn is_read_vectored(&self) -> bool",
+              "text": "Determines if this Reader has an efficient read_vectored implementation."
+            },
+            {
+              "code": "fn read_to_end(&mut self, buf: &mut Vec<u8>) -> Result<usize>",
+              "text": "Read all bytes until EOF in this source, placing them into buf."
+            },
+            {
+              "code": "fn read_to_string(&mut self, buf: &mut String) -> Result<usize>",
+              "text": "Read all bytes until EOF in this source, appending them to buf."
+            },
+            {
+              "code": "fn read_exact(&mut self, buf: &mut [u8]) -> Result<()>",
+              "text": "Read the exact number of bytes required to fill buf."
+            },
+            {
+              "code": "fn read_buf(&mut self, buf: &mut ReadBuf<'_>) -> Result<()>",
+              "text": "Pull some bytes from this source into the specified buffer."
+            },
+            {
+              "code": "fn read_buf_exact(&mut self, buf: &mut ReadBuf<'_>) -> Result<()>",
+              "text": "Read the exact number of bytes required to fill buf."
+            },
+            {
+              "code": "fn by_ref(&mut self) -> &mut Self where Self: Sized,",
+              "text": "Creates a “by reference” adaptor for this instance of Read."
+            },
+            {
+              "code": "fn bytes(self) -> Bytes<Self>ⓘNotable traits for Bytes<R>impl<R: Read> Iterator for Bytes<R> type Item = Result<u8>; where Self: Sized,",
+              "text": "Transforms this Read instance to an Iterator over its bytes."
+            },
+            {
+              "code": "fn chain<R: Read>(self, next: R) -> Chain<Self, R>ⓘNotable traits for Chain<T, U>impl<T: Read, U: Read> Read for Chain<T, U> where Self: Sized,",
+              "text": "Creates an adapter which will chain this stream with another."
+            },
+            {
+              "code": "fn take(self, limit: u64) -> Take<Self>ⓘNotable traits for Take<T>impl<T: Read> Read for Take<T> where Self: Sized,",
+              "text": "Creates an adapter which will read at most limit bytes from it."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

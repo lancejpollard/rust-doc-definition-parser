@@ -1,0 +1,32 @@
+{
+  "title": "Struct std::sync::OnceState",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn is_poisoned(&self) -> bool",
+          "text": "Returns true if the associated Once was poisoned prior to the invocation of the closure passed to Once::call_once_force()."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for OnceState",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "title": "Struct hyper::client::Client",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<C: Clone, B> Clone for Client<C, B>",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Client<C, B>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<C, B> Debug for Client<C, B>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for Client<HttpConnector, Body>",
+          "methods": [
+            {
+              "code": "fn default() -> Client<HttpConnector, Body>",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<C, B> Service<Request<B>> for Client<C, B> where C: Connect + Clone + Send + Sync + 'static, B: HttpBody + Send + 'static, B::Data: Send, B::Error: Into<Box<dyn StdError + Send + Sync>>,",
+          "methods": [
+            {
+              "code": "type Response = Response<Body>",
+              "text": "Responses given by the service."
+            },
+            {
+              "code": "type Error = Error",
+              "text": "Errors produced by the service."
+            },
+            {
+              "code": "type Future = ResponseFuture",
+              "text": "The future response value."
+            },
+            {
+              "code": "fn poll_ready(&mut self, _: &mut Context<'_>) -> Poll<Result<(), Self::Error>>",
+              "text": "Returns Poll::Ready(Ok(())) when the service is able to process requests."
+            },
+            {
+              "code": "fn call(&mut self, req: Request<B>) -> Self::Future",
+              "text": "Process the request and return the response asynchronously."
+            }
+          ]
+        },
+        {
+          "title": "impl<C, B> Service<Request<B>> for &Client<C, B> where C: Connect + Clone + Send + Sync + 'static, B: HttpBody + Send + 'static, B::Data: Send, B::Error: Into<Box<dyn StdError + Send + Sync>>,",
+          "methods": [
+            {
+              "code": "type Response = Response<Body>",
+              "text": "Responses given by the service."
+            },
+            {
+              "code": "type Error = Error",
+              "text": "Errors produced by the service."
+            },
+            {
+              "code": "type Future = ResponseFuture",
+              "text": "The future response value."
+            },
+            {
+              "code": "fn poll_ready(&mut self, _: &mut Context<'_>) -> Poll<Result<(), Self::Error>>",
+              "text": "Returns Poll::Ready(Ok(())) when the service is able to process requests."
+            },
+            {
+              "code": "fn call(&mut self, req: Request<B>) -> Self::Future",
+              "text": "Process the request and return the response asynchronously."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

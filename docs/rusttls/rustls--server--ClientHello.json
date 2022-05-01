@@ -1,0 +1,30 @@
+{
+  "title": "Struct rustls::server::ClientHello",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn server_name(&self) -> Option<&str>",
+          "text": "Get the server name indicator."
+        },
+        {
+          "code": "pub fn signature_schemes(&self) -> &[SignatureScheme]",
+          "text": "Get the compatible signature schemes."
+        },
+        {
+          "code": "pub fn alpn(&self) -> Option<impl Iterator<Item = &'a [u8]>>",
+          "text": "Get the alpn."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

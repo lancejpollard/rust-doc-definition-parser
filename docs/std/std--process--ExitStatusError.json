@@ -1,0 +1,126 @@
+{
+  "title": "Struct std::process::ExitStatusError",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn code(&self) -> Option<i32>",
+          "text": "Reports the exit code, if applicable, from an ExitStatusError."
+        },
+        {
+          "code": "pub fn code_nonzero(&self) -> Option<NonZeroI32>",
+          "text": "Reports the exit code, if applicable, from an ExitStatusError, as a NonZero"
+        },
+        {
+          "code": "pub fn into_status(&self) -> ExitStatus",
+          "text": "Converts an ExitStatusError (back) to an ExitStatus."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for ExitStatusError",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> ExitStatusError",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for ExitStatusError",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for ExitStatusError",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Error for ExitStatusError",
+          "methods": [
+            {
+              "code": "fn source(&self) -> Option<&(dyn Error + 'static)>",
+              "text": "The lower-level source of this error, if any."
+            },
+            {
+              "code": "fn backtrace(&self) -> Option<&Backtrace>",
+              "text": "Returns a stack backtrace, if available, of where this error occurred."
+            }
+          ]
+        },
+        {
+          "title": "impl ExitStatusExt for ExitStatusError",
+          "methods": [
+            {
+              "code": "fn from_raw(raw: i32) -> Self",
+              "text": "Creates a new ExitStatus or ExitStatusError from the raw underlying integer status value from wait"
+            },
+            {
+              "code": "fn signal(&self) -> Option<i32>",
+              "text": "If the process was terminated by a signal, returns that signal."
+            },
+            {
+              "code": "fn core_dumped(&self) -> bool",
+              "text": "If the process was terminated by a signal, says whether it dumped core."
+            },
+            {
+              "code": "fn stopped_signal(&self) -> Option<i32>",
+              "text": "If the process was stopped by a signal, returns that signal."
+            },
+            {
+              "code": "fn continued(&self) -> bool",
+              "text": "Whether the process was continued from a stopped status."
+            },
+            {
+              "code": "fn into_raw(self) -> i32",
+              "text": "Returns the underlying raw wait status."
+            }
+          ]
+        },
+        {
+          "title": "impl Into<ExitStatus> for ExitStatusError",
+          "methods": [
+            {
+              "code": "fn into(self) -> ExitStatus",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<ExitStatusError> for ExitStatusError",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &ExitStatusError) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &ExitStatusError) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

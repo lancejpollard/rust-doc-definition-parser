@@ -1,0 +1,62 @@
+{
+  "title": "Struct rustls::server::DnsName",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRef<str> for DnsName",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &str",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for DnsName",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> DnsName",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for DnsName",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<DnsName> for DnsName",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &DnsName) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &DnsName) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

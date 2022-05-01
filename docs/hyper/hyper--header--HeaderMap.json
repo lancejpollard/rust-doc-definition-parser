@@ -1,0 +1,182 @@
+{
+  "title": "Struct hyper::header::HeaderMap",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Clone for HeaderMap<T> where T: Clone,",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> HeaderMap<T>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for HeaderMap<T> where T: Debug,",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for HeaderMap<T>",
+          "methods": [
+            {
+              "code": "fn default() -> HeaderMap<T>",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Extend<(HeaderName, T)> for HeaderMap<T>",
+          "methods": [
+            {
+              "code": "fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = (HeaderName, T)>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "fn extend_one(&mut self, item: A)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Extend<(Option<HeaderName>, T)> for HeaderMap<T>",
+          "methods": [
+            {
+              "code": "fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = (Option<HeaderName>, T)>,",
+              "text": "Extend a HeaderMap with the contents of another HeaderMap."
+            },
+            {
+              "code": "fn extend_one(&mut self, item: A)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> FromIterator<(HeaderName, T)> for HeaderMap<T>",
+          "methods": [
+            {
+              "code": "fn from_iter<I>(iter: I) -> HeaderMap<T> where I: IntoIterator<Item = (HeaderName, T)>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, K, T> Index<K> for HeaderMap<T> where K: AsHeaderName,",
+          "methods": [
+            {
+              "code": "fn index(&self, index: K) -> &T",
+              "text": "Using the index operator will cause a panic if the header you’re querying isn’t set."
+            },
+            {
+              "code": "type Output = T",
+              "text": "The returned type after indexing."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> IntoIterator for &'a mut HeaderMap<T>",
+          "methods": [
+            {
+              "code": "type Item = (&'a HeaderName, &'a mut T)",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = IterMut<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "fn into_iter(self) -> IterMut<'a, T>ⓘNotable traits for IterMut<'a, T>impl<'a, T> Iterator for IterMut<'a, T> type Item = (&'a HeaderName, &'a mut T);",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> IntoIterator for HeaderMap<T>",
+          "methods": [
+            {
+              "code": "fn into_iter(self) -> IntoIter<T>ⓘNotable traits for IntoIter<T>impl<T> Iterator for IntoIter<T> type Item = (Option<HeaderName>, T);",
+              "text": "Creates a consuming iterator, that is, one that moves keys and values out of the map in arbitrary order. The map cannot be used after calling this."
+            },
+            {
+              "code": "type Item = (Option<HeaderName>, T)",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = IntoIter<T>",
+              "text": "Which kind of iterator are we turning this into?"
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> IntoIterator for &'a HeaderMap<T>",
+          "methods": [
+            {
+              "code": "type Item = (&'a HeaderName, &'a T)",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = Iter<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "fn into_iter(self) -> Iter<'a, T>ⓘNotable traits for Iter<'a, T>impl<'a, T> Iterator for Iter<'a, T> type Item = (&'a HeaderName, &'a T);",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialEq<HeaderMap<T>> for HeaderMap<T> where T: PartialEq<T>,",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &HeaderMap<T>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, K, V, T> TryFrom<&'a HashMap<K, V, RandomState>> for HeaderMap<T> where K: Eq + Hash, T: TryFrom<&'a V>, HeaderName: TryFrom<&'a K>, <HeaderName as TryFrom<&'a K>>::Error: Into<Error>, <T as TryFrom<&'a V>>::Error: Into<Error>,",
+          "methods": [
+            {
+              "code": "type Error = Error",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "fn try_from( c: &'a HashMap<K, V, RandomState>) -> Result<HeaderMap<T>, <HeaderMap<T> as TryFrom<&'a HashMap<K, V, RandomState>>>::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

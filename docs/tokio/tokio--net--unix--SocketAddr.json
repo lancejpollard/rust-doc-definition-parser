@@ -1,0 +1,36 @@
+{
+  "title": "Struct tokio::net::unix::SocketAddr",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn is_unnamed(&self) -> bool",
+          "text": "Returns true if the address is unnamed."
+        },
+        {
+          "code": "pub fn as_pathname(&self) -> Option<&Path>",
+          "text": "Returns the contents of this address if it is a pathname address."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for SocketAddr",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

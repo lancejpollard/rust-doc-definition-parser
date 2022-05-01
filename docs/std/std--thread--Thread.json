@@ -1,0 +1,53 @@
+{
+  "title": "Struct std::thread::Thread",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn unpark(&self)",
+          "text": "Atomically makes the handle’s token available if it is not already."
+        },
+        {
+          "code": "pub fn id(&self) -> ThreadId",
+          "text": "Gets the thread’s unique identifier."
+        },
+        {
+          "code": "pub fn name(&self) -> Option<&str>",
+          "text": "Gets the thread’s name."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for Thread",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Thread",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Thread",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

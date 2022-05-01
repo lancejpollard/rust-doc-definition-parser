@@ -1,0 +1,807 @@
+{
+  "title": "Struct hyper::body::Bytes",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRef<[u8]> for Bytes",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &[u8]ⓘNotable traits for &'_ [u8]impl<'_> Read for &'_ [u8]impl<'_> Write for &'_ mut [u8]",
+              "text": "Converts this type into a shared reference of the (usually inferred) input type."
+            }
+          ]
+        },
+        {
+          "title": "impl Borrow<[u8]> for Bytes",
+          "methods": [
+            {
+              "code": "fn borrow(&self) -> &[u8]ⓘNotable traits for &'_ [u8]impl<'_> Read for &'_ [u8]impl<'_> Write for &'_ mut [u8]",
+              "text": "Immutably borrows from an owned value."
+            }
+          ]
+        },
+        {
+          "title": "impl Buf for Bytes",
+          "methods": [
+            {
+              "code": "fn remaining(&self) -> usize",
+              "text": "Returns the number of bytes between the current position and the end of the buffer."
+            },
+            {
+              "code": "fn chunk(&self) -> &[u8]ⓘNotable traits for &'_ [u8]impl<'_> Read for &'_ [u8]impl<'_> Write for &'_ mut [u8]",
+              "text": "Returns a slice starting at the current position and of length between 0 and Buf::remaining(). Note that this can return shorter slice (this allows non-continuous internal representation)."
+            },
+            {
+              "code": "fn advance(&mut self, cnt: usize)",
+              "text": "Advance the internal cursor of the Buf"
+            },
+            {
+              "code": "fn copy_to_bytes(&mut self, len: usize) -> Bytes",
+              "text": "Consumes len bytes inside self and returns new instance of Bytes with this data."
+            },
+            {
+              "code": "fn chunks_vectored(&'a self, dst: &mut [IoSlice<'a>]) -> usize",
+              "text": "Fills dst with potentially multiple slices starting at self’s current position."
+            },
+            {
+              "code": "fn has_remaining(&self) -> bool",
+              "text": "Returns true if there are any more bytes to consume"
+            },
+            {
+              "code": "fn copy_to_slice(&mut self, dst: &mut [u8])",
+              "text": "Copies bytes from self into dst."
+            },
+            {
+              "code": "fn get_u8(&mut self) -> u8",
+              "text": "Gets an unsigned 8 bit integer from self."
+            },
+            {
+              "code": "fn get_i8(&mut self) -> i8",
+              "text": "Gets a signed 8 bit integer from self."
+            },
+            {
+              "code": "fn get_u16(&mut self) -> u16",
+              "text": "Gets an unsigned 16 bit integer from self in big-endian byte order."
+            },
+            {
+              "code": "fn get_u16_le(&mut self) -> u16",
+              "text": "Gets an unsigned 16 bit integer from self in little-endian byte order."
+            },
+            {
+              "code": "fn get_i16(&mut self) -> i16",
+              "text": "Gets a signed 16 bit integer from self in big-endian byte order."
+            },
+            {
+              "code": "fn get_i16_le(&mut self) -> i16",
+              "text": "Gets a signed 16 bit integer from self in little-endian byte order."
+            },
+            {
+              "code": "fn get_u32(&mut self) -> u32",
+              "text": "Gets an unsigned 32 bit integer from self in the big-endian byte order."
+            },
+            {
+              "code": "fn get_u32_le(&mut self) -> u32",
+              "text": "Gets an unsigned 32 bit integer from self in the little-endian byte order."
+            },
+            {
+              "code": "fn get_i32(&mut self) -> i32",
+              "text": "Gets a signed 32 bit integer from self in big-endian byte order."
+            },
+            {
+              "code": "fn get_i32_le(&mut self) -> i32",
+              "text": "Gets a signed 32 bit integer from self in little-endian byte order."
+            },
+            {
+              "code": "fn get_u64(&mut self) -> u64",
+              "text": "Gets an unsigned 64 bit integer from self in big-endian byte order."
+            },
+            {
+              "code": "fn get_u64_le(&mut self) -> u64",
+              "text": "Gets an unsigned 64 bit integer from self in little-endian byte order."
+            },
+            {
+              "code": "fn get_i64(&mut self) -> i64",
+              "text": "Gets a signed 64 bit integer from self in big-endian byte order."
+            },
+            {
+              "code": "fn get_i64_le(&mut self) -> i64",
+              "text": "Gets a signed 64 bit integer from self in little-endian byte order."
+            },
+            {
+              "code": "fn get_u128(&mut self) -> u128",
+              "text": "Gets an unsigned 128 bit integer from self in big-endian byte order."
+            },
+            {
+              "code": "fn get_u128_le(&mut self) -> u128",
+              "text": "Gets an unsigned 128 bit integer from self in little-endian byte order."
+            },
+            {
+              "code": "fn get_i128(&mut self) -> i128",
+              "text": "Gets a signed 128 bit integer from self in big-endian byte order."
+            },
+            {
+              "code": "fn get_i128_le(&mut self) -> i128",
+              "text": "Gets a signed 128 bit integer from self in little-endian byte order."
+            },
+            {
+              "code": "fn get_uint(&mut self, nbytes: usize) -> u64",
+              "text": "Gets an unsigned n-byte integer from self in big-endian byte order."
+            },
+            {
+              "code": "fn get_uint_le(&mut self, nbytes: usize) -> u64",
+              "text": "Gets an unsigned n-byte integer from self in little-endian byte order."
+            },
+            {
+              "code": "fn get_int(&mut self, nbytes: usize) -> i64",
+              "text": "Gets a signed n-byte integer from self in big-endian byte order."
+            },
+            {
+              "code": "fn get_int_le(&mut self, nbytes: usize) -> i64",
+              "text": "Gets a signed n-byte integer from self in little-endian byte order."
+            },
+            {
+              "code": "fn get_f32(&mut self) -> f32",
+              "text": "Gets an IEEE754 single-precision (4 bytes) floating point number from self in big-endian byte order."
+            },
+            {
+              "code": "fn get_f32_le(&mut self) -> f32",
+              "text": "Gets an IEEE754 single-precision (4 bytes) floating point number from self in little-endian byte order."
+            },
+            {
+              "code": "fn get_f64(&mut self) -> f64",
+              "text": "Gets an IEEE754 double-precision (8 bytes) floating point number from self in big-endian byte order."
+            },
+            {
+              "code": "fn get_f64_le(&mut self) -> f64",
+              "text": "Gets an IEEE754 double-precision (8 bytes) floating point number from self in little-endian byte order."
+            },
+            {
+              "code": "fn take(self, limit: usize) -> Take<Self>",
+              "text": "Creates an adaptor which will read at most limit bytes from self."
+            },
+            {
+              "code": "fn chain<U>(self, next: U) -> Chain<Self, U> where U: Buf,",
+              "text": "Creates an adaptor which will chain this buffer with another."
+            },
+            {
+              "code": "fn reader(self) -> Reader<Self>",
+              "text": "Creates an adaptor which implements the Read trait for self."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for Bytes",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Bytes",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Bytes",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for Bytes",
+          "methods": [
+            {
+              "code": "fn default() -> Bytes",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl Deref for Bytes",
+          "methods": [
+            {
+              "code": "type Target = [u8]",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "fn deref(&self) -> &[u8]ⓘNotable traits for &'_ [u8]impl<'_> Read for &'_ [u8]impl<'_> Write for &'_ mut [u8]",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl Drop for Bytes",
+          "methods": [
+            {
+              "code": "fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<&'static [u8]> for Bytes",
+          "methods": [
+            {
+              "code": "fn from(slice: &'static [u8]) -> Bytes",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<&'static str> for Bytes",
+          "methods": [
+            {
+              "code": "fn from(slice: &'static str) -> Bytes",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Box<[u8], Global>> for Bytes",
+          "methods": [
+            {
+              "code": "fn from(slice: Box<[u8], Global>) -> Bytes",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<ByteStr> for Bytes",
+          "methods": [
+            {
+              "code": "fn from(src: ByteStr) -> Bytes",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Bytes> for Body",
+          "methods": [
+            {
+              "code": "fn from(chunk: Bytes) -> Body",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<BytesMut> for Bytes",
+          "methods": [
+            {
+              "code": "fn from(src: BytesMut) -> Bytes",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Custom> for Bytes",
+          "methods": [
+            {
+              "code": "fn from(Custom) -> Bytes",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<String> for Bytes",
+          "methods": [
+            {
+              "code": "fn from(s: String) -> Bytes",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Vec<u8, Global>> for Bytes",
+          "methods": [
+            {
+              "code": "fn from(vec: Vec<u8, Global>) -> Bytes",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl FromIterator<u8> for Bytes",
+          "methods": [
+            {
+              "code": "fn from_iter<T>(into_iter: T) -> Bytes where T: IntoIterator<Item = u8>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for Bytes",
+          "methods": [
+            {
+              "code": "fn hash<H>(&self, state: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl IntoIterator for Bytes",
+          "methods": [
+            {
+              "code": "type Item = u8",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = IntoIter<Bytes>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "fn into_iter(self) -> <Bytes as IntoIterator>::IntoIter",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> IntoIterator for &'a Bytes",
+          "methods": [
+            {
+              "code": "type Item = &'a u8",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = Iter<'a, u8>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "fn into_iter(self) -> <&'a Bytes as IntoIterator>::IntoIter",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl LowerHex for Bytes",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for Bytes",
+          "methods": [
+            {
+              "code": "fn cmp(&self, other: &Bytes) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> PartialEq<&'a T> for Bytes where T: ?Sized, Bytes: PartialEq<T>,",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &&'a T) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<[u8]> for Bytes",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &[u8]) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Bytes> for str",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Bytes) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> PartialEq<Bytes> for &'_ str",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Bytes) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Bytes> for [u8]",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Bytes) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Bytes> for Bytes",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Bytes) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> PartialEq<Bytes> for &'_ [u8]",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Bytes) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<BytesMut> for Bytes",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &BytesMut) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<String> for Bytes",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &String) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Vec<u8, Global>> for Bytes",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Vec<u8, Global>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<str> for Bytes",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &str) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> PartialOrd<&'a T> for Bytes where T: ?Sized, Bytes: PartialOrd<T>,",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &&'a T) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<[u8]> for Bytes",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &[u8]) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<Bytes> for [u8]",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &Bytes) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> PartialOrd<Bytes> for &'_ [u8]",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &Bytes) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> PartialOrd<Bytes> for &'_ str",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &Bytes) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<Bytes> for str",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &Bytes) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<Bytes> for Bytes",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &Bytes) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<String> for Bytes",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &String) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<Vec<u8, Global>> for Bytes",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &Vec<u8, Global>) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<str> for Bytes",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &str) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl UpperHex for Bytes",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

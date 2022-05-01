@@ -1,0 +1,75 @@
+{
+  "title": "Struct std::sync::PoisonError",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(guard: T) -> PoisonError<T>",
+          "text": "Creates a PoisonError."
+        },
+        {
+          "code": "pub fn into_inner(self) -> T",
+          "text": "Consumes this error indicating that a lock is poisoned, returning the underlying guard to allow access regardless."
+        },
+        {
+          "code": "pub fn get_ref(&self) -> &T",
+          "text": "Reaches into this error indicating that a lock is poisoned, returning a reference to the underlying guard to allow access regardless."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut T",
+          "text": "Reaches into this error indicating that a lock is poisoned, returning a mutable reference to the underlying guard to allow access regardless."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Debug for PoisonError<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Display for PoisonError<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Error for PoisonError<T>",
+          "methods": [
+            {
+              "code": "fn source(&self) -> Option<&(dyn Error + 'static)>",
+              "text": "The lower-level source of this error, if any."
+            },
+            {
+              "code": "fn backtrace(&self) -> Option<&Backtrace>",
+              "text": "Returns a stack backtrace, if available, of where this error occurred."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<PoisonError<T>> for TryLockError<T>",
+          "methods": [
+            {
+              "code": "fn from(err: PoisonError<T>) -> TryLockError<T>",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

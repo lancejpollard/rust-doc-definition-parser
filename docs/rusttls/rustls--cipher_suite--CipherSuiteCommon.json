@@ -1,0 +1,17 @@
+{
+  "title": "Struct rustls::cipher_suite::CipherSuiteCommon",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

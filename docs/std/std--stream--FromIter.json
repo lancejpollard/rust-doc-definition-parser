@@ -1,0 +1,57 @@
+{
+  "title": "Struct std::stream::FromIter",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<I> Clone for FromIter<I> where I: Clone,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> FromIter<I>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<I> Debug for FromIter<I> where I: Debug,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<I> Stream for FromIter<I> where I: Iterator,",
+          "methods": [
+            {
+              "code": "type Item = <I as Iterator>::Item",
+              "text": "The type of items yielded by the stream."
+            },
+            {
+              "code": "pub fn poll_next( self: Pin<&mut FromIter<I>>, _cx: &mut Context<'_>) -> Poll<Option<<FromIter<I> as Stream>::Item>>",
+              "text": "Attempt to pull out the next value of this stream, registering the current task for wakeup if the value is not yet available, and returning None if the stream is exhausted."
+            },
+            {
+              "code": "pub fn size_hint(&self) -> (usize, Option<usize>)",
+              "text": "Returns the bounds on the remaining length of the stream."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

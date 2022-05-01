@@ -1,0 +1,40 @@
+{
+  "title": "Struct tokio::sync::watch::Ref",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a, T: Debug> Debug for Ref<'a, T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Deref for Ref<'_, T>",
+          "methods": [
+            {
+              "code": "type Target = T",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "fn deref(&self) -> &T",
+              "text": "Dereferences the value."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

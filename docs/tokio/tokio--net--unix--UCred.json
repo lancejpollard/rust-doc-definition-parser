@@ -1,0 +1,79 @@
+{
+  "title": "Struct tokio::net::unix::UCred",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn uid(&self) -> uid_t",
+          "text": "Gets UID (user ID) of the process."
+        },
+        {
+          "code": "pub fn gid(&self) -> gid_t",
+          "text": "Gets GID (group ID) of the process."
+        },
+        {
+          "code": "pub fn pid(&self) -> Option<pid_t>",
+          "text": "Gets PID (process ID) of the process."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for UCred",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> UCred",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for UCred",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for UCred",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<UCred> for UCred",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &UCred) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &UCred) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Struct rustls::internal::msgs::codec::Reader",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

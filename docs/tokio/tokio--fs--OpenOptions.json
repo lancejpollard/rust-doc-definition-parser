@@ -1,0 +1,91 @@
+{
+  "title": "Struct tokio::fs::OpenOptions",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> OpenOptions",
+          "text": "Creates a blank new set of options ready for configuration."
+        },
+        {
+          "code": "pub fn read(&mut self, read: bool) -> &mut OpenOptions",
+          "text": "Sets the option for read access."
+        },
+        {
+          "code": "pub fn write(&mut self, write: bool) -> &mut OpenOptions",
+          "text": "Sets the option for write access."
+        },
+        {
+          "code": "pub fn append(&mut self, append: bool) -> &mut OpenOptions",
+          "text": "Sets the option for the append mode."
+        },
+        {
+          "code": "pub fn truncate(&mut self, truncate: bool) -> &mut OpenOptions",
+          "text": "Sets the option for truncating a previous file."
+        },
+        {
+          "code": "pub fn create(&mut self, create: bool) -> &mut OpenOptions",
+          "text": "Sets the option for creating a new file."
+        },
+        {
+          "code": "pub fn create_new(&mut self, create_new: bool) -> &mut OpenOptions",
+          "text": "Sets the option to always create a new file."
+        },
+        {
+          "code": "pub async fn open(&self, path: impl AsRef<Path>) -> Result<File>",
+          "text": "Opens a file at path with the options specified by self."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for OpenOptions",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> OpenOptions",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for OpenOptions",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for OpenOptions",
+          "methods": [
+            {
+              "code": "fn default() -> Self",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OpenOptions> for OpenOptions",
+          "methods": [
+            {
+              "code": "fn from(options: StdOpenOptions) -> OpenOptions",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

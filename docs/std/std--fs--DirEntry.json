@@ -1,0 +1,71 @@
+{
+  "title": "Struct std::fs::DirEntry",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn path(&self) -> PathBuf",
+          "text": "Returns the full path to the file that this entry represents."
+        },
+        {
+          "code": "pub fn metadata(&self) -> Result<Metadata>",
+          "text": "Returns the metadata for the file that this entry points at."
+        },
+        {
+          "code": "pub fn file_type(&self) -> Result<FileType>",
+          "text": "Returns the file type for the file that this entry points at."
+        },
+        {
+          "code": "pub fn file_name(&self) -> OsString",
+          "text": "Returns the bare file name of this directory entry without any other leading path component."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for DirEntry",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl DirEntryExt for DirEntry",
+          "methods": [
+            {
+              "code": "fn ino(&self) -> u64",
+              "text": "Returns the underlying d_ino field of the dirent_t"
+            }
+          ]
+        },
+        {
+          "title": "impl DirEntryExt for DirEntry",
+          "methods": [
+            {
+              "code": "fn ino(&self) -> u64",
+              "text": "Returns the underlying d_ino field in the contained dirent structure."
+            }
+          ]
+        },
+        {
+          "title": "impl DirEntryExt2 for DirEntry",
+          "methods": [
+            {
+              "code": "fn file_name_ref(&self) -> &OsStr",
+              "text": "Returns a reference to the underlying OsStr of this entry’s filename."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "title": "Struct std::collections::linked_list::CursorMut",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn index(&self) -> Option<usize>",
+          "text": "Returns the cursor position index within the LinkedList."
+        },
+        {
+          "code": "pub fn move_next(&mut self)",
+          "text": "Moves the cursor to the next element of the LinkedList."
+        },
+        {
+          "code": "pub fn move_prev(&mut self)",
+          "text": "Moves the cursor to the previous element of the LinkedList."
+        },
+        {
+          "code": "pub fn current(&mut self) -> Option<&mut T>",
+          "text": "Returns a reference to the element that the cursor is currently pointing to."
+        },
+        {
+          "code": "pub fn peek_next(&mut self) -> Option<&mut T>",
+          "text": "Returns a reference to the next element."
+        },
+        {
+          "code": "pub fn peek_prev(&mut self) -> Option<&mut T>",
+          "text": "Returns a reference to the previous element."
+        },
+        {
+          "code": "pub fn as_cursor(&self) -> Cursor<'_, T>",
+          "text": "Returns a read-only cursor pointing to the current element."
+        },
+        {
+          "code": "pub fn insert_after(&mut self, item: T)",
+          "text": "Inserts a new element into the LinkedList after the current one."
+        },
+        {
+          "code": "pub fn insert_before(&mut self, item: T)",
+          "text": "Inserts a new element into the LinkedList before the current one."
+        },
+        {
+          "code": "pub fn remove_current(&mut self) -> Option<T>",
+          "text": "Removes the current element from the LinkedList."
+        },
+        {
+          "code": "pub fn remove_current_as_list(&mut self) -> Option<LinkedList<T>>",
+          "text": "Removes the current element from the LinkedList without deallocating the list node."
+        },
+        {
+          "code": "pub fn splice_after(&mut self, list: LinkedList<T>)",
+          "text": "Inserts the elements from the given LinkedList after the current one."
+        },
+        {
+          "code": "pub fn splice_before(&mut self, list: LinkedList<T>)",
+          "text": "Inserts the elements from the given LinkedList before the current one."
+        },
+        {
+          "code": "pub fn split_after(&mut self) -> LinkedList<T>",
+          "text": "Splits the list into two after the current element. This will return a new list consisting of everything after the cursor, with the original list retaining everything before."
+        },
+        {
+          "code": "pub fn split_before(&mut self) -> LinkedList<T>",
+          "text": "Splits the list into two before the current element. This will return a new list consisting of everything before the cursor, with the original list retaining everything after."
+        },
+        {
+          "code": "pub fn push_front(&mut self, elt: T)",
+          "text": "Appends an element to the front of the cursor’s parent list. The node that the cursor points to is unchanged, even if it is the “ghost” node."
+        },
+        {
+          "code": "pub fn push_back(&mut self, elt: T)",
+          "text": "Appends an element to the back of the cursor’s parent list. The node that the cursor points to is unchanged, even if it is the “ghost” node."
+        },
+        {
+          "code": "pub fn pop_front(&mut self) -> Option<T>",
+          "text": "Removes the first element from the cursor’s parent list and returns it, or None if the list is empty. The element the cursor points to remains unchanged, unless it was pointing to the front element. In that case, it points to the new front element."
+        },
+        {
+          "code": "pub fn pop_back(&mut self) -> Option<T>",
+          "text": "Removes the last element from the cursor’s parent list and returns it, or None if the list is empty. The element the cursor points to remains unchanged, unless it was pointing to the back element. In that case, it points to the “ghost” element."
+        },
+        {
+          "code": "pub fn front(&self) -> Option<&T>",
+          "text": "Provides a reference to the front element of the cursor’s parent list, or None if the list is empty."
+        },
+        {
+          "code": "pub fn front_mut(&mut self) -> Option<&mut T>",
+          "text": "Provides a mutable reference to the front element of the cursor’s parent list, or None if the list is empty."
+        },
+        {
+          "code": "pub fn back(&self) -> Option<&T>",
+          "text": "Provides a reference to the back element of the cursor’s parent list, or None if the list is empty."
+        },
+        {
+          "code": "pub fn back_mut(&mut self) -> Option<&mut T>",
+          "text": "Provides a mutable reference to back element of the cursor’s parent list, or None if the list is empty."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'_, T> Debug for CursorMut<'_, T> where T: Debug,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

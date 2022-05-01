@@ -1,0 +1,290 @@
+{
+  "title": "Struct std::pin::Pin",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(pointer: P) -> Pin<P>ⓘNotable traits for Pin<P>impl<P> Future for Pin<P> where P: DerefMut, <P as Deref>::Target: Future, type Output = <<P as Deref>::Target as Future>::Output;",
+          "text": "Construct a new Pin<P> around a pointer to some data of a type that implements Unpin."
+        },
+        {
+          "code": "pub fn into_inner(pin: Pin<P>) -> P",
+          "text": "Unwraps this Pin<P> returning the underlying pointer."
+        },
+        {
+          "code": "pub unsafe fn new_unchecked(pointer: P) -> Pin<P>ⓘNotable traits for Pin<P>impl<P> Future for Pin<P> where P: DerefMut, <P as Deref>::Target: Future, type Output = <<P as Deref>::Target as Future>::Output;",
+          "text": "Construct a new Pin<P> around a reference to some data of a type that may or may not implement Unpin."
+        },
+        {
+          "code": "pub fn as_ref(&self) -> Pin<&<P as Deref>::Target>ⓘNotable traits for Pin<P>impl<P> Future for Pin<P> where P: DerefMut, <P as Deref>::Target: Future, type Output = <<P as Deref>::Target as Future>::Output;",
+          "text": "Gets a pinned shared reference from this pinned pointer."
+        },
+        {
+          "code": "pub unsafe fn into_inner_unchecked(pin: Pin<P>) -> P",
+          "text": "Unwraps this Pin<P> returning the underlying pointer."
+        },
+        {
+          "code": "pub fn as_mut(&mut self) -> Pin<&mut <P as Deref>::Target>ⓘNotable traits for Pin<P>impl<P> Future for Pin<P> where P: DerefMut, <P as Deref>::Target: Future, type Output = <<P as Deref>::Target as Future>::Output;",
+          "text": "Gets a pinned mutable reference from this pinned pointer."
+        },
+        {
+          "code": "pub fn set(&mut self, value: <P as Deref>::Target) where <P as Deref>::Target: Sized,",
+          "text": "Assigns a new value to the memory behind the pinned reference."
+        },
+        {
+          "code": "pub unsafe fn map_unchecked<U, F>(self, func: F) -> Pin<&'a U>ⓘNotable traits for Pin<P>impl<P> Future for Pin<P> where P: DerefMut, <P as Deref>::Target: Future, type Output = <<P as Deref>::Target as Future>::Output; where F: FnOnce(&T) -> &U, U: ?Sized,",
+          "text": "Constructs a new pin by mapping the interior value."
+        },
+        {
+          "code": "pub fn get_ref(self) -> &'a T",
+          "text": "Gets a shared reference out of a pin."
+        },
+        {
+          "code": "pub fn into_ref(self) -> Pin<&'a T>ⓘNotable traits for Pin<P>impl<P> Future for Pin<P> where P: DerefMut, <P as Deref>::Target: Future, type Output = <<P as Deref>::Target as Future>::Output;",
+          "text": "Converts this Pin<&mut T> into a Pin<&T> with the same lifetime."
+        },
+        {
+          "code": "pub fn get_mut(self) -> &'a mut T where T: Unpin,",
+          "text": "Gets a mutable reference to the data inside of this Pin."
+        },
+        {
+          "code": "pub unsafe fn get_unchecked_mut(self) -> &'a mut T",
+          "text": "Gets a mutable reference to the data inside of this Pin."
+        },
+        {
+          "code": "pub unsafe fn map_unchecked_mut<U, F>(self, func: F) -> Pin<&'a mut U>ⓘNotable traits for Pin<P>impl<P> Future for Pin<P> where P: DerefMut, <P as Deref>::Target: Future, type Output = <<P as Deref>::Target as Future>::Output; where F: FnOnce(&mut T) -> &mut U, U: ?Sized,",
+          "text": "Construct a new pin by mapping the interior value."
+        },
+        {
+          "code": "pub fn static_ref(r: &'static T) -> Pin<&'static T>ⓘNotable traits for Pin<P>impl<P> Future for Pin<P> where P: DerefMut, <P as Deref>::Target: Future, type Output = <<P as Deref>::Target as Future>::Output;",
+          "text": "Get a pinned reference from a static reference."
+        },
+        {
+          "code": "pub fn as_deref_mut(self) -> Pin<&'a mut <P as Deref>::Target>ⓘNotable traits for Pin<P>impl<P> Future for Pin<P> where P: DerefMut, <P as Deref>::Target: Future, type Output = <<P as Deref>::Target as Future>::Output;",
+          "text": "Gets a pinned mutable reference from this nested pinned pointer."
+        },
+        {
+          "code": "pub fn static_mut(r: &'static mut T) -> Pin<&'static mut T>ⓘNotable traits for Pin<P>impl<P> Future for Pin<P> where P: DerefMut, <P as Deref>::Target: Future, type Output = <<P as Deref>::Target as Future>::Output;",
+          "text": "Get a pinned mutable reference from a static mutable reference."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<P> Clone for Pin<P> where P: Clone,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> Pin<P>ⓘNotable traits for Pin<P>impl<P> Future for Pin<P> where P: DerefMut, <P as Deref>::Target: Future, type Output = <<P as Deref>::Target as Future>::Output;",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<P> Debug for Pin<P> where P: Debug,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<P> Deref for Pin<P> where P: Deref,",
+          "methods": [
+            {
+              "code": "type Target = <P as Deref>::Target",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "pub fn deref(&self) -> &<P as Deref>::Target",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<P> DerefMut for Pin<P> where P: DerefMut, <P as Deref>::Target: Unpin,",
+          "methods": [
+            {
+              "code": "pub fn deref_mut(&mut self) -> &mut <P as Deref>::Target",
+              "text": "Mutably dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<P> Display for Pin<P> where P: Display,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, A> From<Box<T, A>> for Pin<Box<T, A>> where A: Allocator + 'static, T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn from(boxed: Box<T, A>) -> Pin<Box<T, A>>ⓘNotable traits for Pin<P>impl<P> Future for Pin<P> where P: DerefMut, <P as Deref>::Target: Future, type Output = <<P as Deref>::Target as Future>::Output;",
+              "text": "Converts a Box<T> into a Pin<Box<T>>"
+            }
+          ]
+        },
+        {
+          "title": "impl<P> Future for Pin<P> where P: DerefMut, <P as Deref>::Target: Future,",
+          "methods": [
+            {
+              "code": "type Output = <<P as Deref>::Target as Future>::Output",
+              "text": "The type of value produced on completion."
+            },
+            {
+              "code": "pub fn poll( self: Pin<&mut Pin<P>>, cx: &mut Context<'_>) -> Poll<<Pin<P> as Future>::Output>",
+              "text": "Attempt to resolve the future to a final value, registering the current task for wakeup if the value is not yet available."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, G, R> Generator<R> for Pin<&'_ mut G> where G: Generator<R> + ?Sized,",
+          "methods": [
+            {
+              "code": "type Yield = <G as Generator<R>>::Yield",
+              "text": "The type of value this generator yields."
+            },
+            {
+              "code": "type Return = <G as Generator<R>>::Return",
+              "text": "The type of value this generator returns."
+            },
+            {
+              "code": "pub fn resume( self: Pin<&mut Pin<&'_ mut G>>, arg: R) -> GeneratorState<<Pin<&'_ mut G> as Generator<R>>::Yield, <Pin<&'_ mut G> as Generator<R>>::Return>",
+              "text": "Resumes the execution of this generator."
+            }
+          ]
+        },
+        {
+          "title": "impl<G, R, A> Generator<R> for Pin<Box<G, A>> where G: Generator<R> + ?Sized, A: Allocator + 'static,",
+          "methods": [
+            {
+              "code": "type Yield = <G as Generator<R>>::Yield",
+              "text": "The type of value this generator yields."
+            },
+            {
+              "code": "type Return = <G as Generator<R>>::Return",
+              "text": "The type of value this generator returns."
+            },
+            {
+              "code": "pub fn resume( self: Pin<&mut Pin<Box<G, A>>>, arg: R) -> GeneratorState<<Pin<Box<G, A>> as Generator<R>>::Yield, <Pin<Box<G, A>> as Generator<R>>::Return>",
+              "text": "Resumes the execution of this generator."
+            }
+          ]
+        },
+        {
+          "title": "impl<P> Hash for Pin<P> where P: Deref, <P as Deref>::Target: Hash,",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, state: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<P> Ord for Pin<P> where P: Deref, <P as Deref>::Target: Ord,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &Pin<P>) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<P, Q> PartialEq<Pin<Q>> for Pin<P> where P: Deref, Q: Deref, <P as Deref>::Target: PartialEq<<Q as Deref>::Target>,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Pin<Q>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &Pin<Q>) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<P, Q> PartialOrd<Pin<Q>> for Pin<P> where P: Deref, Q: Deref, <P as Deref>::Target: PartialOrd<<Q as Deref>::Target>,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &Pin<Q>) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &Pin<Q>) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &Pin<Q>) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &Pin<Q>) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &Pin<Q>) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<P> Pointer for Pin<P> where P: Pointer,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<P> Stream for Pin<P> where P: DerefMut, <P as Deref>::Target: Stream,",
+          "methods": [
+            {
+              "code": "type Item = <<P as Deref>::Target as Stream>::Item",
+              "text": "The type of items yielded by the stream."
+            },
+            {
+              "code": "pub fn poll_next( self: Pin<&mut Pin<P>>, cx: &mut Context<'_>) -> Poll<Option<<Pin<P> as Stream>::Item>>",
+              "text": "Attempt to pull out the next value of this stream, registering the current task for wakeup if the value is not yet available, and returning None if the stream is exhausted."
+            },
+            {
+              "code": "pub fn size_hint(&self) -> (usize, Option<usize>)",
+              "text": "Returns the bounds on the remaining length of the stream."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

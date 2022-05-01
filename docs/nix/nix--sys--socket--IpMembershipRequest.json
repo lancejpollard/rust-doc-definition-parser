@@ -1,0 +1,58 @@
+{
+  "title": "Struct nix::sys::socket::IpMembershipRequest",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(group: Ipv4Addr, interface: Option<Ipv4Addr>) -> Self",
+          "text": "Instantiate a new IpMembershipRequest"
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for IpMembershipRequest",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> IpMembershipRequest",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for IpMembershipRequest",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<IpMembershipRequest> for IpMembershipRequest",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &IpMembershipRequest) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &IpMembershipRequest) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

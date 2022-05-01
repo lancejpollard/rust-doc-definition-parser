@@ -1,0 +1,40 @@
+{
+  "title": "Struct rustls::sign::CertifiedKey",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(cert: Vec<Certificate>, key: Arc<dyn SigningKey>) -> Self",
+          "text": "Make a new CertifiedKey, with the given chain and key."
+        },
+        {
+          "code": "pub fn end_entity_cert(&self) -> Result<&Certificate, SignError>",
+          "text": "The end-entity certificate."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for CertifiedKey",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> CertifiedKey",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

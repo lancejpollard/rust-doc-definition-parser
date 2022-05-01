@@ -1,0 +1,56 @@
+{
+  "title": "Struct tokio::io::unix::AsyncFdReadyMutGuard",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn clear_ready(&mut self)",
+          "text": "Indicates to tokio that the file descriptor is no longer ready. The internal readiness flag will be cleared, and tokio will wait for the next edge-triggered readiness notification from the OS."
+        },
+        {
+          "code": "pub fn retain_ready(&mut self)",
+          "text": "This method should be invoked when you intentionally want to keep the ready flag asserted."
+        },
+        {
+          "code": "pub fn try_io<R>( &mut self, f: impl FnOnce(&mut AsyncFd<Inner>) -> Result<R>) -> Result<Result<R>, TryIoError>",
+          "text": "Performs the provided IO operation."
+        },
+        {
+          "code": "pub fn get_ref(&self) -> &AsyncFd<Inner>",
+          "text": "Returns a shared reference to the inner AsyncFd."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut AsyncFd<Inner>",
+          "text": "Returns a mutable reference to the inner AsyncFd."
+        },
+        {
+          "code": "pub fn get_inner(&self) -> &Inner",
+          "text": "Returns a shared reference to the backing object of the inner AsyncFd."
+        },
+        {
+          "code": "pub fn get_inner_mut(&mut self) -> &mut Inner",
+          "text": "Returns a mutable reference to the backing object of the inner AsyncFd."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a, T: Debug + AsRawFd> Debug for AsyncFdReadyMutGuard<'a, T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,285 @@
+{
+  "title": "Struct std::fs::Metadata",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn file_type(&self) -> FileType",
+          "text": "Returns the file type for this metadata."
+        },
+        {
+          "code": "pub fn is_dir(&self) -> bool",
+          "text": "Returns true if this metadata is for a directory. The result is mutually exclusive to the result of Metadata::is_file, and will be false for symlink metadata obtained from symlink_metadata."
+        },
+        {
+          "code": "pub fn is_file(&self) -> bool",
+          "text": "Returns true if this metadata is for a regular file. The result is mutually exclusive to the result of Metadata::is_dir, and will be false for symlink metadata obtained from symlink_metadata."
+        },
+        {
+          "code": "pub fn is_symlink(&self) -> bool",
+          "text": "Returns true if this metadata is for a symbolic link."
+        },
+        {
+          "code": "pub fn len(&self) -> u64",
+          "text": "Returns the size of the file, in bytes, this metadata is for."
+        },
+        {
+          "code": "pub fn permissions(&self) -> Permissions",
+          "text": "Returns the permissions of the file this metadata is for."
+        },
+        {
+          "code": "pub fn modified(&self) -> Result<SystemTime>",
+          "text": "Returns the last modification time listed in this metadata."
+        },
+        {
+          "code": "pub fn accessed(&self) -> Result<SystemTime>",
+          "text": "Returns the last access time of this metadata."
+        },
+        {
+          "code": "pub fn created(&self) -> Result<SystemTime>",
+          "text": "Returns the creation time listed in this metadata."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for Metadata",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Metadata",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Metadata",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl MetadataExt for Metadata",
+          "methods": [
+            {
+              "code": "fn dev(&self) -> u64",
+              "text": "Returns the ID of the device containing the file."
+            },
+            {
+              "code": "fn ino(&self) -> u64",
+              "text": "Returns the inode number."
+            },
+            {
+              "code": "fn mode(&self) -> u32",
+              "text": "Returns the rights applied to this file."
+            },
+            {
+              "code": "fn nlink(&self) -> u64",
+              "text": "Returns the number of hard links pointing to this file."
+            },
+            {
+              "code": "fn uid(&self) -> u32",
+              "text": "Returns the user ID of the owner of this file."
+            },
+            {
+              "code": "fn gid(&self) -> u32",
+              "text": "Returns the group ID of the owner of this file."
+            },
+            {
+              "code": "fn rdev(&self) -> u64",
+              "text": "Returns the device ID of this file (if it is a special one)."
+            },
+            {
+              "code": "fn size(&self) -> u64",
+              "text": "Returns the total size of this file in bytes."
+            },
+            {
+              "code": "fn atime(&self) -> i64",
+              "text": "Returns the last access time of the file, in seconds since Unix Epoch."
+            },
+            {
+              "code": "fn atime_nsec(&self) -> i64",
+              "text": "Returns the last access time of the file, in nanoseconds since atime."
+            },
+            {
+              "code": "fn mtime(&self) -> i64",
+              "text": "Returns the last modification time of the file, in seconds since Unix Epoch."
+            },
+            {
+              "code": "fn mtime_nsec(&self) -> i64",
+              "text": "Returns the last modification time of the file, in nanoseconds since mtime."
+            },
+            {
+              "code": "fn ctime(&self) -> i64",
+              "text": "Returns the last status change time of the file, in seconds since Unix Epoch."
+            },
+            {
+              "code": "fn ctime_nsec(&self) -> i64",
+              "text": "Returns the last status change time of the file, in nanoseconds since ctime."
+            },
+            {
+              "code": "fn blksize(&self) -> u64",
+              "text": "Returns the block size for filesystem I/O."
+            },
+            {
+              "code": "fn blocks(&self) -> u64",
+              "text": "Returns the number of blocks allocated to the file, in 512-byte units."
+            }
+          ]
+        },
+        {
+          "title": "impl MetadataExt for Metadata",
+          "methods": [
+            {
+              "code": "fn dev(&self) -> u64",
+              "text": "Returns the st_dev field of the internal filestat_t"
+            },
+            {
+              "code": "fn ino(&self) -> u64",
+              "text": "Returns the st_ino field of the internal filestat_t"
+            },
+            {
+              "code": "fn nlink(&self) -> u64",
+              "text": "Returns the st_nlink field of the internal filestat_t"
+            },
+            {
+              "code": "fn size(&self) -> u64",
+              "text": "Returns the st_size field of the internal filestat_t"
+            },
+            {
+              "code": "fn atim(&self) -> u64",
+              "text": "Returns the st_atim field of the internal filestat_t"
+            },
+            {
+              "code": "fn mtim(&self) -> u64",
+              "text": "Returns the st_mtim field of the internal filestat_t"
+            },
+            {
+              "code": "fn ctim(&self) -> u64",
+              "text": "Returns the st_ctim field of the internal filestat_t"
+            }
+          ]
+        },
+        {
+          "title": "impl MetadataExt for Metadata",
+          "methods": [
+            {
+              "code": "fn file_attributes(&self) -> u32",
+              "text": "Returns the value of the dwFileAttributes field of this metadata."
+            },
+            {
+              "code": "fn creation_time(&self) -> u64",
+              "text": "Returns the value of the ftCreationTime field of this metadata."
+            },
+            {
+              "code": "fn last_access_time(&self) -> u64",
+              "text": "Returns the value of the ftLastAccessTime field of this metadata."
+            },
+            {
+              "code": "fn last_write_time(&self) -> u64",
+              "text": "Returns the value of the ftLastWriteTime field of this metadata."
+            },
+            {
+              "code": "fn file_size(&self) -> u64",
+              "text": "Returns the value of the nFileSize{High,Low} fields of this metadata."
+            },
+            {
+              "code": "fn volume_serial_number(&self) -> Option<u32>",
+              "text": "Returns the value of the dwVolumeSerialNumber field of this metadata."
+            },
+            {
+              "code": "fn number_of_links(&self) -> Option<u32>",
+              "text": "Returns the value of the nNumberOfLinks field of this metadata."
+            },
+            {
+              "code": "fn file_index(&self) -> Option<u64>",
+              "text": "Returns the value of the nFileIndex{Low,High} fields of this metadata."
+            }
+          ]
+        },
+        {
+          "title": "impl MetadataExt for Metadata",
+          "methods": [
+            {
+              "code": "fn st_dev(&self) -> u64",
+              "text": "Returns the device ID on which this file resides."
+            },
+            {
+              "code": "fn st_ino(&self) -> u64",
+              "text": "Returns the inode number."
+            },
+            {
+              "code": "fn st_mode(&self) -> u32",
+              "text": "Returns the file type and mode."
+            },
+            {
+              "code": "fn st_nlink(&self) -> u64",
+              "text": "Returns the number of hard links to file."
+            },
+            {
+              "code": "fn st_uid(&self) -> u32",
+              "text": "Returns the user ID of the file owner."
+            },
+            {
+              "code": "fn st_gid(&self) -> u32",
+              "text": "Returns the group ID of the file owner."
+            },
+            {
+              "code": "fn st_rdev(&self) -> u64",
+              "text": "Returns the device ID that this file represents. Only relevant for special file."
+            },
+            {
+              "code": "fn st_size(&self) -> u64",
+              "text": "Returns the size of the file (if it is a regular file or a symbolic link) in bytes."
+            },
+            {
+              "code": "fn st_atime(&self) -> i64",
+              "text": "Returns the last access time of the file, in seconds since Unix Epoch."
+            },
+            {
+              "code": "fn st_atime_nsec(&self) -> i64",
+              "text": "Returns the last access time of the file, in nanoseconds since st_atime."
+            },
+            {
+              "code": "fn st_mtime(&self) -> i64",
+              "text": "Returns the last modification time of the file, in seconds since Unix Epoch."
+            },
+            {
+              "code": "fn st_mtime_nsec(&self) -> i64",
+              "text": "Returns the last modification time of the file, in nanoseconds since st_mtime."
+            },
+            {
+              "code": "fn st_ctime(&self) -> i64",
+              "text": "Returns the last status change time of the file, in seconds since Unix Epoch."
+            },
+            {
+              "code": "fn st_ctime_nsec(&self) -> i64",
+              "text": "Returns the last status change time of the file, in nanoseconds since st_ctime."
+            },
+            {
+              "code": "fn st_blksize(&self) -> u64",
+              "text": "Returns the “preferred” block size for efficient filesystem I/O."
+            },
+            {
+              "code": "fn st_blocks(&self) -> u64",
+              "text": "Returns the number of blocks allocated to the file, 512-byte units."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

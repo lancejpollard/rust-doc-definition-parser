@@ -1,0 +1,62 @@
+{
+  "title": "Struct rustls::internal::msgs::message::PlainMessage",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for PlainMessage",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> PlainMessage",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for PlainMessage",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Message> for PlainMessage",
+          "methods": [
+            {
+              "code": "fn from(msg: Message) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<PlainMessage> for Message",
+          "methods": [
+            {
+              "code": "type Error = Error",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "fn try_from(plain: PlainMessage) -> Result<Self, Self::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

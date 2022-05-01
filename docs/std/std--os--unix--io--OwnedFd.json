@@ -1,0 +1,232 @@
+{
+  "title": "Struct std::os::unix::io::OwnedFd",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsFd for OwnedFd",
+          "methods": []
+        },
+        {
+          "title": "impl AsRawFd for OwnedFd",
+          "methods": []
+        },
+        {
+          "title": "impl Debug for OwnedFd",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Drop for OwnedFd",
+          "methods": [
+            {
+              "code": "fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<ChildStderr> for OwnedFd",
+          "methods": [
+            {
+              "code": "fn from(child_stderr: ChildStderr) -> OwnedFd",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<ChildStdin> for OwnedFd",
+          "methods": [
+            {
+              "code": "fn from(child_stdin: ChildStdin) -> OwnedFd",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<ChildStdout> for OwnedFd",
+          "methods": [
+            {
+              "code": "fn from(child_stdout: ChildStdout) -> OwnedFd",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<File> for OwnedFd",
+          "methods": [
+            {
+              "code": "fn from(file: File) -> OwnedFd",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedFd> for UnixDatagram",
+          "methods": [
+            {
+              "code": "fn from(owned: OwnedFd) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedFd> for UnixListener",
+          "methods": [
+            {
+              "code": "fn from(fd: OwnedFd) -> UnixListener",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedFd> for UnixStream",
+          "methods": [
+            {
+              "code": "fn from(owned: OwnedFd) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedFd> for Stdio",
+          "methods": [
+            {
+              "code": "fn from(fd: OwnedFd) -> Stdio",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedFd> for PidFd",
+          "methods": [
+            {
+              "code": "fn from(fd: OwnedFd) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedFd> for File",
+          "methods": [
+            {
+              "code": "fn from(owned_fd: OwnedFd) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedFd> for TcpStream",
+          "methods": [
+            {
+              "code": "fn from(owned_fd: OwnedFd) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedFd> for TcpListener",
+          "methods": [
+            {
+              "code": "fn from(owned_fd: OwnedFd) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedFd> for UdpSocket",
+          "methods": [
+            {
+              "code": "fn from(owned_fd: OwnedFd) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<PidFd> for OwnedFd",
+          "methods": [
+            {
+              "code": "fn from(pid_fd: PidFd) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<TcpListener> for OwnedFd",
+          "methods": [
+            {
+              "code": "fn from(tcp_listener: TcpListener) -> OwnedFd",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<TcpStream> for OwnedFd",
+          "methods": [
+            {
+              "code": "fn from(tcp_stream: TcpStream) -> OwnedFd",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<UdpSocket> for OwnedFd",
+          "methods": [
+            {
+              "code": "fn from(udp_socket: UdpSocket) -> OwnedFd",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<UnixDatagram> for OwnedFd",
+          "methods": [
+            {
+              "code": "fn from(unix_datagram: UnixDatagram) -> OwnedFd",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<UnixListener> for OwnedFd",
+          "methods": [
+            {
+              "code": "fn from(listener: UnixListener) -> OwnedFd",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<UnixStream> for OwnedFd",
+          "methods": [
+            {
+              "code": "fn from(unix_stream: UnixStream) -> OwnedFd",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl FromRawFd for OwnedFd",
+          "methods": []
+        },
+        {
+          "title": "impl IntoRawFd for OwnedFd",
+          "methods": []
+        }
+      ]
+    }
+  ]
+}

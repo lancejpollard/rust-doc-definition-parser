@@ -1,0 +1,40 @@
+{
+  "title": "Struct std::future::PollFn",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<F> Debug for PollFn<F>",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, F> Future for PollFn<F> where F: FnMut(&mut Context<'_>) -> Poll<T>,",
+          "methods": [
+            {
+              "code": "type Output = T",
+              "text": "The type of value produced on completion."
+            },
+            {
+              "code": "pub fn poll(self: Pin<&mut PollFn<F>>, cx: &mut Context<'_>) -> Poll<T>",
+              "text": "Attempt to resolve the future to a final value, registering the current task for wakeup if the value is not yet available."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

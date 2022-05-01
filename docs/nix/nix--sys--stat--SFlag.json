@@ -1,0 +1,352 @@
+{
+  "title": "Struct nix::sys::stat::SFlag",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn empty() -> Self",
+          "text": "Returns an empty set of flags."
+        },
+        {
+          "code": "pub const fn all() -> Self",
+          "text": "Returns the set containing all flags."
+        },
+        {
+          "code": "pub const fn bits(&self) -> mode_t",
+          "text": "Returns the raw value of the flags currently stored."
+        },
+        {
+          "code": "pub const fn from_bits(bits: mode_t) -> Option<Self>",
+          "text": "Convert from underlying bit representation, unless that representation contains bits that do not correspond to a flag."
+        },
+        {
+          "code": "pub const fn from_bits_truncate(bits: mode_t) -> Self",
+          "text": "Convert from underlying bit representation, dropping any bits that do not correspond to flags."
+        },
+        {
+          "code": "pub const unsafe fn from_bits_unchecked(bits: mode_t) -> Self",
+          "text": "Convert from underlying bit representation, preserving all bits (even those not corresponding to a defined flag)."
+        },
+        {
+          "code": "pub const fn is_empty(&self) -> bool",
+          "text": "Returns true if no flags are currently stored."
+        },
+        {
+          "code": "pub const fn is_all(&self) -> bool",
+          "text": "Returns true if all flags are currently set."
+        },
+        {
+          "code": "pub const fn intersects(&self, other: Self) -> bool",
+          "text": "Returns true if there are flags common to both self and other."
+        },
+        {
+          "code": "pub const fn contains(&self, other: Self) -> bool",
+          "text": "Returns true if all of the flags in other are contained within self."
+        },
+        {
+          "code": "pub fn insert(&mut self, other: Self)",
+          "text": "Inserts the specified flags in-place."
+        },
+        {
+          "code": "pub fn remove(&mut self, other: Self)",
+          "text": "Removes the specified flags in-place."
+        },
+        {
+          "code": "pub fn toggle(&mut self, other: Self)",
+          "text": "Toggles the specified flags in-place."
+        },
+        {
+          "code": "pub fn set(&mut self, other: Self, value: bool)",
+          "text": "Inserts or removes the specified flags depending on the passed value."
+        },
+        {
+          "code": "pub const fn intersection(self, other: Self) -> Self",
+          "text": "Returns the intersection between the flags in self and other."
+        },
+        {
+          "code": "pub const fn union(self, other: Self) -> Self",
+          "text": "Returns the union of between the flags in self and other."
+        },
+        {
+          "code": "pub const fn difference(self, other: Self) -> Self",
+          "text": "Returns the difference between the flags in self and other."
+        },
+        {
+          "code": "pub const fn symmetric_difference(self, other: Self) -> Self",
+          "text": "Returns the symmetric difference between the flags in self and other."
+        },
+        {
+          "code": "pub const fn complement(self) -> Self",
+          "text": "Returns the complement of this set of flags."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Binary for SFlag",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl BitAnd<SFlag> for SFlag",
+          "methods": [
+            {
+              "code": "fn bitand(self, other: Self) -> Self",
+              "text": "Returns the intersection between the two sets of flags."
+            },
+            {
+              "code": "type Output = Self",
+              "text": "The resulting type after applying the & operator."
+            }
+          ]
+        },
+        {
+          "title": "impl BitAndAssign<SFlag> for SFlag",
+          "methods": [
+            {
+              "code": "fn bitand_assign(&mut self, other: Self)",
+              "text": "Disables all flags disabled in the set."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOr<SFlag> for SFlag",
+          "methods": [
+            {
+              "code": "fn bitor(self, other: SFlag) -> Self",
+              "text": "Returns the union of the two sets of flags."
+            },
+            {
+              "code": "type Output = Self",
+              "text": "The resulting type after applying the | operator."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOrAssign<SFlag> for SFlag",
+          "methods": [
+            {
+              "code": "fn bitor_assign(&mut self, other: Self)",
+              "text": "Adds the set of flags."
+            }
+          ]
+        },
+        {
+          "title": "impl BitXor<SFlag> for SFlag",
+          "methods": [
+            {
+              "code": "fn bitxor(self, other: Self) -> Self",
+              "text": "Returns the left flags, but with all the right flags toggled."
+            },
+            {
+              "code": "type Output = Self",
+              "text": "The resulting type after applying the ^ operator."
+            }
+          ]
+        },
+        {
+          "title": "impl BitXorAssign<SFlag> for SFlag",
+          "methods": [
+            {
+              "code": "fn bitxor_assign(&mut self, other: Self)",
+              "text": "Toggles the set of flags."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for SFlag",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> SFlag",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for SFlag",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Extend<SFlag> for SFlag",
+          "methods": [
+            {
+              "code": "fn extend<T: IntoIterator<Item = Self>>(&mut self, iterator: T)",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "fn extend_one(&mut self, item: A)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl FromIterator<SFlag> for SFlag",
+          "methods": [
+            {
+              "code": "fn from_iter<T: IntoIterator<Item = Self>>(iterator: T) -> Self",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for SFlag",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl LowerHex for SFlag",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Not for SFlag",
+          "methods": [
+            {
+              "code": "fn not(self) -> Self",
+              "text": "Returns the complement of this set of flags."
+            },
+            {
+              "code": "type Output = Self",
+              "text": "The resulting type after applying the ! operator."
+            }
+          ]
+        },
+        {
+          "title": "impl Octal for SFlag",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for SFlag",
+          "methods": [
+            {
+              "code": "fn cmp(&self, other: &SFlag) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<SFlag> for SFlag",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &SFlag) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &SFlag) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<SFlag> for SFlag",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &SFlag) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl Sub<SFlag> for SFlag",
+          "methods": [
+            {
+              "code": "fn sub(self, other: Self) -> Self",
+              "text": "Returns the set difference of the two sets of flags."
+            },
+            {
+              "code": "type Output = Self",
+              "text": "The resulting type after applying the - operator."
+            }
+          ]
+        },
+        {
+          "title": "impl SubAssign<SFlag> for SFlag",
+          "methods": [
+            {
+              "code": "fn sub_assign(&mut self, other: Self)",
+              "text": "Disables all flags enabled in the set."
+            }
+          ]
+        },
+        {
+          "title": "impl UpperHex for SFlag",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

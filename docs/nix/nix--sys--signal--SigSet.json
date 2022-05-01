@@ -1,0 +1,128 @@
+{
+  "title": "Struct nix::sys::signal::SigSet",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn all() -> SigSet",
+          "text": "Initialize to include all signals."
+        },
+        {
+          "code": "pub fn empty() -> SigSet",
+          "text": "Initialize to include nothing."
+        },
+        {
+          "code": "pub fn add(&mut self, signal: Signal)",
+          "text": "Add the specified signal to the set."
+        },
+        {
+          "code": "pub fn clear(&mut self)",
+          "text": "Remove all signals from this set."
+        },
+        {
+          "code": "pub fn remove(&mut self, signal: Signal)",
+          "text": "Remove the specified signal from this set."
+        },
+        {
+          "code": "pub fn contains(&self, signal: Signal) -> bool",
+          "text": "Return whether this set includes the specified signal."
+        },
+        {
+          "code": "pub fn extend(&mut self, other: &SigSet)",
+          "text": "Merge all of other’s signals into this set."
+        },
+        {
+          "code": "pub fn thread_get_mask() -> Result<SigSet>",
+          "text": "Gets the currently blocked (masked) set of signals for the calling thread."
+        },
+        {
+          "code": "pub fn thread_set_mask(&self) -> Result<()>",
+          "text": "Sets the set of signals as the signal mask for the calling thread."
+        },
+        {
+          "code": "pub fn thread_block(&self) -> Result<()>",
+          "text": "Adds the set of signals to the signal mask for the calling thread."
+        },
+        {
+          "code": "pub fn thread_unblock(&self) -> Result<()>",
+          "text": "Removes the set of signals from the signal mask for the calling thread."
+        },
+        {
+          "code": "pub fn thread_swap_mask(&self, how: SigmaskHow) -> Result<SigSet>",
+          "text": "Sets the set of signals as the signal mask, and returns the old mask."
+        },
+        {
+          "code": "pub fn wait(&self) -> Result<Signal>",
+          "text": "Suspends execution of the calling thread until one of the signals in the signal mask becomes pending, and returns the accepted signal."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRef<sigset_t> for SigSet",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &sigset_t",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for SigSet",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> SigSet",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for SigSet",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for SigSet",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<SigSet> for SigSet",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &SigSet) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &SigSet) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

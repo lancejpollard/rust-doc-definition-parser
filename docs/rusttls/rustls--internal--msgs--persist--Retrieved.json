@@ -1,0 +1,31 @@
+{
+  "title": "Struct rustls::internal::msgs::persist::Retrieved",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Deref for Retrieved<T>",
+          "methods": [
+            {
+              "code": "type Target = T",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "fn deref(&self) -> &Self::Target",
+              "text": "Dereferences the value."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

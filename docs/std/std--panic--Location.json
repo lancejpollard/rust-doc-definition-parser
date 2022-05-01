@@ -1,0 +1,138 @@
+{
+  "title": "Struct std::panic::Location",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn caller() -> &'static Location<'static>",
+          "text": "Returns the source location of the caller of this function. If that function’s caller is annotated then its call location will be returned, and so on up the stack to the first call within a non-tracked function body."
+        },
+        {
+          "code": "pub fn file(&self) -> &str",
+          "text": "Returns the name of the source file from which the panic originated."
+        },
+        {
+          "code": "pub fn line(&self) -> u32",
+          "text": "Returns the line number from which the panic originated."
+        },
+        {
+          "code": "pub fn column(&self) -> u32",
+          "text": "Returns the column from which the panic originated."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a> Clone for Location<'a>",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> Location<'a>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Debug for Location<'a>",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_> Display for Location<'_>",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, formatter: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Hash for Location<'a>",
+          "methods": [
+            {
+              "code": "pub fn hash<__H>(&self, state: &mut __H) where __H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Ord for Location<'a>",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &Location<'a>) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> PartialEq<Location<'a>> for Location<'a>",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Location<'a>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &Location<'a>) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> PartialOrd<Location<'a>> for Location<'a>",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &Location<'a>) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

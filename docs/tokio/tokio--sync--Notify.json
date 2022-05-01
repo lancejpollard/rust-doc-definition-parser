@@ -1,0 +1,53 @@
+{
+  "title": "Struct tokio::sync::Notify",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> Notify",
+          "text": "Create a new Notify, initialized without a permit."
+        },
+        {
+          "code": "pub fn notified(&self) -> Notified<'_>ⓘNotable traits for Notified<'_>impl Future for Notified<'_> type Output = ();",
+          "text": "Wait for a notification."
+        },
+        {
+          "code": "pub fn notify_one(&self)",
+          "text": "Notifies a waiting task."
+        },
+        {
+          "code": "pub fn notify_waiters(&self)",
+          "text": "Notifies all waiting tasks."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Notify",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for Notify",
+          "methods": [
+            {
+              "code": "fn default() -> Notify",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

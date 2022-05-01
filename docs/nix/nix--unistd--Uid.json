@@ -1,0 +1,105 @@
+{
+  "title": "Struct nix::unistd::Uid",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn from_raw(uid: uid_t) -> Self",
+          "text": "Creates Uid from raw uid_t."
+        },
+        {
+          "code": "pub fn current() -> Self",
+          "text": "Returns Uid of calling process. This is practically a more Rusty alias for getuid."
+        },
+        {
+          "code": "pub fn effective() -> Self",
+          "text": "Returns effective Uid of calling process. This is practically a more Rusty alias for geteuid."
+        },
+        {
+          "code": "pub const fn is_root(self) -> bool",
+          "text": "Returns true if the Uid represents privileged user - root. (If it equals zero.)"
+        },
+        {
+          "code": "pub const fn as_raw(self) -> uid_t",
+          "text": "Get the raw uid_t wrapped by self."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for Uid",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Uid",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Uid",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for Uid",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Uid> for uid_t",
+          "methods": [
+            {
+              "code": "fn from(uid: Uid) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for Uid",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Uid> for Uid",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Uid) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Uid) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

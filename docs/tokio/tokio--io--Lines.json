@@ -1,0 +1,48 @@
+{
+  "title": "Struct tokio::io::Lines",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub async fn next_line(&mut self) -> Result<Option<String>>",
+          "text": "Returns the next line in the stream."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut R",
+          "text": "Obtains a mutable reference to the underlying reader."
+        },
+        {
+          "code": "pub fn get_ref(&mut self) -> &R",
+          "text": "Obtains a reference to the underlying reader."
+        },
+        {
+          "code": "pub fn into_inner(self) -> R",
+          "text": "Unwraps this Lines<R>, returning the underlying reader."
+        },
+        {
+          "code": "pub fn poll_next_line( self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<Option<String>>>",
+          "text": "Polls for the next line in the stream."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<R: Debug> Debug for Lines<R>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

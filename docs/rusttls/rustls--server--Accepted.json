@@ -1,0 +1,26 @@
+{
+  "title": "Struct rustls::server::Accepted",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn client_hello(&self) -> ClientHello<'_>",
+          "text": "Get the ClientHello for this connection."
+        },
+        {
+          "code": "pub fn into_connection( self, config: Arc<ServerConfig>) -> Result<ServerConnection, Error>",
+          "text": "Convert the Accepted into a ServerConnection."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

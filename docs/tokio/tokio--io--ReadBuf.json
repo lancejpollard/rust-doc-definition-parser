@@ -1,0 +1,100 @@
+{
+  "title": "Struct tokio::io::ReadBuf",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(buf: &'a mut [u8]) -> ReadBuf<'a>",
+          "text": "Creates a new ReadBuf from a fully initialized buffer."
+        },
+        {
+          "code": "pub fn uninit(buf: &'a mut [MaybeUninit<u8>]) -> ReadBuf<'a>",
+          "text": "Creates a new ReadBuf from a fully uninitialized buffer."
+        },
+        {
+          "code": "pub fn capacity(&self) -> usize",
+          "text": "Returns the total capacity of the buffer."
+        },
+        {
+          "code": "pub fn filled(&self) -> &[u8]ⓘNotable traits for &'_ [u8]impl Read for &'_ [u8]impl Write for &'_ mut [u8]",
+          "text": "Returns a shared reference to the filled portion of the buffer."
+        },
+        {
+          "code": "pub fn filled_mut(&mut self) -> &mut [u8]ⓘNotable traits for &'_ [u8]impl Read for &'_ [u8]impl Write for &'_ mut [u8]",
+          "text": "Returns a mutable reference to the filled portion of the buffer."
+        },
+        {
+          "code": "pub fn take(&mut self, n: usize) -> ReadBuf<'_>",
+          "text": "Returns a new ReadBuf comprised of the unfilled section up to n."
+        },
+        {
+          "code": "pub fn initialized(&self) -> &[u8]ⓘNotable traits for &'_ [u8]impl Read for &'_ [u8]impl Write for &'_ mut [u8]",
+          "text": "Returns a shared reference to the initialized portion of the buffer."
+        },
+        {
+          "code": "pub fn initialized_mut(&mut self) -> &mut [u8]ⓘNotable traits for &'_ [u8]impl Read for &'_ [u8]impl Write for &'_ mut [u8]",
+          "text": "Returns a mutable reference to the initialized portion of the buffer."
+        },
+        {
+          "code": "pub unsafe fn inner_mut(&mut self) -> &mut [MaybeUninit<u8>]",
+          "text": "Returns a mutable reference to the entire buffer, without ensuring that it has been fully initialized."
+        },
+        {
+          "code": "pub unsafe fn unfilled_mut(&mut self) -> &mut [MaybeUninit<u8>]",
+          "text": "Returns a mutable reference to the unfilled part of the buffer without ensuring that it has been fully initialized."
+        },
+        {
+          "code": "pub fn initialize_unfilled(&mut self) -> &mut [u8]ⓘNotable traits for &'_ [u8]impl Read for &'_ [u8]impl Write for &'_ mut [u8]",
+          "text": "Returns a mutable reference to the unfilled part of the buffer, ensuring it is fully initialized."
+        },
+        {
+          "code": "pub fn initialize_unfilled_to(&mut self, n: usize) -> &mut [u8]ⓘNotable traits for &'_ [u8]impl Read for &'_ [u8]impl Write for &'_ mut [u8]",
+          "text": "Returns a mutable reference to the first n bytes of the unfilled part of the buffer, ensuring it is fully initialized."
+        },
+        {
+          "code": "pub fn remaining(&self) -> usize",
+          "text": "Returns the number of bytes at the end of the slice that have not yet been filled."
+        },
+        {
+          "code": "pub fn clear(&mut self)",
+          "text": "Clears the buffer, resetting the filled region to empty."
+        },
+        {
+          "code": "pub fn advance(&mut self, n: usize)",
+          "text": "Advances the size of the filled region of the buffer."
+        },
+        {
+          "code": "pub fn set_filled(&mut self, n: usize)",
+          "text": "Sets the size of the filled region of the buffer."
+        },
+        {
+          "code": "pub unsafe fn assume_init(&mut self, n: usize)",
+          "text": "Asserts that the first n unfilled bytes of the buffer are initialized."
+        },
+        {
+          "code": "pub fn put_slice(&mut self, buf: &[u8])",
+          "text": "Appends data to the buffer, advancing the written position and possibly also the initialized position."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for ReadBuf<'_>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

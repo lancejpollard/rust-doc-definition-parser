@@ -1,0 +1,22 @@
+{
+  "title": "Struct rustls::client::CertificateTransparencyPolicy",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new( logs: &'static [&'static Log<'static>], validation_deadline: SystemTime) -> Self",
+          "text": "Create a new policy."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

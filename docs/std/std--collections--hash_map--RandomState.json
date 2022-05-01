@@ -1,0 +1,71 @@
+{
+  "title": "Struct std::collections::hash_map::RandomState",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> RandomState",
+          "text": "Constructs a new RandomState that is initialized with random keys."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl BuildHasher for RandomState",
+          "methods": [
+            {
+              "code": "type Hasher = DefaultHasher",
+              "text": "Type of the hasher that will be created."
+            },
+            {
+              "code": "fn build_hasher(&self) -> DefaultHasher",
+              "text": "Creates a new hasher."
+            },
+            {
+              "code": "fn hash_one<T>(&self, x: T) -> u64 where T: Hash,",
+              "text": "Calculates the hash of a single value."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for RandomState",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> RandomState",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for RandomState",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for RandomState",
+          "methods": [
+            {
+              "code": "fn default() -> RandomState",
+              "text": "Constructs a new RandomState."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

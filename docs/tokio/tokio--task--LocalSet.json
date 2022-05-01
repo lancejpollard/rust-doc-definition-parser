@@ -1,0 +1,75 @@
+{
+  "title": "Struct tokio::task::LocalSet",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> LocalSetⓘNotable traits for LocalSetimpl Future for LocalSet type Output = ();",
+          "text": "Returns a new local task set."
+        },
+        {
+          "code": "pub fn spawn_local<F>(&self, future: F) -> JoinHandle<F::Output>ⓘNotable traits for JoinHandle<T>impl<T> Future for JoinHandle<T> type Output = Result<T, JoinError>; where F: Future + 'static, F::Output: 'static,",
+          "text": "Spawns a !Send task onto the local task set."
+        },
+        {
+          "code": "pub fn block_on<F>(&self, rt: &Runtime, future: F) -> F::Output where F: Future,",
+          "text": "Runs a future to completion on the provided runtime, driving any local futures spawned on this task set on the current thread."
+        },
+        {
+          "code": "pub async fn run_until<F>(&self, future: F) -> F::Output where F: Future,",
+          "text": "Runs a future to completion on the local set, returning its output."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for LocalSet",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for LocalSet",
+          "methods": [
+            {
+              "code": "fn default() -> LocalSetⓘNotable traits for LocalSetimpl Future for LocalSet type Output = ();",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl Drop for LocalSet",
+          "methods": [
+            {
+              "code": "fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        },
+        {
+          "title": "impl Future for LocalSet",
+          "methods": [
+            {
+              "code": "type Output = ()",
+              "text": "The type of value produced on completion."
+            },
+            {
+              "code": "fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output>",
+              "text": "Attempt to resolve the future to a final value, registering the current task for wakeup if the value is not yet available."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

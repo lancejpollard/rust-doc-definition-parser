@@ -1,0 +1,57 @@
+{
+  "title": "Struct tokio::task::Builder",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> Self",
+          "text": "Creates a new task builder."
+        },
+        {
+          "code": "pub fn name(&self, name: &'a str) -> Self",
+          "text": "Assigns a name to the task which will be spawned."
+        },
+        {
+          "code": "pub fn spawn<Fut>(self, future: Fut) -> JoinHandle<Fut::Output>ⓘNotable traits for JoinHandle<T>impl<T> Future for JoinHandle<T> type Output = Result<T, JoinError>; where Fut: Future + Send + 'static, Fut::Output: Send + 'static,",
+          "text": "Spawns a task on the executor."
+        },
+        {
+          "code": "pub fn spawn_local<Fut>(self, future: Fut) -> JoinHandle<Fut::Output>ⓘNotable traits for JoinHandle<T>impl<T> Future for JoinHandle<T> type Output = Result<T, JoinError>; where Fut: Future + 'static, Fut::Output: 'static,",
+          "text": "Spawns a task on the current thread."
+        },
+        {
+          "code": "pub fn spawn_blocking<Function, Output>( self, function: Function) -> JoinHandle<Output>ⓘNotable traits for JoinHandle<T>impl<T> Future for JoinHandle<T> type Output = Result<T, JoinError>; where Function: FnOnce() -> Output + Send + 'static, Output: Send + 'static,",
+          "text": "Spawns blocking code on the blocking threadpool."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a> Debug for Builder<'a>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Default for Builder<'a>",
+          "methods": [
+            {
+              "code": "fn default() -> Builder<'a>",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

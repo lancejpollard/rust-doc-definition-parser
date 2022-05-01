@@ -1,0 +1,36 @@
+{
+  "title": "Struct rustls::server::ResolvesServerCertUsingSni",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> Self",
+          "text": "Create a new and empty (i.e., knows no certificates) resolver."
+        },
+        {
+          "code": "pub fn add(&mut self, name: &str, ck: CertifiedKey) -> Result<(), Error>",
+          "text": "Add a new sign::CertifiedKey to be used for the given SNI name."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl ResolvesServerCert for ResolvesServerCertUsingSni",
+          "methods": [
+            {
+              "code": "fn resolve(&self, client_hello: ClientHello<'_>) -> Option<Arc<CertifiedKey>>",
+              "text": "Choose a certificate chain and matching key given simplified ClientHello information."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

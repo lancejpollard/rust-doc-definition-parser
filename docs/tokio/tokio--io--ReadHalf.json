@@ -1,0 +1,45 @@
+{
+  "title": "Struct tokio::io::ReadHalf",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn is_pair_of(&self, other: &WriteHalf<T>) -> bool",
+          "text": "Checks if this ReadHalf and some WriteHalf were split from the same stream."
+        },
+        {
+          "code": "pub fn unsplit(self, wr: WriteHalf<T>) -> T",
+          "text": "Reunites with a previously split WriteHalf."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T: AsyncRead> AsyncRead for ReadHalf<T>",
+          "methods": [
+            {
+              "code": "fn poll_read( self: Pin<&mut Self>, cx: &mut Context<'_>, buf: &mut ReadBuf<'_>) -> Poll<Result<()>>",
+              "text": "Attempts to read from the AsyncRead into buf."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: Debug> Debug for ReadHalf<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "title": "Struct tokio::fs::DirEntry",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn path(&self) -> PathBuf",
+          "text": "Returns the full path to the file that this entry represents."
+        },
+        {
+          "code": "pub fn file_name(&self) -> OsString",
+          "text": "Returns the bare file name of this directory entry without any other leading path component."
+        },
+        {
+          "code": "pub async fn metadata(&self) -> Result<Metadata>",
+          "text": "Returns the metadata for the file that this entry points at."
+        },
+        {
+          "code": "pub async fn file_type(&self) -> Result<FileType>",
+          "text": "Returns the file type for the file that this entry points at."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for DirEntry",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

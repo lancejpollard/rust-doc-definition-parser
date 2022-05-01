@@ -1,0 +1,78 @@
+{
+  "title": "Struct std::str::pattern::CharPredicateSearcher",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a, F> Clone for CharPredicateSearcher<'a, F> where F: Clone + FnMut(char) -> bool,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> CharPredicateSearcher<'a, F>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, F> Debug for CharPredicateSearcher<'_, F> where F: FnMut(char) -> bool,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, F> ReverseSearcher<'a> for CharPredicateSearcher<'a, F> where F: FnMut(char) -> bool,",
+          "methods": [
+            {
+              "code": "pub fn next_back(&mut self) -> SearchStep",
+              "text": "Performs the next search step starting from the back."
+            },
+            {
+              "code": "pub fn next_match_back(&mut self) -> Option<(usize, usize)>",
+              "text": "Finds the next Match result. See next_back()."
+            },
+            {
+              "code": "pub fn next_reject_back(&mut self) -> Option<(usize, usize)>",
+              "text": "Finds the next Reject result. See next_back()."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, F> Searcher<'a> for CharPredicateSearcher<'a, F> where F: FnMut(char) -> bool,",
+          "methods": [
+            {
+              "code": "pub fn haystack(&self) -> &'a str",
+              "text": "Getter for the underlying string to be searched in"
+            },
+            {
+              "code": "pub fn next(&mut self) -> SearchStep",
+              "text": "Performs the next search step starting from the front."
+            },
+            {
+              "code": "pub fn next_match(&mut self) -> Option<(usize, usize)>",
+              "text": "Finds the next Match result. See next()."
+            },
+            {
+              "code": "pub fn next_reject(&mut self) -> Option<(usize, usize)>",
+              "text": "Finds the next Reject result. See next() and next_match()."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "title": "Struct rustls::client::ClientSessionMemoryCache",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(size: usize) -> Arc<Self>",
+          "text": "Make a new ClientSessionMemoryCache. size is the maximum number of stored sessions."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl StoresClientSessions for ClientSessionMemoryCache",
+          "methods": [
+            {
+              "code": "fn put(&self, key: Vec<u8>, value: Vec<u8>) -> bool",
+              "text": "Stores a new value for key. Returns true if the value was stored."
+            },
+            {
+              "code": "fn get(&self, key: &[u8]) -> Option<Vec<u8>>",
+              "text": "Returns the latest value for key. Returns None if there’s no such value."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

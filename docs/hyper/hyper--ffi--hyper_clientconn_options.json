@@ -1,0 +1,17 @@
+{
+  "title": "Struct hyper::ffi::hyper_clientconn_options",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

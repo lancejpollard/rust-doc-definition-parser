@@ -1,0 +1,44 @@
+{
+  "title": "Struct nix::sys::aio::LioCbBuilder",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn with_capacity(capacity: usize) -> LioCbBuilder<'a>",
+          "text": "Initialize an empty LioCb"
+        },
+        {
+          "code": "pub fn emplace_slice( self, fd: RawFd, offs: off_t, buf: &'a [u8], prio: c_int, sigev_notify: SigevNotify, opcode: LioOpcode) -> Self",
+          "text": "Add a new operation on an immutable slice to the LioCb under construction."
+        },
+        {
+          "code": "pub fn emplace_mut_slice( self, fd: RawFd, offs: off_t, buf: &'a mut [u8], prio: c_int, sigev_notify: SigevNotify, opcode: LioOpcode) -> Self",
+          "text": "Add a new operation on a mutable slice to the LioCb under construction."
+        },
+        {
+          "code": "pub fn finish(self) -> LioCb<'a>",
+          "text": "Finalize this LioCb."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a> Debug for LioCbBuilder<'a>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

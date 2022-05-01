@@ -1,0 +1,62 @@
+{
+  "title": "Struct rustls::Tls13CipherSuite",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn derive_decrypter(&self, secret: &Prk) -> Box<dyn MessageDecrypter>",
+          "text": "Derive a MessageDecrypter object from the concerned TLS 1.3 cipher suite."
+        },
+        {
+          "code": "pub fn hash_algorithm(&self) -> &'static Algorithm",
+          "text": "Which hash function to use with this suite."
+        },
+        {
+          "code": "pub fn can_resume_from(&self, prev: &'static Self) -> Option<&'static Self>",
+          "text": "Can a session using suite self resume from suite prev?"
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Tls13CipherSuite",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<&'static Tls13CipherSuite> for SupportedCipherSuite",
+          "methods": [
+            {
+              "code": "fn from(s: &'static Tls13CipherSuite) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Tls13CipherSuite> for Tls13CipherSuite",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Self) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

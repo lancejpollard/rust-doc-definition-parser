@@ -1,0 +1,356 @@
+{
+  "title": "Struct nix::fcntl::FdFlag",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const FD_CLOEXEC: Self",
+          "text": "The file descriptor will automatically be closed during a successful execve(2)."
+        },
+        {
+          "code": "pub const fn empty() -> Self",
+          "text": "Returns an empty set of flags."
+        },
+        {
+          "code": "pub const fn all() -> Self",
+          "text": "Returns the set containing all flags."
+        },
+        {
+          "code": "pub const fn bits(&self) -> c_int",
+          "text": "Returns the raw value of the flags currently stored."
+        },
+        {
+          "code": "pub const fn from_bits(bits: c_int) -> Option<Self>",
+          "text": "Convert from underlying bit representation, unless that representation contains bits that do not correspond to a flag."
+        },
+        {
+          "code": "pub const fn from_bits_truncate(bits: c_int) -> Self",
+          "text": "Convert from underlying bit representation, dropping any bits that do not correspond to flags."
+        },
+        {
+          "code": "pub const unsafe fn from_bits_unchecked(bits: c_int) -> Self",
+          "text": "Convert from underlying bit representation, preserving all bits (even those not corresponding to a defined flag)."
+        },
+        {
+          "code": "pub const fn is_empty(&self) -> bool",
+          "text": "Returns true if no flags are currently stored."
+        },
+        {
+          "code": "pub const fn is_all(&self) -> bool",
+          "text": "Returns true if all flags are currently set."
+        },
+        {
+          "code": "pub const fn intersects(&self, other: Self) -> bool",
+          "text": "Returns true if there are flags common to both self and other."
+        },
+        {
+          "code": "pub const fn contains(&self, other: Self) -> bool",
+          "text": "Returns true if all of the flags in other are contained within self."
+        },
+        {
+          "code": "pub fn insert(&mut self, other: Self)",
+          "text": "Inserts the specified flags in-place."
+        },
+        {
+          "code": "pub fn remove(&mut self, other: Self)",
+          "text": "Removes the specified flags in-place."
+        },
+        {
+          "code": "pub fn toggle(&mut self, other: Self)",
+          "text": "Toggles the specified flags in-place."
+        },
+        {
+          "code": "pub fn set(&mut self, other: Self, value: bool)",
+          "text": "Inserts or removes the specified flags depending on the passed value."
+        },
+        {
+          "code": "pub const fn intersection(self, other: Self) -> Self",
+          "text": "Returns the intersection between the flags in self and other."
+        },
+        {
+          "code": "pub const fn union(self, other: Self) -> Self",
+          "text": "Returns the union of between the flags in self and other."
+        },
+        {
+          "code": "pub const fn difference(self, other: Self) -> Self",
+          "text": "Returns the difference between the flags in self and other."
+        },
+        {
+          "code": "pub const fn symmetric_difference(self, other: Self) -> Self",
+          "text": "Returns the symmetric difference between the flags in self and other."
+        },
+        {
+          "code": "pub const fn complement(self) -> Self",
+          "text": "Returns the complement of this set of flags."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Binary for FdFlag",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl BitAnd<FdFlag> for FdFlag",
+          "methods": [
+            {
+              "code": "fn bitand(self, other: Self) -> Self",
+              "text": "Returns the intersection between the two sets of flags."
+            },
+            {
+              "code": "type Output = Self",
+              "text": "The resulting type after applying the & operator."
+            }
+          ]
+        },
+        {
+          "title": "impl BitAndAssign<FdFlag> for FdFlag",
+          "methods": [
+            {
+              "code": "fn bitand_assign(&mut self, other: Self)",
+              "text": "Disables all flags disabled in the set."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOr<FdFlag> for FdFlag",
+          "methods": [
+            {
+              "code": "fn bitor(self, other: FdFlag) -> Self",
+              "text": "Returns the union of the two sets of flags."
+            },
+            {
+              "code": "type Output = Self",
+              "text": "The resulting type after applying the | operator."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOrAssign<FdFlag> for FdFlag",
+          "methods": [
+            {
+              "code": "fn bitor_assign(&mut self, other: Self)",
+              "text": "Adds the set of flags."
+            }
+          ]
+        },
+        {
+          "title": "impl BitXor<FdFlag> for FdFlag",
+          "methods": [
+            {
+              "code": "fn bitxor(self, other: Self) -> Self",
+              "text": "Returns the left flags, but with all the right flags toggled."
+            },
+            {
+              "code": "type Output = Self",
+              "text": "The resulting type after applying the ^ operator."
+            }
+          ]
+        },
+        {
+          "title": "impl BitXorAssign<FdFlag> for FdFlag",
+          "methods": [
+            {
+              "code": "fn bitxor_assign(&mut self, other: Self)",
+              "text": "Toggles the set of flags."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for FdFlag",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> FdFlag",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for FdFlag",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Extend<FdFlag> for FdFlag",
+          "methods": [
+            {
+              "code": "fn extend<T: IntoIterator<Item = Self>>(&mut self, iterator: T)",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "fn extend_one(&mut self, item: A)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl FromIterator<FdFlag> for FdFlag",
+          "methods": [
+            {
+              "code": "fn from_iter<T: IntoIterator<Item = Self>>(iterator: T) -> Self",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for FdFlag",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl LowerHex for FdFlag",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Not for FdFlag",
+          "methods": [
+            {
+              "code": "fn not(self) -> Self",
+              "text": "Returns the complement of this set of flags."
+            },
+            {
+              "code": "type Output = Self",
+              "text": "The resulting type after applying the ! operator."
+            }
+          ]
+        },
+        {
+          "title": "impl Octal for FdFlag",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for FdFlag",
+          "methods": [
+            {
+              "code": "fn cmp(&self, other: &FdFlag) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<FdFlag> for FdFlag",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &FdFlag) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &FdFlag) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<FdFlag> for FdFlag",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &FdFlag) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl Sub<FdFlag> for FdFlag",
+          "methods": [
+            {
+              "code": "fn sub(self, other: Self) -> Self",
+              "text": "Returns the set difference of the two sets of flags."
+            },
+            {
+              "code": "type Output = Self",
+              "text": "The resulting type after applying the - operator."
+            }
+          ]
+        },
+        {
+          "title": "impl SubAssign<FdFlag> for FdFlag",
+          "methods": [
+            {
+              "code": "fn sub_assign(&mut self, other: Self)",
+              "text": "Disables all flags enabled in the set."
+            }
+          ]
+        },
+        {
+          "title": "impl UpperHex for FdFlag",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,332 @@
+{
+  "title": "Struct std::net::Ipv6Addr",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn new( a: u16, b: u16, c: u16, d: u16, e: u16, f: u16, g: u16, h: u16) -> Ipv6Addr",
+          "text": "Creates a new IPv6 address from eight 16-bit segments."
+        },
+        {
+          "code": "pub const LOCALHOST: Self",
+          "text": "An IPv6 address representing localhost: ::1."
+        },
+        {
+          "code": "pub const UNSPECIFIED: Self",
+          "text": "An IPv6 address representing the unspecified address: ::"
+        },
+        {
+          "code": "pub const fn segments(&self) -> [u16; 8]",
+          "text": "Returns the eight 16-bit segments that make up this address."
+        },
+        {
+          "code": "pub const fn is_unspecified(&self) -> bool",
+          "text": "Returns true for the special ‘unspecified’ address (::)."
+        },
+        {
+          "code": "pub const fn is_loopback(&self) -> bool",
+          "text": "Returns true if this is the loopback address (::1), as defined in IETF RFC 4291 section 2.5.3."
+        },
+        {
+          "code": "pub fn is_global(&self) -> bool",
+          "text": "Returns true if the address appears to be globally routable."
+        },
+        {
+          "code": "pub fn is_unique_local(&self) -> bool",
+          "text": "Returns true if this is a unique local address (fc00::/7)."
+        },
+        {
+          "code": "pub fn is_unicast(&self) -> bool",
+          "text": "Returns true if this is a unicast address, as defined by IETF RFC 4291. Any address that is not a multicast address (ff00::/8) is unicast."
+        },
+        {
+          "code": "pub fn is_unicast_link_local(&self) -> bool",
+          "text": "Returns true if the address is a unicast address with link-local scope, as defined in RFC 4291."
+        },
+        {
+          "code": "pub fn is_documentation(&self) -> bool",
+          "text": "Returns true if this is an address reserved for documentation (2001:db8::/32)."
+        },
+        {
+          "code": "pub const fn is_benchmarking(&self) -> bool",
+          "text": "Returns true if this is an address reserved for benchmarking (2001:2::/48)."
+        },
+        {
+          "code": "pub fn is_unicast_global(&self) -> bool",
+          "text": "Returns true if the address is a globally routable unicast address."
+        },
+        {
+          "code": "pub fn multicast_scope(&self) -> Option<Ipv6MulticastScope>",
+          "text": "Returns the address’s multicast scope if the address is multicast."
+        },
+        {
+          "code": "pub const fn is_multicast(&self) -> bool",
+          "text": "Returns true if this is a multicast address (ff00::/8)."
+        },
+        {
+          "code": "pub fn to_ipv4_mapped(&self) -> Option<Ipv4Addr>",
+          "text": "Converts this address to an IPv4 address if it’s an IPv4-mapped address, as defined in IETF RFC 4291 section 2.5.5.2, otherwise returns None."
+        },
+        {
+          "code": "pub const fn to_ipv4(&self) -> Option<Ipv4Addr>",
+          "text": "Converts this address to an IPv4 address if it is either an IPv4-compatible address as defined in IETF RFC 4291 section 2.5.5.1, or an IPv4-mapped address as defined in IETF RFC 4291 section 2.5.5.2, otherwise returns None."
+        },
+        {
+          "code": "pub fn to_canonical(&self) -> IpAddr",
+          "text": "Converts this address to an IpAddr::V4 if it is an IPv4-mapped addresses, otherwise it returns self wrapped in an IpAddr::V6."
+        },
+        {
+          "code": "pub const fn octets(&self) -> [u8; 16]",
+          "text": "Returns the sixteen eight-bit integers the IPv6 address consists of."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for Ipv6Addr",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Ipv6Addr",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Ipv6Addr",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for Ipv6Addr",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<[u16; 8]> for Ipv6Addr",
+          "methods": [
+            {
+              "code": "fn from(segments: [u16; 8]) -> Ipv6Addr",
+              "text": "Creates an Ipv6Addr from an eight element 16-bit array."
+            }
+          ]
+        },
+        {
+          "title": "impl From<[u8; 16]> for Ipv6Addr",
+          "methods": [
+            {
+              "code": "fn from(octets: [u8; 16]) -> Ipv6Addr",
+              "text": "Creates an Ipv6Addr from a sixteen element byte array."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Ipv6Addr> for IpAddr",
+          "methods": [
+            {
+              "code": "fn from(ipv6: Ipv6Addr) -> IpAddr",
+              "text": "Copies this address to a new IpAddr::V6."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Ipv6Addr> for u128",
+          "methods": [
+            {
+              "code": "fn from(ip: Ipv6Addr) -> u128",
+              "text": "Convert an Ipv6Addr into a host byte order u128."
+            }
+          ]
+        },
+        {
+          "title": "impl From<u128> for Ipv6Addr",
+          "methods": [
+            {
+              "code": "fn from(ip: u128) -> Ipv6Addr",
+              "text": "Convert a host byte order u128 into an Ipv6Addr."
+            }
+          ]
+        },
+        {
+          "title": "impl FromStr for Ipv6Addr",
+          "methods": [
+            {
+              "code": "type Err = AddrParseError",
+              "text": "The associated error which can be returned from parsing."
+            },
+            {
+              "code": "fn from_str(s: &str) -> Result<Ipv6Addr, AddrParseError>",
+              "text": "Parses a string s to return a value of this type."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for Ipv6Addr",
+          "methods": [
+            {
+              "code": "fn hash<H: Hasher>(&self, s: &mut H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for Ipv6Addr",
+          "methods": [
+            {
+              "code": "fn cmp(&self, other: &Ipv6Addr) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<IpAddr> for Ipv6Addr",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &IpAddr) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Ipv6Addr> for Ipv6Addr",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Ipv6Addr) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Ipv6Addr> for IpAddr",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Ipv6Addr) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<IpAddr> for Ipv6Addr",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &IpAddr) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<Ipv6Addr> for Ipv6Addr",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &Ipv6Addr) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<Ipv6Addr> for IpAddr",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &Ipv6Addr) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

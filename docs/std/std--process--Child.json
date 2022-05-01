@@ -1,0 +1,88 @@
+{
+  "title": "Struct std::process::Child",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn kill(&mut self) -> Result<()>",
+          "text": "Forces the child process to exit. If the child has already exited, an InvalidInput error is returned."
+        },
+        {
+          "code": "pub fn id(&self) -> u32",
+          "text": "Returns the OS-assigned process identifier associated with this child."
+        },
+        {
+          "code": "pub fn wait(&mut self) -> Result<ExitStatus>",
+          "text": "Waits for the child to exit completely, returning the status that it exited with. This function will continue to have the same return value after it has been called at least once."
+        },
+        {
+          "code": "pub fn try_wait(&mut self) -> Result<Option<ExitStatus>>",
+          "text": "Attempts to collect the exit status of the child if it has already exited."
+        },
+        {
+          "code": "pub fn wait_with_output(self) -> Result<Output>",
+          "text": "Simultaneously waits for the child to exit and collect all remaining output on the stdout/stderr handles, returning an Output instance."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsHandle for Child",
+          "methods": [
+            {
+              "code": "fn as_handle(&self) -> BorrowedHandle<'_>",
+              "text": "Borrows the handle."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRawHandle for Child",
+          "methods": [
+            {
+              "code": "fn as_raw_handle(&self) -> RawHandle",
+              "text": "Extracts the raw handle, without taking any ownership."
+            }
+          ]
+        },
+        {
+          "title": "impl ChildExt for Child",
+          "methods": []
+        },
+        {
+          "title": "impl Debug for Child",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Child> for OwnedHandle",
+          "methods": [
+            {
+              "code": "fn from(child: Child) -> OwnedHandle",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl IntoRawHandle for Child",
+          "methods": [
+            {
+              "code": "fn into_raw_handle(self) -> RawHandle",
+              "text": "Consumes this object, returning the raw underlying handle."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

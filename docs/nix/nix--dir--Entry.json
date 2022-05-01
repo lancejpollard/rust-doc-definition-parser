@@ -1,0 +1,79 @@
+{
+  "title": "Struct nix::dir::Entry",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn ino(&self) -> u64",
+          "text": "Returns the inode number (d_ino) of the underlying dirent."
+        },
+        {
+          "code": "pub fn file_name(&self) -> &CStr",
+          "text": "Returns the bare file name of this directory entry without any other leading path component."
+        },
+        {
+          "code": "pub fn file_type(&self) -> Option<Type>",
+          "text": "Returns the type of this directory entry, if known."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for Entry",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Entry",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Entry",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for Entry",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Entry> for Entry",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Entry) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Entry) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

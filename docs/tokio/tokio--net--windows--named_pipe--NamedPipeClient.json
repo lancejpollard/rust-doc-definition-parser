@@ -1,0 +1,119 @@
+{
+  "title": "Struct tokio::net::windows::named_pipe::NamedPipeClient",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub unsafe fn from_raw_handle(handle: RawHandle) -> Result<Self>",
+          "text": "Constructs a new named pipe client from the specified raw handle."
+        },
+        {
+          "code": "pub fn info(&self) -> Result<PipeInfo>",
+          "text": "Retrieves information about the named pipe the client is associated with."
+        },
+        {
+          "code": "pub async fn ready(&self, interest: Interest) -> Result<Ready>",
+          "text": "Waits for any of the requested ready states."
+        },
+        {
+          "code": "pub async fn readable(&self) -> Result<()>",
+          "text": "Waits for the pipe to become readable."
+        },
+        {
+          "code": "pub fn poll_read_ready(&self, cx: &mut Context<'_>) -> Poll<Result<()>>",
+          "text": "Polls for read readiness."
+        },
+        {
+          "code": "pub fn try_read(&self, buf: &mut [u8]) -> Result<usize>",
+          "text": "Tries to read data from the pipe into the provided buffer, returning how many bytes were read."
+        },
+        {
+          "code": "pub fn try_read_vectored(&self, bufs: &mut [IoSliceMut<'_>]) -> Result<usize>",
+          "text": "Tries to read data from the pipe into the provided buffers, returning how many bytes were read."
+        },
+        {
+          "code": "pub async fn writable(&self) -> Result<()>",
+          "text": "Waits for the pipe to become writable."
+        },
+        {
+          "code": "pub fn poll_write_ready(&self, cx: &mut Context<'_>) -> Poll<Result<()>>",
+          "text": "Polls for write readiness."
+        },
+        {
+          "code": "pub fn try_write(&self, buf: &[u8]) -> Result<usize>",
+          "text": "Tries to write a buffer to the pipe, returning how many bytes were written."
+        },
+        {
+          "code": "pub fn try_write_vectored(&self, buf: &[IoSlice<'_>]) -> Result<usize>",
+          "text": "Tries to write several buffers to the pipe, returning how many bytes were written."
+        },
+        {
+          "code": "pub fn try_io<R>( &self, interest: Interest, f: impl FnOnce() -> Result<R>) -> Result<R>",
+          "text": "Tries to read or write from the socket using a user-provided IO operation."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRawHandle for NamedPipeClient",
+          "methods": [
+            {
+              "code": "fn as_raw_handle(&self) -> RawHandle",
+              "text": "See std::os::windows::io::FromRawHandle::from_raw_handle"
+            }
+          ]
+        },
+        {
+          "title": "impl AsyncRead for NamedPipeClient",
+          "methods": [
+            {
+              "code": "fn poll_read( self: Pin<&mut Self>, cx: &mut Context<'_>, buf: &mut ReadBuf<'_>) -> Poll<Result<()>>",
+              "text": "Attempts to read from the AsyncRead into buf."
+            }
+          ]
+        },
+        {
+          "title": "impl AsyncWrite for NamedPipeClient",
+          "methods": [
+            {
+              "code": "fn poll_write( self: Pin<&mut Self>, cx: &mut Context<'_>, buf: &[u8]) -> Poll<Result<usize>>",
+              "text": "Attempt to write bytes from buf into the object."
+            },
+            {
+              "code": "fn poll_write_vectored( self: Pin<&mut Self>, cx: &mut Context<'_>, bufs: &[IoSlice<'_>]) -> Poll<Result<usize>>",
+              "text": "Like poll_write, except that it writes from a slice of buffers."
+            },
+            {
+              "code": "fn poll_flush(self: Pin<&mut Self>, _cx: &mut Context<'_>) -> Poll<Result<()>>",
+              "text": "Attempts to flush the object, ensuring that any buffered data reach their destination."
+            },
+            {
+              "code": "fn poll_shutdown(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<()>>",
+              "text": "Initiates or attempts to shut down this writer, returning success when the I/O connection has completely shut down."
+            },
+            {
+              "code": "fn is_write_vectored(&self) -> bool",
+              "text": "Determines if this writer has an efficient poll_write_vectored implementation."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for NamedPipeClient",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

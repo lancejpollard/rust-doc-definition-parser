@@ -1,0 +1,21 @@
+{
+  "title": "Struct rayon::ScopeFifo",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "methods": []
+        }
+      ]
+    }
+  ]
+}

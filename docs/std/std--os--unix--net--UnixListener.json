@@ -1,0 +1,131 @@
+{
+  "title": "Struct std::os::unix::net::UnixListener",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn bind<P: AsRef<Path>>(path: P) -> Result<UnixListener>",
+          "text": "Creates a new UnixListener bound to the specified socket."
+        },
+        {
+          "code": "pub fn bind_addr(socket_addr: &SocketAddr) -> Result<UnixListener>",
+          "text": "Creates a new UnixListener bound to the specified socket address."
+        },
+        {
+          "code": "pub fn accept(&self) -> Result<(UnixStream, SocketAddr)>",
+          "text": "Accepts a new incoming connection to this listener."
+        },
+        {
+          "code": "pub fn try_clone(&self) -> Result<UnixListener>",
+          "text": "Creates a new independently owned handle to the underlying socket."
+        },
+        {
+          "code": "pub fn local_addr(&self) -> Result<SocketAddr>",
+          "text": "Returns the local socket address of this listener."
+        },
+        {
+          "code": "pub fn set_nonblocking(&self, nonblocking: bool) -> Result<()>",
+          "text": "Moves the socket into or out of nonblocking mode."
+        },
+        {
+          "code": "pub fn take_error(&self) -> Result<Option<Error>>",
+          "text": "Returns the value of the SO_ERROR option."
+        },
+        {
+          "code": "pub fn incoming(&self) -> Incoming<'_>ⓘNotable traits for Incoming<'a>impl<'a> Iterator for Incoming<'a> type Item = Result<UnixStream>;",
+          "text": "Returns an iterator over incoming connections."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsFd for UnixListener",
+          "methods": [
+            {
+              "code": "fn as_fd(&self) -> BorrowedFd<'_>",
+              "text": "Borrows the file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRawFd for UnixListener",
+          "methods": [
+            {
+              "code": "fn as_raw_fd(&self) -> RawFd",
+              "text": "Extracts the raw file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for UnixListener",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedFd> for UnixListener",
+          "methods": [
+            {
+              "code": "fn from(fd: OwnedFd) -> UnixListener",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<UnixListener> for OwnedFd",
+          "methods": [
+            {
+              "code": "fn from(listener: UnixListener) -> OwnedFd",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl FromRawFd for UnixListener",
+          "methods": [
+            {
+              "code": "unsafe fn from_raw_fd(fd: RawFd) -> UnixListener",
+              "text": "Constructs a new instance of Self from the given raw file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> IntoIterator for &'a UnixListener",
+          "methods": [
+            {
+              "code": "type Item = Result<UnixStream>",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = Incoming<'a>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "fn into_iter(self) -> Incoming<'a>ⓘNotable traits for Incoming<'a>impl<'a> Iterator for Incoming<'a> type Item = Result<UnixStream>;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl IntoRawFd for UnixListener",
+          "methods": [
+            {
+              "code": "fn into_raw_fd(self) -> RawFd",
+              "text": "Consumes this object, returning the raw underlying file descriptor."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

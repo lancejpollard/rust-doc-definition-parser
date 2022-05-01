@@ -1,0 +1,1342 @@
+{
+  "title": "Primitive Type tuple",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> Debug for (T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11) where T0: Debug, T1: Debug, T2: Debug, T3: Debug, T4: Debug, T5: Debug, T6: Debug, T7: Debug, T8: Debug, T9: Debug, T10: Debug, T11: Debug + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T4, T5, T6, T7, T8, T9, T10, T11> Debug for (T4, T5, T6, T7, T8, T9, T10, T11) where T4: Debug, T5: Debug, T6: Debug, T7: Debug, T8: Debug, T9: Debug, T10: Debug, T11: Debug + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> Debug for (T2, T3, T4, T5, T6, T7, T8, T9, T10, T11) where T2: Debug, T3: Debug, T4: Debug, T5: Debug, T6: Debug, T7: Debug, T8: Debug, T9: Debug, T10: Debug, T11: Debug + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T8, T9, T10, T11> Debug for (T8, T9, T10, T11) where T8: Debug, T9: Debug, T10: Debug, T11: Debug + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T5, T6, T7, T8, T9, T10, T11> Debug for (T5, T6, T7, T8, T9, T10, T11) where T5: Debug, T6: Debug, T7: Debug, T8: Debug, T9: Debug, T10: Debug, T11: Debug + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T3, T4, T5, T6, T7, T8, T9, T10, T11> Debug for (T3, T4, T5, T6, T7, T8, T9, T10, T11) where T3: Debug, T4: Debug, T5: Debug, T6: Debug, T7: Debug, T8: Debug, T9: Debug, T10: Debug, T11: Debug + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T11> Debug for (T11,) where T11: Debug + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T10, T11> Debug for (T10, T11) where T10: Debug, T11: Debug + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T9, T10, T11> Debug for (T9, T10, T11) where T9: Debug, T10: Debug, T11: Debug + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T6, T7, T8, T9, T10, T11> Debug for (T6, T7, T8, T9, T10, T11) where T6: Debug, T7: Debug, T8: Debug, T9: Debug, T10: Debug, T11: Debug + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> Debug for (T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11) where T1: Debug, T2: Debug, T3: Debug, T4: Debug, T5: Debug, T6: Debug, T7: Debug, T8: Debug, T9: Debug, T10: Debug, T11: Debug + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T7, T8, T9, T10, T11> Debug for (T7, T8, T9, T10, T11) where T7: Debug, T8: Debug, T9: Debug, T10: Debug, T11: Debug + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B> Default for (A, B) where A: Default, B: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> (A, B)",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I, J, K, L> Default for (A, B, C, D, E, F, G, H, I, J, K, L) where A: Default, B: Default, C: Default, D: Default, E: Default, F: Default, G: Default, H: Default, I: Default, J: Default, K: Default, L: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> (A, B, C, D, E, F, G, H, I, J, K, L)",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H> Default for (A, B, C, D, E, F, G, H) where A: Default, B: Default, C: Default, D: Default, E: Default, F: Default, G: Default, H: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> (A, B, C, D, E, F, G, H)",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E> Default for (A, B, C, D, E) where A: Default, B: Default, C: Default, D: Default, E: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> (A, B, C, D, E)",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I, J, K> Default for (A, B, C, D, E, F, G, H, I, J, K) where A: Default, B: Default, C: Default, D: Default, E: Default, F: Default, G: Default, H: Default, I: Default, J: Default, K: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> (A, B, C, D, E, F, G, H, I, J, K)",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C> Default for (A, B, C) where A: Default, B: Default, C: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> (A, B, C)",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<A> Default for (A,) where A: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> (A,)",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G> Default for (A, B, C, D, E, F, G) where A: Default, B: Default, C: Default, D: Default, E: Default, F: Default, G: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> (A, B, C, D, E, F, G)",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F> Default for (A, B, C, D, E, F) where A: Default, B: Default, C: Default, D: Default, E: Default, F: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> (A, B, C, D, E, F)",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D> Default for (A, B, C, D) where A: Default, B: Default, C: Default, D: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> (A, B, C, D)",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I, J> Default for (A, B, C, D, E, F, G, H, I, J) where A: Default, B: Default, C: Default, D: Default, E: Default, F: Default, G: Default, H: Default, I: Default, J: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> (A, B, C, D, E, F, G, H, I, J)",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I> Default for (A, B, C, D, E, F, G, H, I) where A: Default, B: Default, C: Default, D: Default, E: Default, F: Default, G: Default, H: Default, I: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> (A, B, C, D, E, F, G, H, I)",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, K, V> Extend<(&'a K, &'a V)> for BTreeMap<K, V> where K: Ord + Copy, V: Copy,",
+          "methods": [
+            {
+              "code": "pub fn extend<I>(&mut self, iter: I) where I: IntoIterator<Item = (&'a K, &'a V)>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, (&'a K, &'a V))",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, K, V, S> Extend<(&'a K, &'a V)> for HashMap<K, V, S> where K: Eq + Hash + Copy, V: Copy, S: BuildHasher,",
+          "methods": [
+            {
+              "code": "fn extend<T: IntoIterator<Item = (&'a K, &'a V)>>(&mut self, iter: T)",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "fn extend_one(&mut self, (k, v): (&'a K, &'a V))",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, ExtendA, ExtendB> Extend<(A, B)> for (ExtendA, ExtendB) where ExtendA: Extend<A>, ExtendB: Extend<B>,",
+          "methods": [
+            {
+              "code": "pub fn extend<T>(&mut self, into_iter: T) where T: IntoIterator<Item = (A, B)>,",
+              "text": "Allows to extend a tuple of collections that also implement Extend."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, item: (A, B))",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "pub fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V> Extend<(K, V)> for BTreeMap<K, V> where K: Ord,",
+          "methods": [
+            {
+              "code": "pub fn extend<T>(&mut self, iter: T) where T: IntoIterator<Item = (K, V)>,",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "pub fn extend_one(&mut self, (K, V))",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V, S> Extend<(K, V)> for HashMap<K, V, S> where K: Eq + Hash, S: BuildHasher,",
+          "methods": [
+            {
+              "code": "fn extend<T: IntoIterator<Item = (K, V)>>(&mut self, iter: T)",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "fn extend_one(&mut self, (k, v): (K, V))",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<I: Into<IpAddr>> From<(I, u16)> for SocketAddr",
+          "methods": [
+            {
+              "code": "fn from(pieces: (I, u16)) -> SocketAddr",
+              "text": "Converts a tuple struct (Into<IpAddr>, u16) into a SocketAddr."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V> FromIterator<(K, V)> for BTreeMap<K, V> where K: Ord,",
+          "methods": [
+            {
+              "code": "pub fn from_iter<T>(iter: T) -> BTreeMap<K, V> where T: IntoIterator<Item = (K, V)>,",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V, S> FromIterator<(K, V)> for HashMap<K, V, S> where K: Eq + Hash, S: BuildHasher + Default,",
+          "methods": [
+            {
+              "code": "fn from_iter<T: IntoIterator<Item = (K, V)>>(iter: T) -> HashMap<K, V, S>",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F> Hash for (A, B, C, D, E, F) where A: Hash, B: Hash, C: Hash, D: Hash, E: Hash, F: Hash + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<S>(&self, state: &mut S) where S: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E> Hash for (A, B, C, D, E) where A: Hash, B: Hash, C: Hash, D: Hash, E: Hash + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<S>(&self, state: &mut S) where S: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B> Hash for (A, B) where A: Hash, B: Hash + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<S>(&self, state: &mut S) where S: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I, J, K, L> Hash for (A, B, C, D, E, F, G, H, I, J, K, L) where A: Hash, B: Hash, C: Hash, D: Hash, E: Hash, F: Hash, G: Hash, H: Hash, I: Hash, J: Hash, K: Hash, L: Hash + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<S>(&self, state: &mut S) where S: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I, J, K> Hash for (A, B, C, D, E, F, G, H, I, J, K) where A: Hash, B: Hash, C: Hash, D: Hash, E: Hash, F: Hash, G: Hash, H: Hash, I: Hash, J: Hash, K: Hash + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<S>(&self, state: &mut S) where S: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G> Hash for (A, B, C, D, E, F, G) where A: Hash, B: Hash, C: Hash, D: Hash, E: Hash, F: Hash, G: Hash + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<S>(&self, state: &mut S) where S: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I, J> Hash for (A, B, C, D, E, F, G, H, I, J) where A: Hash, B: Hash, C: Hash, D: Hash, E: Hash, F: Hash, G: Hash, H: Hash, I: Hash, J: Hash + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<S>(&self, state: &mut S) where S: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<A> Hash for (A,) where A: Hash + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<S>(&self, state: &mut S) where S: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D> Hash for (A, B, C, D) where A: Hash, B: Hash, C: Hash, D: Hash + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<S>(&self, state: &mut S) where S: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H> Hash for (A, B, C, D, E, F, G, H) where A: Hash, B: Hash, C: Hash, D: Hash, E: Hash, F: Hash, G: Hash, H: Hash + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<S>(&self, state: &mut S) where S: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I> Hash for (A, B, C, D, E, F, G, H, I) where A: Hash, B: Hash, C: Hash, D: Hash, E: Hash, F: Hash, G: Hash, H: Hash, I: Hash + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<S>(&self, state: &mut S) where S: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C> Hash for (A, B, C) where A: Hash, B: Hash, C: Hash + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<S>(&self, state: &mut S) where S: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B> Ord for (A, B) where A: Ord, B: Ord + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &(A, B)) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C> Ord for (A, B, C) where A: Ord, B: Ord, C: Ord + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &(A, B, C)) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<A> Ord for (A,) where A: Ord + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &(A,)) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I, J, K, L> Ord for (A, B, C, D, E, F, G, H, I, J, K, L) where A: Ord, B: Ord, C: Ord, D: Ord, E: Ord, F: Ord, G: Ord, H: Ord, I: Ord, J: Ord, K: Ord, L: Ord + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &(A, B, C, D, E, F, G, H, I, J, K, L)) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D> Ord for (A, B, C, D) where A: Ord, B: Ord, C: Ord, D: Ord + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &(A, B, C, D)) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I, J, K> Ord for (A, B, C, D, E, F, G, H, I, J, K) where A: Ord, B: Ord, C: Ord, D: Ord, E: Ord, F: Ord, G: Ord, H: Ord, I: Ord, J: Ord, K: Ord + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &(A, B, C, D, E, F, G, H, I, J, K)) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I> Ord for (A, B, C, D, E, F, G, H, I) where A: Ord, B: Ord, C: Ord, D: Ord, E: Ord, F: Ord, G: Ord, H: Ord, I: Ord + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &(A, B, C, D, E, F, G, H, I)) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I, J> Ord for (A, B, C, D, E, F, G, H, I, J) where A: Ord, B: Ord, C: Ord, D: Ord, E: Ord, F: Ord, G: Ord, H: Ord, I: Ord, J: Ord + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &(A, B, C, D, E, F, G, H, I, J)) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F> Ord for (A, B, C, D, E, F) where A: Ord, B: Ord, C: Ord, D: Ord, E: Ord, F: Ord + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &(A, B, C, D, E, F)) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G> Ord for (A, B, C, D, E, F, G) where A: Ord, B: Ord, C: Ord, D: Ord, E: Ord, F: Ord, G: Ord + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &(A, B, C, D, E, F, G)) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H> Ord for (A, B, C, D, E, F, G, H) where A: Ord, B: Ord, C: Ord, D: Ord, E: Ord, F: Ord, G: Ord, H: Ord + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &(A, B, C, D, E, F, G, H)) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E> Ord for (A, B, C, D, E) where A: Ord, B: Ord, C: Ord, D: Ord, E: Ord + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &(A, B, C, D, E)) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I, J, K, L> PartialEq<(A, B, C, D, E, F, G, H, I, J, K, L)> for (A, B, C, D, E, F, G, H, I, J, K, L) where A: PartialEq<A>, B: PartialEq<B>, C: PartialEq<C>, D: PartialEq<D>, E: PartialEq<E>, F: PartialEq<F>, G: PartialEq<G>, H: PartialEq<H>, I: PartialEq<I>, J: PartialEq<J>, K: PartialEq<K>, L: PartialEq<L> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &(A, B, C, D, E, F, G, H, I, J, K, L)) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &(A, B, C, D, E, F, G, H, I, J, K, L)) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I, J, K> PartialEq<(A, B, C, D, E, F, G, H, I, J, K)> for (A, B, C, D, E, F, G, H, I, J, K) where A: PartialEq<A>, B: PartialEq<B>, C: PartialEq<C>, D: PartialEq<D>, E: PartialEq<E>, F: PartialEq<F>, G: PartialEq<G>, H: PartialEq<H>, I: PartialEq<I>, J: PartialEq<J>, K: PartialEq<K> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &(A, B, C, D, E, F, G, H, I, J, K)) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &(A, B, C, D, E, F, G, H, I, J, K)) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I, J> PartialEq<(A, B, C, D, E, F, G, H, I, J)> for (A, B, C, D, E, F, G, H, I, J) where A: PartialEq<A>, B: PartialEq<B>, C: PartialEq<C>, D: PartialEq<D>, E: PartialEq<E>, F: PartialEq<F>, G: PartialEq<G>, H: PartialEq<H>, I: PartialEq<I>, J: PartialEq<J> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &(A, B, C, D, E, F, G, H, I, J)) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &(A, B, C, D, E, F, G, H, I, J)) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I> PartialEq<(A, B, C, D, E, F, G, H, I)> for (A, B, C, D, E, F, G, H, I) where A: PartialEq<A>, B: PartialEq<B>, C: PartialEq<C>, D: PartialEq<D>, E: PartialEq<E>, F: PartialEq<F>, G: PartialEq<G>, H: PartialEq<H>, I: PartialEq<I> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &(A, B, C, D, E, F, G, H, I)) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &(A, B, C, D, E, F, G, H, I)) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H> PartialEq<(A, B, C, D, E, F, G, H)> for (A, B, C, D, E, F, G, H) where A: PartialEq<A>, B: PartialEq<B>, C: PartialEq<C>, D: PartialEq<D>, E: PartialEq<E>, F: PartialEq<F>, G: PartialEq<G>, H: PartialEq<H> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &(A, B, C, D, E, F, G, H)) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &(A, B, C, D, E, F, G, H)) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G> PartialEq<(A, B, C, D, E, F, G)> for (A, B, C, D, E, F, G) where A: PartialEq<A>, B: PartialEq<B>, C: PartialEq<C>, D: PartialEq<D>, E: PartialEq<E>, F: PartialEq<F>, G: PartialEq<G> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &(A, B, C, D, E, F, G)) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &(A, B, C, D, E, F, G)) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F> PartialEq<(A, B, C, D, E, F)> for (A, B, C, D, E, F) where A: PartialEq<A>, B: PartialEq<B>, C: PartialEq<C>, D: PartialEq<D>, E: PartialEq<E>, F: PartialEq<F> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &(A, B, C, D, E, F)) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &(A, B, C, D, E, F)) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E> PartialEq<(A, B, C, D, E)> for (A, B, C, D, E) where A: PartialEq<A>, B: PartialEq<B>, C: PartialEq<C>, D: PartialEq<D>, E: PartialEq<E> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &(A, B, C, D, E)) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &(A, B, C, D, E)) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D> PartialEq<(A, B, C, D)> for (A, B, C, D) where A: PartialEq<A>, B: PartialEq<B>, C: PartialEq<C>, D: PartialEq<D> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &(A, B, C, D)) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &(A, B, C, D)) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C> PartialEq<(A, B, C)> for (A, B, C) where A: PartialEq<A>, B: PartialEq<B>, C: PartialEq<C> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &(A, B, C)) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &(A, B, C)) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B> PartialEq<(A, B)> for (A, B) where A: PartialEq<A>, B: PartialEq<B> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &(A, B)) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &(A, B)) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<A> PartialEq<(A,)> for (A,) where A: PartialEq<A> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &(A,)) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &(A,)) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I, J, K, L> PartialOrd<(A, B, C, D, E, F, G, H, I, J, K, L)> for (A, B, C, D, E, F, G, H, I, J, K, L) where A: PartialOrd<A> + PartialEq<A>, B: PartialOrd<B> + PartialEq<B>, C: PartialOrd<C> + PartialEq<C>, D: PartialOrd<D> + PartialEq<D>, E: PartialOrd<E> + PartialEq<E>, F: PartialOrd<F> + PartialEq<F>, G: PartialOrd<G> + PartialEq<G>, H: PartialOrd<H> + PartialEq<H>, I: PartialOrd<I> + PartialEq<I>, J: PartialOrd<J> + PartialEq<J>, K: PartialOrd<K> + PartialEq<K>, L: PartialOrd<L> + PartialEq<L> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp( &self, other: &(A, B, C, D, E, F, G, H, I, J, K, L)) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &(A, B, C, D, E, F, G, H, I, J, K, L)) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &(A, B, C, D, E, F, G, H, I, J, K, L)) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &(A, B, C, D, E, F, G, H, I, J, K, L)) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &(A, B, C, D, E, F, G, H, I, J, K, L)) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I, J, K> PartialOrd<(A, B, C, D, E, F, G, H, I, J, K)> for (A, B, C, D, E, F, G, H, I, J, K) where A: PartialOrd<A> + PartialEq<A>, B: PartialOrd<B> + PartialEq<B>, C: PartialOrd<C> + PartialEq<C>, D: PartialOrd<D> + PartialEq<D>, E: PartialOrd<E> + PartialEq<E>, F: PartialOrd<F> + PartialEq<F>, G: PartialOrd<G> + PartialEq<G>, H: PartialOrd<H> + PartialEq<H>, I: PartialOrd<I> + PartialEq<I>, J: PartialOrd<J> + PartialEq<J>, K: PartialOrd<K> + PartialEq<K> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp( &self, other: &(A, B, C, D, E, F, G, H, I, J, K)) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &(A, B, C, D, E, F, G, H, I, J, K)) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &(A, B, C, D, E, F, G, H, I, J, K)) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &(A, B, C, D, E, F, G, H, I, J, K)) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &(A, B, C, D, E, F, G, H, I, J, K)) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I, J> PartialOrd<(A, B, C, D, E, F, G, H, I, J)> for (A, B, C, D, E, F, G, H, I, J) where A: PartialOrd<A> + PartialEq<A>, B: PartialOrd<B> + PartialEq<B>, C: PartialOrd<C> + PartialEq<C>, D: PartialOrd<D> + PartialEq<D>, E: PartialOrd<E> + PartialEq<E>, F: PartialOrd<F> + PartialEq<F>, G: PartialOrd<G> + PartialEq<G>, H: PartialOrd<H> + PartialEq<H>, I: PartialOrd<I> + PartialEq<I>, J: PartialOrd<J> + PartialEq<J> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp( &self, other: &(A, B, C, D, E, F, G, H, I, J)) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &(A, B, C, D, E, F, G, H, I, J)) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &(A, B, C, D, E, F, G, H, I, J)) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &(A, B, C, D, E, F, G, H, I, J)) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &(A, B, C, D, E, F, G, H, I, J)) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H, I> PartialOrd<(A, B, C, D, E, F, G, H, I)> for (A, B, C, D, E, F, G, H, I) where A: PartialOrd<A> + PartialEq<A>, B: PartialOrd<B> + PartialEq<B>, C: PartialOrd<C> + PartialEq<C>, D: PartialOrd<D> + PartialEq<D>, E: PartialOrd<E> + PartialEq<E>, F: PartialOrd<F> + PartialEq<F>, G: PartialOrd<G> + PartialEq<G>, H: PartialOrd<H> + PartialEq<H>, I: PartialOrd<I> + PartialEq<I> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp( &self, other: &(A, B, C, D, E, F, G, H, I)) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &(A, B, C, D, E, F, G, H, I)) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &(A, B, C, D, E, F, G, H, I)) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &(A, B, C, D, E, F, G, H, I)) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &(A, B, C, D, E, F, G, H, I)) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G, H> PartialOrd<(A, B, C, D, E, F, G, H)> for (A, B, C, D, E, F, G, H) where A: PartialOrd<A> + PartialEq<A>, B: PartialOrd<B> + PartialEq<B>, C: PartialOrd<C> + PartialEq<C>, D: PartialOrd<D> + PartialEq<D>, E: PartialOrd<E> + PartialEq<E>, F: PartialOrd<F> + PartialEq<F>, G: PartialOrd<G> + PartialEq<G>, H: PartialOrd<H> + PartialEq<H> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &(A, B, C, D, E, F, G, H)) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &(A, B, C, D, E, F, G, H)) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &(A, B, C, D, E, F, G, H)) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &(A, B, C, D, E, F, G, H)) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &(A, B, C, D, E, F, G, H)) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F, G> PartialOrd<(A, B, C, D, E, F, G)> for (A, B, C, D, E, F, G) where A: PartialOrd<A> + PartialEq<A>, B: PartialOrd<B> + PartialEq<B>, C: PartialOrd<C> + PartialEq<C>, D: PartialOrd<D> + PartialEq<D>, E: PartialOrd<E> + PartialEq<E>, F: PartialOrd<F> + PartialEq<F>, G: PartialOrd<G> + PartialEq<G> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &(A, B, C, D, E, F, G)) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &(A, B, C, D, E, F, G)) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &(A, B, C, D, E, F, G)) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &(A, B, C, D, E, F, G)) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &(A, B, C, D, E, F, G)) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E, F> PartialOrd<(A, B, C, D, E, F)> for (A, B, C, D, E, F) where A: PartialOrd<A> + PartialEq<A>, B: PartialOrd<B> + PartialEq<B>, C: PartialOrd<C> + PartialEq<C>, D: PartialOrd<D> + PartialEq<D>, E: PartialOrd<E> + PartialEq<E>, F: PartialOrd<F> + PartialEq<F> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &(A, B, C, D, E, F)) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &(A, B, C, D, E, F)) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &(A, B, C, D, E, F)) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &(A, B, C, D, E, F)) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &(A, B, C, D, E, F)) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D, E> PartialOrd<(A, B, C, D, E)> for (A, B, C, D, E) where A: PartialOrd<A> + PartialEq<A>, B: PartialOrd<B> + PartialEq<B>, C: PartialOrd<C> + PartialEq<C>, D: PartialOrd<D> + PartialEq<D>, E: PartialOrd<E> + PartialEq<E> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &(A, B, C, D, E)) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &(A, B, C, D, E)) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &(A, B, C, D, E)) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &(A, B, C, D, E)) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &(A, B, C, D, E)) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C, D> PartialOrd<(A, B, C, D)> for (A, B, C, D) where A: PartialOrd<A> + PartialEq<A>, B: PartialOrd<B> + PartialEq<B>, C: PartialOrd<C> + PartialEq<C>, D: PartialOrd<D> + PartialEq<D> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &(A, B, C, D)) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &(A, B, C, D)) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &(A, B, C, D)) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &(A, B, C, D)) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &(A, B, C, D)) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B, C> PartialOrd<(A, B, C)> for (A, B, C) where A: PartialOrd<A> + PartialEq<A>, B: PartialOrd<B> + PartialEq<B>, C: PartialOrd<C> + PartialEq<C> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &(A, B, C)) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &(A, B, C)) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &(A, B, C)) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &(A, B, C)) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &(A, B, C)) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<A, B> PartialOrd<(A, B)> for (A, B) where A: PartialOrd<A> + PartialEq<A>, B: PartialOrd<B> + PartialEq<B> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &(A, B)) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &(A, B)) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &(A, B)) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &(A, B)) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &(A, B)) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<A> PartialOrd<(A,)> for (A,) where A: PartialOrd<A> + PartialEq<A> + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &(A,)) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &(A,)) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &(A,)) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &(A,)) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &(A,)) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> RangeBounds<T> for (Bound<&'a T>, Bound<&'a T>) where T: 'a + ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn start_bound(&self) -> Bound<&T>",
+              "text": "Start index bound."
+            },
+            {
+              "code": "pub fn end_bound(&self) -> Bound<&T>",
+              "text": "End index bound."
+            },
+            {
+              "code": "fn contains<U>(&self, item: &U) -> bool where T: PartialOrd<U>, U: PartialOrd<T> + ?Sized,",
+              "text": "Returns true if item is contained in the range."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> RangeBounds<T> for (Bound<T>, Bound<T>)",
+          "methods": [
+            {
+              "code": "pub fn start_bound(&self) -> Bound<&T>",
+              "text": "Start index bound."
+            },
+            {
+              "code": "pub fn end_bound(&self) -> Bound<&T>",
+              "text": "End index bound."
+            },
+            {
+              "code": "fn contains<U>(&self, item: &U) -> bool where T: PartialOrd<U>, U: PartialOrd<T> + ?Sized,",
+              "text": "Returns true if item is contained in the range."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> SliceIndex<[T]> for (Bound<usize>, Bound<usize>)",
+          "methods": [
+            {
+              "code": "type Output = [T]",
+              "text": "The output type returned by methods."
+            },
+            {
+              "code": "pub fn get( self, slice: &[T]) -> Option<&<(Bound<usize>, Bound<usize>) as SliceIndex<[T]>>::Output>",
+              "text": "Returns a shared reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub fn get_mut( self, slice: &mut [T]) -> Option<&mut <(Bound<usize>, Bound<usize>) as SliceIndex<[T]>>::Output>",
+              "text": "Returns a mutable reference to the output at this location, if in bounds."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked( self, slice: *const [T]) -> *const <(Bound<usize>, Bound<usize>) as SliceIndex<[T]>>::Output",
+              "text": "Returns a shared reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub unsafe fn get_unchecked_mut( self, slice: *mut [T]) -> *mut <(Bound<usize>, Bound<usize>) as SliceIndex<[T]>>::Output",
+              "text": "Returns a mutable reference to the output at this location, without performing any bounds checking. Calling this method with an out-of-bounds index or a dangling slice pointer is undefined behavior even if the resulting reference is not used."
+            },
+            {
+              "code": "pub fn index( self, slice: &[T]) -> &<(Bound<usize>, Bound<usize>) as SliceIndex<[T]>>::Output",
+              "text": "Returns a shared reference to the output at this location, panicking if out of bounds."
+            },
+            {
+              "code": "pub fn index_mut( self, slice: &mut [T]) -> &mut <(Bound<usize>, Bound<usize>) as SliceIndex<[T]>>::Output",
+              "text": "Returns a mutable reference to the output at this location, panicking if out of bounds."
+            }
+          ]
+        },
+        {
+          "title": "impl ToSocketAddrs for (IpAddr, u16)",
+          "methods": [
+            {
+              "code": "type Iter = IntoIter<SocketAddr>",
+              "text": "Returned iterator over socket addresses which this type may correspond to."
+            },
+            {
+              "code": "fn to_socket_addrs(&self) -> Result<IntoIter<SocketAddr>>",
+              "text": "Converts this object to an iterator of resolved SocketAddrs."
+            }
+          ]
+        },
+        {
+          "title": "impl ToSocketAddrs for (Ipv4Addr, u16)",
+          "methods": [
+            {
+              "code": "type Iter = IntoIter<SocketAddr>",
+              "text": "Returned iterator over socket addresses which this type may correspond to."
+            },
+            {
+              "code": "fn to_socket_addrs(&self) -> Result<IntoIter<SocketAddr>>",
+              "text": "Converts this object to an iterator of resolved SocketAddrs."
+            }
+          ]
+        },
+        {
+          "title": "impl ToSocketAddrs for (Ipv6Addr, u16)",
+          "methods": [
+            {
+              "code": "type Iter = IntoIter<SocketAddr>",
+              "text": "Returned iterator over socket addresses which this type may correspond to."
+            },
+            {
+              "code": "fn to_socket_addrs(&self) -> Result<IntoIter<SocketAddr>>",
+              "text": "Converts this object to an iterator of resolved SocketAddrs."
+            }
+          ]
+        },
+        {
+          "title": "impl ToSocketAddrs for (&str, u16)",
+          "methods": [
+            {
+              "code": "type Iter = IntoIter<SocketAddr>",
+              "text": "Returned iterator over socket addresses which this type may correspond to."
+            },
+            {
+              "code": "fn to_socket_addrs(&self) -> Result<IntoIter<SocketAddr>>",
+              "text": "Converts this object to an iterator of resolved SocketAddrs."
+            }
+          ]
+        },
+        {
+          "title": "impl ToSocketAddrs for (String, u16)",
+          "methods": [
+            {
+              "code": "type Iter = IntoIter<SocketAddr>",
+              "text": "Returned iterator over socket addresses which this type may correspond to."
+            },
+            {
+              "code": "fn to_socket_addrs(&self) -> Result<IntoIter<SocketAddr>>",
+              "text": "Converts this object to an iterator of resolved SocketAddrs."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

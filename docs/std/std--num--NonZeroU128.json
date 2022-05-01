@@ -1,0 +1,606 @@
+{
+  "title": "Struct std::num::NonZeroU128",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const unsafe fn new_unchecked(n: u128) -> NonZeroU128",
+          "text": "Creates a non-zero without checking whether the value is non-zero. This results in undefined behaviour if the value is zero."
+        },
+        {
+          "code": "pub const fn new(n: u128) -> Option<NonZeroU128>",
+          "text": "Creates a non-zero if the given value is not zero."
+        },
+        {
+          "code": "pub const fn get(self) -> u128",
+          "text": "Returns the value as a primitive type."
+        },
+        {
+          "code": "pub const fn leading_zeros(self) -> u32",
+          "text": "Returns the number of leading zeros in the binary representation of self."
+        },
+        {
+          "code": "pub const fn trailing_zeros(self) -> u32",
+          "text": "Returns the number of trailing zeros in the binary representation of self."
+        },
+        {
+          "code": "pub const fn checked_add(self, other: u128) -> Option<NonZeroU128>",
+          "text": "Add an unsigned integer to a non-zero value. Check for overflow and return None on overflow As a consequence, the result cannot wrap to zero."
+        },
+        {
+          "code": "pub const fn saturating_add(self, other: u128) -> NonZeroU128",
+          "text": "Add an unsigned integer to a non-zero value. Return u128::MAX on overflow."
+        },
+        {
+          "code": "pub const unsafe fn unchecked_add(self, other: u128) -> NonZeroU128",
+          "text": "Add an unsigned integer to a non-zero value, assuming overflow cannot occur. Overflow is unchecked, and it is undefined behaviour to overflow even if the result would wrap to a non-zero value. The behaviour is undefined as soon as self + rhs > u128::MAX."
+        },
+        {
+          "code": "pub const fn checked_next_power_of_two(self) -> Option<NonZeroU128>",
+          "text": "Returns the smallest power of two greater than or equal to n. Check for overflow and return None if the next power of two is greater than the type’s maximum value. As a consequence, the result cannot wrap to zero."
+        },
+        {
+          "code": "pub const fn checked_mul(self, other: NonZeroU128) -> Option<NonZeroU128>",
+          "text": "Multiply two non-zero integers together. Check for overflow and return None on overflow. As a consequence, the result cannot wrap to zero."
+        },
+        {
+          "code": "pub const fn saturating_mul(self, other: NonZeroU128) -> NonZeroU128",
+          "text": "Multiply two non-zero integers together. Return u128::MAX on overflow."
+        },
+        {
+          "code": "pub const unsafe fn unchecked_mul(self, other: NonZeroU128) -> NonZeroU128",
+          "text": "Multiply two non-zero integers together, assuming overflow cannot occur. Overflow is unchecked, and it is undefined behaviour to overflow even if the result would wrap to a non-zero value. The behaviour is undefined as soon as self * rhs > u128::MAX."
+        },
+        {
+          "code": "pub const fn checked_pow(self, other: u32) -> Option<NonZeroU128>",
+          "text": "Raise non-zero value to an integer power. Check for overflow and return None on overflow. As a consequence, the result cannot wrap to zero."
+        },
+        {
+          "code": "pub const fn saturating_pow(self, other: u32) -> NonZeroU128",
+          "text": "Raise non-zero value to an integer power. Return u128::MAX on overflow."
+        },
+        {
+          "code": "pub const fn is_power_of_two(self) -> bool",
+          "text": "Returns true if and only if self == (1 << k) for some k."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Binary for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOr<NonZeroU128> for u128",
+          "methods": [
+            {
+              "code": "type Output = NonZeroU128",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor(self, rhs: NonZeroU128) -> <u128 as BitOr<NonZeroU128>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOr<NonZeroU128> for NonZeroU128",
+          "methods": [
+            {
+              "code": "type Output = NonZeroU128",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor( self, rhs: NonZeroU128) -> <NonZeroU128 as BitOr<NonZeroU128>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOr<u128> for NonZeroU128",
+          "methods": [
+            {
+              "code": "type Output = NonZeroU128",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor(self, rhs: u128) -> <NonZeroU128 as BitOr<u128>>::Output",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOrAssign<NonZeroU128> for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn bitor_assign(&mut self, rhs: NonZeroU128)",
+              "text": "Performs the |= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOrAssign<u128> for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn bitor_assign(&mut self, rhs: u128)",
+              "text": "Performs the |= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> NonZeroU128",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Div<NonZeroU128> for u128",
+          "methods": [
+            {
+              "code": "pub fn div(self, other: NonZeroU128) -> u128",
+              "text": "This operation rounds towards zero, truncating any fractional part of the exact result, and cannot panic."
+            },
+            {
+              "code": "type Output = u128",
+              "text": "The resulting type after applying the / operator."
+            }
+          ]
+        },
+        {
+          "title": "impl From<NonZeroU128> for u128",
+          "methods": [
+            {
+              "code": "pub fn from(nonzero: NonZeroU128) -> u128",
+              "text": "Converts a NonZeroU128 into an u128"
+            }
+          ]
+        },
+        {
+          "title": "impl From<NonZeroU16> for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn from(small: NonZeroU16) -> NonZeroU128",
+              "text": "Converts NonZeroU16 to NonZeroU128 losslessly."
+            }
+          ]
+        },
+        {
+          "title": "impl From<NonZeroU32> for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn from(small: NonZeroU32) -> NonZeroU128",
+              "text": "Converts NonZeroU32 to NonZeroU128 losslessly."
+            }
+          ]
+        },
+        {
+          "title": "impl From<NonZeroU64> for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn from(small: NonZeroU64) -> NonZeroU128",
+              "text": "Converts NonZeroU64 to NonZeroU128 losslessly."
+            }
+          ]
+        },
+        {
+          "title": "impl From<NonZeroU8> for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn from(small: NonZeroU8) -> NonZeroU128",
+              "text": "Converts NonZeroU8 to NonZeroU128 losslessly."
+            }
+          ]
+        },
+        {
+          "title": "impl FromStr for NonZeroU128",
+          "methods": [
+            {
+              "code": "type Err = ParseIntError",
+              "text": "The associated error which can be returned from parsing."
+            },
+            {
+              "code": "pub fn from_str(src: &str) -> Result<NonZeroU128, <NonZeroU128 as FromStr>::Err>",
+              "text": "Parses a string s to return a value of this type."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn hash<__H>(&self, state: &mut __H) where __H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl LowerHex for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Octal for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &NonZeroU128) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<NonZeroU128> for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &NonZeroU128) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "pub fn ne(&self, other: &NonZeroU128) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<NonZeroU128> for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &NonZeroU128) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl Rem<NonZeroU128> for u128",
+          "methods": [
+            {
+              "code": "pub fn rem(self, other: NonZeroU128) -> u128",
+              "text": "This operation satisfies n % d == n - (n / d) * d, and cannot panic."
+            },
+            {
+              "code": "type Output = u128",
+              "text": "The resulting type after applying the % operator."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<NonZeroI128> for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: NonZeroI128) -> Result<NonZeroU128, <NonZeroU128 as TryFrom<NonZeroI128>>::Error>",
+              "text": "Attempts to convert NonZeroI128 to NonZeroU128."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<NonZeroI16> for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: NonZeroI16) -> Result<NonZeroU128, <NonZeroU128 as TryFrom<NonZeroI16>>::Error>",
+              "text": "Attempts to convert NonZeroI16 to NonZeroU128."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<NonZeroI32> for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: NonZeroI32) -> Result<NonZeroU128, <NonZeroU128 as TryFrom<NonZeroI32>>::Error>",
+              "text": "Attempts to convert NonZeroI32 to NonZeroU128."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<NonZeroI64> for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: NonZeroI64) -> Result<NonZeroU128, <NonZeroU128 as TryFrom<NonZeroI64>>::Error>",
+              "text": "Attempts to convert NonZeroI64 to NonZeroU128."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<NonZeroI8> for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: NonZeroI8) -> Result<NonZeroU128, <NonZeroU128 as TryFrom<NonZeroI8>>::Error>",
+              "text": "Attempts to convert NonZeroI8 to NonZeroU128."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<NonZeroIsize> for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: NonZeroIsize) -> Result<NonZeroU128, <NonZeroU128 as TryFrom<NonZeroIsize>>::Error>",
+              "text": "Attempts to convert NonZeroIsize to NonZeroU128."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<NonZeroU128> for NonZeroIsize",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: NonZeroU128) -> Result<NonZeroIsize, <NonZeroIsize as TryFrom<NonZeroU128>>::Error>",
+              "text": "Attempts to convert NonZeroU128 to NonZeroIsize."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<NonZeroU128> for NonZeroI64",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: NonZeroU128) -> Result<NonZeroI64, <NonZeroI64 as TryFrom<NonZeroU128>>::Error>",
+              "text": "Attempts to convert NonZeroU128 to NonZeroI64."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<NonZeroU128> for NonZeroU8",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: NonZeroU128) -> Result<NonZeroU8, <NonZeroU8 as TryFrom<NonZeroU128>>::Error>",
+              "text": "Attempts to convert NonZeroU128 to NonZeroU8."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<NonZeroU128> for NonZeroI32",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: NonZeroU128) -> Result<NonZeroI32, <NonZeroI32 as TryFrom<NonZeroU128>>::Error>",
+              "text": "Attempts to convert NonZeroU128 to NonZeroI32."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<NonZeroU128> for NonZeroU64",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: NonZeroU128) -> Result<NonZeroU64, <NonZeroU64 as TryFrom<NonZeroU128>>::Error>",
+              "text": "Attempts to convert NonZeroU128 to NonZeroU64."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<NonZeroU128> for NonZeroU32",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: NonZeroU128) -> Result<NonZeroU32, <NonZeroU32 as TryFrom<NonZeroU128>>::Error>",
+              "text": "Attempts to convert NonZeroU128 to NonZeroU32."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<NonZeroU128> for NonZeroI128",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: NonZeroU128) -> Result<NonZeroI128, <NonZeroI128 as TryFrom<NonZeroU128>>::Error>",
+              "text": "Attempts to convert NonZeroU128 to NonZeroI128."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<NonZeroU128> for NonZeroI8",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: NonZeroU128) -> Result<NonZeroI8, <NonZeroI8 as TryFrom<NonZeroU128>>::Error>",
+              "text": "Attempts to convert NonZeroU128 to NonZeroI8."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<NonZeroU128> for NonZeroUsize",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: NonZeroU128) -> Result<NonZeroUsize, <NonZeroUsize as TryFrom<NonZeroU128>>::Error>",
+              "text": "Attempts to convert NonZeroU128 to NonZeroUsize."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<NonZeroU128> for NonZeroU16",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: NonZeroU128) -> Result<NonZeroU16, <NonZeroU16 as TryFrom<NonZeroU128>>::Error>",
+              "text": "Attempts to convert NonZeroU128 to NonZeroU16."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<NonZeroU128> for NonZeroI16",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: NonZeroU128) -> Result<NonZeroI16, <NonZeroI16 as TryFrom<NonZeroU128>>::Error>",
+              "text": "Attempts to convert NonZeroU128 to NonZeroI16."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<NonZeroUsize> for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: NonZeroUsize) -> Result<NonZeroU128, <NonZeroU128 as TryFrom<NonZeroUsize>>::Error>",
+              "text": "Attempts to convert NonZeroUsize to NonZeroU128."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<u128> for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn try_from( value: u128) -> Result<NonZeroU128, <NonZeroU128 as TryFrom<u128>>::Error>",
+              "text": "Attempts to convert u128 to NonZeroU128."
+            },
+            {
+              "code": "type Error = TryFromIntError",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        },
+        {
+          "title": "impl UpperHex for NonZeroU128",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "title": "Struct nix::sched::CpuSet",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> CpuSet",
+          "text": "Create a new and empty CpuSet."
+        },
+        {
+          "code": "pub fn is_set(&self, field: usize) -> Result<bool>",
+          "text": "Test to see if a CPU is in the CpuSet. field is the CPU id to test"
+        },
+        {
+          "code": "pub fn set(&mut self, field: usize) -> Result<()>",
+          "text": "Add a CPU to CpuSet. field is the CPU id to add"
+        },
+        {
+          "code": "pub fn unset(&mut self, field: usize) -> Result<()>",
+          "text": "Remove a CPU from CpuSet. field is the CPU id to remove"
+        },
+        {
+          "code": "pub const fn count() -> usize",
+          "text": "Return the maximum number of CPU in CpuSet"
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for CpuSet",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> CpuSet",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for CpuSet",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for CpuSet",
+          "methods": [
+            {
+              "code": "fn default() -> Self",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for CpuSet",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<CpuSet> for CpuSet",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &CpuSet) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &CpuSet) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

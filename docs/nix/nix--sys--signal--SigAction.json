@@ -1,0 +1,83 @@
+{
+  "title": "Struct nix::sys::signal::SigAction",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(handler: SigHandler, flags: SaFlags, mask: SigSet) -> SigAction",
+          "text": "Creates a new action."
+        },
+        {
+          "code": "pub fn flags(&self) -> SaFlags",
+          "text": "Returns the flags set on the action."
+        },
+        {
+          "code": "pub fn mask(&self) -> SigSet",
+          "text": "Returns the set of signals that are blocked during execution of the action’s signal-catching function."
+        },
+        {
+          "code": "pub fn handler(&self) -> SigHandler",
+          "text": "Returns the action’s handler."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for SigAction",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> SigAction",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for SigAction",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for SigAction",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<SigAction> for SigAction",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &SigAction) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &SigAction) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

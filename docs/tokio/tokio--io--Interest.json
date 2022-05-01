@@ -1,0 +1,96 @@
+{
+  "title": "Struct tokio::io::Interest",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const READABLE: Interest",
+          "text": "Interest in all readable events."
+        },
+        {
+          "code": "pub const WRITABLE: Interest",
+          "text": "Interest in all writable events."
+        },
+        {
+          "code": "pub const fn is_readable(self) -> bool",
+          "text": "Returns true if the value includes readable interest."
+        },
+        {
+          "code": "pub const fn is_writable(self) -> bool",
+          "text": "Returns true if the value includes writable interest."
+        },
+        {
+          "code": "pub const fn add(self, other: Interest) -> Interest",
+          "text": "Add together two Interest values."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl BitOr<Interest> for Interest",
+          "methods": [
+            {
+              "code": "type Output = Self",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "fn bitor(self, other: Self) -> Self",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl BitOrAssign<Interest> for Interest",
+          "methods": [
+            {
+              "code": "fn bitor_assign(&mut self, other: Self)",
+              "text": "Performs the |= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for Interest",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Interest",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Interest",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<Interest> for Interest",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Interest) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Interest) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

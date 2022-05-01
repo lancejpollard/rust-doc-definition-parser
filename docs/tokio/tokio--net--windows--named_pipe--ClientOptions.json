@@ -1,0 +1,65 @@
+{
+  "title": "Struct tokio::net::windows::named_pipe::ClientOptions",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> Self",
+          "text": "Creates a new named pipe builder with the default settings."
+        },
+        {
+          "code": "pub fn read(&mut self, allowed: bool) -> &mut Self",
+          "text": "If the client supports reading data. This is enabled by default."
+        },
+        {
+          "code": "pub fn write(&mut self, allowed: bool) -> &mut Self",
+          "text": "If the created pipe supports writing data. This is enabled by default."
+        },
+        {
+          "code": "pub fn security_qos_flags(&mut self, flags: u32) -> &mut Self",
+          "text": "Sets qos flags which are combined with other flags and attributes in the call to CreateFile."
+        },
+        {
+          "code": "pub fn open(&self, addr: impl AsRef<OsStr>) -> Result<NamedPipeClient>",
+          "text": "Opens the named pipe identified by addr."
+        },
+        {
+          "code": "pub unsafe fn open_with_security_attributes_raw( &self, addr: impl AsRef<OsStr>, attrs: *mut c_void) -> Result<NamedPipeClient>",
+          "text": "Opens the named pipe identified by addr."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for ClientOptions",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> ClientOptions",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for ClientOptions",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

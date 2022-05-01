@@ -1,0 +1,57 @@
+{
+  "title": "Struct std::backtrace::Backtrace",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn capture() -> Backtrace",
+          "text": "Capture a stack backtrace of the current thread."
+        },
+        {
+          "code": "pub fn force_capture() -> Backtrace",
+          "text": "Forcibly captures a full backtrace, regardless of environment variable configuration."
+        },
+        {
+          "code": "pub const fn disabled() -> Backtrace",
+          "text": "Forcibly captures a disabled backtrace, regardless of environment variable configuration."
+        },
+        {
+          "code": "pub fn status(&self) -> BacktraceStatus",
+          "text": "Returns the status of this backtrace, indicating whether this backtrace request was unsupported, disabled, or a stack trace was actually captured."
+        },
+        {
+          "code": "pub fn frames(&'a self) -> &'a [BacktraceFrame]",
+          "text": "Returns an iterator over the backtrace frames."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Backtrace",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for Backtrace",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

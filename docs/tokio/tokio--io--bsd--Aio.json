@@ -1,0 +1,70 @@
+{
+  "title": "Struct tokio::io::bsd::Aio",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new_for_aio(io: E) -> Result<Self>",
+          "text": "Creates a new Aio suitable for use with POSIX AIO functions."
+        },
+        {
+          "code": "pub fn new_for_lio(io: E) -> Result<Self>",
+          "text": "Creates a new Aio suitable for use with lio_listio."
+        },
+        {
+          "code": "pub fn clear_ready(&self, ev: AioEvent)",
+          "text": "Indicates to Tokio that the source is no longer ready. The internal readiness flag will be cleared, and tokio will wait for the next edge-triggered readiness notification from the OS."
+        },
+        {
+          "code": "pub fn into_inner(self) -> E",
+          "text": "Destroy the Aio and return its inner source."
+        },
+        {
+          "code": "pub fn poll_ready<'a>(&'a self, cx: &mut Context<'_>) -> Poll<Result<AioEvent>>",
+          "text": "Polls for readiness. Either AIO or LIO counts."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<E: AioSource + Debug> Debug for Aio<E>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<E: AioSource> Deref for Aio<E>",
+          "methods": [
+            {
+              "code": "type Target = E",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "fn deref(&self) -> &E",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<E: AioSource> DerefMut for Aio<E>",
+          "methods": [
+            {
+              "code": "fn deref_mut(&mut self) -> &mut E",
+              "text": "Mutably dereferences the value."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

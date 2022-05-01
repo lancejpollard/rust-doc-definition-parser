@@ -1,0 +1,338 @@
+{
+  "title": "Struct std::os::unix::net::UnixStream",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn connect<P: AsRef<Path>>(path: P) -> Result<UnixStream>",
+          "text": "Connects to the socket named by path."
+        },
+        {
+          "code": "pub fn connect_addr(socket_addr: &SocketAddr) -> Result<UnixStream>",
+          "text": "Connects to the socket specified by address."
+        },
+        {
+          "code": "pub fn pair() -> Result<(UnixStream, UnixStream)>",
+          "text": "Creates an unnamed pair of connected sockets."
+        },
+        {
+          "code": "pub fn try_clone(&self) -> Result<UnixStream>",
+          "text": "Creates a new independently owned handle to the underlying socket."
+        },
+        {
+          "code": "pub fn local_addr(&self) -> Result<SocketAddr>",
+          "text": "Returns the socket address of the local half of this connection."
+        },
+        {
+          "code": "pub fn peer_addr(&self) -> Result<SocketAddr>",
+          "text": "Returns the socket address of the remote half of this connection."
+        },
+        {
+          "code": "pub fn peer_cred(&self) -> Result<UCred>",
+          "text": "Gets the peer credentials for this Unix domain socket."
+        },
+        {
+          "code": "pub fn set_read_timeout(&self, timeout: Option<Duration>) -> Result<()>",
+          "text": "Sets the read timeout for the socket."
+        },
+        {
+          "code": "pub fn set_write_timeout(&self, timeout: Option<Duration>) -> Result<()>",
+          "text": "Sets the write timeout for the socket."
+        },
+        {
+          "code": "pub fn read_timeout(&self) -> Result<Option<Duration>>",
+          "text": "Returns the read timeout of this socket."
+        },
+        {
+          "code": "pub fn write_timeout(&self) -> Result<Option<Duration>>",
+          "text": "Returns the write timeout of this socket."
+        },
+        {
+          "code": "pub fn set_nonblocking(&self, nonblocking: bool) -> Result<()>",
+          "text": "Moves the socket into or out of nonblocking mode."
+        },
+        {
+          "code": "pub fn set_passcred(&self, passcred: bool) -> Result<()>",
+          "text": "Moves the socket to pass unix credentials as control message in SocketAncillary."
+        },
+        {
+          "code": "pub fn passcred(&self) -> Result<bool>",
+          "text": "Get the current value of the socket for passing unix credentials in SocketAncillary. This value can be change by set_passcred."
+        },
+        {
+          "code": "pub fn take_error(&self) -> Result<Option<Error>>",
+          "text": "Returns the value of the SO_ERROR option."
+        },
+        {
+          "code": "pub fn shutdown(&self, how: Shutdown) -> Result<()>",
+          "text": "Shuts down the read, write, or both halves of this connection."
+        },
+        {
+          "code": "pub fn peek(&self, buf: &mut [u8]) -> Result<usize>",
+          "text": "Receives data on the socket from the remote address to which it is connected, without removing that data from the queue. On success, returns the number of bytes peeked."
+        },
+        {
+          "code": "pub fn recv_vectored_with_ancillary( &self, bufs: &mut [IoSliceMut<'_>], ancillary: &mut SocketAncillary<'_>) -> Result<usize>",
+          "text": "Receives data and ancillary data from socket."
+        },
+        {
+          "code": "pub fn send_vectored_with_ancillary( &self, bufs: &[IoSlice<'_>], ancillary: &mut SocketAncillary<'_>) -> Result<usize>",
+          "text": "Sends data and ancillary data on the socket."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsFd for UnixStream",
+          "methods": [
+            {
+              "code": "fn as_fd(&self) -> BorrowedFd<'_>",
+              "text": "Borrows the file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRawFd for UnixStream",
+          "methods": [
+            {
+              "code": "fn as_raw_fd(&self) -> RawFd",
+              "text": "Extracts the raw file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for UnixStream",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedFd> for UnixStream",
+          "methods": [
+            {
+              "code": "fn from(owned: OwnedFd) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<UnixStream> for OwnedFd",
+          "methods": [
+            {
+              "code": "fn from(unix_stream: UnixStream) -> OwnedFd",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl FromRawFd for UnixStream",
+          "methods": [
+            {
+              "code": "unsafe fn from_raw_fd(fd: RawFd) -> UnixStreamⓘNotable traits for UnixStreamimpl Read for UnixStreamimpl<'a> Read for &'a UnixStreamimpl Write for UnixStreamimpl<'a> Write for &'a UnixStream",
+              "text": "Constructs a new instance of Self from the given raw file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl IntoRawFd for UnixStream",
+          "methods": [
+            {
+              "code": "fn into_raw_fd(self) -> RawFd",
+              "text": "Consumes this object, returning the raw underlying file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl Read for UnixStream",
+          "methods": [
+            {
+              "code": "fn read(&mut self, buf: &mut [u8]) -> Result<usize>",
+              "text": "Pull some bytes from this source into the specified buffer, returning how many bytes were read."
+            },
+            {
+              "code": "fn read_vectored(&mut self, bufs: &mut [IoSliceMut<'_>]) -> Result<usize>",
+              "text": "Like read, except that it reads into a slice of buffers."
+            },
+            {
+              "code": "fn is_read_vectored(&self) -> bool",
+              "text": "Determines if this Reader has an efficient read_vectored implementation."
+            },
+            {
+              "code": "fn read_to_end(&mut self, buf: &mut Vec<u8>) -> Result<usize>",
+              "text": "Read all bytes until EOF in this source, placing them into buf."
+            },
+            {
+              "code": "fn read_to_string(&mut self, buf: &mut String) -> Result<usize>",
+              "text": "Read all bytes until EOF in this source, appending them to buf."
+            },
+            {
+              "code": "fn read_exact(&mut self, buf: &mut [u8]) -> Result<()>",
+              "text": "Read the exact number of bytes required to fill buf."
+            },
+            {
+              "code": "fn read_buf(&mut self, buf: &mut ReadBuf<'_>) -> Result<()>",
+              "text": "Pull some bytes from this source into the specified buffer."
+            },
+            {
+              "code": "fn read_buf_exact(&mut self, buf: &mut ReadBuf<'_>) -> Result<()>",
+              "text": "Read the exact number of bytes required to fill buf."
+            },
+            {
+              "code": "fn by_ref(&mut self) -> &mut Self where Self: Sized,",
+              "text": "Creates a “by reference” adaptor for this instance of Read."
+            },
+            {
+              "code": "fn bytes(self) -> Bytes<Self>ⓘNotable traits for Bytes<R>impl<R: Read> Iterator for Bytes<R> type Item = Result<u8>; where Self: Sized,",
+              "text": "Transforms this Read instance to an Iterator over its bytes."
+            },
+            {
+              "code": "fn chain<R: Read>(self, next: R) -> Chain<Self, R>ⓘNotable traits for Chain<T, U>impl<T: Read, U: Read> Read for Chain<T, U> where Self: Sized,",
+              "text": "Creates an adapter which will chain this stream with another."
+            },
+            {
+              "code": "fn take(self, limit: u64) -> Take<Self>ⓘNotable traits for Take<T>impl<T: Read> Read for Take<T> where Self: Sized,",
+              "text": "Creates an adapter which will read at most limit bytes from it."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Read for &'a UnixStream",
+          "methods": [
+            {
+              "code": "fn read(&mut self, buf: &mut [u8]) -> Result<usize>",
+              "text": "Pull some bytes from this source into the specified buffer, returning how many bytes were read."
+            },
+            {
+              "code": "fn read_vectored(&mut self, bufs: &mut [IoSliceMut<'_>]) -> Result<usize>",
+              "text": "Like read, except that it reads into a slice of buffers."
+            },
+            {
+              "code": "fn is_read_vectored(&self) -> bool",
+              "text": "Determines if this Reader has an efficient read_vectored implementation."
+            },
+            {
+              "code": "fn read_to_end(&mut self, buf: &mut Vec<u8>) -> Result<usize>",
+              "text": "Read all bytes until EOF in this source, placing them into buf."
+            },
+            {
+              "code": "fn read_to_string(&mut self, buf: &mut String) -> Result<usize>",
+              "text": "Read all bytes until EOF in this source, appending them to buf."
+            },
+            {
+              "code": "fn read_exact(&mut self, buf: &mut [u8]) -> Result<()>",
+              "text": "Read the exact number of bytes required to fill buf."
+            },
+            {
+              "code": "fn read_buf(&mut self, buf: &mut ReadBuf<'_>) -> Result<()>",
+              "text": "Pull some bytes from this source into the specified buffer."
+            },
+            {
+              "code": "fn read_buf_exact(&mut self, buf: &mut ReadBuf<'_>) -> Result<()>",
+              "text": "Read the exact number of bytes required to fill buf."
+            },
+            {
+              "code": "fn by_ref(&mut self) -> &mut Self where Self: Sized,",
+              "text": "Creates a “by reference” adaptor for this instance of Read."
+            },
+            {
+              "code": "fn bytes(self) -> Bytes<Self>ⓘNotable traits for Bytes<R>impl<R: Read> Iterator for Bytes<R> type Item = Result<u8>; where Self: Sized,",
+              "text": "Transforms this Read instance to an Iterator over its bytes."
+            },
+            {
+              "code": "fn chain<R: Read>(self, next: R) -> Chain<Self, R>ⓘNotable traits for Chain<T, U>impl<T: Read, U: Read> Read for Chain<T, U> where Self: Sized,",
+              "text": "Creates an adapter which will chain this stream with another."
+            },
+            {
+              "code": "fn take(self, limit: u64) -> Take<Self>ⓘNotable traits for Take<T>impl<T: Read> Read for Take<T> where Self: Sized,",
+              "text": "Creates an adapter which will read at most limit bytes from it."
+            }
+          ]
+        },
+        {
+          "title": "impl Write for UnixStream",
+          "methods": [
+            {
+              "code": "fn write(&mut self, buf: &[u8]) -> Result<usize>",
+              "text": "Write a buffer into this writer, returning how many bytes were written."
+            },
+            {
+              "code": "fn write_vectored(&mut self, bufs: &[IoSlice<'_>]) -> Result<usize>",
+              "text": "Like write, except that it writes from a slice of buffers."
+            },
+            {
+              "code": "fn is_write_vectored(&self) -> bool",
+              "text": "Determines if this Writer has an efficient write_vectored implementation."
+            },
+            {
+              "code": "fn flush(&mut self) -> Result<()>",
+              "text": "Flush this output stream, ensuring that all intermediately buffered contents reach their destination."
+            },
+            {
+              "code": "fn write_all(&mut self, buf: &[u8]) -> Result<()>",
+              "text": "Attempts to write an entire buffer into this writer."
+            },
+            {
+              "code": "fn write_all_vectored(&mut self, bufs: &mut [IoSlice<'_>]) -> Result<()>",
+              "text": "Attempts to write multiple buffers into this writer."
+            },
+            {
+              "code": "fn write_fmt(&mut self, fmt: Arguments<'_>) -> Result<()>",
+              "text": "Writes a formatted string into this writer, returning any error encountered."
+            },
+            {
+              "code": "fn by_ref(&mut self) -> &mut Self where Self: Sized,",
+              "text": "Creates a “by reference” adapter for this instance of Write."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Write for &'a UnixStream",
+          "methods": [
+            {
+              "code": "fn write(&mut self, buf: &[u8]) -> Result<usize>",
+              "text": "Write a buffer into this writer, returning how many bytes were written."
+            },
+            {
+              "code": "fn write_vectored(&mut self, bufs: &[IoSlice<'_>]) -> Result<usize>",
+              "text": "Like write, except that it writes from a slice of buffers."
+            },
+            {
+              "code": "fn is_write_vectored(&self) -> bool",
+              "text": "Determines if this Writer has an efficient write_vectored implementation."
+            },
+            {
+              "code": "fn flush(&mut self) -> Result<()>",
+              "text": "Flush this output stream, ensuring that all intermediately buffered contents reach their destination."
+            },
+            {
+              "code": "fn write_all(&mut self, buf: &[u8]) -> Result<()>",
+              "text": "Attempts to write an entire buffer into this writer."
+            },
+            {
+              "code": "fn write_all_vectored(&mut self, bufs: &mut [IoSlice<'_>]) -> Result<()>",
+              "text": "Attempts to write multiple buffers into this writer."
+            },
+            {
+              "code": "fn write_fmt(&mut self, fmt: Arguments<'_>) -> Result<()>",
+              "text": "Writes a formatted string into this writer, returning any error encountered."
+            },
+            {
+              "code": "fn by_ref(&mut self) -> &mut Self where Self: Sized,",
+              "text": "Creates a “by reference” adapter for this instance of Write."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

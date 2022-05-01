@@ -1,0 +1,53 @@
+{
+  "title": "Struct tokio::time::Sleep",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn deadline(&self) -> Instant",
+          "text": "Returns the instant at which the future will complete."
+        },
+        {
+          "code": "pub fn is_elapsed(&self) -> bool",
+          "text": "Returns true if Sleep has elapsed."
+        },
+        {
+          "code": "pub fn reset(self: Pin<&mut Self>, deadline: Instant)",
+          "text": "Resets the Sleep instance to a new deadline."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Sleep",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Future for Sleep",
+          "methods": [
+            {
+              "code": "type Output = ()",
+              "text": "The type of value produced on completion."
+            },
+            {
+              "code": "fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output>",
+              "text": "Attempt to resolve the future to a final value, registering the current task for wakeup if the value is not yet available."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

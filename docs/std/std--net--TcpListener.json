@@ -1,0 +1,156 @@
+{
+  "title": "Struct std::net::TcpListener",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn bind<A: ToSocketAddrs>(addr: A) -> Result<TcpListener>",
+          "text": "Creates a new TcpListener which will be bound to the specified address."
+        },
+        {
+          "code": "pub fn local_addr(&self) -> Result<SocketAddr>",
+          "text": "Returns the local socket address of this listener."
+        },
+        {
+          "code": "pub fn try_clone(&self) -> Result<TcpListener>",
+          "text": "Creates a new independently owned handle to the underlying socket."
+        },
+        {
+          "code": "pub fn accept(&self) -> Result<(TcpStream, SocketAddr)>",
+          "text": "Accept a new incoming connection from this listener."
+        },
+        {
+          "code": "pub fn incoming(&self) -> Incoming<'_>ⓘNotable traits for Incoming<'a>impl<'a> Iterator for Incoming<'a> type Item = Result<TcpStream>;",
+          "text": "Returns an iterator over the connections being received on this listener."
+        },
+        {
+          "code": "pub fn into_incoming(self) -> IntoIncoming",
+          "text": "Turn this into an iterator over the connections being received on this listener."
+        },
+        {
+          "code": "pub fn set_ttl(&self, ttl: u32) -> Result<()>",
+          "text": "Sets the value for the IP_TTL option on this socket."
+        },
+        {
+          "code": "pub fn ttl(&self) -> Result<u32>",
+          "text": "Gets the value of the IP_TTL option for this socket."
+        },
+        {
+          "code": "pub fn take_error(&self) -> Result<Option<Error>>",
+          "text": "Gets the value of the SO_ERROR option on this socket."
+        },
+        {
+          "code": "pub fn set_nonblocking(&self, nonblocking: bool) -> Result<()>",
+          "text": "Moves this TCP stream into or out of nonblocking mode."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsFd for TcpListener",
+          "methods": []
+        },
+        {
+          "title": "impl AsRawFd for TcpListener",
+          "methods": []
+        },
+        {
+          "title": "impl AsRawSocket for TcpListener",
+          "methods": [
+            {
+              "code": "fn as_raw_socket(&self) -> RawSocket",
+              "text": "Extracts the underlying raw socket from this object."
+            }
+          ]
+        },
+        {
+          "title": "impl AsSocket for TcpListener",
+          "methods": [
+            {
+              "code": "fn as_socket(&self) -> BorrowedSocket<'_>",
+              "text": "Borrows the socket."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for TcpListener",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedFd> for TcpListener",
+          "methods": [
+            {
+              "code": "fn from(owned_fd: OwnedFd) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedSocket> for TcpListener",
+          "methods": [
+            {
+              "code": "fn from(owned: OwnedSocket) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<TcpListener> for OwnedSocket",
+          "methods": [
+            {
+              "code": "fn from(tcp_listener: TcpListener) -> OwnedSocket",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<TcpListener> for OwnedFd",
+          "methods": [
+            {
+              "code": "fn from(tcp_listener: TcpListener) -> OwnedFd",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl FromRawFd for TcpListener",
+          "methods": []
+        },
+        {
+          "title": "impl FromRawSocket for TcpListener",
+          "methods": [
+            {
+              "code": "unsafe fn from_raw_socket(sock: RawSocket) -> TcpListener",
+              "text": "Creates a new I/O object from the given raw socket."
+            }
+          ]
+        },
+        {
+          "title": "impl IntoRawFd for TcpListener",
+          "methods": []
+        },
+        {
+          "title": "impl IntoRawSocket for TcpListener",
+          "methods": [
+            {
+              "code": "fn into_raw_socket(self) -> RawSocket",
+              "text": "Consumes this object, returning the raw underlying socket."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

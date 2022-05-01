@@ -1,0 +1,48 @@
+{
+  "title": "Struct std::thread::Builder",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> Builder",
+          "text": "Generates the base configuration for spawning a thread, from which configuration methods can be chained."
+        },
+        {
+          "code": "pub fn name(self, name: String) -> Builder",
+          "text": "Names the thread-to-be. Currently the name is used for identification only in panic messages."
+        },
+        {
+          "code": "pub fn stack_size(self, size: usize) -> Builder",
+          "text": "Sets the size of the stack (in bytes) for the new thread."
+        },
+        {
+          "code": "pub fn spawn<F, T>(self, f: F) -> Result<JoinHandle<T>> where F: FnOnce() -> T, F: Send + 'static, T: Send + 'static,",
+          "text": "Spawns a new thread by taking ownership of the Builder, and returns an io::Result to its JoinHandle."
+        },
+        {
+          "code": "pub unsafe fn spawn_unchecked<'a, F, T>(self, f: F) -> Result<JoinHandle<T>> where F: FnOnce() -> T, F: Send + 'a, T: Send + 'a,",
+          "text": "Spawns a new thread without any lifetime restrictions by taking ownership of the Builder, and returns an io::Result to its JoinHandle."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Builder",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

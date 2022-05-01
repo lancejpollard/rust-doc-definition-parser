@@ -1,0 +1,130 @@
+{
+  "title": "Struct tokio::io::BufStream",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(stream: RW) -> BufStream<RW>",
+          "text": "Wraps a type in both BufWriter and BufReader."
+        },
+        {
+          "code": "pub fn with_capacity( reader_capacity: usize, writer_capacity: usize, stream: RW) -> BufStream<RW>",
+          "text": "Creates a BufStream with the specified BufReader capacity and BufWriter capacity."
+        },
+        {
+          "code": "pub fn get_ref(&self) -> &RW",
+          "text": "Gets a reference to the underlying I/O object."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut RW",
+          "text": "Gets a mutable reference to the underlying I/O object."
+        },
+        {
+          "code": "pub fn get_pin_mut(self: Pin<&mut Self>) -> Pin<&mut RW>ⓘNotable traits for Pin<P>impl<P> Future for Pin<P> where P: DerefMut, <P as Deref>::Target: Future, type Output = <<P as Deref>::Target as Future>::Output;",
+          "text": "Gets a pinned mutable reference to the underlying I/O object."
+        },
+        {
+          "code": "pub fn into_inner(self) -> RW",
+          "text": "Consumes this BufStream, returning the underlying I/O object."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<RW: AsyncRead + AsyncWrite> AsyncBufRead for BufStream<RW>",
+          "methods": [
+            {
+              "code": "fn poll_fill_buf( self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<&[u8]>>",
+              "text": "Attempts to return the contents of the internal buffer, filling it with more data from the inner reader if it is empty."
+            },
+            {
+              "code": "fn consume(self: Pin<&mut Self>, amt: usize)",
+              "text": "Tells this buffer that amt bytes have been consumed from the buffer, so they should no longer be returned in calls to poll_read."
+            }
+          ]
+        },
+        {
+          "title": "impl<RW: AsyncRead + AsyncWrite> AsyncRead for BufStream<RW>",
+          "methods": [
+            {
+              "code": "fn poll_read( self: Pin<&mut Self>, cx: &mut Context<'_>, buf: &mut ReadBuf<'_>) -> Poll<Result<()>>",
+              "text": "Attempts to read from the AsyncRead into buf."
+            }
+          ]
+        },
+        {
+          "title": "impl<RW: AsyncRead + AsyncWrite + AsyncSeek> AsyncSeek for BufStream<RW>",
+          "methods": [
+            {
+              "code": "fn start_seek(self: Pin<&mut Self>, position: SeekFrom) -> Result<()>",
+              "text": "Attempts to seek to an offset, in bytes, in a stream."
+            },
+            {
+              "code": "fn poll_complete( self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<u64>>",
+              "text": "Waits for a seek operation to complete."
+            }
+          ]
+        },
+        {
+          "title": "impl<RW: AsyncRead + AsyncWrite> AsyncWrite for BufStream<RW>",
+          "methods": [
+            {
+              "code": "fn poll_write( self: Pin<&mut Self>, cx: &mut Context<'_>, buf: &[u8]) -> Poll<Result<usize>>",
+              "text": "Attempt to write bytes from buf into the object."
+            },
+            {
+              "code": "fn poll_write_vectored( self: Pin<&mut Self>, cx: &mut Context<'_>, bufs: &[IoSlice<'_>]) -> Poll<Result<usize>>",
+              "text": "Like poll_write, except that it writes from a slice of buffers."
+            },
+            {
+              "code": "fn is_write_vectored(&self) -> bool",
+              "text": "Determines if this writer has an efficient poll_write_vectored implementation."
+            },
+            {
+              "code": "fn poll_flush(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<()>>",
+              "text": "Attempts to flush the object, ensuring that any buffered data reach their destination."
+            },
+            {
+              "code": "fn poll_shutdown(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<()>>",
+              "text": "Initiates or attempts to shut down this writer, returning success when the I/O connection has completely shut down."
+            }
+          ]
+        },
+        {
+          "title": "impl<RW: Debug> Debug for BufStream<RW>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<RW> From<BufReader<BufWriter<RW>>> for BufStream<RW>",
+          "methods": [
+            {
+              "code": "fn from(b: BufReader<BufWriter<RW>>) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<RW> From<BufWriter<BufReader<RW>>> for BufStream<RW>",
+          "methods": [
+            {
+              "code": "fn from(b: BufWriter<BufReader<RW>>) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

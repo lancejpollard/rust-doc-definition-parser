@@ -1,0 +1,52 @@
+{
+  "title": "Struct nix::sys::aio::LioCb",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn is_empty(&self) -> bool",
+          "text": "Are no AioCbs contained?"
+        },
+        {
+          "code": "pub fn len(&self) -> usize",
+          "text": "Return the number of individual AioCbs contained."
+        },
+        {
+          "code": "pub fn listio(&mut self, mode: LioMode, sigev_notify: SigevNotify) -> Result<()>",
+          "text": "Submits multiple asynchronous I/O requests with a single system call."
+        },
+        {
+          "code": "pub fn listio_resubmit( &mut self, mode: LioMode, sigev_notify: SigevNotify) -> Result<()>",
+          "text": "Resubmits any incomplete operations with lio_listio."
+        },
+        {
+          "code": "pub fn aio_return(&mut self, i: usize) -> Result<isize>",
+          "text": "Collect final status for an individual AioCb submitted as part of an LioCb."
+        },
+        {
+          "code": "pub fn error(&mut self, i: usize) -> Result<()>",
+          "text": "Retrieve error status of an individual AioCb submitted as part of an LioCb."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a> Debug for LioCb<'a>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

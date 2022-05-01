@@ -1,0 +1,93 @@
+{
+  "title": "Struct std::ffi::NulError",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn nul_position(&self) -> usize",
+          "text": "Returns the position of the nul byte in the slice that caused CString::new to fail."
+        },
+        {
+          "code": "pub fn into_vec(self) -> Vec<u8>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+          "text": "Consumes this error, returning the underlying vector of bytes which generated the error in the first place."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for NulError",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> NulError",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for NulError",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for NulError",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Error for NulError",
+          "methods": [
+            {
+              "code": "fn source(&self) -> Option<&(dyn Error + 'static)>",
+              "text": "The lower-level source of this error, if any."
+            },
+            {
+              "code": "fn backtrace(&self) -> Option<&Backtrace>",
+              "text": "Returns a stack backtrace, if available, of where this error occurred."
+            }
+          ]
+        },
+        {
+          "title": "impl From<NulError> for Error",
+          "methods": [
+            {
+              "code": "fn from(_: NulError) -> Error",
+              "text": "Converts a NulError into a io::Error."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<NulError> for NulError",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &NulError) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &NulError) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "title": "Struct hyper::header::GetAll",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a, T> Debug for GetAll<'a, T> where T: Debug,",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> IntoIterator for GetAll<'a, T>",
+          "methods": [
+            {
+              "code": "type Item = &'a T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = ValueIter<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "fn into_iter(self) -> ValueIter<'a, T>ⓘNotable traits for ValueIter<'a, T>impl<'a, T> Iterator for ValueIter<'a, T> where T: 'a, type Item = &'a T;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b, T> IntoIterator for &'b GetAll<'a, T> where 'b: 'a,",
+          "methods": [
+            {
+              "code": "type Item = &'a T",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = ValueIter<'a, T>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "fn into_iter(self) -> ValueIter<'a, T>ⓘNotable traits for ValueIter<'a, T>impl<'a, T> Iterator for ValueIter<'a, T> where T: 'a, type Item = &'a T;",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T> PartialEq<GetAll<'a, T>> for GetAll<'a, T> where T: PartialEq<T>,",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &GetAll<'a, T>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

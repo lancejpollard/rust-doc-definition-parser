@@ -1,0 +1,58 @@
+{
+  "title": "Struct rustls::CommonState",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn wants_write(&self) -> bool",
+          "text": "Returns true if the caller should call CommonState::write_tls as soon as possible."
+        },
+        {
+          "code": "pub fn is_handshaking(&self) -> bool",
+          "text": "Returns true if the connection is currently performing the TLS handshake."
+        },
+        {
+          "code": "pub fn peer_certificates(&self) -> Option<&[Certificate]>",
+          "text": "Retrieves the certificate chain used by the peer to authenticate."
+        },
+        {
+          "code": "pub fn alpn_protocol(&self) -> Option<&[u8]>",
+          "text": "Retrieves the protocol agreed with the peer via ALPN."
+        },
+        {
+          "code": "pub fn negotiated_cipher_suite(&self) -> Option<SupportedCipherSuite>",
+          "text": "Retrieves the ciphersuite agreed with the peer."
+        },
+        {
+          "code": "pub fn protocol_version(&self) -> Option<ProtocolVersion>",
+          "text": "Retrieves the protocol version agreed with the peer."
+        },
+        {
+          "code": "pub fn write_tls(&mut self, wr: &mut dyn Write) -> Result<usize, Error>",
+          "text": "Writes TLS messages to wr."
+        },
+        {
+          "code": "pub fn set_buffer_limit(&mut self, limit: Option<usize>)",
+          "text": "Sets a limit on the internal buffers used to buffer unsent plaintext (prior to completing the TLS handshake) and unsent TLS records. This limit acts only on application data written through Connection::writer."
+        },
+        {
+          "code": "pub fn send_close_notify(&mut self)",
+          "text": "Queues a close_notify warning alert to be sent in the next CommonState::write_tls call. This informs the peer that the connection is being closed."
+        },
+        {
+          "code": "pub fn wants_read(&self) -> bool",
+          "text": "Returns true if the caller should call Connection::read_tls as soon as possible."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

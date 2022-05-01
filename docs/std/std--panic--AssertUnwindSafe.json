@@ -1,0 +1,92 @@
+{
+  "title": "Struct std::panic::AssertUnwindSafe",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Debug for AssertUnwindSafe<T> where T: Debug,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Deref for AssertUnwindSafe<T>",
+          "methods": [
+            {
+              "code": "type Target = T",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "pub fn deref(&self) -> &T",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> DerefMut for AssertUnwindSafe<T>",
+          "methods": [
+            {
+              "code": "pub fn deref_mut(&mut self) -> &mut T",
+              "text": "Mutably dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<R, F> FnOnce() for AssertUnwindSafe<F> where F: FnOnce() -> R,",
+          "methods": [
+            {
+              "code": "type Output = R",
+              "text": "The returned type after the call operator is used."
+            },
+            {
+              "code": "pub extern \"rust-call\" fn call_once(self, _args: ()) -> R",
+              "text": "Performs the call operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<F> Future for AssertUnwindSafe<F> where F: Future,",
+          "methods": [
+            {
+              "code": "type Output = <F as Future>::Output",
+              "text": "The type of value produced on completion."
+            },
+            {
+              "code": "pub fn poll( self: Pin<&mut AssertUnwindSafe<F>>, cx: &mut Context<'_>) -> Poll<<AssertUnwindSafe<F> as Future>::Output>",
+              "text": "Attempt to resolve the future to a final value, registering the current task for wakeup if the value is not yet available."
+            }
+          ]
+        },
+        {
+          "title": "impl<S> Stream for AssertUnwindSafe<S> where S: Stream,",
+          "methods": [
+            {
+              "code": "type Item = <S as Stream>::Item",
+              "text": "The type of items yielded by the stream."
+            },
+            {
+              "code": "pub fn poll_next( self: Pin<&mut AssertUnwindSafe<S>>, cx: &mut Context<'_>) -> Poll<Option<<S as Stream>::Item>>",
+              "text": "Attempt to pull out the next value of this stream, registering the current task for wakeup if the value is not yet available, and returning None if the stream is exhausted."
+            },
+            {
+              "code": "pub fn size_hint(&self) -> (usize, Option<usize>)",
+              "text": "Returns the bounds on the remaining length of the stream."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

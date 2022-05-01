@@ -1,0 +1,62 @@
+{
+  "title": "Struct std::io::IoSliceMut",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(buf: &'a mut [u8]) -> IoSliceMut<'a>",
+          "text": "Creates a new IoSliceMut wrapping a byte slice."
+        },
+        {
+          "code": "pub fn advance(&mut self, n: usize)",
+          "text": "Advance the internal cursor of the slice."
+        },
+        {
+          "code": "pub fn advance_slices(bufs: &mut &mut [IoSliceMut<'a>], n: usize)",
+          "text": "Advance the internal cursor of the slices."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a> Debug for IoSliceMut<'a>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Deref for IoSliceMut<'a>",
+          "methods": [
+            {
+              "code": "type Target = [u8]",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "fn deref(&self) -> &[u8]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> DerefMut for IoSliceMut<'a>",
+          "methods": [
+            {
+              "code": "fn deref_mut(&mut self) -> &mut [u8]ⓘNotable traits for &[u8]impl Read for &[u8]impl Write for &mut [u8]",
+              "text": "Mutably dereferences the value."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

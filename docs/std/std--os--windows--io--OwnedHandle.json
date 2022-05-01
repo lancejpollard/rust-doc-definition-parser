@@ -1,0 +1,170 @@
+{
+  "title": "Struct std::os::windows::io::OwnedHandle",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsHandle for OwnedHandle",
+          "methods": [
+            {
+              "code": "fn as_handle(&self) -> BorrowedHandle<'_>",
+              "text": "Borrows the handle."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRawHandle for OwnedHandle",
+          "methods": [
+            {
+              "code": "fn as_raw_handle(&self) -> RawHandle",
+              "text": "Extracts the raw handle, without taking any ownership."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for OwnedHandle",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Drop for OwnedHandle",
+          "methods": [
+            {
+              "code": "fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Child> for OwnedHandle",
+          "methods": [
+            {
+              "code": "fn from(child: Child) -> OwnedHandle",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<ChildStderr> for OwnedHandle",
+          "methods": [
+            {
+              "code": "fn from(child_stderr: ChildStderr) -> OwnedHandle",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<ChildStdin> for OwnedHandle",
+          "methods": [
+            {
+              "code": "fn from(child_stdin: ChildStdin) -> OwnedHandle",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<ChildStdout> for OwnedHandle",
+          "methods": [
+            {
+              "code": "fn from(child_stdout: ChildStdout) -> OwnedHandle",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<File> for OwnedHandle",
+          "methods": [
+            {
+              "code": "fn from(file: File) -> OwnedHandle",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<JoinHandle<T>> for OwnedHandle",
+          "methods": [
+            {
+              "code": "fn from(join_handle: JoinHandle<T>) -> OwnedHandle",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedHandle> for File",
+          "methods": [
+            {
+              "code": "fn from(owned: OwnedHandle) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OwnedHandle> for Stdio",
+          "methods": [
+            {
+              "code": "fn from(handle: OwnedHandle) -> Stdio",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl FromRawHandle for OwnedHandle",
+          "methods": [
+            {
+              "code": "unsafe fn from_raw_handle(handle: RawHandle) -> Self",
+              "text": "Constructs a new instance of Self from the given raw handle."
+            }
+          ]
+        },
+        {
+          "title": "impl IntoRawHandle for OwnedHandle",
+          "methods": [
+            {
+              "code": "fn into_raw_handle(self) -> RawHandle",
+              "text": "Consumes this object, returning the raw underlying handle."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<HandleOrInvalid> for OwnedHandle",
+          "methods": [
+            {
+              "code": "type Error = ()",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "fn try_from(handle_or_invalid: HandleOrInvalid) -> Result<Self, ()>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<HandleOrNull> for OwnedHandle",
+          "methods": [
+            {
+              "code": "type Error = ()",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "fn try_from(handle_or_null: HandleOrNull) -> Result<Self, ()>",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

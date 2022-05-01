@@ -1,0 +1,526 @@
+{
+  "title": "Struct std::simd::Mask",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn splat(value: bool) -> Mask<T, LANES>",
+          "text": "Construct a mask by setting all lanes to the given value."
+        },
+        {
+          "code": "pub fn from_array(array: [bool; LANES]) -> Mask<T, LANES>",
+          "text": "Converts an array to a SIMD vector."
+        },
+        {
+          "code": "pub fn to_array(self) -> [bool; LANES]",
+          "text": "Converts a SIMD vector to an array."
+        },
+        {
+          "code": "pub unsafe fn from_int_unchecked(value: Simd<T, LANES>) -> Mask<T, LANES>",
+          "text": "Converts a vector of integers to a mask, where 0 represents false and -1 represents true."
+        },
+        {
+          "code": "pub fn from_int(value: Simd<T, LANES>) -> Mask<T, LANES>",
+          "text": "Converts a vector of integers to a mask, where 0 represents false and -1 represents true."
+        },
+        {
+          "code": "pub fn to_int(self) -> Simd<T, LANES>",
+          "text": "Converts the mask to a vector of integers, where 0 represents false and -1 represents true."
+        },
+        {
+          "code": "pub unsafe fn test_unchecked(&self, lane: usize) -> bool",
+          "text": "Tests the value of the specified lane."
+        },
+        {
+          "code": "pub fn test(&self, lane: usize) -> bool",
+          "text": "Tests the value of the specified lane."
+        },
+        {
+          "code": "pub unsafe fn set_unchecked(&mut self, lane: usize, value: bool)",
+          "text": "Sets the value of the specified lane."
+        },
+        {
+          "code": "pub fn set(&mut self, lane: usize, value: bool)",
+          "text": "Sets the value of the specified lane."
+        },
+        {
+          "code": "pub fn any(self) -> bool",
+          "text": "Returns true if any lane is set, or false otherwise."
+        },
+        {
+          "code": "pub fn all(self) -> bool",
+          "text": "Returns true if all lanes are set, or false otherwise."
+        },
+        {
+          "code": "pub fn select<U>( self, true_values: Simd<U, LANES>, false_values: Simd<U, LANES>) -> Simd<U, LANES> where U: SimdElement<Mask = T>,",
+          "text": "Choose lanes from two vectors."
+        },
+        {
+          "code": "pub fn select_mask( self, true_values: Mask<T, LANES>, false_values: Mask<T, LANES>) -> Mask<T, LANES>",
+          "text": "Choose lanes from two masks."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T, const LANES: usize> BitAnd<Mask<T, LANES>> for bool where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Mask<T, LANES>",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand(self, rhs: Mask<T, LANES>) -> Mask<T, LANES>",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitAnd<Mask<T, LANES>> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Mask<T, LANES>",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand(self, rhs: Mask<T, LANES>) -> Mask<T, LANES>",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitAnd<bool> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Mask<T, LANES>",
+              "text": "The resulting type after applying the & operator."
+            },
+            {
+              "code": "pub fn bitand(self, rhs: bool) -> Mask<T, LANES>",
+              "text": "Performs the & operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitAndAssign<Mask<T, LANES>> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn bitand_assign(&mut self, rhs: Mask<T, LANES>)",
+              "text": "Performs the &= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitAndAssign<bool> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn bitand_assign(&mut self, rhs: bool)",
+              "text": "Performs the &= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitOr<Mask<T, LANES>> for bool where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Mask<T, LANES>",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor(self, rhs: Mask<T, LANES>) -> Mask<T, LANES>",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitOr<Mask<T, LANES>> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Mask<T, LANES>",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor(self, rhs: Mask<T, LANES>) -> Mask<T, LANES>",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitOr<bool> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Mask<T, LANES>",
+              "text": "The resulting type after applying the | operator."
+            },
+            {
+              "code": "pub fn bitor(self, rhs: bool) -> Mask<T, LANES>",
+              "text": "Performs the | operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitOrAssign<Mask<T, LANES>> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn bitor_assign(&mut self, rhs: Mask<T, LANES>)",
+              "text": "Performs the |= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitOrAssign<bool> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn bitor_assign(&mut self, rhs: bool)",
+              "text": "Performs the |= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitXor<Mask<T, LANES>> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Mask<T, LANES>",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor( self, rhs: Mask<T, LANES>) -> <Mask<T, LANES> as BitXor<Mask<T, LANES>>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitXor<Mask<T, LANES>> for bool where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Mask<T, LANES>",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor( self, rhs: Mask<T, LANES>) -> <bool as BitXor<Mask<T, LANES>>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitXor<bool> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Mask<T, LANES>",
+              "text": "The resulting type after applying the ^ operator."
+            },
+            {
+              "code": "pub fn bitxor(self, rhs: bool) -> <Mask<T, LANES> as BitXor<bool>>::Output",
+              "text": "Performs the ^ operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitXorAssign<Mask<T, LANES>> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn bitxor_assign(&mut self, rhs: Mask<T, LANES>)",
+              "text": "Performs the ^= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> BitXorAssign<bool> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn bitxor_assign(&mut self, rhs: bool)",
+              "text": "Performs the ^= operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> Clone for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> Mask<T, LANES>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> Debug for Mask<T, LANES> where T: MaskElement + Debug, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> Default for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn default() -> Mask<T, LANES>",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> From<[bool; LANES]> for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(array: [bool; LANES]) -> Mask<T, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> From<Mask<T, LANES>> for [bool; LANES] where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(vector: Mask<T, LANES>) -> [bool; LANES]",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<i16, LANES>> for Mask<isize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<i16, LANES>) -> Mask<isize, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<i16, LANES>> for Mask<i64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<i16, LANES>) -> Mask<i64, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<i16, LANES>> for Mask<i8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<i16, LANES>) -> Mask<i8, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<i16, LANES>> for Mask<i32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<i16, LANES>) -> Mask<i32, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<i32, LANES>> for Mask<isize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<i32, LANES>) -> Mask<isize, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<i32, LANES>> for Mask<i16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<i32, LANES>) -> Mask<i16, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<i32, LANES>> for Mask<i8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<i32, LANES>) -> Mask<i8, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<i32, LANES>> for Mask<i64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<i32, LANES>) -> Mask<i64, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<i64, LANES>> for Mask<i32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<i64, LANES>) -> Mask<i32, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<i64, LANES>> for Mask<isize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<i64, LANES>) -> Mask<isize, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<i64, LANES>> for Mask<i8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<i64, LANES>) -> Mask<i8, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<i64, LANES>> for Mask<i16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<i64, LANES>) -> Mask<i16, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<i8, LANES>> for Mask<i64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<i8, LANES>) -> Mask<i64, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<i8, LANES>> for Mask<i16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<i8, LANES>) -> Mask<i16, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<i8, LANES>> for Mask<i32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<i8, LANES>) -> Mask<i32, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<i8, LANES>> for Mask<isize, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<i8, LANES>) -> Mask<isize, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<isize, LANES>> for Mask<i64, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<isize, LANES>) -> Mask<i64, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<isize, LANES>> for Mask<i32, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<isize, LANES>) -> Mask<i32, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<isize, LANES>> for Mask<i8, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<isize, LANES>) -> Mask<i8, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<const LANES: usize> From<Mask<isize, LANES>> for Mask<i16, LANES> where LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn from(value: Mask<isize, LANES>) -> Mask<i16, LANES>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> Not for Mask<T, LANES> where T: MaskElement, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "type Output = Mask<T, LANES>",
+              "text": "The resulting type after applying the ! operator."
+            },
+            {
+              "code": "pub fn not(self) -> <Mask<T, LANES> as Not>::Output",
+              "text": "Performs the unary ! operation."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> PartialEq<Mask<T, LANES>> for Mask<T, LANES> where T: MaskElement + PartialEq<T>, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Mask<T, LANES>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T, const LANES: usize> PartialOrd<Mask<T, LANES>> for Mask<T, LANES> where T: MaskElement + PartialOrd<T>, LaneCount<LANES>: SupportedLaneCount,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &Mask<T, LANES>) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

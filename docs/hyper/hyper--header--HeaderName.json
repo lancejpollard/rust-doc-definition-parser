@@ -1,0 +1,276 @@
+{
+  "title": "Struct hyper::header::HeaderName",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRef<[u8]> for HeaderName",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &[u8]ⓘNotable traits for &'_ [u8]impl<'_> Read for &'_ [u8]impl<'_> Write for &'_ mut [u8]",
+              "text": "Converts this type into a shared reference of the (usually inferred) input type."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRef<str> for HeaderName",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &str",
+              "text": "Converts this type into a shared reference of the (usually inferred) input type."
+            }
+          ]
+        },
+        {
+          "title": "impl Borrow<str> for HeaderName",
+          "methods": [
+            {
+              "code": "fn borrow(&self) -> &str",
+              "text": "Immutably borrows from an owned value."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for HeaderName",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> HeaderName",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for HeaderName",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for HeaderName",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> From<&'a HeaderName> for HeaderName",
+          "methods": [
+            {
+              "code": "fn from(src: &'a HeaderName) -> HeaderName",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<HeaderName> for HeaderValue",
+          "methods": [
+            {
+              "code": "fn from(h: HeaderName) -> HeaderValue",
+              "text": "Converts to this type from the input type."
+            }
+          ]
+        },
+        {
+          "title": "impl FromStr for HeaderName",
+          "methods": [
+            {
+              "code": "type Err = InvalidHeaderName",
+              "text": "The associated error which can be returned from parsing."
+            },
+            {
+              "code": "fn from_str(s: &str) -> Result<HeaderName, InvalidHeaderName>",
+              "text": "Parses a string s to return a value of this type."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for HeaderName",
+          "methods": [
+            {
+              "code": "fn hash<__H>(&self, state: &mut __H) where __H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> PartialEq<&'a HeaderName> for HeaderName",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &&'a HeaderName) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> PartialEq<&'a str> for HeaderName",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &&'a str) -> bool",
+              "text": "Performs a case-insensitive comparison of the string against the header name"
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<HeaderName> for HeaderName",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &HeaderName) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &HeaderName) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<HeaderName> for str",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &HeaderName) -> bool",
+              "text": "Performs a case-insensitive comparison of the string against the header name"
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> PartialEq<HeaderName> for &'a HeaderName",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &HeaderName) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> PartialEq<HeaderName> for &'a str",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &HeaderName) -> bool",
+              "text": "Performs a case-insensitive comparison of the string against the header name"
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<str> for HeaderName",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &str) -> bool",
+              "text": "Performs a case-insensitive comparison of the string against the header name"
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> TryFrom<&'a [u8]> for HeaderName",
+          "methods": [
+            {
+              "code": "type Error = InvalidHeaderName",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "fn try_from( s: &'a [u8]) -> Result<HeaderName, <HeaderName as TryFrom<&'a [u8]>>::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> TryFrom<&'a String> for HeaderName",
+          "methods": [
+            {
+              "code": "type Error = InvalidHeaderName",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "fn try_from( s: &'a String) -> Result<HeaderName, <HeaderName as TryFrom<&'a String>>::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> TryFrom<&'a str> for HeaderName",
+          "methods": [
+            {
+              "code": "type Error = InvalidHeaderName",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "fn try_from( s: &'a str) -> Result<HeaderName, <HeaderName as TryFrom<&'a str>>::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<String> for HeaderName",
+          "methods": [
+            {
+              "code": "type Error = InvalidHeaderName",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "fn try_from( s: String) -> Result<HeaderName, <HeaderName as TryFrom<String>>::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<Vec<u8, Global>> for HeaderName",
+          "methods": [
+            {
+              "code": "type Error = InvalidHeaderName",
+              "text": "The type returned in the event of a conversion error."
+            },
+            {
+              "code": "fn try_from( vec: Vec<u8, Global>) -> Result<HeaderName, <HeaderName as TryFrom<Vec<u8, Global>>>::Error>",
+              "text": "Performs the conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

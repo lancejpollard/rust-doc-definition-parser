@@ -1,0 +1,22 @@
+{
+  "title": "Struct rustls::quic::Keys",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn initial( version: Version, client_dst_connection_id: &[u8], is_client: bool) -> Self",
+          "text": "Construct keys for use with initial packets"
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": []
+    }
+  ]
+}

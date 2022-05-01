@@ -1,0 +1,89 @@
+{
+  "title": "Struct hyper::Response",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<B> Body for Response<B> where B: Body,",
+          "methods": [
+            {
+              "code": "type Data = <B as Body>::Data",
+              "text": "Values yielded by the Body."
+            },
+            {
+              "code": "type Error = <B as Body>::Error",
+              "text": "The error type this Body might generate."
+            },
+            {
+              "code": "fn poll_data( self: Pin<&mut Response<B>>, cx: &mut Context<'_>) -> Poll<Option<Result<<Response<B> as Body>::Data, <Response<B> as Body>::Error>>>",
+              "text": "Attempt to pull out the next data buffer of this stream."
+            },
+            {
+              "code": "fn poll_trailers( self: Pin<&mut Response<B>>, cx: &mut Context<'_>) -> Poll<Result<Option<HeaderMap<HeaderValue>>, <Response<B> as Body>::Error>>",
+              "text": "Poll for an optional single HeaderMap of trailers."
+            },
+            {
+              "code": "fn is_end_stream(&self) -> bool",
+              "text": "Returns true when the end of stream has been reached."
+            },
+            {
+              "code": "fn size_hint(&self) -> SizeHint",
+              "text": "Returns the bounds on the remaining length of the stream."
+            },
+            {
+              "code": "fn data(&mut self) -> Data<'_, Self> where Self: Unpin,",
+              "text": "Returns future that resolves to next data chunk, if any."
+            },
+            {
+              "code": "fn trailers(&mut self) -> Trailers<'_, Self> where Self: Unpin,",
+              "text": "Returns future that resolves to trailers, if any."
+            },
+            {
+              "code": "fn map_data<F, B>(self, f: F) -> MapData<Self, F> where F: FnMut(Self::Data) -> B, B: Buf,",
+              "text": "Maps this body’s data value to a different value."
+            },
+            {
+              "code": "fn map_err<F, E>(self, f: F) -> MapErr<Self, F> where F: FnMut(Self::Error) -> E,",
+              "text": "Maps this body’s error value to a different value."
+            },
+            {
+              "code": "fn boxed(self) -> BoxBody<Self::Data, Self::Error> where Self: 'static + Send + Sync,",
+              "text": "Turn this body into a boxed trait object."
+            },
+            {
+              "code": "fn boxed_unsync(self) -> UnsyncBoxBody<Self::Data, Self::Error> where Self: 'static + Send,",
+              "text": "Turn this body into a boxed trait object that is !Sync."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for Response<T> where T: Debug,",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for Response<T> where T: Default,",
+          "methods": [
+            {
+              "code": "fn default() -> Response<T>",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

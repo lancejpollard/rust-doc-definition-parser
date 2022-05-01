@@ -1,0 +1,49 @@
+{
+  "title": "Struct tokio::fs::DirBuilder",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> Self",
+          "text": "Creates a new set of options with default mode/security settings for all platforms and also non-recursive."
+        },
+        {
+          "code": "pub fn recursive(&mut self, recursive: bool) -> &mut Self",
+          "text": "Indicates whether to create directories recursively (including all parent directories). Parents that do not exist are created with the same security and permissions settings."
+        },
+        {
+          "code": "pub async fn create(&self, path: impl AsRef<Path>) -> Result<()>",
+          "text": "Creates the specified directory with the configured options."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for DirBuilder",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for DirBuilder",
+          "methods": [
+            {
+              "code": "fn default() -> DirBuilder",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

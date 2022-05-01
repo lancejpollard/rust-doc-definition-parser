@@ -1,0 +1,210 @@
+{
+  "title": "Struct tokio::net::UdpSocket",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub async fn bind<A: ToSocketAddrs>(addr: A) -> Result<UdpSocket>",
+          "text": "This function will create a new UDP socket and attempt to bind it to the addr provided."
+        },
+        {
+          "code": "pub fn from_std(socket: UdpSocket) -> Result<UdpSocket>",
+          "text": "Creates new UdpSocket from a previously bound std::net::UdpSocket."
+        },
+        {
+          "code": "pub fn into_std(self) -> Result<UdpSocket>",
+          "text": "Turns a tokio::net::UdpSocket into a std::net::UdpSocket."
+        },
+        {
+          "code": "pub fn local_addr(&self) -> Result<SocketAddr>",
+          "text": "Returns the local address that this socket is bound to."
+        },
+        {
+          "code": "pub async fn connect<A: ToSocketAddrs>(&self, addr: A) -> Result<()>",
+          "text": "Connects the UDP socket setting the default destination for send() and limiting packets that are read via recv from the address specified in addr."
+        },
+        {
+          "code": "pub async fn ready(&self, interest: Interest) -> Result<Ready>",
+          "text": "Waits for any of the requested ready states."
+        },
+        {
+          "code": "pub async fn writable(&self) -> Result<()>",
+          "text": "Waits for the socket to become writable."
+        },
+        {
+          "code": "pub fn poll_send_ready(&self, cx: &mut Context<'_>) -> Poll<Result<()>>",
+          "text": "Polls for write/send readiness."
+        },
+        {
+          "code": "pub async fn send(&self, buf: &[u8]) -> Result<usize>",
+          "text": "Sends data on the socket to the remote address that the socket is connected to."
+        },
+        {
+          "code": "pub fn poll_send(&self, cx: &mut Context<'_>, buf: &[u8]) -> Poll<Result<usize>>",
+          "text": "Attempts to send data on the socket to the remote address to which it was previously connected."
+        },
+        {
+          "code": "pub fn try_send(&self, buf: &[u8]) -> Result<usize>",
+          "text": "Tries to send data on the socket to the remote address to which it is connected."
+        },
+        {
+          "code": "pub async fn readable(&self) -> Result<()>",
+          "text": "Waits for the socket to become readable."
+        },
+        {
+          "code": "pub fn poll_recv_ready(&self, cx: &mut Context<'_>) -> Poll<Result<()>>",
+          "text": "Polls for read/receive readiness."
+        },
+        {
+          "code": "pub async fn recv(&self, buf: &mut [u8]) -> Result<usize>",
+          "text": "Receives a single datagram message on the socket from the remote address to which it is connected. On success, returns the number of bytes read."
+        },
+        {
+          "code": "pub fn poll_recv( &self, cx: &mut Context<'_>, buf: &mut ReadBuf<'_>) -> Poll<Result<()>>",
+          "text": "Attempts to receive a single datagram message on the socket from the remote address to which it is connected."
+        },
+        {
+          "code": "pub fn try_recv(&self, buf: &mut [u8]) -> Result<usize>",
+          "text": "Tries to receive a single datagram message on the socket from the remote address to which it is connected. On success, returns the number of bytes read."
+        },
+        {
+          "code": "pub async fn send_to<A: ToSocketAddrs>( &self, buf: &[u8], target: A) -> Result<usize>",
+          "text": "Sends data on the socket to the given address. On success, returns the number of bytes written."
+        },
+        {
+          "code": "pub fn poll_send_to( &self, cx: &mut Context<'_>, buf: &[u8], target: SocketAddr) -> Poll<Result<usize>>",
+          "text": "Attempts to send data on the socket to a given address."
+        },
+        {
+          "code": "pub fn try_send_to(&self, buf: &[u8], target: SocketAddr) -> Result<usize>",
+          "text": "Tries to send data on the socket to the given address, but if the send is blocked this will return right away."
+        },
+        {
+          "code": "pub async fn recv_from(&self, buf: &mut [u8]) -> Result<(usize, SocketAddr)>",
+          "text": "Receives a single datagram message on the socket. On success, returns the number of bytes read and the origin."
+        },
+        {
+          "code": "pub fn poll_recv_from( &self, cx: &mut Context<'_>, buf: &mut ReadBuf<'_>) -> Poll<Result<SocketAddr>>",
+          "text": "Attempts to receive a single datagram on the socket."
+        },
+        {
+          "code": "pub fn try_recv_from(&self, buf: &mut [u8]) -> Result<(usize, SocketAddr)>",
+          "text": "Tries to receive a single datagram message on the socket. On success, returns the number of bytes read and the origin."
+        },
+        {
+          "code": "pub fn try_io<R>( &self, interest: Interest, f: impl FnOnce() -> Result<R>) -> Result<R>",
+          "text": "Tries to read or write from the socket using a user-provided IO operation."
+        },
+        {
+          "code": "pub async fn peek_from(&self, buf: &mut [u8]) -> Result<(usize, SocketAddr)>",
+          "text": "Receives data from the socket, without removing it from the input queue. On success, returns the number of bytes read and the address from whence the data came."
+        },
+        {
+          "code": "pub fn poll_peek_from( &self, cx: &mut Context<'_>, buf: &mut ReadBuf<'_>) -> Poll<Result<SocketAddr>>",
+          "text": "Receives data from the socket, without removing it from the input queue. On success, returns the number of bytes read."
+        },
+        {
+          "code": "pub fn broadcast(&self) -> Result<bool>",
+          "text": "Gets the value of the SO_BROADCAST option for this socket."
+        },
+        {
+          "code": "pub fn set_broadcast(&self, on: bool) -> Result<()>",
+          "text": "Sets the value of the SO_BROADCAST option for this socket."
+        },
+        {
+          "code": "pub fn multicast_loop_v4(&self) -> Result<bool>",
+          "text": "Gets the value of the IP_MULTICAST_LOOP option for this socket."
+        },
+        {
+          "code": "pub fn set_multicast_loop_v4(&self, on: bool) -> Result<()>",
+          "text": "Sets the value of the IP_MULTICAST_LOOP option for this socket."
+        },
+        {
+          "code": "pub fn multicast_ttl_v4(&self) -> Result<u32>",
+          "text": "Gets the value of the IP_MULTICAST_TTL option for this socket."
+        },
+        {
+          "code": "pub fn set_multicast_ttl_v4(&self, ttl: u32) -> Result<()>",
+          "text": "Sets the value of the IP_MULTICAST_TTL option for this socket."
+        },
+        {
+          "code": "pub fn multicast_loop_v6(&self) -> Result<bool>",
+          "text": "Gets the value of the IPV6_MULTICAST_LOOP option for this socket."
+        },
+        {
+          "code": "pub fn set_multicast_loop_v6(&self, on: bool) -> Result<()>",
+          "text": "Sets the value of the IPV6_MULTICAST_LOOP option for this socket."
+        },
+        {
+          "code": "pub fn ttl(&self) -> Result<u32>",
+          "text": "Gets the value of the IP_TTL option for this socket."
+        },
+        {
+          "code": "pub fn set_ttl(&self, ttl: u32) -> Result<()>",
+          "text": "Sets the value for the IP_TTL option on this socket."
+        },
+        {
+          "code": "pub fn join_multicast_v4( &self, multiaddr: Ipv4Addr, interface: Ipv4Addr) -> Result<()>",
+          "text": "Executes an operation of the IP_ADD_MEMBERSHIP type."
+        },
+        {
+          "code": "pub fn join_multicast_v6( &self, multiaddr: &Ipv6Addr, interface: u32) -> Result<()>",
+          "text": "Executes an operation of the IPV6_ADD_MEMBERSHIP type."
+        },
+        {
+          "code": "pub fn leave_multicast_v4( &self, multiaddr: Ipv4Addr, interface: Ipv4Addr) -> Result<()>",
+          "text": "Executes an operation of the IP_DROP_MEMBERSHIP type."
+        },
+        {
+          "code": "pub fn leave_multicast_v6( &self, multiaddr: &Ipv6Addr, interface: u32) -> Result<()>",
+          "text": "Executes an operation of the IPV6_DROP_MEMBERSHIP type."
+        },
+        {
+          "code": "pub fn take_error(&self) -> Result<Option<Error>>",
+          "text": "Returns the value of the SO_ERROR option."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRawFd for UdpSocket",
+          "methods": [
+            {
+              "code": "fn as_raw_fd(&self) -> RawFd",
+              "text": "Extracts the raw file descriptor."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for UdpSocket",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl TryFrom<UdpSocket> for UdpSocket",
+          "methods": [
+            {
+              "code": "fn try_from(stream: UdpSocket) -> Result<Self, Self::Error>",
+              "text": "Consumes stream, returning the tokio I/O object."
+            },
+            {
+              "code": "type Error = Error",
+              "text": "The type returned in the event of a conversion error."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

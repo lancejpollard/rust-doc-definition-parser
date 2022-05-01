@@ -1,0 +1,36 @@
+{
+  "title": "Struct tokio::signal::unix::Signal",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub async fn recv(&mut self) -> Option<()>",
+          "text": "Receives the next signal notification event."
+        },
+        {
+          "code": "pub fn poll_recv(&mut self, cx: &mut Context<'_>) -> Poll<Option<()>>",
+          "text": "Polls to receive the next signal notification event, outside of an async context."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Signal",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

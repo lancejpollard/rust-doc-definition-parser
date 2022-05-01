@@ -1,0 +1,27 @@
+{
+  "title": "Struct nix::sys::socket::RecvMmsgData",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a, I: Debug> Debug for RecvMmsgData<'a, I> where I: AsRef<[IoVec<&'a mut [u8]>]> + 'a,",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

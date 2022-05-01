@@ -1,0 +1,84 @@
+{
+  "title": "Struct nix::sys::signal::SigEvent",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new(sigev_notify: SigevNotify) -> SigEvent",
+          "text": "Note: this constructor does not allow the user to set the sigev_notify_kevent_flags field. That’s considered ok because on FreeBSD at least those flags don’t do anything useful. That field is part of a union that shares space with the more genuinely useful fields."
+        },
+        {
+          "code": "pub fn sigevent(&self) -> sigevent",
+          "text": "Return a copy of the inner structure"
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for SigEvent",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> SigEvent",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for SigEvent",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> From<&'a sigevent> for SigEvent",
+          "methods": [
+            {
+              "code": "fn from(sigevent: &sigevent) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for SigEvent",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<SigEvent> for SigEvent",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &SigEvent) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &SigEvent) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

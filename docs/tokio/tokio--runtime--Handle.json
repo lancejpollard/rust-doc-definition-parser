@@ -1,0 +1,65 @@
+{
+  "title": "Struct tokio::runtime::Handle",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn enter(&self) -> EnterGuard<'_>",
+          "text": "Enters the runtime context. This allows you to construct types that must have an executor available on creation such as Sleep or TcpStream. It will also allow you to call methods such as tokio::spawn."
+        },
+        {
+          "code": "pub fn current() -> Self",
+          "text": "Returns a Handle view over the currently running Runtime."
+        },
+        {
+          "code": "pub fn try_current() -> Result<Self, TryCurrentError>",
+          "text": "Returns a Handle view over the currently running Runtime"
+        },
+        {
+          "code": "pub fn spawn<F>(&self, future: F) -> JoinHandle<F::Output>ⓘNotable traits for JoinHandle<T>impl<T> Future for JoinHandle<T> type Output = Result<T, JoinError>; where F: Future + Send + 'static, F::Output: Send + 'static,",
+          "text": "Spawns a future onto the Tokio runtime."
+        },
+        {
+          "code": "pub fn spawn_blocking<F, R>(&self, func: F) -> JoinHandle<R>ⓘNotable traits for JoinHandle<T>impl<T> Future for JoinHandle<T> type Output = Result<T, JoinError>; where F: FnOnce() -> R + Send + 'static, R: Send + 'static,",
+          "text": "Runs the provided function on an executor dedicated to blocking. operations."
+        },
+        {
+          "code": "pub fn block_on<F: Future>(&self, future: F) -> F::Output",
+          "text": "Runs a future to completion on this Handle’s associated Runtime."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for Handle",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Handle",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for Handle",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

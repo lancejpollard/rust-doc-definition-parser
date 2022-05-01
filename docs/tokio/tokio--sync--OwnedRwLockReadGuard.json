@@ -1,0 +1,67 @@
+{
+  "title": "Struct tokio::sync::OwnedRwLockReadGuard",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn map<F, V: ?Sized>(this: Self, f: F) -> OwnedRwLockReadGuard<T, V> where F: FnOnce(&U) -> &V,",
+          "text": "Makes a new OwnedRwLockReadGuard for a component of the locked data. This operation cannot fail as the OwnedRwLockReadGuard passed in already locked the data."
+        },
+        {
+          "code": "pub fn try_map<F, V: ?Sized>( this: Self, f: F) -> Result<OwnedRwLockReadGuard<T, V>, Self> where F: FnOnce(&U) -> Option<&V>,",
+          "text": "Attempts to make a new OwnedRwLockReadGuard for a component of the locked data. The original guard is returned if the closure returns None."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T: ?Sized, U: ?Sized> Debug for OwnedRwLockReadGuard<T, U> where U: Debug,",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: ?Sized, U: ?Sized> Deref for OwnedRwLockReadGuard<T, U>",
+          "methods": [
+            {
+              "code": "type Target = U",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "fn deref(&self) -> &U",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: ?Sized, U: ?Sized> Display for OwnedRwLockReadGuard<T, U> where U: Display,",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: ?Sized, U: ?Sized> Drop for OwnedRwLockReadGuard<T, U>",
+          "methods": [
+            {
+              "code": "fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

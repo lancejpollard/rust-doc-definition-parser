@@ -1,0 +1,48 @@
+{
+  "title": "Struct tokio::sync::mpsc::Receiver",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub async fn recv(&mut self) -> Option<T>",
+          "text": "Receives the next value for this receiver."
+        },
+        {
+          "code": "pub fn try_recv(&mut self) -> Result<T, TryRecvError>",
+          "text": "Tries to receive the next value for this receiver."
+        },
+        {
+          "code": "pub fn blocking_recv(&mut self) -> Option<T>",
+          "text": "Blocking receive to call outside of asynchronous contexts."
+        },
+        {
+          "code": "pub fn close(&mut self)",
+          "text": "Closes the receiving half of a channel without dropping it."
+        },
+        {
+          "code": "pub fn poll_recv(&mut self, cx: &mut Context<'_>) -> Poll<Option<T>>",
+          "text": "Polls to receive the next message on this channel."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Debug for Receiver<T>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, fmt: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "title": "Struct std::fs::FileType",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn is_dir(&self) -> bool",
+          "text": "Tests whether this file type represents a directory. The result is mutually exclusive to the results of is_file and is_symlink; only zero or one of these tests may pass."
+        },
+        {
+          "code": "pub fn is_file(&self) -> bool",
+          "text": "Tests whether this file type represents a regular file. The result is mutually exclusive to the results of is_dir and is_symlink; only zero or one of these tests may pass."
+        },
+        {
+          "code": "pub fn is_symlink(&self) -> bool",
+          "text": "Tests whether this file type represents a symbolic link. The result is mutually exclusive to the results of is_dir and is_file; only zero or one of these tests may pass."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for FileType",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> FileType",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for FileType",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl FileTypeExt for FileType",
+          "methods": [
+            {
+              "code": "fn is_symlink_dir(&self) -> bool",
+              "text": "Returns true if this file type is a symbolic link that is also a directory."
+            },
+            {
+              "code": "fn is_symlink_file(&self) -> bool",
+              "text": "Returns true if this file type is a symbolic link that is also a file."
+            }
+          ]
+        },
+        {
+          "title": "impl FileTypeExt for FileType",
+          "methods": [
+            {
+              "code": "fn is_block_device(&self) -> bool",
+              "text": "Returns true if this file type is a block device."
+            },
+            {
+              "code": "fn is_char_device(&self) -> bool",
+              "text": "Returns true if this file type is a char device."
+            },
+            {
+              "code": "fn is_fifo(&self) -> bool",
+              "text": "Returns true if this file type is a fifo."
+            },
+            {
+              "code": "fn is_socket(&self) -> bool",
+              "text": "Returns true if this file type is a socket."
+            }
+          ]
+        },
+        {
+          "title": "impl FileTypeExt for FileType",
+          "methods": [
+            {
+              "code": "fn is_block_device(&self) -> bool",
+              "text": "Returns true if this file type is a block device."
+            },
+            {
+              "code": "fn is_char_device(&self) -> bool",
+              "text": "Returns true if this file type is a character device."
+            },
+            {
+              "code": "fn is_socket_dgram(&self) -> bool",
+              "text": "Returns true if this file type is a socket datagram."
+            },
+            {
+              "code": "fn is_socket_stream(&self) -> bool",
+              "text": "Returns true if this file type is a socket stream."
+            },
+            {
+              "code": "fn is_socket(&self) -> bool",
+              "text": "Returns true if this file type is any type of socket."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for FileType",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<FileType> for FileType",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &FileType) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &FileType) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

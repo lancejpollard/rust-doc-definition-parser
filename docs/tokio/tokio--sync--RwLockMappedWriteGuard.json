@@ -1,0 +1,76 @@
+{
+  "title": "Struct tokio::sync::RwLockMappedWriteGuard",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn map<F, U: ?Sized>(this: Self, f: F) -> RwLockMappedWriteGuard<'a, U> where F: FnOnce(&mut T) -> &mut U,",
+          "text": "Makes a new RwLockMappedWriteGuard for a component of the locked data."
+        },
+        {
+          "code": "pub fn try_map<F, U: ?Sized>( this: Self, f: F) -> Result<RwLockMappedWriteGuard<'a, U>, Self> where F: FnOnce(&mut T) -> Option<&mut U>,",
+          "text": "Attempts to make a new RwLockMappedWriteGuard for a component of the locked data. The original guard is returned if the closure returns None."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<'a, T: ?Sized> Debug for RwLockMappedWriteGuard<'a, T> where T: Debug,",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: ?Sized> Deref for RwLockMappedWriteGuard<'_, T>",
+          "methods": [
+            {
+              "code": "type Target = T",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "fn deref(&self) -> &T",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: ?Sized> DerefMut for RwLockMappedWriteGuard<'_, T>",
+          "methods": [
+            {
+              "code": "fn deref_mut(&mut self) -> &mut T",
+              "text": "Mutably dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T: ?Sized> Display for RwLockMappedWriteGuard<'a, T> where T: Display,",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, T: ?Sized> Drop for RwLockMappedWriteGuard<'a, T>",
+          "methods": [
+            {
+              "code": "fn drop(&mut self)",
+              "text": "Executes the destructor for this type."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

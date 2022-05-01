@@ -1,0 +1,1083 @@
+{
+  "title": "Struct std::ffi::OsString",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> OsString",
+          "text": "Constructs a new empty OsString."
+        },
+        {
+          "code": "pub fn as_os_str(&self) -> &OsStr",
+          "text": "Converts to an OsStr slice."
+        },
+        {
+          "code": "pub fn into_string(self) -> Result<String, OsString>",
+          "text": "Converts the OsString into a String if it contains valid Unicode data."
+        },
+        {
+          "code": "pub fn push<T: AsRef<OsStr>>(&mut self, s: T)",
+          "text": "Extends the string with the given &OsStr slice."
+        },
+        {
+          "code": "pub fn with_capacity(capacity: usize) -> OsString",
+          "text": "Creates a new OsString with the given capacity."
+        },
+        {
+          "code": "pub fn clear(&mut self)",
+          "text": "Truncates the OsString to zero length."
+        },
+        {
+          "code": "pub fn capacity(&self) -> usize",
+          "text": "Returns the capacity this OsString can hold without reallocating."
+        },
+        {
+          "code": "pub fn reserve(&mut self, additional: usize)",
+          "text": "Reserves capacity for at least additional more capacity to be inserted in the given OsString."
+        },
+        {
+          "code": "pub fn try_reserve(&mut self, additional: usize) -> Result<(), TryReserveError>",
+          "text": "Tries to reserve capacity for at least additional more length units in the given OsString. The string may reserve more space to avoid frequent reallocations. After calling try_reserve, capacity will be greater than or equal to self.len() + additional. Does nothing if capacity is already sufficient."
+        },
+        {
+          "code": "pub fn reserve_exact(&mut self, additional: usize)",
+          "text": "Reserves the minimum capacity for exactly additional more capacity to be inserted in the given OsString. Does nothing if the capacity is already sufficient."
+        },
+        {
+          "code": "pub fn try_reserve_exact( &mut self, additional: usize) -> Result<(), TryReserveError>",
+          "text": "Tries to reserve the minimum capacity for exactly additional more length units in the given OsString. After calling try_reserve_exact, capacity will be greater than or equal to self.len() + additional if it returns Ok(()). Does nothing if the capacity is already sufficient."
+        },
+        {
+          "code": "pub fn shrink_to_fit(&mut self)",
+          "text": "Shrinks the capacity of the OsString to match its length."
+        },
+        {
+          "code": "pub fn shrink_to(&mut self, min_capacity: usize)",
+          "text": "Shrinks the capacity of the OsString with a lower bound."
+        },
+        {
+          "code": "pub fn into_boxed_os_str(self) -> Box<OsStr>ⓘNotable traits for Box<F, A>impl<F, A> Future for Box<F, A> where F: Future + Unpin + ?Sized, A: Allocator + 'static, type Output = <F as Future>::Output;impl<I, A> Iterator for Box<I, A> where I: Iterator + ?Sized, A: Allocator, type Item = <I as Iterator>::Item;impl<R: Read + ?Sized> Read for Box<R>impl<W: Write + ?Sized> Write for Box<W>",
+          "text": "Converts this OsString into a boxed OsStr."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsRef<OsStr> for OsString",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &OsStr",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl AsRef<Path> for OsString",
+          "methods": [
+            {
+              "code": "fn as_ref(&self) -> &Path",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl Borrow<OsStr> for OsString",
+          "methods": [
+            {
+              "code": "fn borrow(&self) -> &OsStr",
+              "text": "Immutably borrows from an owned value."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for OsString",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Self",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for OsString",
+          "methods": [
+            {
+              "code": "fn fmt(&self, formatter: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for OsString",
+          "methods": [
+            {
+              "code": "fn default() -> OsString",
+              "text": "Constructs an empty OsString."
+            }
+          ]
+        },
+        {
+          "title": "impl Deref for OsString",
+          "methods": [
+            {
+              "code": "type Target = OsStr",
+              "text": "The resulting type after dereferencing."
+            },
+            {
+              "code": "fn deref(&self) -> &OsStr",
+              "text": "Dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl DerefMut for OsString",
+          "methods": [
+            {
+              "code": "fn deref_mut(&mut self) -> &mut OsStr",
+              "text": "Mutably dereferences the value."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Extend<&'a OsStr> for OsString",
+          "methods": [
+            {
+              "code": "fn extend<T: IntoIterator<Item = &'a OsStr>>(&mut self, iter: T)",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "fn extend_one(&mut self, item: A)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> Extend<Cow<'a, OsStr>> for OsString",
+          "methods": [
+            {
+              "code": "fn extend<T: IntoIterator<Item = Cow<'a, OsStr>>>(&mut self, iter: T)",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "fn extend_one(&mut self, item: A)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl Extend<OsString> for OsString",
+          "methods": [
+            {
+              "code": "fn extend<T: IntoIterator<Item = OsString>>(&mut self, iter: T)",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "fn extend_one(&mut self, item: A)",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<T: ?Sized + AsRef<OsStr>> From<&'_ T> for OsString",
+          "methods": [
+            {
+              "code": "fn from(s: &T) -> OsString",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> From<&'a OsString> for Cow<'a, OsStr>",
+          "methods": [
+            {
+              "code": "fn from(s: &'a OsString) -> Cow<'a, OsStr>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<Box<OsStr, Global>> for OsString",
+          "methods": [
+            {
+              "code": "fn from(boxed: Box<OsStr>) -> OsString",
+              "text": "Converts a Box<OsStr> into an OsString without copying or allocating."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> From<Cow<'a, OsStr>> for OsString",
+          "methods": [
+            {
+              "code": "fn from(s: Cow<'a, OsStr>) -> Self",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OsString> for Box<OsStr>",
+          "methods": [
+            {
+              "code": "fn from(s: OsString) -> Box<OsStr>ⓘNotable traits for Box<F, A>impl<F, A> Future for Box<F, A> where F: Future + Unpin + ?Sized, A: Allocator + 'static, type Output = <F as Future>::Output;impl<I, A> Iterator for Box<I, A> where I: Iterator + ?Sized, A: Allocator, type Item = <I as Iterator>::Item;impl<R: Read + ?Sized> Read for Box<R>impl<W: Write + ?Sized> Write for Box<W>",
+              "text": "Converts an OsString into a Box<OsStr> without copying or allocating."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OsString> for Arc<OsStr>",
+          "methods": [
+            {
+              "code": "fn from(s: OsString) -> Arc<OsStr>",
+              "text": "Converts an OsString into an Arc<OsStr> without copying or allocating."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OsString> for Rc<OsStr>",
+          "methods": [
+            {
+              "code": "fn from(s: OsString) -> Rc<OsStr>",
+              "text": "Converts an OsString into an Rc<OsStr> without copying or allocating."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> From<OsString> for Cow<'a, OsStr>",
+          "methods": [
+            {
+              "code": "fn from(s: OsString) -> Cow<'a, OsStr>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl From<OsString> for PathBuf",
+          "methods": [
+            {
+              "code": "fn from(s: OsString) -> PathBuf",
+              "text": "Converts an OsString into a PathBuf"
+            }
+          ]
+        },
+        {
+          "title": "impl From<PathBuf> for OsString",
+          "methods": [
+            {
+              "code": "fn from(path_buf: PathBuf) -> OsString",
+              "text": "Converts a PathBuf into an OsString"
+            }
+          ]
+        },
+        {
+          "title": "impl From<String> for OsString",
+          "methods": [
+            {
+              "code": "fn from(s: String) -> OsString",
+              "text": "Converts a String into an OsString."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> FromIterator<&'a OsStr> for OsString",
+          "methods": [
+            {
+              "code": "fn from_iter<I: IntoIterator<Item = &'a OsStr>>(iter: I) -> Self",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> FromIterator<Cow<'a, OsStr>> for OsString",
+          "methods": [
+            {
+              "code": "fn from_iter<I: IntoIterator<Item = Cow<'a, OsStr>>>(iter: I) -> Self",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl FromIterator<OsString> for OsString",
+          "methods": [
+            {
+              "code": "fn from_iter<I: IntoIterator<Item = OsString>>(iter: I) -> Self",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl FromStr for OsString",
+          "methods": [
+            {
+              "code": "type Err = Infallible",
+              "text": "The associated error which can be returned from parsing."
+            },
+            {
+              "code": "fn from_str(s: &str) -> Result<Self, Self::Err>",
+              "text": "Parses a string s to return a value of this type."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for OsString",
+          "methods": [
+            {
+              "code": "fn hash<H: Hasher>(&self, state: &mut H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl Index<RangeFull> for OsString",
+          "methods": [
+            {
+              "code": "type Output = OsStr",
+              "text": "The returned type after indexing."
+            },
+            {
+              "code": "fn index(&self, _index: RangeFull) -> &OsStr",
+              "text": "Performs the indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl IndexMut<RangeFull> for OsString",
+          "methods": [
+            {
+              "code": "fn index_mut(&mut self, _index: RangeFull) -> &mut OsStr",
+              "text": "Performs the mutable indexing (container[index]) operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for OsString",
+          "methods": [
+            {
+              "code": "fn cmp(&self, other: &OsString) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl OsStringExt for OsString",
+          "methods": [
+            {
+              "code": "fn from_vec(vec: Vec<u8>) -> OsString",
+              "text": "Creates an OsString from a byte vector."
+            },
+            {
+              "code": "fn into_vec(self) -> Vec<u8>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Yields the underlying byte vector of this OsString."
+            }
+          ]
+        },
+        {
+          "title": "impl OsStringExt for OsString",
+          "methods": [
+            {
+              "code": "fn from_wide(wide: &[u16]) -> OsString",
+              "text": "Creates an OsString from a potentially ill-formed UTF-16 slice of 16-bit code units."
+            }
+          ]
+        },
+        {
+          "title": "impl OsStringExt for OsString",
+          "methods": [
+            {
+              "code": "fn from_vec(vec: Vec<u8>) -> OsString",
+              "text": "Creates an OsString from a byte vector."
+            },
+            {
+              "code": "fn into_vec(self) -> Vec<u8>ⓘNotable traits for Vec<u8, A>impl<A: Allocator> Write for Vec<u8, A>",
+              "text": "Yields the underlying byte vector of this OsString."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<&'_ str> for OsString",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &&str) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<&'a OsStr> for OsString",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &&'a OsStr) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<&'a Path> for OsString",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &&'a Path) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<Cow<'a, OsStr>> for OsString",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Cow<'a, OsStr>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<Cow<'a, Path>> for OsString",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Cow<'a, Path>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<OsStr> for OsString",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &OsStr) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<OsString> for OsString",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &OsString) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<OsString> for str",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &OsString) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a> PartialEq<OsString> for &'a str",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &OsString) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<OsString> for OsStr",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &OsString) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<OsString> for &'a OsStr",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &OsString) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<OsString> for Cow<'a, OsStr>",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &OsString) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<OsString> for PathBuf",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &OsString) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<OsString> for Path",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &OsString) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<OsString> for &'a Path",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &OsString) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<OsString> for Cow<'a, Path>",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &OsString) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<Path> for OsString",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Path) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialEq<PathBuf> for OsString",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &PathBuf) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<str> for OsString",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &str) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialOrd<&'a OsStr> for OsString",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &&'a OsStr) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialOrd<&'a Path> for OsString",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &&'a Path) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialOrd<Cow<'a, OsStr>> for OsString",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &Cow<'a, OsStr>) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialOrd<Cow<'a, Path>> for OsString",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &Cow<'a, Path>) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialOrd<OsStr> for OsString",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &OsStr) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<OsString> for OsString",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &OsString) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &OsString) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &OsString) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &OsString) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &OsString) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialOrd<OsString> for OsStr",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &OsString) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialOrd<OsString> for &'a OsStr",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &OsString) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialOrd<OsString> for Cow<'a, OsStr>",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &OsString) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialOrd<OsString> for PathBuf",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &OsString) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialOrd<OsString> for Path",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &OsString) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialOrd<OsString> for &'a Path",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &OsString) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialOrd<OsString> for Cow<'a, Path>",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &OsString) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialOrd<Path> for OsString",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &Path) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, 'b> PartialOrd<PathBuf> for OsString",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &PathBuf) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<str> for OsString",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &str) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

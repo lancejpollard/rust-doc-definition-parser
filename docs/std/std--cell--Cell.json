@@ -1,0 +1,170 @@
+{
+  "title": "Struct std::cell::Cell",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn new(value: T) -> Cell<T>",
+          "text": "Creates a new Cell containing the given value."
+        },
+        {
+          "code": "pub fn set(&self, val: T)",
+          "text": "Sets the contained value."
+        },
+        {
+          "code": "pub fn swap(&self, other: &Cell<T>)",
+          "text": "Swaps the values of two Cells. Difference with std::mem::swap is that this function doesn’t require &mut reference."
+        },
+        {
+          "code": "pub fn replace(&self, val: T) -> T",
+          "text": "Replaces the contained value with val, and returns the old contained value."
+        },
+        {
+          "code": "pub fn into_inner(self) -> T",
+          "text": "Unwraps the value."
+        },
+        {
+          "code": "pub fn get(&self) -> T",
+          "text": "Returns a copy of the contained value."
+        },
+        {
+          "code": "pub fn update<F>(&self, f: F) -> T where F: FnOnce(T) -> T,",
+          "text": "Updates the contained value using a function and returns the new value."
+        },
+        {
+          "code": "pub const fn as_ptr(&self) -> *mut T",
+          "text": "Returns a raw pointer to the underlying data in this cell."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut T",
+          "text": "Returns a mutable reference to the underlying data."
+        },
+        {
+          "code": "pub fn from_mut(t: &mut T) -> &Cell<T>",
+          "text": "Returns a &Cell<T> from a &mut T"
+        },
+        {
+          "code": "pub fn take(&self) -> T",
+          "text": "Takes the value of the cell, leaving Default::default() in its place."
+        },
+        {
+          "code": "pub fn as_slice_of_cells(&self) -> &[Cell<T>]",
+          "text": "Returns a &[Cell<T>] from a &Cell<[T]>"
+        },
+        {
+          "code": "pub fn as_array_of_cells(&self) -> &[Cell<T>; N]",
+          "text": "Returns a &[Cell<T>; N] from a &Cell<[T; N]>"
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Clone for Cell<T> where T: Copy,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> Cell<T>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for Cell<T> where T: Copy + Debug,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Default for Cell<T> where T: Default,",
+          "methods": [
+            {
+              "code": "pub fn default() -> Cell<T>",
+              "text": "Creates a Cell<T>, with the Default value for T."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> From<T> for Cell<T>",
+          "methods": [
+            {
+              "code": "pub fn from(t: T) -> Cell<T>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Ord for Cell<T> where T: Ord + Copy,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &Cell<T>) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialEq<Cell<T>> for Cell<T> where T: PartialEq<T> + Copy,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &Cell<T>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialOrd<Cell<T>> for Cell<T> where T: PartialOrd<T> + Copy,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &Cell<T>) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "pub fn lt(&self, other: &Cell<T>) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "pub fn le(&self, other: &Cell<T>) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "pub fn gt(&self, other: &Cell<T>) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "pub fn ge(&self, other: &Cell<T>) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

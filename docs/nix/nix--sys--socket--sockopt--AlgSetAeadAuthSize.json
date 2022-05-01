@@ -1,0 +1,49 @@
+{
+  "title": "Struct nix::sys::socket::sockopt::AlgSetAeadAuthSize",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for AlgSetAeadAuthSize",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> AlgSetAeadAuthSize",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for AlgSetAeadAuthSize",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl SetSockOpt for AlgSetAeadAuthSize",
+          "methods": [
+            {
+              "code": "fn set(&self, fd: RawFd, val: &usize) -> Result<()>",
+              "text": "Set the value of this socket option on the given socket."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

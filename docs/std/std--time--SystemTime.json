@@ -1,0 +1,181 @@
+{
+  "title": "Struct std::time::SystemTime",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const UNIX_EPOCH: SystemTime",
+          "text": "An anchor in time which can be used to create new SystemTime instances or learn about where in time a SystemTime lies."
+        },
+        {
+          "code": "pub fn now() -> SystemTime",
+          "text": "Returns the system time corresponding to “now”."
+        },
+        {
+          "code": "pub fn duration_since( &self, earlier: SystemTime) -> Result<Duration, SystemTimeError>",
+          "text": "Returns the amount of time elapsed from an earlier point in time."
+        },
+        {
+          "code": "pub fn elapsed(&self) -> Result<Duration, SystemTimeError>",
+          "text": "Returns the difference between the clock time when this system time was created, and the current clock time."
+        },
+        {
+          "code": "pub fn checked_add(&self, duration: Duration) -> Option<SystemTime>",
+          "text": "Returns Some(t) where t is the time self + duration if t can be represented as SystemTime (which means it’s inside the bounds of the underlying data structure), None otherwise."
+        },
+        {
+          "code": "pub fn checked_sub(&self, duration: Duration) -> Option<SystemTime>",
+          "text": "Returns Some(t) where t is the time self - duration if t can be represented as SystemTime (which means it’s inside the bounds of the underlying data structure), None otherwise."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Add<Duration> for SystemTime",
+          "methods": [
+            {
+              "code": "fn add(self, dur: Duration) -> SystemTime",
+              "text": "This function may panic if the resulting point in time cannot be represented by the underlying data structure. See SystemTime::checked_add for a version without panic."
+            },
+            {
+              "code": "type Output = SystemTime",
+              "text": "The resulting type after applying the + operator."
+            }
+          ]
+        },
+        {
+          "title": "impl AddAssign<Duration> for SystemTime",
+          "methods": [
+            {
+              "code": "fn add_assign(&mut self, other: Duration)",
+              "text": "Performs the += operation."
+            }
+          ]
+        },
+        {
+          "title": "impl Clone for SystemTime",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> SystemTime",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for SystemTime",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Hash for SystemTime",
+          "methods": [
+            {
+              "code": "fn hash<__H: Hasher>(&self, state: &mut __H)",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl Ord for SystemTime",
+          "methods": [
+            {
+              "code": "fn cmp(&self, other: &SystemTime) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<SystemTime> for SystemTime",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &SystemTime) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &SystemTime) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialOrd<SystemTime> for SystemTime",
+          "methods": [
+            {
+              "code": "fn partial_cmp(&self, other: &SystemTime) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl Sub<Duration> for SystemTime",
+          "methods": [
+            {
+              "code": "type Output = SystemTime",
+              "text": "The resulting type after applying the - operator."
+            },
+            {
+              "code": "fn sub(self, dur: Duration) -> SystemTime",
+              "text": "Performs the - operation."
+            }
+          ]
+        },
+        {
+          "title": "impl SubAssign<Duration> for SystemTime",
+          "methods": [
+            {
+              "code": "fn sub_assign(&mut self, other: Duration)",
+              "text": "Performs the -= operation."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

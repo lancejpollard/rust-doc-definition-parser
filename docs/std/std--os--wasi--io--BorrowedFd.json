@@ -1,0 +1,53 @@
+{
+  "title": "Struct std::os::wasi::io::BorrowedFd",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub unsafe fn borrow_raw_fd(fd: RawFd) -> Self",
+          "text": "Return a BorrowedFd holding the given raw file descriptor."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl AsFd for BorrowedFd<'_>",
+          "methods": []
+        },
+        {
+          "title": "impl AsRawFd for BorrowedFd<'_>",
+          "methods": []
+        },
+        {
+          "title": "impl<'fd> Clone for BorrowedFd<'fd>",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> BorrowedFd<'fd>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for BorrowedFd<'_>",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

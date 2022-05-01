@@ -1,0 +1,314 @@
+{
+  "title": "Struct std::collections::hash_map::HashMap",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> HashMap<K, V, RandomState>",
+          "text": "Creates an empty HashMap."
+        },
+        {
+          "code": "pub fn with_capacity(capacity: usize) -> HashMap<K, V, RandomState>",
+          "text": "Creates an empty HashMap with the specified capacity."
+        },
+        {
+          "code": "pub fn with_hasher(hash_builder: S) -> HashMap<K, V, S>",
+          "text": "Creates an empty HashMap which will use the given hash builder to hash keys."
+        },
+        {
+          "code": "pub fn with_capacity_and_hasher( capacity: usize, hash_builder: S) -> HashMap<K, V, S>",
+          "text": "Creates an empty HashMap with the specified capacity, using hash_builder to hash the keys."
+        },
+        {
+          "code": "pub fn capacity(&self) -> usize",
+          "text": "Returns the number of elements the map can hold without reallocating."
+        },
+        {
+          "code": "pub fn keys(&self) -> Keys<'_, K, V>ⓘNotable traits for Keys<'a, K, V>impl<'a, K, V> Iterator for Keys<'a, K, V> type Item = &'a K;",
+          "text": "An iterator visiting all keys in arbitrary order. The iterator element type is &'a K."
+        },
+        {
+          "code": "pub fn into_keys(self) -> IntoKeys<K, V>ⓘNotable traits for IntoKeys<K, V>impl<K, V> Iterator for IntoKeys<K, V> type Item = K;",
+          "text": "Creates a consuming iterator visiting all the keys in arbitrary order. The map cannot be used after calling this. The iterator element type is K."
+        },
+        {
+          "code": "pub fn values(&self) -> Values<'_, K, V>ⓘNotable traits for Values<'a, K, V>impl<'a, K, V> Iterator for Values<'a, K, V> type Item = &'a V;",
+          "text": "An iterator visiting all values in arbitrary order. The iterator element type is &'a V."
+        },
+        {
+          "code": "pub fn values_mut(&mut self) -> ValuesMut<'_, K, V>ⓘNotable traits for ValuesMut<'a, K, V>impl<'a, K, V> Iterator for ValuesMut<'a, K, V> type Item = &'a mut V;",
+          "text": "An iterator visiting all values mutably in arbitrary order. The iterator element type is &'a mut V."
+        },
+        {
+          "code": "pub fn into_values(self) -> IntoValues<K, V>ⓘNotable traits for IntoValues<K, V>impl<K, V> Iterator for IntoValues<K, V> type Item = V;",
+          "text": "Creates a consuming iterator visiting all the values in arbitrary order. The map cannot be used after calling this. The iterator element type is V."
+        },
+        {
+          "code": "pub fn iter(&self) -> Iter<'_, K, V>ⓘNotable traits for Iter<'a, K, V>impl<'a, K, V> Iterator for Iter<'a, K, V> type Item = (&'a K, &'a V);",
+          "text": "An iterator visiting all key-value pairs in arbitrary order. The iterator element type is (&'a K, &'a V)."
+        },
+        {
+          "code": "pub fn iter_mut(&mut self) -> IterMut<'_, K, V>ⓘNotable traits for IterMut<'a, K, V>impl<'a, K, V> Iterator for IterMut<'a, K, V> type Item = (&'a K, &'a mut V);",
+          "text": "An iterator visiting all key-value pairs in arbitrary order, with mutable references to the values. The iterator element type is (&'a K, &'a mut V)."
+        },
+        {
+          "code": "pub fn len(&self) -> usize",
+          "text": "Returns the number of elements in the map."
+        },
+        {
+          "code": "pub fn is_empty(&self) -> bool",
+          "text": "Returns true if the map contains no elements."
+        },
+        {
+          "code": "pub fn drain(&mut self) -> Drain<'_, K, V>ⓘNotable traits for Drain<'a, K, V>impl<'a, K, V> Iterator for Drain<'a, K, V> type Item = (K, V);",
+          "text": "Clears the map, returning all key-value pairs as an iterator. Keeps the allocated memory for reuse."
+        },
+        {
+          "code": "pub fn drain_filter<F>(&mut self, pred: F) -> DrainFilter<'_, K, V, F>ⓘNotable traits for DrainFilter<'_, K, V, F>impl<K, V, F> Iterator for DrainFilter<'_, K, V, F> where F: FnMut(&K, &mut V) -> bool, type Item = (K, V); where F: FnMut(&K, &mut V) -> bool,",
+          "text": "Creates an iterator which uses a closure to determine if an element should be removed."
+        },
+        {
+          "code": "pub fn retain<F>(&mut self, f: F) where F: FnMut(&K, &mut V) -> bool,",
+          "text": "Retains only the elements specified by the predicate."
+        },
+        {
+          "code": "pub fn clear(&mut self)",
+          "text": "Clears the map, removing all key-value pairs. Keeps the allocated memory for reuse."
+        },
+        {
+          "code": "pub fn hasher(&self) -> &S",
+          "text": "Returns a reference to the map’s BuildHasher."
+        },
+        {
+          "code": "pub fn reserve(&mut self, additional: usize)",
+          "text": "Reserves capacity for at least additional more elements to be inserted in the HashMap. The collection may reserve more space to avoid frequent reallocations."
+        },
+        {
+          "code": "pub fn try_reserve(&mut self, additional: usize) -> Result<(), TryReserveError>",
+          "text": "Tries to reserve capacity for at least additional more elements to be inserted in the given HashMap<K, V>. The collection may reserve more space to avoid frequent reallocations."
+        },
+        {
+          "code": "pub fn shrink_to_fit(&mut self)",
+          "text": "Shrinks the capacity of the map as much as possible. It will drop down as much as possible while maintaining the internal rules and possibly leaving some space in accordance with the resize policy."
+        },
+        {
+          "code": "pub fn shrink_to(&mut self, min_capacity: usize)",
+          "text": "Shrinks the capacity of the map with a lower limit. It will drop down no lower than the supplied limit while maintaining the internal rules and possibly leaving some space in accordance with the resize policy."
+        },
+        {
+          "code": "pub fn entry(&mut self, key: K) -> Entry<'_, K, V>",
+          "text": "Gets the given key’s corresponding entry in the map for in-place manipulation."
+        },
+        {
+          "code": "pub fn get<Q: ?Sized>(&self, k: &Q) -> Option<&V> where K: Borrow<Q>, Q: Hash + Eq,",
+          "text": "Returns a reference to the value corresponding to the key."
+        },
+        {
+          "code": "pub fn get_key_value<Q: ?Sized>(&self, k: &Q) -> Option<(&K, &V)> where K: Borrow<Q>, Q: Hash + Eq,",
+          "text": "Returns the key-value pair corresponding to the supplied key."
+        },
+        {
+          "code": "pub fn contains_key<Q: ?Sized>(&self, k: &Q) -> bool where K: Borrow<Q>, Q: Hash + Eq,",
+          "text": "Returns true if the map contains a value for the specified key."
+        },
+        {
+          "code": "pub fn get_mut<Q: ?Sized>(&mut self, k: &Q) -> Option<&mut V> where K: Borrow<Q>, Q: Hash + Eq,",
+          "text": "Returns a mutable reference to the value corresponding to the key."
+        },
+        {
+          "code": "pub fn insert(&mut self, k: K, v: V) -> Option<V>",
+          "text": "Inserts a key-value pair into the map."
+        },
+        {
+          "code": "pub fn try_insert( &mut self, key: K, value: V) -> Result<&mut V, OccupiedError<'_, K, V>>",
+          "text": "Tries to insert a key-value pair into the map, and returns a mutable reference to the value in the entry."
+        },
+        {
+          "code": "pub fn remove<Q: ?Sized>(&mut self, k: &Q) -> Option<V> where K: Borrow<Q>, Q: Hash + Eq,",
+          "text": "Removes a key from the map, returning the value at the key if the key was previously in the map."
+        },
+        {
+          "code": "pub fn remove_entry<Q: ?Sized>(&mut self, k: &Q) -> Option<(K, V)> where K: Borrow<Q>, Q: Hash + Eq,",
+          "text": "Removes a key from the map, returning the stored key and value if the key was previously in the map."
+        },
+        {
+          "code": "pub fn raw_entry_mut(&mut self) -> RawEntryBuilderMut<'_, K, V, S>",
+          "text": "Creates a raw entry builder for the HashMap."
+        },
+        {
+          "code": "pub fn raw_entry(&self) -> RawEntryBuilder<'_, K, V, S>",
+          "text": "Creates a raw immutable entry builder for the HashMap."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<K, V, S> Clone for HashMap<K, V, S> where K: Clone, V: Clone, S: Clone,",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> Self",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, other: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V, S> Debug for HashMap<K, V, S> where K: Debug, V: Debug,",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V, S> Default for HashMap<K, V, S> where S: Default,",
+          "methods": [
+            {
+              "code": "fn default() -> HashMap<K, V, S>",
+              "text": "Creates an empty HashMap<K, V, S>, with the Default value for the hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, K, V, S> Extend<(&'a K, &'a V)> for HashMap<K, V, S> where K: Eq + Hash + Copy, V: Copy, S: BuildHasher,",
+          "methods": [
+            {
+              "code": "fn extend<T: IntoIterator<Item = (&'a K, &'a V)>>(&mut self, iter: T)",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "fn extend_one(&mut self, (k, v): (&'a K, &'a V))",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V, S> Extend<(K, V)> for HashMap<K, V, S> where K: Eq + Hash, S: BuildHasher,",
+          "methods": [
+            {
+              "code": "fn extend<T: IntoIterator<Item = (K, V)>>(&mut self, iter: T)",
+              "text": "Extends a collection with the contents of an iterator."
+            },
+            {
+              "code": "fn extend_one(&mut self, (k, v): (K, V))",
+              "text": "Extends a collection with exactly one element."
+            },
+            {
+              "code": "fn extend_reserve(&mut self, additional: usize)",
+              "text": "Reserves capacity in a collection for the given number of additional elements."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V, const N: usize> From<[(K, V); N]> for HashMap<K, V, RandomState> where K: Eq + Hash,",
+          "methods": [
+            {
+              "code": "fn from(arr: [(K, V); N]) -> Self"
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V, S> FromIterator<(K, V)> for HashMap<K, V, S> where K: Eq + Hash, S: BuildHasher + Default,",
+          "methods": [
+            {
+              "code": "fn from_iter<T: IntoIterator<Item = (K, V)>>(iter: T) -> HashMap<K, V, S>",
+              "text": "Creates a value from an iterator."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, Q: ?Sized, V, S> Index<&'_ Q> for HashMap<K, V, S> where K: Eq + Hash + Borrow<Q>, Q: Eq + Hash, S: BuildHasher,",
+          "methods": [
+            {
+              "code": "fn index(&self, key: &Q) -> &V",
+              "text": "Returns a reference to the value corresponding to the supplied key."
+            },
+            {
+              "code": "type Output = V",
+              "text": "The returned type after indexing."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, K, V, S> IntoIterator for &'a HashMap<K, V, S>",
+          "methods": [
+            {
+              "code": "type Item = (&'a K, &'a V)",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = Iter<'a, K, V>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "fn into_iter(self) -> Iter<'a, K, V>ⓘNotable traits for Iter<'a, K, V>impl<'a, K, V> Iterator for Iter<'a, K, V> type Item = (&'a K, &'a V);",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<'a, K, V, S> IntoIterator for &'a mut HashMap<K, V, S>",
+          "methods": [
+            {
+              "code": "type Item = (&'a K, &'a mut V)",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = IterMut<'a, K, V>",
+              "text": "Which kind of iterator are we turning this into?"
+            },
+            {
+              "code": "fn into_iter(self) -> IterMut<'a, K, V>ⓘNotable traits for IterMut<'a, K, V>impl<'a, K, V> Iterator for IterMut<'a, K, V> type Item = (&'a K, &'a mut V);",
+              "text": "Creates an iterator from a value."
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V, S> IntoIterator for HashMap<K, V, S>",
+          "methods": [
+            {
+              "code": "fn into_iter(self) -> IntoIter<K, V>ⓘNotable traits for IntoIter<K, V>impl<K, V> Iterator for IntoIter<K, V> type Item = (K, V);",
+              "text": "Creates a consuming iterator, that is, one that moves each key-value pair out of the map in arbitrary order. The map cannot be used after calling this."
+            },
+            {
+              "code": "type Item = (K, V)",
+              "text": "The type of the elements being iterated over."
+            },
+            {
+              "code": "type IntoIter = IntoIter<K, V>",
+              "text": "Which kind of iterator are we turning this into?"
+            }
+          ]
+        },
+        {
+          "title": "impl<K, V, S> PartialEq<HashMap<K, V, S>> for HashMap<K, V, S> where K: Eq + Hash, V: PartialEq, S: BuildHasher,",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &HashMap<K, V, S>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

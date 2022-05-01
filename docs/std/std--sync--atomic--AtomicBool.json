@@ -1,0 +1,106 @@
+{
+  "title": "Struct std::sync::atomic::AtomicBool",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn new(v: bool) -> AtomicBool",
+          "text": "Creates a new AtomicBool."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut bool",
+          "text": "Returns a mutable reference to the underlying bool."
+        },
+        {
+          "code": "pub fn from_mut(v: &mut bool) -> &AtomicBool",
+          "text": "Get atomic access to a &mut bool."
+        },
+        {
+          "code": "pub fn into_inner(self) -> bool",
+          "text": "Consumes the atomic and returns the contained value."
+        },
+        {
+          "code": "pub fn load(&self, order: Ordering) -> bool",
+          "text": "Loads a value from the bool."
+        },
+        {
+          "code": "pub fn store(&self, val: bool, order: Ordering)",
+          "text": "Stores a value into the bool."
+        },
+        {
+          "code": "pub fn swap(&self, val: bool, order: Ordering) -> bool",
+          "text": "Stores a value into the bool, returning the previous value."
+        },
+        {
+          "code": "pub fn compare_exchange( &self, current: bool, new: bool, success: Ordering, failure: Ordering) -> Result<bool, bool>",
+          "text": "Stores a value into the bool if the current value is the same as the current value."
+        },
+        {
+          "code": "pub fn compare_exchange_weak( &self, current: bool, new: bool, success: Ordering, failure: Ordering) -> Result<bool, bool>",
+          "text": "Stores a value into the bool if the current value is the same as the current value."
+        },
+        {
+          "code": "pub fn fetch_and(&self, val: bool, order: Ordering) -> bool",
+          "text": "Logical “and” with a boolean value."
+        },
+        {
+          "code": "pub fn fetch_nand(&self, val: bool, order: Ordering) -> bool",
+          "text": "Logical “nand” with a boolean value."
+        },
+        {
+          "code": "pub fn fetch_or(&self, val: bool, order: Ordering) -> bool",
+          "text": "Logical “or” with a boolean value."
+        },
+        {
+          "code": "pub fn fetch_xor(&self, val: bool, order: Ordering) -> bool",
+          "text": "Logical “xor” with a boolean value."
+        },
+        {
+          "code": "pub fn as_mut_ptr(&self) -> *mut bool",
+          "text": "Returns a mutable pointer to the underlying bool."
+        },
+        {
+          "code": "pub fn fetch_update<F>( &self, set_order: Ordering, fetch_order: Ordering, f: F) -> Result<bool, bool> where F: FnMut(bool) -> Option<bool>,",
+          "text": "Fetches the value, and applies a function to it that returns an optional new value. Returns a Result of Ok(previous_value) if the function returned Some(_), else Err(previous_value)."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for AtomicBool",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for AtomicBool",
+          "methods": [
+            {
+              "code": "pub fn default() -> AtomicBool",
+              "text": "Creates an AtomicBool initialized to false."
+            }
+          ]
+        },
+        {
+          "title": "impl From<bool> for AtomicBool",
+          "methods": [
+            {
+              "code": "pub fn from(b: bool) -> AtomicBool",
+              "text": "Converts a bool into an AtomicBool."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

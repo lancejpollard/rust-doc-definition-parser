@@ -1,0 +1,32 @@
+{
+  "title": "Struct rustls::internal::msgs::persist::ClientSessionCommon",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn rewind_epoch(&mut self, delta: u32)",
+          "text": "Test only: wind back epoch by delta seconds."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for ClientSessionCommon",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

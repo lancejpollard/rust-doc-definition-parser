@@ -1,0 +1,115 @@
+{
+  "title": "Struct std::collections::hash_map::DefaultHasher",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> DefaultHasher",
+          "text": "Creates a new DefaultHasher."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for DefaultHasher",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> DefaultHasher",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for DefaultHasher",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for DefaultHasher",
+          "methods": [
+            {
+              "code": "fn default() -> DefaultHasher",
+              "text": "Creates a new DefaultHasher using new. See its documentation for more."
+            }
+          ]
+        },
+        {
+          "title": "impl Hasher for DefaultHasher",
+          "methods": [
+            {
+              "code": "fn write(&mut self, msg: &[u8])",
+              "text": "Writes some data into this Hasher."
+            },
+            {
+              "code": "fn finish(&self) -> u64",
+              "text": "Returns the hash value for the values written so far."
+            },
+            {
+              "code": "fn write_u8(&mut self, i: u8)",
+              "text": "Writes a single u8 into this hasher."
+            },
+            {
+              "code": "fn write_u16(&mut self, i: u16)",
+              "text": "Writes a single u16 into this hasher."
+            },
+            {
+              "code": "fn write_u32(&mut self, i: u32)",
+              "text": "Writes a single u32 into this hasher."
+            },
+            {
+              "code": "fn write_u64(&mut self, i: u64)",
+              "text": "Writes a single u64 into this hasher."
+            },
+            {
+              "code": "fn write_u128(&mut self, i: u128)",
+              "text": "Writes a single u128 into this hasher."
+            },
+            {
+              "code": "fn write_usize(&mut self, i: usize)",
+              "text": "Writes a single usize into this hasher."
+            },
+            {
+              "code": "fn write_i8(&mut self, i: i8)",
+              "text": "Writes a single i8 into this hasher."
+            },
+            {
+              "code": "fn write_i16(&mut self, i: i16)",
+              "text": "Writes a single i16 into this hasher."
+            },
+            {
+              "code": "fn write_i32(&mut self, i: i32)",
+              "text": "Writes a single i32 into this hasher."
+            },
+            {
+              "code": "fn write_i64(&mut self, i: i64)",
+              "text": "Writes a single i64 into this hasher."
+            },
+            {
+              "code": "fn write_i128(&mut self, i: i128)",
+              "text": "Writes a single i128 into this hasher."
+            },
+            {
+              "code": "fn write_isize(&mut self, i: isize)",
+              "text": "Writes a single isize into this hasher."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

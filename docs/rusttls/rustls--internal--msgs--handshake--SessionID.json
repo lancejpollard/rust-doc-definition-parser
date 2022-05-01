@@ -1,0 +1,74 @@
+{
+  "title": "Struct rustls::internal::msgs::handshake::SessionID",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for SessionID",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> SessionID",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Codec for SessionID",
+          "methods": [
+            {
+              "code": "fn encode(&self, bytes: &mut Vec<u8>)",
+              "text": "Encode yourself by appending onto bytes."
+            },
+            {
+              "code": "fn read(r: &mut Reader<'_>) -> Option<Self>",
+              "text": "Decode yourself by fiddling with the Reader. Return Some if it worked, None if not."
+            },
+            {
+              "code": "fn get_encoding(&self) -> Vec<u8>",
+              "text": "Convenience function to get the results of encode()."
+            },
+            {
+              "code": "fn read_bytes(bytes: &[u8]) -> Option<Self>",
+              "text": "Read one of these from the front of bytes and return it."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for SessionID",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<SessionID> for SessionID",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &Self) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

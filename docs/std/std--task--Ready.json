@@ -1,0 +1,66 @@
+{
+  "title": "Struct std::task::Ready",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": []
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Debug for Ready<T>",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> FromResidual<<Ready<T> as Try>::Residual> for Ready<T>",
+          "methods": [
+            {
+              "code": "pub fn from_residual(residual: Ready<Infallible>) -> Ready<T>",
+              "text": "Constructs the type from a compatible Residual type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> FromResidual<Ready<Infallible>> for Poll<T>",
+          "methods": [
+            {
+              "code": "pub fn from_residual(residual: Ready<Infallible>) -> Poll<T>",
+              "text": "Constructs the type from a compatible Residual type."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Try for Ready<T>",
+          "methods": [
+            {
+              "code": "type Output = T",
+              "text": "The type of the value produced by ? when not short-circuiting."
+            },
+            {
+              "code": "type Residual = Ready<Infallible>",
+              "text": "The type of the value passed to FromResidual::from_residual as part of ? when short-circuiting."
+            },
+            {
+              "code": "pub fn from_output(output: <Ready<T> as Try>::Output) -> Ready<T>",
+              "text": "Constructs the type from its Output type."
+            },
+            {
+              "code": "pub fn branch( self) -> ControlFlow<<Ready<T> as Try>::Residual, <Ready<T> as Try>::Output>",
+              "text": "Used in ? to decide whether the operator should produce a value (because this returned ControlFlow::Continue) or propagate a value back to the caller (because this returned ControlFlow::Break)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

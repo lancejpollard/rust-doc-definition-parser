@@ -1,0 +1,212 @@
+{
+  "title": "Struct std::ptr::NonNull",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn dangling() -> NonNull<T>",
+          "text": "Creates a new NonNull that is dangling, but well-aligned."
+        },
+        {
+          "code": "pub unsafe fn as_uninit_ref<'a>(&self) -> &'a MaybeUninit<T>",
+          "text": "Returns a shared references to the value. In contrast to as_ref, this does not require that the value has to be initialized."
+        },
+        {
+          "code": "pub unsafe fn as_uninit_mut<'a>(&mut self) -> &'a mut MaybeUninit<T>",
+          "text": "Returns a unique references to the value. In contrast to as_mut, this does not require that the value has to be initialized."
+        },
+        {
+          "code": "pub const unsafe fn new_unchecked(ptr: *mut T) -> NonNull<T>",
+          "text": "Creates a new NonNull."
+        },
+        {
+          "code": "pub fn new(ptr: *mut T) -> Option<NonNull<T>>",
+          "text": "Creates a new NonNull if ptr is non-null."
+        },
+        {
+          "code": "pub fn from_raw_parts( data_address: NonNull<()>, metadata: <T as Pointee>::Metadata) -> NonNull<T>",
+          "text": "Performs the same functionality as std::ptr::from_raw_parts, except that a NonNull pointer is returned, as opposed to a raw *const pointer."
+        },
+        {
+          "code": "pub fn to_raw_parts(self) -> (NonNull<()>, <T as Pointee>::Metadata)",
+          "text": "Decompose a (possibly wide) pointer into its address and metadata components."
+        },
+        {
+          "code": "pub const fn as_ptr(self) -> *mut T",
+          "text": "Acquires the underlying *mut pointer."
+        },
+        {
+          "code": "pub unsafe fn as_ref<'a>(&self) -> &'a T",
+          "text": "Returns a shared reference to the value. If the value may be uninitialized, as_uninit_ref must be used instead."
+        },
+        {
+          "code": "pub unsafe fn as_mut<'a>(&mut self) -> &'a mut T",
+          "text": "Returns a unique reference to the value. If the value may be uninitialized, as_uninit_mut must be used instead."
+        },
+        {
+          "code": "pub const fn cast<U>(self) -> NonNull<U>",
+          "text": "Casts to a pointer of another type."
+        },
+        {
+          "code": "pub fn slice_from_raw_parts(data: NonNull<T>, len: usize) -> NonNull<[T]>",
+          "text": "Creates a non-null raw slice from a thin pointer and a length."
+        },
+        {
+          "code": "pub fn len(self) -> usize",
+          "text": "Returns the length of a non-null raw slice."
+        },
+        {
+          "code": "pub fn as_non_null_ptr(self) -> NonNull<T>",
+          "text": "Returns a non-null pointer to the slice’s buffer."
+        },
+        {
+          "code": "pub fn as_mut_ptr(self) -> *mut T",
+          "text": "Returns a raw pointer to the slice’s buffer."
+        },
+        {
+          "code": "pub unsafe fn as_uninit_slice<'a>(&self) -> &'a [MaybeUninit<T>]",
+          "text": "Returns a shared reference to a slice of possibly uninitialized values. In contrast to as_ref, this does not require that the value has to be initialized."
+        },
+        {
+          "code": "pub unsafe fn as_uninit_slice_mut<'a>(&self) -> &'a mut [MaybeUninit<T>]",
+          "text": "Returns a unique reference to a slice of possibly uninitialized values. In contrast to as_mut, this does not require that the value has to be initialized."
+        },
+        {
+          "code": "pub unsafe fn get_unchecked_mut<I>( self, index: I) -> NonNull<<I as SliceIndex<[T]>>::Output> where I: SliceIndex<[T]>,",
+          "text": "Returns a raw pointer to an element or subslice, without doing bounds checking."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl<T> Clone for NonNull<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn clone(&self) -> NonNull<T>",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Debug for NonNull<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> From<&'_ T> for NonNull<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn from(reference: &T) -> NonNull<T>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<'_, T> From<&'_ mut T> for NonNull<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn from(reference: &mut T) -> NonNull<T>",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Hash for NonNull<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn hash<H>(&self, state: &mut H) where H: Hasher,",
+              "text": "Feeds this value into the given Hasher."
+            },
+            {
+              "code": "fn hash_slice<H>(data: &[Self], state: &mut H) where H: Hasher,",
+              "text": "Feeds a slice of this type into the given Hasher."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Ord for NonNull<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn cmp(&self, other: &NonNull<T>) -> Ordering",
+              "text": "This method returns an Ordering between self and other."
+            },
+            {
+              "code": "fn max(self, other: Self) -> Self",
+              "text": "Compares and returns the maximum of two values."
+            },
+            {
+              "code": "fn min(self, other: Self) -> Self",
+              "text": "Compares and returns the minimum of two values."
+            },
+            {
+              "code": "fn clamp(self, min: Self, max: Self) -> Self",
+              "text": "Restrict a value to a certain interval."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialEq<NonNull<T>> for NonNull<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn eq(&self, other: &NonNull<T>) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &Rhs) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> PartialOrd<NonNull<T>> for NonNull<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn partial_cmp(&self, other: &NonNull<T>) -> Option<Ordering>",
+              "text": "This method returns an ordering between self and other values if one exists."
+            },
+            {
+              "code": "fn lt(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than (for self and other) and is used by the < operator."
+            },
+            {
+              "code": "fn le(&self, other: &Rhs) -> bool",
+              "text": "This method tests less than or equal to (for self and other) and is used by the <= operator."
+            },
+            {
+              "code": "fn gt(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than (for self and other) and is used by the > operator."
+            },
+            {
+              "code": "fn ge(&self, other: &Rhs) -> bool",
+              "text": "This method tests greater than or equal to (for self and other) and is used by the >= operator."
+            }
+          ]
+        },
+        {
+          "title": "impl<T> Pointer for NonNull<T> where T: ?Sized,",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

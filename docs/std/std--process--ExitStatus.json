@@ -1,0 +1,122 @@
+{
+  "title": "Struct std::process::ExitStatus",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn exit_ok(&self) -> Result<(), ExitStatusError>",
+          "text": "Was termination successful? Returns a Result."
+        },
+        {
+          "code": "pub fn success(&self) -> bool",
+          "text": "Was termination successful? Signal termination is not considered a success, and success is defined as a zero exit status."
+        },
+        {
+          "code": "pub fn code(&self) -> Option<i32>",
+          "text": "Returns the exit code of the process, if any."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Clone for ExitStatus",
+          "methods": [
+            {
+              "code": "fn clone(&self) -> ExitStatus",
+              "text": "Returns a copy of the value."
+            },
+            {
+              "code": "fn clone_from(&mut self, source: &Self)",
+              "text": "Performs copy-assignment from source."
+            }
+          ]
+        },
+        {
+          "title": "impl Debug for ExitStatus",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Display for ExitStatus",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl ExitStatusExt for ExitStatus",
+          "methods": [
+            {
+              "code": "fn from_raw(raw: i32) -> Self",
+              "text": "Creates a new ExitStatus or ExitStatusError from the raw underlying integer status value from wait"
+            },
+            {
+              "code": "fn signal(&self) -> Option<i32>",
+              "text": "If the process was terminated by a signal, returns that signal."
+            },
+            {
+              "code": "fn core_dumped(&self) -> bool",
+              "text": "If the process was terminated by a signal, says whether it dumped core."
+            },
+            {
+              "code": "fn stopped_signal(&self) -> Option<i32>",
+              "text": "If the process was stopped by a signal, returns that signal."
+            },
+            {
+              "code": "fn continued(&self) -> bool",
+              "text": "Whether the process was continued from a stopped status."
+            },
+            {
+              "code": "fn into_raw(self) -> i32",
+              "text": "Returns the underlying raw wait status."
+            }
+          ]
+        },
+        {
+          "title": "impl ExitStatusExt for ExitStatus",
+          "methods": [
+            {
+              "code": "fn from_raw(raw: u32) -> Self",
+              "text": "Creates a new ExitStatus from the raw underlying u32 return value of a process."
+            }
+          ]
+        },
+        {
+          "title": "impl Into<ExitStatus> for ExitStatusError",
+          "methods": [
+            {
+              "code": "fn into(self) -> ExitStatus",
+              "text": "Performs the conversion."
+            }
+          ]
+        },
+        {
+          "title": "impl PartialEq<ExitStatus> for ExitStatus",
+          "methods": [
+            {
+              "code": "fn eq(&self, other: &ExitStatus) -> bool",
+              "text": "This method tests for self and other values to be equal, and is used by ==."
+            },
+            {
+              "code": "fn ne(&self, other: &ExitStatus) -> bool",
+              "text": "This method tests for !=."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

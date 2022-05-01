@@ -1,0 +1,65 @@
+{
+  "title": "Struct std::sync::Condvar",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub fn new() -> Condvar",
+          "text": "Creates a new condition variable which is ready to be waited on and notified."
+        },
+        {
+          "code": "pub fn wait<'a, T>( &self, guard: MutexGuard<'a, T>) -> LockResult<MutexGuard<'a, T>>",
+          "text": "Blocks the current thread until this condition variable receives a notification."
+        },
+        {
+          "code": "pub fn wait_while<'a, T, F>( &self, guard: MutexGuard<'a, T>, condition: F) -> LockResult<MutexGuard<'a, T>> where F: FnMut(&mut T) -> bool,",
+          "text": "Blocks the current thread until this condition variable receives a notification and the provided condition is false."
+        },
+        {
+          "code": "pub fn wait_timeout<'a, T>( &self, guard: MutexGuard<'a, T>, dur: Duration) -> LockResult<(MutexGuard<'a, T>, WaitTimeoutResult)>",
+          "text": "Waits on this condition variable for a notification, timing out after a specified duration."
+        },
+        {
+          "code": "pub fn wait_timeout_while<'a, T, F>( &self, guard: MutexGuard<'a, T>, dur: Duration, condition: F) -> LockResult<(MutexGuard<'a, T>, WaitTimeoutResult)> where F: FnMut(&mut T) -> bool,",
+          "text": "Waits on this condition variable for a notification, timing out after a specified duration."
+        },
+        {
+          "code": "pub fn notify_one(&self)",
+          "text": "Wakes up one blocked thread on this condvar."
+        },
+        {
+          "code": "pub fn notify_all(&self)",
+          "text": "Wakes up all blocked threads on this condvar."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for Condvar",
+          "methods": [
+            {
+              "code": "fn fmt(&self, f: &mut Formatter<'_>) -> Result",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for Condvar",
+          "methods": [
+            {
+              "code": "fn default() -> Condvar",
+              "text": "Creates a Condvar which is ready to be waited on and notified."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

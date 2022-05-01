@@ -1,0 +1,122 @@
+{
+  "title": "Struct std::sync::atomic::AtomicIsize",
+  "sections": [
+    {
+      "name": "implementations",
+      "methods": [
+        {
+          "code": "pub const fn new(v: isize) -> AtomicIsize",
+          "text": "Creates a new atomic integer."
+        },
+        {
+          "code": "pub fn get_mut(&mut self) -> &mut isize",
+          "text": "Returns a mutable reference to the underlying integer."
+        },
+        {
+          "code": "pub fn from_mut(v: &mut isize) -> &AtomicIsize",
+          "text": "Get atomic access to a &mut isize."
+        },
+        {
+          "code": "pub fn into_inner(self) -> isize",
+          "text": "Consumes the atomic and returns the contained value."
+        },
+        {
+          "code": "pub fn load(&self, order: Ordering) -> isize",
+          "text": "Loads a value from the atomic integer."
+        },
+        {
+          "code": "pub fn store(&self, val: isize, order: Ordering)",
+          "text": "Stores a value into the atomic integer."
+        },
+        {
+          "code": "pub fn swap(&self, val: isize, order: Ordering) -> isize",
+          "text": "Stores a value into the atomic integer, returning the previous value."
+        },
+        {
+          "code": "pub fn compare_exchange( &self, current: isize, new: isize, success: Ordering, failure: Ordering) -> Result<isize, isize>",
+          "text": "Stores a value into the atomic integer if the current value is the same as the current value."
+        },
+        {
+          "code": "pub fn compare_exchange_weak( &self, current: isize, new: isize, success: Ordering, failure: Ordering) -> Result<isize, isize>",
+          "text": "Stores a value into the atomic integer if the current value is the same as the current value."
+        },
+        {
+          "code": "pub fn fetch_add(&self, val: isize, order: Ordering) -> isize",
+          "text": "Adds to the current value, returning the previous value."
+        },
+        {
+          "code": "pub fn fetch_sub(&self, val: isize, order: Ordering) -> isize",
+          "text": "Subtracts from the current value, returning the previous value."
+        },
+        {
+          "code": "pub fn fetch_and(&self, val: isize, order: Ordering) -> isize",
+          "text": "Bitwise “and” with the current value."
+        },
+        {
+          "code": "pub fn fetch_nand(&self, val: isize, order: Ordering) -> isize",
+          "text": "Bitwise “nand” with the current value."
+        },
+        {
+          "code": "pub fn fetch_or(&self, val: isize, order: Ordering) -> isize",
+          "text": "Bitwise “or” with the current value."
+        },
+        {
+          "code": "pub fn fetch_xor(&self, val: isize, order: Ordering) -> isize",
+          "text": "Bitwise “xor” with the current value."
+        },
+        {
+          "code": "pub fn fetch_update<F>( &self, set_order: Ordering, fetch_order: Ordering, f: F) -> Result<isize, isize> where F: FnMut(isize) -> Option<isize>,",
+          "text": "Fetches the value, and applies a function to it that returns an optional new value. Returns a Result of Ok(previous_value) if the function returned Some(_), else Err(previous_value)."
+        },
+        {
+          "code": "pub fn fetch_max(&self, val: isize, order: Ordering) -> isize",
+          "text": "Maximum with the current value."
+        },
+        {
+          "code": "pub fn fetch_min(&self, val: isize, order: Ordering) -> isize",
+          "text": "Minimum with the current value."
+        },
+        {
+          "code": "pub fn as_mut_ptr(&self) -> *mut isize",
+          "text": "Returns a mutable pointer to the underlying integer."
+        }
+      ]
+    },
+    {
+      "name": "derefMethods",
+      "methods": []
+    },
+    {
+      "name": "traitImpl",
+      "traits": [
+        {
+          "title": "impl Debug for AtomicIsize",
+          "methods": [
+            {
+              "code": "pub fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), Error>",
+              "text": "Formats the value using the given formatter."
+            }
+          ]
+        },
+        {
+          "title": "impl Default for AtomicIsize",
+          "methods": [
+            {
+              "code": "pub fn default() -> AtomicIsize",
+              "text": "Returns the “default value” for a type."
+            }
+          ]
+        },
+        {
+          "title": "impl From<isize> for AtomicIsize",
+          "methods": [
+            {
+              "code": "pub fn from(v: isize) -> AtomicIsize",
+              "text": "Converts an isize into an AtomicIsize."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
